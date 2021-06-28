@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="TotalSales">
+<mapper namespace="TicketSales">
 	
 	<resultMap type="com.kh.pugis.service.consulting.domain.TicketSales" id="result">
 		<result property="purchase_date" column="purchase_date" />

@@ -13,7 +13,7 @@ public class AllConsultSearchDaoImpl
     implements AllConsultSearchDao
 {
 
-	 @Inject
+	 @Autowired
     private SqlSession sqlSession;
 
     public void allConsultSearch()

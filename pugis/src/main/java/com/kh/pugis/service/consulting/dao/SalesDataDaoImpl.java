@@ -19,27 +19,27 @@ public class SalesDataDaoImpl implements SalesDataDao {
 	
 	@Override
 	public List<TotalSales> totallist() {
-		return sqlSession.selectList("Sales.getTotalSales");
+		return sqlSession.selectList("TotalSales.getTotalSales");
 	}
 	
 	@Override
 	public List<ByTicketSales> ticketlist() {
-		return sqlSession.selectList("Sales.getTicketSales");
+		return sqlSession.selectList("TicketSales.getTicketSales");
 	}
 	
 	@Override
 	public List<ByAgeSales> agelist() {
-		return sqlSession.selectList("Sales.getAgeSales");
+		return sqlSession.selectList("AgeSales.getAgeSales");
 	}
 	
 	@Override
 	public List<ByGenderSales> genderlist() {
-		return sqlSession.selectList("Sales.getGenderSales");
+		return sqlSession.selectList("GenderSales.getGenderSales");
 	}
 	
 	@Override
 	public List<ByFacilitySales> facilitylist() {
-		return sqlSession.selectList("Sales.getFacilitySales");
+		return sqlSession.selectList("FacilitySales.getFacilitySales");
 	}
 	
 	
@@ -56,7 +56,7 @@ public class SalesDataDaoImpl implements SalesDataDao {
 
 		System.out.println("SqlSession ===> " + sqlSession);
 			
-		 return sqlSession.selectOne("ByTicketSales.getTicketSalesSum", 210622);
+		 return sqlSession.selectOne("TicketSales.getTicketSalesSum", 210622);
 	}
 	
 	public ByAgeSales ageSalesSummary(){
@@ -64,7 +64,7 @@ public class SalesDataDaoImpl implements SalesDataDao {
 
 		System.out.println("SqlSession ===> " + sqlSession);
 			
-		 return sqlSession.selectOne("ByAgeSales.getAgeSalesSum", 210622);
+		 return sqlSession.selectOne("AgeSales.getAgeSalesSum", 210622);
 	}
 	
 	public ByGenderSales genderSalesSummary(){
@@ -72,7 +72,7 @@ public class SalesDataDaoImpl implements SalesDataDao {
 
 		System.out.println("SqlSession ===> " + sqlSession);
 			
-		 return sqlSession.selectOne("ByGenderSales.getGenderSalesSum", 210622);
+		 return sqlSession.selectOne("GenderSales.getGenderSalesSum", 210622);
 	}
 	
 	public ByFacilitySales facilitySalesSummary(){
@@ -80,6 +80,6 @@ public class SalesDataDaoImpl implements SalesDataDao {
 
 		System.out.println("SqlSession ===> " + sqlSession);
 			
-		 return sqlSession.selectOne("ByFacilitySales.getFacilitySalesSum", 210622);
+		 return sqlSession.selectOne("FacilitySales.getFacilitySalesSum", 210622);
 	}
 }
