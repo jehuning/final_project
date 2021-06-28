@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="TicketSales">
 	
-	<resultMap type="com.kh.pugis.service.consulting.domain.TicketSales" id="result">
+	<resultMap type="com.kh.pugis.service.consulting.domain.ByTicketSales" id="result">
 		<result property="purchase_date" column="purchase_date" />
 		<result property="ticket_class_name" column="ticket_class_name" />
 		<result property="ticket_price" column="ticket_price" />
