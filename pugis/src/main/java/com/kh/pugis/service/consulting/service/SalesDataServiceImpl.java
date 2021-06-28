@@ -25,38 +25,69 @@ public class SalesDataServiceImpl implements SalesDataService{
     SalesDataDao sdd;
 
 	@Override
-	public ByTicketSales ticketSalesSummary() {
-		// TODO Auto-generated method stub
-		return null;
+	public TotalSales totalSalesSummary(){
+		
+		return 	sdd.totalSalesSummary();
+
+	}
+	
+	@Override
+	public ByTicketSales ticketSalesSummary(){
+		
+		return 	sdd.ticketSalesSummary();
+
+	}
+	
+	@Override
+	public ByAgeSales ageSalesSummary(){
+		
+		return 	sdd.ageSalesSummary();
+
+	}
+	
+	@Override
+	public ByGenderSales genderSalesSummary(){
+		
+		return 	sdd.genderSalesSummary();
+
+	}
+	
+	@Override
+	public ByFacilitySales facilitySalesSummary(){
+		
+		return 	sdd.facilitySalesSummary();
+
+	}
+	
+	@Override
+	public List<TotalSales> totallist()
+	{
+		return sdd.totallist();
+	}
+	
+	@Override
+	public List<ByTicketSales> ticketlist()
+	{
+		return sdd.ticketlist();
+	}
+	
+	@Override
+	public List<ByAgeSales> agelist()
+	{
+		return sdd.agelist();
 	}
 
+	
 	@Override
-	public List<TotalSales> totalSalesList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ByGenderSales> genderlist()
+	{
+		return sdd.genderlist();
 	}
-
+	
+	
 	@Override
-	public List<ByTicketSales> ticketlist() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ByAgeSales> agelist() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ByGenderSales> genderlist() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ByFacilitySales> facilitylist() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ByFacilitySales> facilitylist()
+	{
+		return sdd.facilitylist();
 	}
 }

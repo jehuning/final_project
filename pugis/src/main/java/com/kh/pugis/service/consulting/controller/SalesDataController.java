@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.pugis.service.consulting.service.SalesDataService;
 
-
-
 @Controller
 @RequestMapping(value = "/sales")
 public class SalesDataController
@@ -17,25 +15,62 @@ public class SalesDataController
     @Autowired
     SalesDataService sds;
     
-	@RequestMapping(value = "/total")
-    public void totalSalseData()
-    {
-        sds.totalSalesList();
-    }
-
-    @RequestMapping(value = "/tssummary")
+	@RequestMapping(value = "/ttssummary")
+	public String totalSalesSummary(Model model){
+		
+		System.out.println("서블릿실행");
+		
+		model.addAttribute("totalSalesSummary", sds.totalSalesSummary());
+		return "service/consulting/totalsales";
+	}
+	
+	@RequestMapping(value = "/tssummary")
 	public String ticketSalesSummary(Model model){
 		
-		System.out.println("����������");
+		System.out.println("서블릿실행");
 		
 		model.addAttribute("ticketSalesSummary", sds.ticketSalesSummary());
-		return "service/consulting/ticketsales";
+		return "service/consulting/totalticketsales";
+	}
+	
+	@RequestMapping(value = "/assummary")
+	public String ageSalesSummary(Model model){
+		
+		System.out.println("서블릿실행");
+		
+		model.addAttribute("ageSalesSummary", sds.ageSalesSummary());
+		return "service/consulting/totalagesales";
+	}
+	
+	@RequestMapping(value = "/gssummary")
+	public String genderSalesSummary(Model model){
+		
+		System.out.println("서블릿실행");
+		
+		model.addAttribute("genderSalesSummary", sds.genderSalesSummary());
+		return "service/consulting/totalgendersales";
+	}
+	
+	@RequestMapping(value = "/fssummary")
+	public String facilitySalesSummary(Model model){
+		
+		System.out.println("서블릿실행");
+		
+		model.addAttribute("facilitySalesSummary", sds.facilitySalesSummary());
+		return "service/consulting/totalfacilitysales";
+	}
+	
+	
+	@RequestMapping(value = "/totallist")
+	public String totallist(Model model) {
+		model.addAttribute("totalsales", sds.totallist());
+		return "consulting/totalsales";
 	}
 	
 	@RequestMapping(value = "/ticketlist")
 	public String ticketlist(Model model) {
 		model.addAttribute("byticketsales", sds.ticketlist());
-		return "consulting/ticketsales";
+		return "consulting/totalticketsales";
 	}
 	
 	@RequestMapping(value = "/agelist")
@@ -55,6 +90,5 @@ public class SalesDataController
 		model.addAttribute("byfacilitysales", sds.facilitylist());
 		return "consulting/facilitysales";
 	}
-
     
 }

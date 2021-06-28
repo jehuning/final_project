@@ -12,9 +12,13 @@ import com.kh.pugis.service.consulting.domain.TotalSales;
 public interface SalesDataDao
 {
 
+	TotalSales totalSalesSummary();
 	ByTicketSales ticketSalesSummary();
+	ByAgeSales ageSalesSummary();
+	ByGenderSales genderSalesSummary();
+	ByFacilitySales facilitySalesSummary();
 	
-	List<TotalSales> totalSalseList();
+	List<TotalSales> totallist();
 	List<ByTicketSales> ticketlist();
 	List<ByAgeSales> agelist();
 	List<ByGenderSales> genderlist();
