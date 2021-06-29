@@ -39,7 +39,7 @@ public class SalesDataDaoImpl implements SalesDataDao {
 	
 	@Override
 	public List<ByFacilitySales> facilitylist() {
-		return sqlSession.selectList("FacilitySales.getFacilitySales");
+		return sqlSession.selectList("FacilitySales.getFacilitySales", );
 	}
 	
 	
