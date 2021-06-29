@@ -55,7 +55,7 @@ public class SalesDataDaoImpl implements SalesDataDao {
 		ByTicketSales ts = new ByTicketSales();
 
 		System.out.println("SqlSession ===> " + sqlSession);
-			//티켓별 합계 금액이므로 selectlist로 받아야할듯.
+			//티켓별 합계 금액이므로 selectlist로 받아야할듯.완료함
 		 return sqlSession.selectOne("TicketSales.getTicketSalesSum", 210622);
 	}
 	
