@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CalcWorkDay {
-	public List<String> calcWorkDay(){
-	    String startDate = "2021-02-08".replaceAll("-","");	//2020-01-23 (목)
-	    String endDate = "2021-03-05".replaceAll("-", "");	//2020-01-28 (화)
+	public List<String> calcWorkDay(String startDate,String endDate ){
+	    startDate.replaceAll("-","");	//yyyy-mm-dd ->yyyymmdd
+	    endDate.replaceAll("-", "");	//
     	List<String> workDayList = new ArrayList<String>();
 
 	    //실제 공휴일을 구한다.
@@ -17,7 +17,7 @@ public class CalcWorkDay {
 	    List<HashMap<String,Object>> holidayList = new ArrayList<HashMap<String, Object>>();
 	    HashMap<String, Object> holidayMap = new HashMap<String, Object>();
 	    
-	    holidayMap.put("holidayDt", "20200101");	//신정
+	    holidayMap.put("holidayDt", "20210101");	//신정
 	    holidayList.add(holidayMap);
 
 	    holidayMap = new HashMap<String, Object>();

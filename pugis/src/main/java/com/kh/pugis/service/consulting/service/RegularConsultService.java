@@ -15,5 +15,5 @@ public interface RegularConsultService
 
     public abstract PageMoveInfo CustomerPageMove(CustomerInfo customerinfo, PageInfo pageinfo);
 
-    public abstract void saveSchedule();
+    public abstract void saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil);
 }

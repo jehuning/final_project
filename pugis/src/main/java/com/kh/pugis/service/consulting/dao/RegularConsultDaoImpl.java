@@ -31,9 +31,8 @@ public class RegularConsultDaoImpl
         return sqlSession.selectList("Customer.selectList", hm);
     }
 
-    public void saveSchedule()
+    public void saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil)
     {
-        RegularConsultSelectDate rcsd = new RegularConsultSelectDate();
         CustomerInfo ui = new CustomerInfo();
         RegularConsult rc = new RegularConsult();
     }

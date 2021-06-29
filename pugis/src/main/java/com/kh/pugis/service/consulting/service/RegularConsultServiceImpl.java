@@ -7,9 +7,13 @@ package com.kh.pugis.service.consulting.service;
 
 import com.kh.pugis.service.consulting.dao.RegularConsultDao;
 import com.kh.pugis.service.consulting.domain.*;
+import com.kh.pugis.service.consulting.utils.CalcWorkDay;
+
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,8 +91,44 @@ public class RegularConsultServiceImpl
         return pmi;
     }
 
-    public void saveSchedule()
+    public void saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil)
     {
-    }
+    	RegularConsult rc = new RegularConsult();
+    	Random rd = new Random();
+    	List<String> workDayList = new ArrayList<String>();
+    	
+    	String start = rcsd.getStart_date();
+    	String finish = rcsd.getFinish_date();
+    	
+    	CalcWorkDay cwd = new CalcWorkDay();
+    	workDayList = cwd.calcWorkDay(start,finish);
+    	int wn = workDayList.size();//선택된 날짜 중 근무일수
+    	
+    	List<String> list = new ArrayList<String>();
+    	for(CustomerInfo cId: cil.getSelecetedId()){
+    		list.add(cId.getCustomer_id());
+    	}
+    	int pn = list.size(); //선택된 사람 수
+    	int rdPerDay = pn/wn+1; //하루당 스케줄 배치 인원수
+    	
+    	for(String day :workDayList){
+    			List<Integer> rdI = new ArrayList<Integer>();
+    			if(rdI.size()==0){
+    				rdI.add(rd.nextInt(pn));
+    			}else{
+    				Boolean chk = false;
+    				int n;
+    				do{
+    					n=rd.nextInt(pn);
+    				}while(rdI.contains(n));
+    				rdI.add(n);
+				}
+		}
+    		
+    		
+    
+ 
+    	
    
+    }
 }

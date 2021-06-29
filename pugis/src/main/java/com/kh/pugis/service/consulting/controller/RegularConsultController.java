@@ -54,7 +54,10 @@ public class RegularConsultController
         rcsd.setStart_date("2021-07-01");
         rcsd.setFinish_date("2021-07-31");
         System.out.println((new StringBuilder("\uACE0\uAC1D\uC544\uC774\uB514")).append(((CustomerInfo)cil.getSelecetedId().get(0)).getCustomer_id()).toString());
-        rcs.saveSchedule();
+        
+        
+        rcs.saveSchedule(rcsd, cil);
+        
         return "service/consulting/customerList";
     }
 

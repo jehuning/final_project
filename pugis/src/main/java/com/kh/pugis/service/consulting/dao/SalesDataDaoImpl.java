@@ -39,7 +39,7 @@ public class SalesDataDaoImpl implements SalesDataDao {
 	
 	@Override
 	public List<ByFacilitySales> facilitylist() {
-		return sqlSession.selectList("FacilitySales.getFacilitySales", );
+		return sqlSession.selectList("FacilitySales.getFacilitySales" );
 	}
 	
 	
@@ -47,7 +47,6 @@ public class SalesDataDaoImpl implements SalesDataDao {
 		TotalSales ts = new TotalSales();
 
 		System.out.println("SqlSession ===> " + sqlSession);
-			
 		 return sqlSession.selectOne("TotalSales.getTotalSalesSum", 210622);
 	}
 	
