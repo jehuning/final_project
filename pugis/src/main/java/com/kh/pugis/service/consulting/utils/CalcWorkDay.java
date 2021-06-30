@@ -78,4 +78,7 @@ public class CalcWorkDay {
 		
 		return workDayList;
 	}
+	public void calcSchedule(){
+		
+	}
 }
