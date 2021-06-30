@@ -38,7 +38,7 @@ public class RegularConsultServiceImpl
         int currentPage = pi.getCurrentPage();
         int pageListSize = pi.getPageListSize();
         int totalPage = selectedSize / pageListSize + 1;
-        HashMap hm = new HashMap();
+        HashMap<String,Object> hm = new HashMap<String,Object>();
         if(totalPage != currentPage)
         {
             int pageBegin = (currentPage - 1) * pageListSize + 1;
