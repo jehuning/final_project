@@ -10,19 +10,19 @@
 <table border="1">
 <tr>
 <th>일자</th>
-<th>연령대별</th>
-<th>티켓 매출</th>
-<th>부대시설 매출</th>
-<th>총 매출</th>
+<th>고객 아이디</th>
+<th>티켓매출</th>
+<th>부대시설매출</th>
+<th>총매출</th>
 </tr>
 
-<c:forEach var="as" items="${ageSales}" varStatus="status">
+<c:forEach var="ts" items="${totalSales}" varStatus="status">
 <tr><!-- 첫번째 줄 시작 -->
-<td>${as.sales_date}</td>
-<td>${as.age_group}</td>
-<td>${as.age_ticketSales}</td>
-<td>${as.age_facilitySales}</td>
-<td>${as.age_sales}</td>
+<td>${ts.sales_date}</td>
+<td>${ts.customer_id}</td>
+<td>${ts.customer_ticketSales}</td>
+<td>${ts.customer_facilitySalse}</td>
+<td>${ts.total_sales}</td>
 </tr><!-- 첫번째 줄 끝 -->
 </c:forEach>
 

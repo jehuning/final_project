@@ -9,14 +9,18 @@
 <body>
 <table border="1">
 <tr>
+<th>일자</th>
 <th>부대시설명</th>
-<th>가격</th>
+<th>매출</th>
 </tr>
 
-<tr>
-<td>${byfacilitysales.getTicket_name()}</td>
-<td>${byfacilitysales.getTicket_sales()}</td>
-</tr>
+<c:forEach var="fs" items="${facilitySales}" varStatus="status">
+<tr><!-- 첫번째 줄 시작 -->
+<td>${fs.sales_date}</td>
+<td>${fs.facility_name}</td>
+<td>${fs.facility_sales}</td>
+</tr><!-- 첫번째 줄 끝 -->
+</c:forEach>
 
 </table>
 </body>
