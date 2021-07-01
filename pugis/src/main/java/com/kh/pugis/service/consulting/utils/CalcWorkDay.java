@@ -8,10 +8,12 @@ import java.util.List;
 
 public class CalcWorkDay {
 	public List<String> calcWorkDay(String startDate,String endDate ){
-	    startDate.replaceAll("-","");	//yyyy-mm-dd ->yyyymmdd
-	    endDate.replaceAll("-", "");	//
+	    String startD = startDate.replaceAll("-","");	//yyyy-mm-dd ->yyyymmdd
+	    String endD = endDate.replaceAll("-", "");	//
     	List<String> workDayList = new ArrayList<String>();
+    	
 
+    	
 	    //실제 공휴일을 구한다.
 	    //List<HashMap<String,Object>> holidayList = holidayService.selectNationalHolDtList(holidayVO);
 	    List<HashMap<String,Object>> holidayList = new ArrayList<HashMap<String, Object>>();
@@ -40,10 +42,9 @@ public class CalcWorkDay {
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	    try{
 			Calendar start = Calendar.getInstance();
-	        start.setTime(sdf.parse(startDate)); //시작일 날짜 설정
-
+	        start.setTime(sdf.parse(startD)); //시작일 날짜 설정
 	      	Calendar end = Calendar.getInstance();
-	      	end.setTime(sdf.parse(endDate)); //종료일 날짜 설정
+	      	end.setTime(sdf.parse(endD)); //종료일 날짜 설정
 
 
 			int workingDays = 0;
@@ -64,13 +65,14 @@ public class CalcWorkDay {
 	      			}
 	      			if(flag){
 	      				//index 날짜가 공휴일이 아니면
+	      				System.out.println("근무일"+sdf.format(start.getTime()));
 	      				workDayList.add(sdf.format(start.getTime()));
 	      			}
 	      		}	
 		    start.add(Calendar.DATE, 1); //index 하루씩 증가문
 		}
-	    System.out.printf("최종일수 %d", workingDays-holDays); //평일 수 - 평일인 공휴일수
 	    
+	    System.out.println(workDayList.size());
 				
 		}catch(Exception e){
 			e.printStackTrace();
@@ -78,7 +80,5 @@ public class CalcWorkDay {
 		
 		return workDayList;
 	}
-	public void calcSchedule(){
-		
-	}
+	
 }

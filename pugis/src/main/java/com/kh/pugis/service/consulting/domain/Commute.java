@@ -12,4 +12,6 @@ public class Commute
     String work_date;
     String start_time;
     String leave_time;
+    String paid_leave_code;
+    String paid_leave_name;
 }

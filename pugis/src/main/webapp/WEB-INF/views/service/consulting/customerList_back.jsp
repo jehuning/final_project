@@ -41,7 +41,6 @@
 
 <input type="submit" value="아이디선택" />
 </form>
-	<c:set var="page" value="${(param.p == null) ? 1 : param.p}"/>
 
 
 	<div class="page-footer clearfix">

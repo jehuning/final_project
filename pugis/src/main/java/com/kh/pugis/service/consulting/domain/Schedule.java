@@ -10,6 +10,6 @@ public class Schedule
 
     String schedule_date;
     String Schedule_dept;
-    String Schedule_emp;
+    String emp_id;
     String Schedule_name;
 }

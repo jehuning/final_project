@@ -45,20 +45,21 @@ public class RegularConsultController
         pmi.setCi(ci);
         model.addAttribute("customerList", al);
         model.addAttribute("pageList", pmi);
-        return "service/consulting/customerList";
+        return "service/consulting/customerList_back";
     }
 	@RequestMapping(value = "/schedule")
     public String saveSchedule(HttpServletRequest req, Model model, CustomerInfoListDto cil)
     {
         RegularConsultSelectDate rcsd = new RegularConsultSelectDate();
-        rcsd.setStart_date("2021-07-01");
-        rcsd.setFinish_date("2021-07-31");
+        rcsd.setStart_date("2021-02-08");
+        rcsd.setFinish_date("2021-03-05");
         System.out.println((new StringBuilder("\uACE0\uAC1D\uC544\uC774\uB514")).append(((CustomerInfo)cil.getSelecetedId().get(0)).getCustomer_id()).toString());
+        System.out.println(cil.getSelecetedId().size());
         
+        String result = rcs.saveSchedule(rcsd, cil);
+        System.out.println(result);
         
-        rcs.saveSchedule(rcsd, cil);
-        
-        return "service/consulting/customerList";
+        return "service/consulting/customerList_back";
     }
 
 }

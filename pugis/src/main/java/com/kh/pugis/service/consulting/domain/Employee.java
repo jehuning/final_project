@@ -74,4 +74,5 @@ public class Employee
     String dept_name;
     String job_id;
     String job_name;
+    String email_address;
 }

@@ -67,7 +67,12 @@ public class RegularConsultServiceImpl
         int selectedSize = 0;
         selectedSize = rcd.countSelect(ci);
         pageListSize = pi.getPageListSize();
-        totalPage = selectedSize / pageListSize + 1;
+        if(selectedSize%pageListSize==0){
+        	 totalPage = selectedSize / pageListSize;
+        }else{
+        	 totalPage = selectedSize / pageListSize + 1;
+        }
+        
         pmi.setTotalPage(totalPage);
         System.out.println((new StringBuilder("\uCD1D\uD398\uC774\uC9C0:")).append(totalPage).toString());
         int pageListInterval = 5;
@@ -90,7 +95,7 @@ public class RegularConsultServiceImpl
         return pmi;
     }
 
-    public void saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil)
+    public String saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil)
     {
     	RegularConsult rc = new RegularConsult();
     	Random rd = new Random();
@@ -102,19 +107,20 @@ public class RegularConsultServiceImpl
     	CalcWorkDay cwd = new CalcWorkDay();
     	workDayList = cwd.calcWorkDay(start,finish);
     	int wn = workDayList.size();//선택된 날짜 중 근무일수
-    	
+    	System.out.println("근무일수"+wn);
     	List<String> cList = new ArrayList<String>();
     	for(CustomerInfo cId: cil.getSelecetedId()){
     		cList.add(cId.getCustomer_id());
     	}
     	int pn = cList.size(); //선택된 사람 수
+    	System.out.println("사람수"+pn);
     	int rdPerDay = pn/wn; //하루당 스케줄 배치 기본 인원수
     	int extraRd = pn%wn; //하루에 1명씩 더 배치되는 날의 수
     	if(extraRd==0){
     		extraRd=wn;
     	}
     	List<Integer> rdI = new ArrayList<Integer>();
-    	for(String day :workDayList){
+    	for(String cusmomer :cList){
     			if(rdI.size()==0){
     				rdI.add(rd.nextInt(pn));
     			}else{
@@ -126,25 +132,30 @@ public class RegularConsultServiceImpl
     				rdI.add(n);
 				}
 		}
-    		HashMap<String,List<String>> scheduleMap = new HashMap<String,List<String>>();
-		for(int i = 0; i < wn; i++){
-			List<String> l = new ArrayList<String>();
-			//	0				~	(rdPerDay+1)-1
-			//	1*(rdPerDay+1)	~ 	2*(rdPerDay+1)-1
-			//	0<= i <extraRd
-			if(0 <= i && i <extraRd){
+    		List<HashMap<String,String>> scheduleList = new ArrayList<HashMap<String,String>>();
+    		
+		for(int i = 0; i < wn; i++){//근무일 하루씩 i 증가
+			HashMap<String,String> scheduleMap = new HashMap<String,String>();
+		
+			if(0 <= i && i <extraRd){//하루에 기본인원수+1 씩 배치되는 날 구간
 				for(int j = i*(rdPerDay+1);j<(i+1)*(rdPerDay+1);j++){
-					l.add(cList.get(rdI.get(j)));
+					scheduleMap.put("scheduleDay",workDayList.get(i));
+					scheduleMap.put("customerId",cList.get(rdI.get(j)));
 				}
-			}else{
+			}else{//하루에 기본인원수 씩 배치되는 날 구간
 				for(int j = extraRd*(rdPerDay+1)+(i-extraRd)*(rdPerDay);j<extraRd*(rdPerDay+1)+(i-extraRd+1)*(rdPerDay);j++){
-					l.add(cList.get(rdI.get(j)));
+					scheduleMap.put("scheduleDay",workDayList.get(i));
+					scheduleMap.put("customerId",cList.get(rdI.get(j)));
 				}
 			}
+			if(scheduleMap.size()!=0){//아무도 배치되지 않는 날(ex.근무일은 N인데 총스케줄등록인원은 N명이하일 때 발생)을 제외하고 스케쥴 등록 리스트에 저장
+				scheduleList.add(scheduleMap);
+			}
 			
-			scheduleMap.put(workDayList.get(i), l); // list로 바꿔야함.
 		}
+		System.out.println("스케줄입력리스트길이"+scheduleList.size());
     
-   
+		String result = rcd.saveSchedule(scheduleList);
+		return result;
     }
 }
