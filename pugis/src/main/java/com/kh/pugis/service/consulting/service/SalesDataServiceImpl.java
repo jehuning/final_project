@@ -1,11 +1,11 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-// Source File Name:   SalesDataServiceImpl.java
-
 package com.kh.pugis.service.consulting.service;
 
+// import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.pugis.service.consulting.dao.SalesDataDao;
 import com.kh.pugis.service.consulting.domain.ByAgeSales;
@@ -14,80 +14,50 @@ import com.kh.pugis.service.consulting.domain.ByGenderSales;
 import com.kh.pugis.service.consulting.domain.ByTicketSales;
 import com.kh.pugis.service.consulting.domain.TotalSales;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 @Service
 @Transactional
 public class SalesDataServiceImpl implements SalesDataService{
 	@Autowired
-    SalesDataDao sdd;
-
-	@Override
-	public TotalSales totalSalesSummary(){
-		
-		return 	sdd.totalSalesSummary();
-
-	}
+	SalesDataDao sdd;
 	
 	@Override
-	public ByTicketSales ticketSalesSummary(){
-		
-		return 	sdd.ticketSalesSummary();
-
-	}
-	
-	@Override
-	public ByAgeSales ageSalesSummary(){
-		
-		return 	sdd.ageSalesSummary();
-
-	}
-	
-	@Override
-	public ByGenderSales genderSalesSummary(){
-		
-		return 	sdd.genderSalesSummary();
-
-	}
-	
-	@Override
-	public ByFacilitySales facilitySalesSummary(){
-		
-		return 	sdd.facilitySalesSummary();
-
-	}
-	
-	@Override
-	public List<TotalSales> totallist()
+	public List<TotalSales> totallist(String date)
 	{
-		return sdd.totallist();
+		/*	출력 확인용 테스트코드
+		List<TotalSales> l = new ArrayList<TotalSales>();
+		l = sdd.totallist(date);
+		System.out.println(l.get(0).getCustomer_id());
+		return l;
+		*/
+		
+		return sdd.totallist(date);
 	}
 	
 	@Override
-	public List<ByTicketSales> ticketlist()
+	public List<ByTicketSales> ticketlist(String date)
 	{
-		return sdd.ticketlist();
+		
+		return sdd.ticketlist(date);
 	}
 	
 	@Override
-	public List<ByAgeSales> agelist()
+	public List<ByAgeSales> agelist(String date)
 	{
-		return sdd.agelist();
+		return sdd.agelist(date);
 	}
 
 	
 	@Override
-	public List<ByGenderSales> genderlist()
+	public List<ByGenderSales> genderlist(String date)
 	{
-		return sdd.genderlist();
+		return sdd.genderlist(date);
 	}
 	
 	
 	@Override
-	public List<ByFacilitySales> facilitylist()
+	public List<ByFacilitySales> facilitylist(String date)
 	{
-		return sdd.facilitylist();
+		return sdd.facilitylist(date);
 	}
+	
 }

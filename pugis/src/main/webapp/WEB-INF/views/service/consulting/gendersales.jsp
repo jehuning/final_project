@@ -9,16 +9,22 @@
 <body>
 <table border="1">
 <tr>
-<th>입장권</th>
-<th>가격</th>
+<th>일자</th>
 <th>성별</th>
+<th>티켓 매출</th>
+<th>부대시설 매출</th>
+<th>총 매출</th>
 </tr>
 
-<tr>
-<td>${bygendersales.getTicket_name()}</td>
-<td>${bygendersales.getTicket_sales()}</td>
-<td>${bygendersales.getCustomer_gender()}</td>
-</tr>
+<c:forEach var="gs" items="${genderSales}" varStatus="status">
+<tr><!-- 첫번째 줄 시작 -->
+<td>${gs.sales_date}</td>
+<td>${gs.gender_group}</td>
+<td>${gs.gender_ticketSales}</td>
+<td>${gs.gender_facilitySales}</td>
+<td>${gs.gender_sales}</td>
+</tr><!-- 첫번째 줄 끝 -->
+</c:forEach>
 
 </table>
 </body>
