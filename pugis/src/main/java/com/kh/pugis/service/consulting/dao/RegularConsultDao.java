@@ -12,5 +12,5 @@ public interface RegularConsultDao
 
     int countSelect(CustomerInfo customerinfo);
     List selectCustomer(HashMap hashmap);
-	 void saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil);
+	 String saveSchedule(List<HashMap<String,String>> lm);
 }

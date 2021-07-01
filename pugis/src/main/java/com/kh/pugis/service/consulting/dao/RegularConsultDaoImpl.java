@@ -31,10 +31,17 @@ public class RegularConsultDaoImpl
         return sqlSession.selectList("Customer.selectList", hm);
     }
 
-    public void saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil)
-    {
-        CustomerInfo ui = new CustomerInfo();
-        RegularConsult rc = new RegularConsult();
+    public String saveSchedule(List<HashMap<String,String>> scheduleL)
+    {int n = 0;
+       for(HashMap hm:scheduleL){
+    	   n += sqlSession.insert("Consult.insertRcSche",hm);
+    	   System.out.println("sql실행결과:"+n);
+       }
+        if(n==scheduleL.size()){
+        	return "스케줄저장성공";
+        }else{
+        	return "저장실패";
+        }
     }
    
 }
