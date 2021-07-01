@@ -129,9 +129,7 @@ public class RegularConsultServiceImpl
     		HashMap<String,List<String>> scheduleMap = new HashMap<String,List<String>>();
 		for(int i = 0; i < wn; i++){
 			List<String> l = new ArrayList<String>();
-			//	0				~	(rdPerDay+1)-1
-			//	1*(rdPerDay+1)	~ 	2*(rdPerDay+1)-1
-			//	0<= i <extraRd
+			
 			if(0 <= i && i <extraRd){
 				for(int j = i*(rdPerDay+1);j<(i+1)*(rdPerDay+1);j++){
 					l.add(cList.get(rdI.get(j)));
@@ -144,7 +142,7 @@ public class RegularConsultServiceImpl
 			
 			scheduleMap.put(workDayList.get(i), l); // list로 바꿔야함.
 		}
-    
-   
+		rcd.
+		return 
     }
 }
