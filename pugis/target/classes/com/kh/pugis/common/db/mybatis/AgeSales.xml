@@ -4,39 +4,24 @@
 <mapper namespace="AgeSales">
 	
 	<resultMap type="com.kh.pugis.service.consulting.domain.ByAgeSales" id="result">
-		<result property="purchase_date" column="purchase_date" />
+		<result property="sales_date" column="purchase_date" />
 		<result property="age_group" column="age_group" />
-		<result property="ticket_price" column="ticket_price" />
-		<result property="customer_sales" column="customer_sales" />
-		<result property="customer_id" column="customer_id" />
-		<result property="ticket_class_code" column="ticket_class_code" />
-		<result property="ticket_pub_code" column="ticket_pub_code" />
-		<result property="facility_code" column="facility_code" />
+		<result property="age_ticketSales" column="TICKETSUM" />
+		<result property="age_facilitySales" column="FACILITYSUM" />
+		<result property="age_sales" column="TOTALSUM" />
 	</resultMap>
-	
-	<select id="getAgeSales" resultMap="result" >
-		SELECT ticket_puchase.purchase_date 일자, agegroup.age_group 연령대_별, SUM(ticket_class_info.ticket_price) 총_티켓매출,
-		SUM(facility_sales.customer_sales) 부대시설_매출, SUM(ticket_class_info.ticket_price + facility_sales.customer_sales) 매출_총합  
-      	FROM CUSTOMER_INFO
-      	JOIN TICKET_PUCHASE ON (customer_info.customer_id = ticket_puchase.customer_id)
-        JOIN TICKET_CLASS_INFO ON (ticket_puchase.ticket_class_code = ticket_class_info.ticket_class_code)
-        JOIN facility_sales ON (ticket_puchase.ticket_pub_code = facility_sales.ticket_pub_code)
-        JOIN facility_info ON (facility_sales.facility_code = facility_info.faclility_code)
-        JOIN AGEGROUP ON ( customer_info.customer_id = agegroup.customer_id)
-        GROUP BY AGE_GROUP, ticket_puchase.purchase_date
-	</select>
 
-	<select id="getAgeSalesSum" resultMap="result" parameterType="int">
-		SELECT ticket_puchase.purchase_date 일자, agegroup.age_group 연령대_별, SUM(ticket_class_info.ticket_price) 총_티켓매출,
-		SUM(facility_sales.customer_sales) 부대시설_매출, SUM(ticket_class_info.ticket_price + facility_sales.customer_sales) 매출_총합  
+	<select id="getAgeSales" resultMap="result" parameterType="int">
+		SELECT ticket_purchase.purchase_date, agegroup.age_group, SUM(ticket_class_info.ticket_price) TICKETSUM,
+		SUM(facility_sales.customer_sales) FACILITYSUM, SUM(ticket_class_info.ticket_price + facility_sales.customer_sales) TOTALSUM   
       	FROM CUSTOMER_INFO
-      	JOIN TICKET_PUCHASE ON (customer_info.customer_id = ticket_puchase.customer_id)
-        JOIN TICKET_CLASS_INFO ON (ticket_puchase.ticket_class_code = ticket_class_info.ticket_class_code)
-        JOIN facility_sales ON (ticket_puchase.ticket_pub_code = facility_sales.ticket_pub_code)
+      	JOIN TICKET_purchase ON (customer_info.customer_id = ticket_purchase.customer_id)
+        JOIN TICKET_CLASS_INFO ON (ticket_purchase.ticket_class_code = ticket_class_info.ticket_class_code)
+        JOIN facility_sales ON (ticket_purchase.ticket_pub_code = facility_sales.ticket_pub_code)
         JOIN facility_info ON (facility_sales.facility_code = facility_info.faclility_code)
         JOIN AGEGROUP ON ( customer_info.customer_id = agegroup.customer_id)
         WHERE PURCHASE_DATE = #{PURCHASE_DATE}
-        GROUP BY AGE_GROUP, ticket_puchase.purchase_date
+        GROUP BY AGE_GROUP, ticket_purchase.purchase_date
 	</select>
 		
 </mapper>

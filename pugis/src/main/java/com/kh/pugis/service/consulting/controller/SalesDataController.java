@@ -1,94 +1,76 @@
 package com.kh.pugis.service.consulting.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.kh.pugis.service.consulting.service.SalesDataService;
 
+/**
+ * Handles requests for the application home page.
+ */
 @Controller
 @RequestMapping(value = "/sales")
-public class SalesDataController
-{
+public class SalesDataController {
+	@Autowired
+	SalesDataService sds;
+	
+	@RequestMapping(value = "/totallist")
+	public String totallist(HttpServletRequest req, Model model) {
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
 
-    @Autowired
-    SalesDataService sds;
-    
-	@RequestMapping(value = "/ttssummary")
-	public String totalSalesSummary(Model model){
+		// date = "210622"; // 테스트용 날짜 지정
 		
-		System.out.println("서블릿실행");
-		
-		model.addAttribute("totalSalesSummary", sds.totalSalesSummary());
+		model.addAttribute("totalSales", sds.totallist(date));
 		return "service/consulting/totalsales";
 	}
 	
-	@RequestMapping(value = "/tssummary")
-	public String ticketSalesSummary(Model model){
-		
-		System.out.println("서블릿실행");
-		
-		model.addAttribute("ticketSalesSummary", sds.ticketSalesSummary());
-		return "service/consulting/totalticketsales";
-	}
-	
-	@RequestMapping(value = "/assummary")
-	public String ageSalesSummary(Model model){
-		
-		System.out.println("서블릿실행");
-		
-		model.addAttribute("ageSalesSummary", sds.ageSalesSummary());
-		return "service/consulting/totalagesales";
-	}
-	
-	@RequestMapping(value = "/gssummary")
-	public String genderSalesSummary(Model model){
-		
-		System.out.println("서블릿실행");
-		
-		model.addAttribute("genderSalesSummary", sds.genderSalesSummary());
-		return "service/consulting/totalgendersales";
-	}
-	
-	@RequestMapping(value = "/fssummary")
-	public String facilitySalesSummary(Model model){
-		
-		System.out.println("서블릿실행");
-		
-		model.addAttribute("facilitySalesSummary", sds.facilitySalesSummary());
-		return "service/consulting/totalfacilitysales";
-	}
-	
-	
-	@RequestMapping(value = "/totallist")
-	public String totallist(Model model) {
-		model.addAttribute("totalsales", sds.totallist());
-		return "consulting/totalsales";
-	}
-	
 	@RequestMapping(value = "/ticketlist")
-	public String ticketlist(Model model) {
-		model.addAttribute("byticketsales", sds.ticketlist());
-		return "consulting/totalticketsales";
+	public String ticketlist(HttpServletRequest req, Model model) {
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		
+		// date = "210622"; // 테스트용 날짜 지정
+		
+		model.addAttribute("ticketSales", sds.ticketlist(date));
+		
+		return "service/consulting/ticketsales";
 	}
 	
 	@RequestMapping(value = "/agelist")
-	public String agelist(Model model) {
-		model.addAttribute("byagesales", sds.agelist());
-		return "consulting/agesales";
+	public String agelist(HttpServletRequest req, Model model) {
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		
+		//date = "210622"; // 테스트용 날짜 지정
+		
+		
+		model.addAttribute("ageSales", sds.agelist(date));
+		return "service/consulting/agesales";
 	}
 
 	@RequestMapping(value = "/genderlist")
-	public String genderlist(Model model) {
-		model.addAttribute("bygendersales", sds.genderlist());
-		return "consulting/gendersales";
+	public String genderlist(HttpServletRequest req, Model model) {
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		
+		// date = "210622"; // 테스트용 날짜 지정
+		
+		model.addAttribute("genderSales", sds.genderlist(date));
+		return "service/consulting/gendersales";
 	}
 	
 	@RequestMapping(value = "/facilitylist")
-	public String facilitylist(Model model) {
-		model.addAttribute("byfacilitysales", sds.facilitylist());
-		return "consulting/facilitysales";
+	public String facilitylist(HttpServletRequest req, Model model) {
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		
+		// date = "210622"; // 테스트용 날짜 지정
+		
+		model.addAttribute("facilitySales", sds.facilitylist(date));
+		return "service/consulting/facilitysales";
 	}
-    
 }
