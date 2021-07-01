@@ -11,9 +11,9 @@ import java.util.List;
 public interface RegularConsultService
 {
 
-    public abstract List selectCustomer(CustomerInfo customerinfo, PageInfo pageinfo);
+    List selectCustomer(CustomerInfo customerinfo, PageInfo pageinfo);
 
-    public abstract PageMoveInfo CustomerPageMove(CustomerInfo customerinfo, PageInfo pageinfo);
+     PageMoveInfo CustomerPageMove(CustomerInfo customerinfo, PageInfo pageinfo);
 
-    public abstract void saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil);
+     String saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil);
 }

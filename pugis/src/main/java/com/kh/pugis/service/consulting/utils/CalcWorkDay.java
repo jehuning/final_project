@@ -8,8 +8,8 @@ import java.util.List;
 
 public class CalcWorkDay {
 	public List<String> calcWorkDay(String startDate,String endDate ){
-	    startDate.replaceAll("-","");	//yyyy-mm-dd ->yyyymmdd
-	    endDate.replaceAll("-", "");	//
+	    String startD = startDate.replaceAll("-","");	//yyyy-mm-dd ->yyyymmdd
+	    String endD = endDate.replaceAll("-", "");	//
     	List<String> workDayList = new ArrayList<String>();
 
 	    //실제 공휴일을 구한다.
@@ -40,10 +40,10 @@ public class CalcWorkDay {
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	    try{
 			Calendar start = Calendar.getInstance();
-	        start.setTime(sdf.parse(startDate)); //시작일 날짜 설정
+	        start.setTime(sdf.parse(startD)); //시작일 날짜 설정
 
 	      	Calendar end = Calendar.getInstance();
-	      	end.setTime(sdf.parse(endDate)); //종료일 날짜 설정
+	      	end.setTime(sdf.parse(endD)); //종료일 날짜 설정
 
 
 			int workingDays = 0;
