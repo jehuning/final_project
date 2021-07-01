@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomNumberList {
-	public void randomNumberList(){
+	public List<Integer> randomNumberList(){
 		Random rd = new Random();
 		List<Integer> rdI = new ArrayList<Integer>();
-		int pn = 10;
+		int pn = 17;
 		
 		for(int i =0; i <pn;i++){
 			if(rdI.size()==0){
@@ -26,6 +26,7 @@ public class RandomNumberList {
 		for(int r : rdI){
 			System.out.println(r);
 		}
+	return rdI;
 	}
 	
 }

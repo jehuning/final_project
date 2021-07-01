@@ -9,7 +9,6 @@ import com.kh.pugis.service.consulting.dao.RegularConsultDao;
 import com.kh.pugis.service.consulting.domain.*;
 import com.kh.pugis.service.consulting.utils.CalcWorkDay;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +30,7 @@ public class RegularConsultServiceImpl
     {
     }
 
-    public List selectCustomer(CustomerInfo ci, PageInfo pi)
+    public List<CustomerInfo> selectCustomer(CustomerInfo ci, PageInfo pi)
     {
         int selectedSize = 0;
         selectedSize = rcd.countSelect(ci);
@@ -104,15 +103,18 @@ public class RegularConsultServiceImpl
     	workDayList = cwd.calcWorkDay(start,finish);
     	int wn = workDayList.size();//선택된 날짜 중 근무일수
     	
-    	List<String> list = new ArrayList<String>();
+    	List<String> cList = new ArrayList<String>();
     	for(CustomerInfo cId: cil.getSelecetedId()){
-    		list.add(cId.getCustomer_id());
+    		cList.add(cId.getCustomer_id());
     	}
-    	int pn = list.size(); //선택된 사람 수
-    	int rdPerDay = pn/wn+1; //하루당 스케줄 배치 인원수
-    	
+    	int pn = cList.size(); //선택된 사람 수
+    	int rdPerDay = pn/wn; //하루당 스케줄 배치 기본 인원수
+    	int extraRd = pn%wn; //하루에 1명씩 더 배치되는 날의 수
+    	if(extraRd==0){
+    		extraRd=wn;
+    	}
+    	List<Integer> rdI = new ArrayList<Integer>();
     	for(String day :workDayList){
-    			List<Integer> rdI = new ArrayList<Integer>();
     			if(rdI.size()==0){
     				rdI.add(rd.nextInt(pn));
     			}else{
@@ -124,11 +126,23 @@ public class RegularConsultServiceImpl
     				rdI.add(n);
 				}
 		}
-    		
-    		
-    
- 
-    	
-   
+    		HashMap<String,List<String>> scheduleMap = new HashMap<String,List<String>>();
+		for(int i = 0; i < wn; i++){
+			List<String> l = new ArrayList<String>();
+			
+			if(0 <= i && i <extraRd){
+				for(int j = i*(rdPerDay+1);j<(i+1)*(rdPerDay+1);j++){
+					l.add(cList.get(rdI.get(j)));
+				}
+			}else{
+				for(int j = extraRd*(rdPerDay+1)+(i-extraRd)*(rdPerDay);j<extraRd*(rdPerDay+1)+(i-extraRd+1)*(rdPerDay);j++){
+					l.add(cList.get(rdI.get(j)));
+				}
+			}
+			
+			scheduleMap.put(workDayList.get(i), l);
+		}
+		rcd.
+		return 
     }
 }
