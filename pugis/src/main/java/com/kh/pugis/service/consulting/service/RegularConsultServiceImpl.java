@@ -142,7 +142,7 @@ public class RegularConsultServiceImpl
 				}
 			}
 			
-			scheduleMap.put(workDayList.get(i), l);
+			scheduleMap.put(workDayList.get(i), l); // list로 바꿔야함.
 		}
     
    
