@@ -33,8 +33,8 @@
 </tr>
 <c:forEach var="cl" items="${customerList}" varStatus="status">
 <tr><!-- 첫번째 줄 시작 -->
-<td><input type="hidden" name="selecetedId[${status.index}].customer_id"  value="${cl.customer_id}"/>${cl.customer_id}</td>
-<td>${cl.customer_name}</td>
+	<td><input type="hidden" name="selecetedId[${status.index}].customer_id"  value="${cl.customer_id}"/>${cl.customer_id}</td>
+	<td>${cl.customer_name}</td>
 </tr><!-- 첫번째 줄 끝 -->
 </c:forEach>
 </table>
@@ -49,7 +49,7 @@
           	
            <c:if test="${pageList.prevPage} == true">
             <li>
-           	<a th:href="@{/pugis/rconsult/selectcustomer(currentPage=${pageList.pageStart-1},pageListSize=${pageList.pi.pageListSize})}">이전</a>
+           	<a th:href="@{/pugis/rconsult/selectcustomer?currentPage=${pageList.pageNumfirst-1}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}}">이전</a>
           	 </li>
           	</c:if>
          
@@ -59,12 +59,15 @@
 				      <li>${startNum + i}</li> 
 				    </c:when>
 				    <c:otherwise>
-					<li><a href="/pugis/rconsult/selectcustomer?currentPage=${startNum + i}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}">${startNum + i}</a></li>  					</c:otherwise>
+					<li><a href="/pugis/rconsult/selectcustomer?currentPage=${startNum + i}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}">${startNum + i}</a></li>  					
+					</c:otherwise>
+					
 				</c:choose>
 			</c:forEach>
-             <c:if test="${pageList.nextPage} == true">
+			
+             <c:if test="${pageList.nextPage} == true"> <--다음페이지-->
 	            <li>
-	           	<a th:href="/pugis/rconsult/selectcustomer?currentPage=${pageList.pageStart+1}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}">이전</a>
+	           	<a th:href="/pugis/rconsult/selectcustomer?currentPage=${pageList.pageNumlast+1}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}">이전</a>
 	          	 </li>
           	</c:if>
           
