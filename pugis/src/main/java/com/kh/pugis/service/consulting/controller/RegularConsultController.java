@@ -27,11 +27,13 @@ public class RegularConsultController
     }
 	@RequestMapping(value = "/selectcustomer")
     public String selectCustomer(HttpServletRequest req, Model model)
-    {
-        int currentPage = 1;
+    {	
+		
+        int currentPage = Integer.parseInt(req.getParameter("currentPage"));
         int pageListSize = 2;
         String address = "1";
         String grade = "1";
+        
         CustomerInfo ci = new CustomerInfo();
         PageInfo pi = new PageInfo();
         ci.setCustomer_address(address);

@@ -76,7 +76,7 @@ public class RegularConsultServiceImpl
         int pageNumfirst = ((currentPage - 1) / pageListInterval) * pageListInterval + 1;
         System.out.println((new StringBuilder("\uAD6C\uAC04\uCCAB\uBC88\uD638:")).append(pageNumfirst).toString());
         int pageNumlast = 0;
-        if(currentPage / pageListInterval != totalPage / pageListInterval)
+        if((currentPage-1) / pageListInterval != totalPage / pageListInterval)
             pageNumlast = (pageNumfirst - 1) + pageListInterval;
         else
             pageNumlast = (pageNumfirst - 1) + totalPage % pageListInterval;
