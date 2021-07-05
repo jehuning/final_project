@@ -1,0 +1,118 @@
+/* PREVIOUS SALES REPORT */
+.previousSR .inner {
+  width: 1000px;
+  height: 350px;
+  position: fixed;
+  top: 110px;
+  left: 350px;
+  color: #525252;
+}
+.previousSR .inner > p {
+  position: absolute;
+}
+.previousSR .inner > p::after {
+  content: ">";
+  margin-left: 5px;
+}
+.previousSR .inner > p.select {
+  border: 1px solid #b6b5b5;
+  padding: 0 5px 0 5px;
+  top: 30px;
+}
+.previousSR form[name=selectForm] {
+  position: absolute;
+  top: 30px;
+  left: 100px;
+}
+.previousSR form[name=selectForm] > #dateSubmit {
+  position: absolute;
+  top: 6px;
+  left: 170px;
+  padding: 2px 10px;
+  border: 1px solid #b6b5b5;
+  background-color: #fff;
+  color: #525252;
+}
+.previousSR form[name=selectForm] > #dateSubmit:hover{ 
+  color: #fff;
+  background-color: #b6b5b5;
+  transition: .1s;
+}
+.previousSR form[name=sortForm] > input[type=button] {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  border: 1px solid #b6b5b5;
+  background-color: #fff;
+  color: #525252;
+}
+.previousSR form[name=sortForm] > input[type=button]:hover {
+  color: #fff;
+  background-color: #b6b5b5;
+  transition: .1s;
+}
+.previousSR form[name=sortForm] > input[type=button].totalsales {
+  position: absolute;
+  top: 15px;
+  right: 400px;
+  margin: 20px;
+  padding: 3px 13px;
+}
+.previousSR form[name=sortForm] > input[type=button].gendersales {
+  position: absolute;
+  top: 15px;
+  right: 258px;
+  margin: 20px;
+  padding: 3px 13px;
+}
+.previousSR form[name=sortForm] > input[type=button].agesales {
+  position: absolute;
+  top: 15px;
+  right: 191px;
+  margin: 20px;
+  padding: 3px 13px;
+}
+.previousSR form[name=sortForm] > input[type=button].ticketsales {
+  position: absolute;
+  top: 15px;
+  right: 94px;
+  margin: 20px;
+  padding: 3px 13px;
+}
+.previousSR form[name=sortForm] > input[type=button].facilitysales {
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  margin: 20px;
+  padding: 3px 13px;
+}
+.previousSR .srresult .inner {
+  position: absolute;
+  top: 200px;
+  left: 350px;
+  border: 1px solid #b6b5b5;
+}
+.previousSR .srresult > input[type=button] {
+  position: absolute;
+  top: 580px;
+  right: 20px;
+  border: 1px solid #b6b5b5;
+  background-color: #fff;
+  padding: 4px 14px;
+  color: #525252;
+}
+.previousSR .srresult > input[type=button]::after {
+  content: ">";
+  margin-left: 5px;
+}
+.previousSR .srresult > input[type=button]:hover {
+  color: #fff;
+  background-color: #b6b5b5;
+  transition: .1s;
+}
+
+
+/* LIST TABLE */
+.srresult > table {
+  border: 1px solid #b6b5b5
+}
