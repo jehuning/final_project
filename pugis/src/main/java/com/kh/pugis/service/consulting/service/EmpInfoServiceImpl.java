@@ -23,14 +23,14 @@ public class EmpInfoServiceImpl
     {
     }
 
-    public Employee empInfoSummary()
+    public Employee empInfoSummary(Employee e)
     {
-        return ed.empInfoSummary();
+        return ed.empInfoSummary(e);
     }
 
     public Employee empInfoSpecific()
     {
-        return ed.empInfoSummary();
+        return ed.empInfoSpecific();
     }
     
 }
