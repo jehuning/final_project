@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Commute">
+
+	<resultMap type="com.kh.pugis.service.consulting.domain.Commute" id="result">
+		<result property="work_date" column="COMMUTE_DATE" />
+		<result property="emp_id" column="EMP_ID" />
+		<result property="start_time" column="START_WORK" />		
+		<result property="leave_time" column="LEAVE_WORK" />
+	</resultMap>
+	
+	<insert id="insertStartTime" parameterType="com.kh.pugis.service.consulting.domain.Commute">
+		insert into 
+			   EMP_COMMUTE(COMMUTE_DATE,EMP_ID,START_WORK)
+		values(#{work_date},#{emp_id},#{start_time})
+			
+			
+	</insert>
+	<update id="updateLeaveTime" parameterType="com.kh.pugis.service.consulting.domain.Commute">
+		UPDATE
+			 EMP_COMMUTE
+ 		SET 
+ 			LEAVE_WORK=#{leave_time}
+ 		WHERE 
+ 			emp_id=#{emp_id}
+	</update>
+		
+	<select id="selectHistory" parameterType="hashmap" resultMap="result">
+		SELECT
+		   COMMUTE_DATE,EMP_ID,START_WORK,LEAVE_WORK
+		FROM
+			EMP_COMMUTE
+		WHERE
+			emp_id = #{emp_id} 
+		AND
+		 	COMMUTE_DATE BETWEEN #{sDate} AND #{fDate}
+		
+	</select>
+		
+</mapper>

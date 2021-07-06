@@ -2,6 +2,8 @@ package com.kh.pugis.service.consulting.dao;
 
 import com.kh.pugis.service.consulting.domain.Commute;
 
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +17,20 @@ public class CommuteDaoImpl
 	 @Autowired
     private SqlSession sqlSession;
 
-    public void startWork()
+    public void startWork(Commute c)
     {
-        Commute c = new Commute();
+      sqlSession.insert("Commute.insertStartTime", c);
     }
 
-    public void leaveWork()
+    public void leaveWork(Commute c)
     {
+    	sqlSession.update("Commute.updateLeaveTime", c);
     }
 
-    public void commuteHistory()
+    public List<Commute> commuteHistory(HashMap<String,String> hm)
     {
+    	return sqlSession.selectList("Commute.selectHistory", hm);
+    	
     }
 
 }
