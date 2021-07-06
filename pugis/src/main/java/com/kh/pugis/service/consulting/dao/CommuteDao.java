@@ -1,12 +1,16 @@
 package com.kh.pugis.service.consulting.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
+import com.kh.pugis.service.consulting.domain.Commute;
 
 public interface CommuteDao
 {
 
-     void startWork();
+     void startWork(Commute c);
 
-     void leaveWork();
+     void leaveWork(Commute c);
 
-     void commuteHistory();
+     List<Commute> commuteHistory(HashMap<String,String> hm);
 }
