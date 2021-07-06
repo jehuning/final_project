@@ -5,13 +5,16 @@
 
 package com.kh.pugis.service.consulting.service;
 
+import java.util.List;
+
+import com.kh.pugis.service.consulting.domain.Commute;
 
 public interface CommuteService
 {
 
-    public abstract void startWork();
+    void startWork(Commute c);
 
-    public abstract void leaveWork();
+    void leaveWork(Commute c);
 
-    public abstract void commuteHistory();
+    List<Commute> commuteHistory(Commute c);
 }
