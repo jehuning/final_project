@@ -10,7 +10,7 @@ import com.kh.pugis.service.consulting.domain.Employee;
 public interface EmpInfoService
 {
 
-    public abstract Employee empInfoSummary();
+    public abstract Employee empInfoSummary(Employee e);
 
     public abstract Employee empInfoSpecific();
 }

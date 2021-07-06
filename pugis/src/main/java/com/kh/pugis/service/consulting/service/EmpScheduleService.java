@@ -1,13 +1,17 @@
 
 package com.kh.pugis.service.consulting.service;
 
+import java.util.List;
+
+import com.kh.pugis.service.consulting.domain.Employee;
+import com.kh.pugis.service.consulting.domain.Schedule;
 
 public interface EmpScheduleService
 {
 
     void scheduleCalendar();
 
-    void empSchedule();
+    List<Schedule> empSchedule(Schedule s);
 
    void depSchedule();
 }

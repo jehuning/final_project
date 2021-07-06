@@ -19,9 +19,8 @@ public class EmpInfoDaoImpl
         this.sqlSession = sqlSession;
     }
 
-    public Employee empInfoSummary()
+    public Employee empInfoSummary(Employee e)
     {
-        Employee ee = new Employee();
         System.out.println((new StringBuilder("SqlSession ===> ")).append(sqlSession).toString());
         return (Employee)sqlSession.selectOne("Employee.getEmployeeListById", "cs1");
     }
