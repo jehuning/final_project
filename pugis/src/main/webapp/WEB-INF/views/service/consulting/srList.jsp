@@ -123,12 +123,27 @@
           <input type="button" value="연령별" class="agesales" onClick="location.href='agesales'">
           <input type="button" value="티켓 종류별" class="ticketsales" onClick="location.href='ticketsales'">
           <input type="button" value="부대시설별" class="facilitysales" onClick="location.href='facilitysales'">
+      	</form>
       </div>
     </div>
 
-    <div class="listresult">
-      <div class="inner">
 
+    <!-- LIST TABLE -->
+    <div class="srresult">
+      <div class="inner">
+     	<table border="1">
+			<tr>
+				<th>제목</th>
+				<th>등록일</th>
+			</tr>
+			<!-- <c:>
+				버튼1 클릭하면 totalsales 출력
+				버튼2 클릭하면 gendersales 출력
+				버튼3 클릭하면 agesales 출력
+				버튼4 클릭하면 ticketsales 출력
+				버튼5 클릭하면 facilitysales 출력
+			 -->
+		</table>
       </div>
       <form action="save" method="post">
         <input type="button" value="일일 매출 보고서 엑셀 저장" class="save" onclick="">

@@ -49,7 +49,7 @@
               <a href="javascript:previousSR">전일매출보고서</a>
             </li>
             <li class="list__contents">
-              <a href="javascript:srList"">매출보고서목록</a>
+              <a href="javascript:srList">매출보고서목록</a>
             </li>
           </ul>
         </div>
@@ -121,6 +121,7 @@
           <input type="button" value="연령별" class="agesales" onClick="location.href='agesales'">
           <input type="button" value="티켓 종류별" class="ticketsales" onClick="location.href='ticketsales'">
           <input type="button" value="부대시설별" class="facilitysales" onClick="location.href='facilitysales'">
+      	</form>
       </div>
     </div>
 
@@ -129,7 +130,17 @@
     <div class="srresult">
       <div class="inner">
      	<table border="1">
-
+			<tr>
+				<th>제목</th>
+				<th>등록일</th>
+			</tr>
+			<!-- <c:>
+				버튼1 클릭하면 totalsales 출력
+				버튼2 클릭하면 gendersales 출력
+				버튼3 클릭하면 agesales 출력
+				버튼4 클릭하면 ticketsales 출력
+				버튼5 클릭하면 facilitysales 출력
+			 -->
 		</table>
       </div>
       <form action="update" method="post">
