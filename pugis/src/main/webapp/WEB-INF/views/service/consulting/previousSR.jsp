@@ -11,8 +11,17 @@
 <!--브라우저 스타일 초기화-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
 
+<!-- DATEPICKER -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- jQuery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <link rel="stylesheet" href="./css/previousSR.css" />
 <link rel="stylesheet" href="./css/common.css" />
+
 </head>
 <body>
 
@@ -28,6 +37,84 @@
 	function srList() {
 		location.href="srList.jsp";
 	}
+	
+	$(function() {
+		$("#datepicker").datepicker({
+			changeMonth: true, 
+			changeYear: true, 
+			minDate: '-50y', 
+			nextText: '다음 달', 
+			prevText: '이전 달', 
+			yearRange: 'c-50:c+20', 
+			showButtonPanel: true, 
+			currentText: '오늘 날짜', 
+			closeText: '닫기', 
+			dateFormat: "yy-mm-dd", 
+			showAnim: "slide", 
+			showMonthAfterYear: true, 
+			dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+		});
+		
+		$('#datepicker').datepicker('setDate', 'today');
+	});
+	
+	function getDate(element) {
+		var date;
+		var dateFormat = "yy-mm-dd";
+		
+		try {
+		date = $.datepicker.parseDate(dateFormat, element.value);
+		} catch(error) {
+			date = null;
+		}
+		
+		return date;
+	}
+	
+	$(document).ready(function() {
+		$("#datepicker").on("click", function() {
+			
+		});
+		
+		$("#datepicker").on("change", function() {
+			var pickedDate = $("#datepicker").datepicker(getDate(e.target));
+		});
+		
+		$("#dateSubmit").on("click", function() {
+			var pickedDate = $("#datepicker").val();
+		});
+	});
+	
+	$(function() {
+		$("#totalsales").click(function() {
+			$("#srresult").load("totalsales.jsp");
+		});
+	});
+	
+	$(function() {
+		$("#gendersales").click(function() {
+			$("#srresult").load("gendersales.jsp");
+		});
+	});
+	
+	$(function() {
+		$("#agesales").click(function() {
+			$("#srresult").load("agesales.jsp");
+		});
+	});
+	
+	$(function() {
+		$("#ticketsales").click(function() {
+			$("#srresult").load("ticketsales.jsp");
+		});
+	});
+	
+	$(function() {
+		$("#facilitysales").click(function() {
+			$("#srresult").load("facilitysales.jsp");
+		});
+	});
 	  	
 </script>
 
@@ -109,42 +196,31 @@
     <div class="inner">
       <p class="show">전일 매출조회</p>
       <p class="select">일자 선택</p>
-      <form name="selectForm" action="select" method="POST">
-        <input type="date" id="search_date" value="2021-06-01">
-        <input type="submit" id="dateSubmit" value="적용">
+      <form name="selectForm" action="select" method="post">
+        <input type="text" id="datepicker" />
+        <input type="submit" id="dateSubmit" value="적용" />
       </form>
 
       <div class="sidemenu">
         <form name="sortForm" action="sort" method="post">
-          <input type="button" value="전일 총 매출" class="totalsales" onClick="location.href='totalsales.jsp'">
-          <input type="button" value="성별" class="gendersales" onClick="location.href='gendersales.jsp'">
-          <input type="button" value="연령별" class="agesales" onClick="location.href='agesales'">
-          <input type="button" value="티켓 종류별" class="ticketsales" onClick="location.href='ticketsales'">
-          <input type="button" value="부대시설별" class="facilitysales" onClick="location.href='facilitysales'">
-      	</form>
+          <input type="button" value="전일 총 매출" id="totalsales" />
+          <input type="button" value="성별" id="gendersales" />
+          <input type="button" value="연령별" id="agesales" />
+          <input type="button" value="티켓 종류별" id="ticketsales" />
+          <input type="button" value="부대시설별" id="facilitysales" />
+        </form>
       </div>
     </div>
-
 
     <!-- LIST TABLE -->
     <div class="srresult">
       <div class="inner">
-     	<table border="1">
-			<tr>
-				<th>제목</th>
-				<th>등록일</th>
-			</tr>
-			<!-- <c:>
-				버튼1 클릭하면 totalsales 출력
-				버튼2 클릭하면 gendersales 출력
-				버튼3 클릭하면 agesales 출력
-				버튼4 클릭하면 ticketsales 출력
-				버튼5 클릭하면 facilitysales 출력
-			 -->
+     	<table id="srresult" border="1">
+			
 		</table>
       </div>
       <form action="update" method="post">
-        <input type="button" value="전일 매출 보고서 등록" class="upload" onclick="">
+        <input type="button" value="전일 매출 보고서 등록" class="upload" />
       </form>
     </div>
 

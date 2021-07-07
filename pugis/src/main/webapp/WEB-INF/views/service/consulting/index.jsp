@@ -15,12 +15,27 @@
 <link rel="stylesheet" href="./css/common.css" type="text/css"/>
 </head>
 <body>
+
+<script type="text/javascript">
+	function Main() {
+		location.href="index.jsp";
+	}
+	
+	function previousSR() {
+		location.href="previousSR.jsp";
+	}
+	
+	function srList() {
+		location.href="srList.jsp";
+	}
+	  	
+</script>
 	
 	<!-- SIDEBAR -->
 	<section class="sidebar">
 		<div class="inner">
 			
-			<a href="/pugis/index.jsp" class="main">
+			<a href="javascript:Main()" class="main">
 				<img src="./image/main_temp.png" alt="main">
 			</a>
 			
@@ -31,10 +46,10 @@
           </div>
           <ul class="list__group">
             <li class="list__contents">
-              <a href="previousSR.jsp">전일매출보고서</a>
+              <a href="javascript:previousSR()">전일매출보고서</a>
             </li>
             <li class="list__contents">
-              <a href="srList.jsp">매출보고서목록</a>
+              <a href="javascript:srList()">매출보고서목록</a>
             </li>
           </ul>
         </div>
