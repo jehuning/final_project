@@ -17,12 +17,7 @@
 <td>${empSummary.getEmp_id()}</td>
 <td>${empSummary.getEmp_name()}</td>
 </tr>
-<c:forEach var="sl" items="${scheduleList}" varStatus="status">
-<tr><!-- 직원 스케줄 (오늘부터 해당하는 월 말일까지의 리스트) -->
-	<td>${sl.schedule_date}</td>
-	<td>${sl.schedule_name}</td>
-</tr><!-- 첫번째 줄 끝 -->
-</c:forEach>
+
 </table>
 
 
