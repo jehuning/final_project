@@ -5,7 +5,7 @@ import com.kh.pugis.service.consulting.domain.Employee;
 public interface EmpInfoDao
 {
 
-    Employee empInfoSummary();
+    Employee empInfoSummary(Employee e);
 
     Employee empInfoSpecific();
 }

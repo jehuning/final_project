@@ -42,7 +42,7 @@ public class CustomerQuestionListController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
-		return "service/consulting/customerquestionlist_back";
+		return "service/consulting/qna";
 		
 	}
 	
@@ -57,7 +57,7 @@ public class CustomerQuestionListController {
 		List<CustomerQuestionReply> replyList = rs.readReply(cqVO.getReg_id());
 		model.addAttribute("replyList", replyList);
 		
-		return "service/consulting/readView_back";
+		return "service/consulting/qnaview";
 	}
 
 	// 게시글 삭제
@@ -101,7 +101,7 @@ public class CustomerQuestionListController {
 		model.addAttribute("scri", scri);
 		
 
-		return "service/consulting/replyDeleteView_back";
+		return "qna/replyDeleteView";
 	}
 	
 	//댓글 삭제

@@ -14,14 +14,14 @@
 	<select id="getAgeSales" resultMap="result" parameterType="int">
 		SELECT ticket_purchase.purchase_date, agegroup.age_group, SUM(ticket_class_info.ticket_price) TICKETSUM,
 		SUM(facility_sales.customer_sales) FACILITYSUM, SUM(ticket_class_info.ticket_price + facility_sales.customer_sales) TOTALSUM   
-      	FROM CUSTOMER_INFO
-      	JOIN TICKET_purchase ON (customer_info.customer_id = ticket_purchase.customer_id)
+      	FROM AGEGROUP
+      	JOIN TICKET_purchase ON (agegroup.customer_id = ticket_purchase.customer_id)
         JOIN TICKET_CLASS_INFO ON (ticket_purchase.ticket_class_code = ticket_class_info.ticket_class_code)
         JOIN facility_sales ON (ticket_purchase.ticket_pub_code = facility_sales.ticket_pub_code)
         JOIN facility_info ON (facility_sales.facility_code = facility_info.faclility_code)
-        JOIN AGEGROUP ON ( customer_info.customer_id = agegroup.customer_id)
         WHERE PURCHASE_DATE = #{PURCHASE_DATE}
-        GROUP BY AGE_GROUP, ticket_purchase.purchase_date
+        GROUP BY agegroup.age_group, ticket_purchase.purchase_date, agegroup.age_group
 	</select>
+		
 		
 </mapper>

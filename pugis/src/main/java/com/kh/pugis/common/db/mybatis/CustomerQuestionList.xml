@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CustomerQuestionList">
+
+
+	<select id="listPage" resultType="com.kh.pugis.service.consulting.domain.CustomerQuestion" parameterType="com.kh.pugis.service.consulting.domain.SearchCriteria">
+		SELECT  reg_id,
+				question_category, 
+		        question_title, 
+		        question_content,
+		        customer_id, 
+		        reg_date
+		 FROM ( 
+		        SELECT  reg_id, 
+		        question_category,
+		        question_title, 
+		        question_content,
+		        customer_id, 
+		        reg_date, 
+		               ROW_NUMBER() OVER(ORDER BY reg_id DESC) AS RNUM
+		         FROM CUSTOMER_QNA
+		         WHERE 1=1 
+		         	<include refid="search"></include>
+		                       ) CQ
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY reg_id DESC
+	</select>
+	
+	<select id="listCount" parameterType="com.kh.pugis.service.consulting.domain.SearchCriteria" resultType="int">
+		SELECT COUNT(reg_id)
+		   FROM CUSTOMER_QNA
+		   WHERE 1=1
+		<include refid="search"></include>	
+		   AND reg_id > 0
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<!-- 게시글 검색 (제목 또는 내용) -->
+			<if test="searchType == 't'.toString()">AND question_title LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND question_content LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (question_title LIKE '%' || #{keyword} || '%') or (question_content LIKE '%' || #{keyword} || '%')</if>
+			
+			<!-- 카테고리 선택 -->
+			<if test="searchType == 'facility'.toString()">AND question_category LIKE #{keyword}</if>
+			<if test="searchType == 'ticket'.toString()">AND question_category LIKE #{keyword}</if>
+			<if test="searchType == 'home'.toString()">AND question_category LIKE #{keyword}</if>
+			<if test="searchType == 'etc'.toString()">AND question_category LIKE #{keyword}</if>
+		</if>
+	</sql>
+	
+	<select id="read" parameterType="int" resultType="com.kh.pugis.service.consulting.domain.CustomerQuestion">
+		SELECT  reg_id, 
+				question_category,
+		        question_title, 
+		        question_content,
+		        customer_id, 
+		        reg_date
+		  FROM CUSTOMER_QNA
+		 WHERE reg_id = #{reg_id}
+	</select>
+	
+	<update id="update" parameterType="com.kh.pugis.service.consulting.domain.CustomerQuestion">
+		UPDATE CUSTOMER_QNA
+		   SET question_title    =   #{question_title},
+		   	   question_content  =   #{question_content}
+		 WHERE reg_id = #{reg_id} 
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE 
+		  FROM CUSTOMER_QNA
+		 WHERE reg_id = #{reg_id}
+	</delete>
+   
+</mapper>

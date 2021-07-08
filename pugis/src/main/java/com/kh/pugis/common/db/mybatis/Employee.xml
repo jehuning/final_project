@@ -6,10 +6,11 @@
 	<resultMap type="com.kh.pugis.service.consulting.domain.Employee" id="result">
 		<result property="emp_id" column="emp_id" />
 		<result property="emp_name" column="emp_name" />
-	
+		<result property="dept_name" column="dept_name" />
+		<result property="job_name" column="job_name" />
 	</resultMap>
 	
-	<select id="getEmployeeList2" resultMap="result">
+	<select id="getEmployeeList" resultMap="result">
 		SELECT
 		    emp_id,
 		    emp_name,
@@ -20,13 +21,18 @@
 		ORDER BY emp_id
 	</select>
 
-	<select id="getEmployeeListById" parameterType="String" resultMap="result">
+	<select id="getEmployeeById" parameterType="String" resultMap="result">
 		SELECT
 		    emp_id,
-		    emp_name
+		    emp_name,
+            dept_info.dept_name,
+            job_info.job_name 
 		FROM
-			emp_info
-		WHERE emp_id=#{emp_id}
+			emp_info 
+            join dept_info using(dept_code) 
+          	join JOB_INFO using(job_code)
+        WHERE 
+        	emp_id = #{emp_id}
 		
 	</select>
 		

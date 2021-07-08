@@ -1,46 +1,45 @@
 package com.kh.pugis.service.consulting.domain;
 
 
-public class TotalSales
-{
+public class TotalSales {
 	String sales_date;
-    String user_id;
-    int user_ticketSales;
-    int user_facilitySalse;
-    int user_salesSum;
-    int total_sales;
-    public TotalSales()
-    {
-    }
+	String customer_id;
+	int customer_ticketSales;
+	int customer_facilitySales;
+	int customer_salesSum;
+	int total_sales;
+	int fsum;
+	int tsum;
+
 	public String getSales_date() {
 		return sales_date;
 	}
 	public void setSales_date(String sales_date) {
 		this.sales_date = sales_date;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getCustomer_id() {
+		return customer_id;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
-	public int getUser_ticketSales() {
-		return user_ticketSales;
+	public int getCustomer_ticketSales() {
+		return customer_ticketSales;
 	}
-	public void setUser_ticketSales(int user_ticketSales) {
-		this.user_ticketSales = user_ticketSales;
+	public void setCustomer_ticketSales(int customer_ticketSales) {
+		this.customer_ticketSales = customer_ticketSales;
 	}
-	public int getUser_facilitySalse() {
-		return user_facilitySalse;
+	public int getCustomer_facilitySales() {
+		return customer_facilitySales;
 	}
-	public void setUser_facilitySalse(int user_facilitySalse) {
-		this.user_facilitySalse = user_facilitySalse;
+	public void setCustomer_facilitySales(int customer_facilitySales) {
+		this.customer_facilitySales = customer_facilitySales;
 	}
-	public int getUser_salesSum() {
-		return user_salesSum;
+	public int getCustomer_salesSum() {
+		return customer_salesSum;
 	}
-	public void setUser_salesSum(int user_salesSum) {
-		this.user_salesSum = user_salesSum;
+	public void setCustomer_salesSum(int customer_salesSum) {
+		this.customer_salesSum = customer_salesSum;
 	}
 	public int getTotal_sales() {
 		return total_sales;
@@ -48,6 +47,17 @@ public class TotalSales
 	public void setTotal_sales(int total_sales) {
 		this.total_sales = total_sales;
 	}
-
-   
+	public int getFsum() {
+		return fsum;
+	}
+	public void setFsum(int fsum) {
+		this.fsum = fsum;
+	}
+	public int getTsum() {
+		return tsum;
+	}
+	public void setTsum(int tsum) {
+		this.tsum = tsum;
+	}
+	
 }

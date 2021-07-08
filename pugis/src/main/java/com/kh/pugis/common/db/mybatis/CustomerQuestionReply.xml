@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CustomerQuestionListReply">
+
+<!-- 댓글 조회 -->
+	<select id="readReply" resultType="com.kh.pugis.service.consulting.domain.CustomerQuestionReply">
+    	SELECT
+    		  reply_id, 
+    		  answer_content,
+    		  answer_writer,
+    		  answer_date
+    	 FROM CUSTOMER_QNA_REPLY
+    	 WHERE reg_id = #{reg_id}
+	</select>
+
+<!-- 댓글 작성 -->
+	<insert id="writeReply">
+	INSERT INTO CUSTOMER_QNA_REPLY(
+							  reg_id
+							, reply_id
+							, answer_content
+							, answer_writer
+						  				)
+				  VALUES(	 #{reg_id}
+				  		   , CUSTOMER_QNA_REPLY_SEQ.NEXTVAL
+				  		   , #{answer_content}
+				  		   , #{answer_writer}
+				  		  			 	)
+	</insert>
+
+<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="com.kh.pugis.service.consulting.domain.CustomerQuestionReply">
+		DELETE 
+		FROM CUSTOMER_QNA_REPLY
+		WHERE reply_id = #{reply_id}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

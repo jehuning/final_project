@@ -3,7 +3,13 @@ package com.kh.pugis.service.consulting.domain;
 
 public class Employee
 {
-
+	 	String emp_id;
+	    String emp_name;
+	    String dept_id;
+	    String dept_name;
+	    String job_id;
+	    String job_name;
+	    
     public Employee()
     {
     }
@@ -68,10 +74,5 @@ public class Employee
         this.job_name = job_name;
     }
 
-    String emp_id;
-    String emp_name;
-    String dept_id;
-    String dept_name;
-    String job_id;
-    String job_name;
+   
 }

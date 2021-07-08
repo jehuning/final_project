@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="FacilitySales">
-	
+
 	<resultMap type="com.kh.pugis.service.consulting.domain.ByFacilitySales" id="result">
 		<result property="sales_date" column="purchase_date" />
 		<result property="facility_name" column="facility_name" />

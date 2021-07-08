@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
@@ -25,7 +25,18 @@
 <td>${gs.gender_sales}</td>
 </tr><!-- 첫번째 줄 끝 -->
 </c:forEach>
-
+	<tr></tr>
+	<tr>
+		<td rowspan="2" colspan="2"> </td>
+		<td>티켓 매출 총합</td>
+		<td>부대시설 매출 총합</td>
+		<td>전체 매출 총합</td>
+	</tr>
+	<tr>
+		<td>${totalSalesSum.tsum}</td>
+		<td>${totalSalesSum.fsum}</td>
+		<td>${totalSalesSum.gender_salesSum}</td>
+	</tr>
 </table>
 </body>
 </html>

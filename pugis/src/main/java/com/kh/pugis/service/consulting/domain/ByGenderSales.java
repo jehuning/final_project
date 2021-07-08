@@ -1,18 +1,20 @@
 package com.kh.pugis.service.consulting.domain;
 
 
-public class ByGenderSales
-{
-
-    public ByGenderSales()
-    {
-    }
-
+public class ByGenderSales {
     String sales_date;
     String gender_group;
     int gender_ticketSales;
     int gender_facilitySales;
-    int gender_salesSum;
+	int	gender_sales;
+	int	gender_salesSum;
+	int fsum;
+	int tsum;
+
+
+    public ByGenderSales() {
+    }
+    
 	public String getSales_date() {
 		return sales_date;
 	}
@@ -42,5 +44,23 @@ public class ByGenderSales
 	}
 	public void setGender_salesSum(int gender_salesSum) {
 		this.gender_salesSum = gender_salesSum;
+	}
+	public int getGender_sales() {
+		return gender_sales;
+	}
+	public void setGender_sales(int gender_sales) {
+		this.gender_sales = gender_sales;
+	}
+	public int getFsum() {
+		return fsum;
+	}
+	public void setFsum(int fsum) {
+		this.fsum = fsum;
+	}
+	public int getTsum() {
+		return tsum;
+	}
+	public void setTsum(int tsum) {
+		this.tsum = tsum;
 	}
 }
