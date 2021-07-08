@@ -1,17 +1,16 @@
 package com.kh.pugis.service.consulting.domain;
 
 
-public class ByTicketSales
-{
-
-    public ByTicketSales()
-    {
-    }
-
+public class ByTicketSales {
     String sales_date;
     String ticket_name;
     int ticket_sales;
     int ticket_salesSum;
+    
+    public ByTicketSales()
+    {
+    }
+    
 	public String getSales_date() {
 		return sales_date;
 	}

@@ -1,17 +1,15 @@
 package com.kh.pugis.service.consulting.domain;
 
 
-public class ByFacilitySales
-{
-
-    public ByFacilitySales()
-    {
-    }
-
+public class ByFacilitySales {
     String sales_date;
     String facility_name;
     int facility_sales;
     int facility_salesSum;
+
+    public ByFacilitySales() {
+    }
+
 	public String getSales_date() {
 		return sales_date;
 	}

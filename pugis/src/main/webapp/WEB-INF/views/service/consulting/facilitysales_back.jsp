@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
@@ -21,7 +21,17 @@
 <td>${fs.facility_sales}</td>
 </tr><!-- 첫번째 줄 끝 -->
 </c:forEach>
-
+<tr></tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>전체 매출 총합</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>${facilitySalesSum.facility_salesSum}</td>
+	</tr>
 </table>
 </body>
 </html>
