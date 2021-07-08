@@ -35,6 +35,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/final_project"/>
-	<classpathentry kind="lib" path="C:/Users/Two/Desktop/standard-1.1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
