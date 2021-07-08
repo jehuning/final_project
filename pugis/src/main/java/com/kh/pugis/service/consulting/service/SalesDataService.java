@@ -16,4 +16,10 @@ public interface SalesDataService {
 	List<ByGenderSales> genderlist(String date);
 	List<ByFacilitySales> facilitylist(String date);
 	
+	// 일일 총 매출 계산
+	TotalSales totalSum(String date);
+	ByAgeSales ageSum(String date);
+	ByGenderSales genderSum(String date);
+	ByTicketSales ticketSum(String date);
+	ByFacilitySales facilitySum(String date);
 }

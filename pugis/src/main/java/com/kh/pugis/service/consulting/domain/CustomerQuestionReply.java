@@ -8,6 +8,7 @@ public class CustomerQuestionReply {
 	private String answer_content;
 	private String answer_writer;
 	private Date answer_date;
+	
 	public int getReg_id() {
 		return reg_id;
 	}

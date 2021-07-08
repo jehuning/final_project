@@ -1,18 +1,19 @@
 package com.kh.pugis.service.consulting.domain;
 
 
-public class ByAgeSales
-{
-
-    public ByAgeSales()
-    {
-    }
-
-    String sales_date;
+public class ByAgeSales {
+	String sales_date;
     String age_group;
     int age_ticketSales;
     int age_facilitySales;
-    int age_salesSum;
+	int age_sales;
+	int age_salesSum;
+	int fsum;
+	int tsum;
+    
+    public ByAgeSales() {
+    }
+    
 	public String getSales_date() {
 		return sales_date;
 	}
@@ -42,5 +43,23 @@ public class ByAgeSales
 	}
 	public void setAge_salesSum(int age_salesSum) {
 		this.age_salesSum = age_salesSum;
+	}
+	public int getAge_sales() {
+		return age_sales;
+	}
+	public void setAge_sales(int age_sales) {
+		this.age_sales = age_sales;
+	}
+	public int getFsum() {
+		return fsum;
+	}
+	public void setFsum(int fsum) {
+		this.fsum = fsum;
+	}
+	public int getTsum() {
+		return tsum;
+	}
+	public void setTsum(int tsum) {
+		this.tsum = tsum;
 	}
 }
