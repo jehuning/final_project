@@ -25,7 +25,9 @@ public class EmpInfoServiceImpl
 
     public Employee empInfoSummary(Employee e)
     {
-        return ed.empInfoSummary(e);
+       
+    	
+    	return ed.empInfoSummary(e);
     }
 
     public Employee empInfoSpecific()

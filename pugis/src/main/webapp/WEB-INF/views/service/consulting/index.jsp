@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,22 +12,22 @@
 <!--브라우저 스타일 초기화-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
 
-<link rel="stylesheet" href="./css/main.css" type="text/css"/>
-<link rel="stylesheet" href="./css/common.css" type="text/css"/>
+<link rel="stylesheet" href="${path}/resources/css/main.css" type="text/css"/>
+<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
 </head>
 <body>
 
 <script type="text/javascript">
 	function Main() {
-		location.href="index.jsp";
+		location.href="index.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함 (로그인 세션야이디 전달필요)
 	}
 	
 	function previousSR() {
-		location.href="previousSR.jsp";
+		location.href="previousSR.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
 	
 	function srList() {
-		location.href="srList.jsp";
+		location.href="srList.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
 	  	
 </script>
@@ -36,7 +37,7 @@
 		<div class="inner">
 			
 			<a href="javascript:Main()" class="main">
-				<img src="./image/main_temp.png" alt="main">
+				<img src="${path}/resources/images/main_temp.jpg" alt="main">
 			</a>
 			
 			<div class="main-menu">
@@ -109,16 +110,16 @@
     <div class="inner">
       
       <a href="javascript:void(0)" class="profile">
-				<img src="./image/main_temp.png" alt="profile">
+				<img src="${path}/resources/images/main_temp.jpg" alt="profile"> <!-- db에서 얻은 프로필파일명으로 src주소 진입 -->
 			</a>
       <div class="emp__info">
-        <div class="emp__dept">서비스 1팀</div>
+        <div class="emp__dept">${empSummary.dept_name}</div>
         <div class="emp__position">
-          <span class="emp__name">홍길동</span>
-          <span class="emp__grade">사원</span>
+          <span class="emp__name">${empSummary.emp_name}</span>
+          <span class="emp__grade">${empSummary.job_name}</span>
         </div>
         <div class="emp__attendBtn">
-          <a href="javascript:void(0)" class="btn">출근</a>
+          <a href="javascript:void(0)" class="btn">출근</a><!-- Ajax로 컨트롤러 호출(직원 세션아이디 넘김) -->
           <a href="javascript:void(0)" class="btn">퇴근</a>
         </div>
         <div class="emp__details">

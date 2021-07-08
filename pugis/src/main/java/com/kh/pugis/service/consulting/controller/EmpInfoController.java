@@ -32,12 +32,14 @@ public class EmpInfoController
 		Schedule s = new Schedule();
 		s.setEmp_id(emp_id);
 		
-		
+		System.out.println("호출됨");
+		System.out.println("테스트");
+
 	
         model.addAttribute("empSummary", eis.empInfoSummary(e));
-        model.addAttribute("scheduleList", ess.empSchedule(s));
+//        model.addAttribute("scheduleList", ess.empSchedule(s));
 
-        return "service/consulting/empInfo_back";
+        return "service/consulting/index";
     }
 	@RequestMapping(value = "/specific")
     public void empInfoSpecific()

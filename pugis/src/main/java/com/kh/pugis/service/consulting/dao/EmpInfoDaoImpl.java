@@ -22,7 +22,8 @@ public class EmpInfoDaoImpl
     public Employee empInfoSummary(Employee e)
     {
         System.out.println((new StringBuilder("SqlSession ===> ")).append(sqlSession).toString());
-        return (Employee)sqlSession.selectOne("Employee.getEmployeeListById", "cs1");
+        System.out.println(e.getEmp_id());
+        return sqlSession.selectOne("Employee.getEmployeeById", e.getEmp_id());
     }
 
     public Employee empInfoSpecific()
