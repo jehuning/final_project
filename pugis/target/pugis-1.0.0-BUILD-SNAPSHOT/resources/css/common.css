@@ -1,0 +1,93 @@
+/* COMMON */
+body {
+    font-family: 'Apple SD Gothic Neo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 2;
+    color: #525252;
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  a {
+    text-decoration: none;
+    color: #525252;
+  }
+  img {
+    display: block;
+  }
+  
+  
+  /* SIDEBAR */
+  .sidebar .inner {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    border-right: 1px solid #b6b5b5;
+  }
+  .sidebar .main {
+    display: block;
+    height: 100px;
+    position: relative;
+  }
+  .sidebar .main > img {
+    height: 75px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    margin: auto;
+  }
+  .sidebar .main-menu {
+  
+  }
+  .sidebar .main-menu .item:hover {
+    background-color: #696969;
+    color: #fff;
+    transition: .2s;
+  }
+  .sidebar .main-menu .item .item__name h3 {
+    display: block;
+    padding: 11px 16px;
+    color: #000;
+    cursor: pointer;
+    text-align: center;
+  }
+  .sidebar .main-menu ul.list__group {
+    
+  }
+  .sidebar .main-menu ul.list__group li {
+    
+  }
+  .sidebar .main-menu ul.list__group li a {
+    color: #000;
+    display: block;
+    padding: -5px;
+    text-align: center;
+    display: none;
+  }
+  .sidebar .main-menu .item:hover ul.list__group li a {
+    display: block;
+    transition: .2s;
+  }
+  .sidebar .main-menu ul.list__group li a::before {
+    content: "-";
+    width: 12px;
+    height: 1px;
+    padding-left: 4px;
+  }
+  .sidebar .main-menu .item .item__name h3:hover,
+  .sidebar .main-menu ul.list__group li a:hover {
+    color: #fff;
+    transition: .2s;
+  }
+
+
+  /* HEADER */
+header .main-text {
+    font-size: 30px;
+    font-weight: 700;
+    position: fixed;
+    top: 30px;
+    left: 350px;
+  }  

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FacilitySales">
+
+	<resultMap type="com.kh.pugis.service.consulting.domain.ByFacilitySales" id="result">
+		<result property="sales_date" column="purchase_date" />
+		<result property="facility_name" column="facility_name" />
+		<result property="facility_sales" column="FACILITYSUM" />
+	</resultMap>
+
+
+	<select id="getFacilitySales" resultMap="result" parameterType="int">
+	SELECT ticket_purchase.purchase_date, facility_info.facility_name, sum(CUSTOMER_SALES) FACILITYSUM
+		FROM CUSTOMER_INFO
+		JOIN TICKET_purchase ON (customer_info.customer_id = ticket_purchase.customer_id)
+        JOIN FACILITY_SALES ON (ticket_purchase.ticket_pub_code = facility_sales.ticket_pub_code)
+        JOIN facility_info ON (facility_sales.facility_code = facility_info.faclility_code) 
+        WHERE PURCHASE_DATE = #{PURCHASE_DATE}
+        group by ticket_purchase.purchase_date, facility_info.facility_name
+	</select>
+		
+</mapper>
