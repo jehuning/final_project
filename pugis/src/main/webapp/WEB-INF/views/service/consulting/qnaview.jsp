@@ -37,21 +37,29 @@
 				location.href = "http://localhost:8090/pugis2/qna/list";
 			})
 			
-			// 댓글 작성 View
+			// 댓글 작성
 			$(".replyWriteBtn").on("click", function(){
 				var formObj = $("form[name='replyForm']");
 				formObj.attr("action", "/pugis2/qna/replyWrite");
 				formObj.submit();
 			});
 			
-			//댓글 삭제 View
+			// 답글 삭제
 			$(".replyDeleteBtn").on("click", function(){
-				location.href = "/pugis2/qna/replyDeleteView?reg_id=${read.reg_id}"
-					+ "&page=${scri.page}"
-					+ "&perPageNum=${scri.perPageNum}"
-					+ "&searchType=${scri.searchType}"
-					+ "&keyword=${scri.keyword}"
-					+ "&reply_id="+$(this).attr("data-reply_id");
+				if(confirm("삭제 하시겠습니까?")){
+					formObj.attr("action", "/pugis2/qna/replyDelete");
+					formObj.attr("method", "post");
+					formObj.submit();
+				}
+				
+				location.href = "/pugis2/qna/replyDelete?reg_id=${read.reg_id}"
+				+ "&page=${scri.page}"
+				+ "&perPageNum=${scri.perPageNum}"
+				+ "&searchType=${scri.searchType}"
+				+ "&keyword=${scri.keyword}"
+				+ "&reply_id="+$(this).attr("data-reply_id");
+		            
+		         alert("답글이 삭제되었습니다.")
 			});
 		})
 	</script>
@@ -215,7 +223,7 @@ table tr {
 #midlebtn{
 	margin-top:25px;
 	margin-left: auto;
-	margin-right: 20%;
+	margin-right: 17.5%;
 	text-align: right;
 }
 #answer{
@@ -236,7 +244,7 @@ table tr {
 	text-align: right;
 	margin-top:25px;
 	margin-left: auto;
-	margin-right: 20%;
+	margin-right: 17.5%;
 }
 #headline label{
 	font-size: 18px;
@@ -324,11 +332,11 @@ table tr {
 	
 }
 #replybutton{
-	width:65%;
+	width:%;
 	text-align: right;
 	margin-top:25px;
 	margin-left: auto;
-	margin-right: 20%;
+	margin-right: 0%;
 	
 }
 #reply p{

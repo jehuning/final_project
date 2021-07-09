@@ -13,7 +13,7 @@ public interface CustomerQuestionListReplyService {
 	public void writeReply(CustomerQuestionReply cqrVO) throws Exception;
 
 	//댓글 삭제
-	public void deleteReply(CustomerQuestionReply cqrVO) throws Exception;
+	public void deleteReply(int reply_id) throws Exception;
 		
 	//선택된 댓글 조회
 	public CustomerQuestionReply selectReply(int reg_id) throws Exception;

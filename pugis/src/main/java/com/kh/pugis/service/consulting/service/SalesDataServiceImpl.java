@@ -37,12 +37,6 @@ public class SalesDataServiceImpl implements SalesDataService{
 	@Override
 	public TotalSales totalSum(String date)
 	{
-		/*	출력 확인용 테스트코드
-		List<TotalSales> l = new ArrayList<TotalSales>();
-		l = sdd.totallist(date);
-		System.out.println(l.get(0).getCustomer_id());
-		return l;
-		*/
 		List<TotalSales> tssl = sdd.totallist(date);
 		int fsum = 0;
 		int tsum = 0;
@@ -127,12 +121,6 @@ public class SalesDataServiceImpl implements SalesDataService{
 	@Override
 	public ByTicketSales ticketSum(String date)
 	{
-		/*	출력 확인용 테스트코드
-		List<TotalSales> l = new ArrayList<TotalSales>();
-		l = sdd.totallist(date);
-		System.out.println(l.get(0).getCustomer_id());
-		return l;
-		*/
 		List<ByTicketSales> tsl = sdd.ticketlist(date);
 		int tsum = 0;
 		for(ByTicketSales t : tsl) { 
@@ -156,12 +144,6 @@ public class SalesDataServiceImpl implements SalesDataService{
 	@Override
 	public ByFacilitySales facilitySum(String date)
 	{
-		/*	출력 확인용 테스트코드
-		List<TotalSales> l = new ArrayList<TotalSales>();
-		l = sdd.totallist(date);
-		System.out.println(l.get(0).getCustomer_id());
-		return l;
-		*/
 		List<ByFacilitySales> fsl = sdd.facilitylist(date);
 		int fsum = 0;
 		for(ByFacilitySales t : fsl) { 
