@@ -21,15 +21,14 @@
 <td>${fs.facility_sales}</td>
 </tr><!-- 첫번째 줄 끝 -->
 </c:forEach>
+
 <tr></tr>
 	<tr>
-		<td></td>
-		<td></td>
+		<td rowspan="2" colspan="2"> </td>
 		<td>전체 매출 총합</td>
 	</tr>
 	<tr>
-		<td></td>
-		<td></td>
+		
 		<td>${facilitySalesSum.facility_salesSum}</td>
 	</tr>
 </table>
