@@ -33,7 +33,6 @@ public class EmpInfoController
 		s.setEmp_id(emp_id);
 		
 		System.out.println("호출됨");
-		System.out.println("테스트");
 
 	
         model.addAttribute("empSummary", eis.empInfoSummary(e));
