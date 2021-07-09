@@ -40,8 +40,6 @@
 }
 .previousSR form[name=sortForm] > input[type=button] {
   position: absolute;
-  top: 30px;
-  right: 0px;
   border: 1px solid #b6b5b5;
   background-color: #fff;
   color: #525252;
@@ -54,28 +52,28 @@
 .previousSR form[name=sortForm] > input[type=button].totalsales {
   position: absolute;
   top: 15px;
-  right: 400px;
+  right: 800px;
   margin: 20px;
   padding: 3px 13px;
 }
 .previousSR form[name=sortForm] > input[type=button].gendersales {
   position: absolute;
   top: 15px;
-  right: 258px;
+  right: 600px;
   margin: 20px;
   padding: 3px 13px;
 }
 .previousSR form[name=sortForm] > input[type=button].agesales {
   position: absolute;
   top: 15px;
-  right: 191px;
+  right: 400px;
   margin: 20px;
   padding: 3px 13px;
 }
 .previousSR form[name=sortForm] > input[type=button].ticketsales {
   position: absolute;
   top: 15px;
-  right: 94px;
+  right: 200px;
   margin: 20px;
   padding: 3px 13px;
 }
@@ -92,7 +90,7 @@
   left: 350px;
   border: 1px solid #b6b5b5;
 }
-.previousSR .srresult > input[type=button] {
+.previousSR form[name=sortForm] > input[type=button] {
   position: absolute;
   top: 580px;
   right: 20px;
@@ -101,11 +99,11 @@
   padding: 4px 14px;
   color: #525252;
 }
-.previousSR .srresult > input[type=button]::after {
+.previousSR form[name=update] > input[type=button]::after {
   content: ">";
   margin-left: 5px;
 }
-.previousSR .srresult > input[type=button]:hover {
+.previousSR form[name=update] > input[type=button]:hover {
   color: #fff;
   background-color: #b6b5b5;
   transition: .1s;
@@ -115,4 +113,10 @@
 /* LIST TABLE */
 .srresult > table {
   border: 1px solid #b6b5b5
+}
+
+
+/* DATEPICKER */
+#datepicker {
+	z-index: 99;
 }

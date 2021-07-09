@@ -19,14 +19,15 @@
 <!-- jQuery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<link rel="stylesheet" href="./css/previousSR.css" />
-<link rel="stylesheet" href="./css/common.css" />
+<link rel="stylesheet" href="${path}/resources/css/srList.css" />
+<link rel="stylesheet" href="${path}/resources/css/common.css" />
 
 </head>
-
 <body>
 
 <script type="text/javascript">
+
+// 페이지 이동
 	function Main() {
 		location.href="index.jsp";
 	}
@@ -39,81 +40,36 @@
 		location.href="srList.jsp";
 	}
 	
-	$(function() {
-		$("#datepicker").datepicker({
-			changeMonth: true, 
-			changeYear: true, 
-			minDate: '-50y', 
-			nextText: '다음 달', 
-			prevText: '이전 달', 
-			yearRange: 'c-50:c+20', 
-			showButtonPanel: true, 
-			currentText: '오늘 날짜', 
-			closeText: '닫기', 
-			dateFormat: "yy-mm-dd", 
-			showAnim: "slide", 
-			showMonthAfterYear: true, 
-			dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-		});
-		
-		$('#datepicker').datepicker('setDate', 'today');
-	});
-	
-	function getDate(element) {
-		var date;
-		var dateFormat = "yy-mm-dd";
-		
-		try {
-		date = $.datepicker.parseDate(dateFormat, element.value);
-		} catch(error) {
-			date = null;
-		}
-		
-		return date;
-	}
-	
-	$(document).ready(function() {
-		$("#datepicker").on("click", function() {
-			
-		});
-		
-		$("#datepicker").on("change", function() {
-			var pickedDate = $("#datepicker").datepicker(getDate(e.target));
-		});
-		
-		$("#dateSubmit").on("click", function() {
-			var pickedDate = $("#datepicker").val();
-		});
-	});
+
+// 테이블 연결
 	
 	$(function() {
 		$("#totalsales").click(function() {
-			$("#srresult").load("totalsales.jsp");
+			$("#srresult").load("totalsales_back.jsp");
 		});
 	});
 	
 	$(function() {
 		$("#gendersales").click(function() {
-			$("#srresult").load("gendersales.jsp");
+			$("#srresult").load("gendersales_back.jsp");
 		});
 	});
 	
 	$(function() {
 		$("#agesales").click(function() {
-			$("#srresult").load("agesales.jsp");
+			$("#srresult").load("agesales_back.jsp");
 		});
 	});
 	
 	$(function() {
 		$("#ticketsales").click(function() {
-			$("#srresult").load("ticketsales.jsp");
+			$("#srresult").load("ticketsales_back.jsp");
 		});
 	});
 	
 	$(function() {
 		$("#facilitysales").click(function() {
-			$("#srresult").load("facilitysales.jsp");
+			$("#srresult").load("facilitysales_back.jsp");
 		});
 	});
 	  	
@@ -124,7 +80,7 @@
     <div class="inner">
     
       <a href="javascript:Main()" class="main">
-        <img src="./image/main_temp.png" alt="main">
+        <img src="${path}/resources/images/main_temp.jpg" alt="main">
       </a>
 
       <div class="main-menu">
