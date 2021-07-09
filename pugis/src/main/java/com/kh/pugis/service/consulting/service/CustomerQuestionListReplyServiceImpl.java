@@ -30,9 +30,10 @@ public class CustomerQuestionListReplyServiceImpl implements CustomerQuestionLis
 
 	// 댓글 삭제
 	@Override
-	public void deleteReply(CustomerQuestionReply cqrVO) throws Exception {
-		cqrdao.deleteReply(cqrVO);
+	public void deleteReply(int reply_id) throws Exception {
+		cqrdao.deleteReply(reply_id);
 	}
+
 
 	// 선택된 댓글 조회
 	@Override

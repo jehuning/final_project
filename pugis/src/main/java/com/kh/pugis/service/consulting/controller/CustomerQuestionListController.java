@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.pugis.service.consulting.domain.Criteria;
@@ -28,7 +29,6 @@ public class CustomerQuestionListController {
 	
 	@Autowired
 	CustomerQuestionListReplyService rs;
-
 	// 게시글 목록 조회
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
@@ -61,9 +61,11 @@ public class CustomerQuestionListController {
 	}
 
 	// 게시글 삭제
-	@RequestMapping(value = "/delete", method =  {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET})
 	public String delete(CustomerQuestion cqVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 	//	logger.info("delete");
+		
+		System.out.println("삭제");
 		
 		cs.delete(cqVO.getReg_id());
 		
@@ -91,32 +93,19 @@ public class CustomerQuestionListController {
 		return "redirect:/qna/readView";
 	}
 
-	
-	//댓글 삭제 GET
-	@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
-	public String replyDeleteView(CustomerQuestionReply cqrVO, SearchCriteria scri, Model model) throws Exception {
-	//	logger.info("reply Write");
-		
-		model.addAttribute("replyDelete", rs.selectReply(cqrVO.getReply_id()));
-		model.addAttribute("scri", scri);
-		
-
-		return "qna/replyDeleteView";
-	}
-	
 	//댓글 삭제
-	@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
-	public String replyDelete(CustomerQuestionReply cqrVO, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+	@RequestMapping(value="/replyDelete", method = {RequestMethod.POST, RequestMethod.GET})
+	public String replyDelete(@RequestParam(value="reply_id") int reply_id, CustomerQuestionReply cqrVO, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 	//	logger.info("reply Write");
 		
-		rs.deleteReply(cqrVO);
-		
+		rs.deleteReply(reply_id);
+/*		
 		rttr.addAttribute("reg_id", cqrVO.getReg_id());
 		rttr.addAttribute("page", scri.getPage());
 		rttr.addAttribute("perPageNum", scri.getPerPageNum());
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
-		
+*/		
 		return "redirect:/qna/readView";
 	}
 

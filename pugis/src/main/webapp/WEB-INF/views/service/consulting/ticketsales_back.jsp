@@ -23,13 +23,10 @@
 </c:forEach>
 <tr></tr>
 	<tr>
-		<td></td>
-		<td></td>
+		<td rowspan="2" colspan="2"> </td>
 		<td>전체 매출 총합</td>
 	</tr>
 	<tr>
-		<td></td>
-		<td></td>
 		<td>${ticketSalesSum.ticket_salesSum}</td>
 	</tr>
 </table>

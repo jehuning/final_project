@@ -30,8 +30,8 @@ public class CustomerQuestionListReplyDAOImpl implements CustomerQuestionListRep
 
 	// 댓글 삭제
 	@Override
-	public void deleteReply(CustomerQuestionReply cqrVO) throws Exception {
-		sql.delete("CustomerQuestionListReply.deleteReply", cqrVO);
+	public void deleteReply(int reply_id) throws Exception {
+		sql.delete("CustomerQuestionListReply.deleteReply", reply_id);
 	}
 
 	// 선택된 댓글 조회
