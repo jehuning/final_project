@@ -52,8 +52,34 @@ public class EmpScheduleServiceImpl
     	return esd.empSchedule(hm);
     }
 
-    public void depSchedule()
-    {
+    public void depSchedule(Schedule s)
+    {	
+    	esd.regularConSchedule();
+    	esd.marketingConSchedule();
+    	//현재날짜의 상담스케줄을 구해오고, 스케줄테이블에 추가
+    	
+    	String dept_id = esd.getDept(s);//직원의 부서아이디를 구해옴
+    	
+    	
+    	//부서아이디와 현재날짜 해당월의 말일로 스케줄을 검색함.
+    	s.setSchedule_dept(dept_id);
+    	
+    	LocalDate date = LocalDate.now();
+    	String schedule_date = date.toString();
+    	s.setSchedule_date(schedule_date);
+    	//현재 날짜를 구함.
+    	int l = date.lengthOfMonth();
+    	String last = String.valueOf(l);
+    	
+    	String a = schedule_date.substring(0, schedule_date.length()-2);
+    	String lastDayOfMonth = a + last;//해당월의 말일을 구함
+    	
+    	HashMap<String, String> hm = new HashMap<String,String>();
+    	hm.put("sDate", schedule_date);
+    	hm.put("fDate", lastDayOfMonth);
+    	hm.put("schedule_dept", s.getSchedule_dept());
+    	esd.depSchedule(hm);
+    	
     }
 
    

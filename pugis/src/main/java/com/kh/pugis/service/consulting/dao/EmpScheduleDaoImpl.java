@@ -26,15 +26,25 @@ public class EmpScheduleDaoImpl
     {
     	
     	
-    	return sqlSession.selectList("Schedule.selectList", hm);
+    	return sqlSession.selectList("Schedule.empSchedule", hm);
     	
     }
-
-    public void depSchedule()
-    {
-        Schedule s = new Schedule();
-        MarketingConsult mc = new MarketingConsult();
-        RegularConsult rc = new RegularConsult();
+    public String getDept(Schedule s){
+    	String emp_id = s.getEmp_id();
+    	return sqlSession.selectOne("Schedule.getDept", emp_id);
     }
+    public List<Schedule> depSchedule(HashMap<String,String> hm)
+    {
+        return sqlSession.selectList("Schedule.deptSchedule", hm);
+    }
+    public List<RegularConsult> regularConSchedule(HashMap<String,String> hm)
+    {
+        return sqlSession.selectList("Schedule.regularCon", hm);
+    }
+    public List<MarketingConsult> marketingConSchedule(HashMap<String,String> hm)
+    {
+        return sqlSession.selectList("Schedule.marketingCon", hm);
+    }
+
     
 }
