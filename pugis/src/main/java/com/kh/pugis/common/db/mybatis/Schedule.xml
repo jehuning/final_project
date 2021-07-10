@@ -6,29 +6,60 @@
 
 	
 		
-	<select id="selectToday" parameterType="com.kh.pugis.service.consulting.domain.Schedule" 
+	<select id="empSchedule" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Schedule">
 		SELECT
-		   SCHEDULE_ID,EMP_ID,SCHEDULE_DATE,SCHEDULE_DEPT,SCHEDULE_NAME
-		FROM
-			EMP_SCHEDULE
-		WHERE
-			emp_id = #{emp_id} 
-		AND
-			SCHEDULE_DATE = #{schedule_date}
-		
-	</select>
-	
-	<select id="selectList" parameterType="hashmap" 
-			resultType="com.kh.pugis.service.consulting.domain.Schedule">
-		SELECT
-		   SCHEDULE_ID,EMP_ID,SCHEDULE_DATE,SCHEDULE_DEPT,SCHEDULE_NAME
+		   EMP_ID,SCHEDULE_DATE,SCHEDULE_NAME
 		FROM
 			EMP_SCHEDULE
 		WHERE
 			emp_id = #{emp_id} 
 		AND
 		 	SCHEDULE_DATE BETWEEN #{sDate} AND #{fDate}
+		
+	</select>
+	<select id="getDept" parameterType="String" resultType="String">
+		SELECT
+		    dept_code
+		FROM
+			emp_info
+		WHERE emp_id=#{emp_id}
+		
+	</select>
+	<select id="deptSchedule" parameterType="hashmap" 
+			resultType="com.kh.pugis.service.consulting.domain.Schedule">
+		SELECT
+		   SHEDULE_DATE,SCHEDULE_DEPT,SCHEDULE_NAME
+		FROM
+			EMP_SCHEDULE
+		WHERE
+			dept_id = #{dept_id} 
+		AND
+		 	SCHEDULE_DATE BETWEEN #{sDate} AND #{fDate}
+		
+	</select>
+	<select id="regularCon" parameterType="hashmap" 
+			resultType="com.kh.pugis.service.consulting.domain.RegularConsult"><!-- sql수정필요 -->
+		SELECT
+		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		FROM
+			CONSULT_SCHEDULE
+		WHERE
+			CONSULT_CODE = 'RG' 
+		AND
+		 	CONSULT_DATE BETWEEN #{sDate} AND #{fDate}
+		
+	</select>
+	<select id="marketingCon" parameterType="hashmap" 
+			resultType="com.kh.pugis.service.consulting.domain.MarketingConsult"><!-- sql수정필요 -->
+		SELECT
+		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		FROM
+			CONSULT_SCHEDULE
+		WHERE
+			CONSULT_CODE = 'MK' 
+		AND
+		 	CONSULT_DATE BETWEEN #{sDate} AND #{fDate}
 		
 	</select>
 		

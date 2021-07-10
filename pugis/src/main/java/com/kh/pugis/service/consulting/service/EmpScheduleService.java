@@ -13,5 +13,5 @@ public interface EmpScheduleService
 
     List<Schedule> empSchedule(Schedule s);
 
-   void depSchedule();
+    List<Schedule> deptSchedule(Schedule s);
 }
