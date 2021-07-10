@@ -388,7 +388,7 @@ table tr {
 				<li><a href="#">fff</a></li>			
 			</ul>
 			</li>	
-			<li><a href="qna.jsp">고객의 소리(Q&A)</a></li>	
+			<li><a href="/pugis/qna/list">고객의 소리(Q&A)</a></li>	
 			<li><a href="#" class="btn-3">고객 설문<span class="fas fa-caret-down third"></span></a>
 			<ul class="show-3">
 				<li><a href="#">ccc</a></li>
@@ -400,7 +400,7 @@ table tr {
 	</nav>
 
 	<div id="content">
-		<h1 id="maintitle" ><a id ="titlelink" href="http://localhost:8090/pugis2/qna/list">고객의 소리(Q&A)</a></h1>
+		<h1 id="maintitle" ><a id ="titlelink" href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></h1>
 				
 				<form id = "headline">
 					<label for="title" class="col-sm-2 control-label">제목</label>

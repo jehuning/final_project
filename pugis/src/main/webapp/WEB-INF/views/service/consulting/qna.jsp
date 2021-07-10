@@ -249,7 +249,7 @@ table tr {
 				<li><a href="#">fff</a></li>			
 			</ul>
 			</li>	
-			<li><a href="qna.jsp">고객의 소리(Q&A)</a></li>	
+			<li><a href="/pugis/qna/list">고객의 소리(Q&A)</a></li>	
 			<li><a href="#" class="btn-3">고객 설문<span class="fas fa-caret-down third"></span></a>
 			<ul class="show-3">
 				<li><a href="#">ccc</a></li>
@@ -261,7 +261,7 @@ table tr {
 	</nav>
 	</div>
 	<div id="content">
-		<h1 id="title"><a id ="titlelink" href="http://localhost:8090/pugis2/qna/list">고객의 소리(Q&A)</a></h1>
+		<h1 id="title"><a id ="titlelink" href="/pugis/qna/list">고객의 소리(Q&A)</a></h1>
 				<form id = "searchBox">
 							<select name="searchType" class="form-control" id ="typelist">
 								<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
@@ -327,7 +327,7 @@ table tr {
 							<tr>
 								<td><c:out value="${list.question_category}" /></td>
 								<td>
-									<a href="/pugis2/qna/readView?reg_id=${list.reg_id}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${list.question_title}" /></a>
+									<a href="/pugis/qna/readView?reg_id=${list.reg_id}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${list.question_title}" /></a>
 								</td>
 								<td><c:out value="${list.customer_id}" /></td>
 								<td><fmt:formatDate value="${list.reg_date}" pattern="yyyy-MM-dd"/></td>
