@@ -187,11 +187,11 @@ table tr {
 }
 #searchlist{
 	width:65%;
-	margin-top:50px;
+	margin-top:30px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	font-size: 18px;
+	font-size: 20px;
 }
 #pagenum{
 	width:80%;
@@ -202,6 +202,25 @@ table tr {
 .page123{
     text-decoration: none;
     font-size: 18px;
+}
+#titlelink{
+	text-decoration: none;
+}
+#pagenum li {
+	list-style:none;
+}
+#category{
+ 	text-align: center;
+    margin-top:50px;
+}
+.catebtn{
+	width:80px;
+	height:50px;
+	border: 3px solid;
+	border-radius:5px;
+	font-size: 18px;
+	margin-left: 40px;
+	margin-right: 40px;
 }
 </style>
 </head>
@@ -230,7 +249,7 @@ table tr {
 				<li><a href="#">fff</a></li>			
 			</ul>
 			</li>	
-			<li><a href="qna.jsp">고객의 소리(Q&A)</a></li>	
+			<li><a href="/pugis/qna/list">고객의 소리(Q&A)</a></li>	
 			<li><a href="#" class="btn-3">고객 설문<span class="fas fa-caret-down third"></span></a>
 			<ul class="show-3">
 				<li><a href="#">ccc</a></li>
@@ -242,7 +261,7 @@ table tr {
 	</nav>
 	</div>
 	<div id="content">
-		<h1 id="title">고객의 소리(Q&A)</h1>
+		<h1 id="title"><a id ="titlelink" href="/pugis/qna/list">고객의 소리(Q&A)</a></h1>
 				<form id = "searchBox">
 							<select name="searchType" class="form-control" id ="typelist">
 								<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
@@ -250,10 +269,44 @@ table tr {
 								<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 								<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
 							</select>
-								<input type="text" name="keyword" id="keywordInput" value="<c:if test="${scri.searchType == 't' or 'c' or 'tc'}"><c:out value="${scri.keyword}" /></c:if>" class="form-control"/>
+								<input type="text" name="keyword" id="keywordInput" value="<c:if test="${scri.searchType == 't' || scri.searchType == 'c' || scri.searchType == 'tc'}"><c:out value="${scri.keyword}" /></c:if>" class="form-control"/>
 								<span class="input-group-btn">
 									<button id="searchBtn" type="button" class="btn btn-default">검색</button> 	
-								</span>		
+								</span>
+								<br/>
+								<br/>
+					 <%-- 카테고리 버튼 --%>	
+					<div class="category row">
+						<div class="col-xs-2 col-sm-2">				
+								<button class="catebtn" id="facilityBtn" type="button" <c:out value="${scri.searchType eq 'facility' ? 'selected' : ''}"/>>시설</button>
+								<button class="catebtn" id="ticketBtn" type="button" <c:out value="${scri.searchType eq 'ticket' ? 'selected' : ''}"/>>티켓</button>
+								<button class="catebtn" id="homeBtn" type="button" <c:out value="${scri.searchType eq 'home' ? 'selected' : ''}"/>>홈페이지</button>
+								<button class="catebtn" id="etcBtn" type="button" <c:out value="${scri.searchType eq 'etc' ? 'selected' : ''}"/>>기타</button>
+						</div>	
+						<%-- 카테고리 스크립트 --%>
+						<script>
+							$(function(){
+								$('#facilityBtn').click(function() {
+										self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=facility" + "&keyword=시설";
+									});
+								}); 
+							$(function(){
+								$('#ticketBtn').click(function() {
+										self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=ticket" + "&keyword=티켓";
+									});
+								});
+							$(function(){
+								$('#homeBtn').click(function() {
+										self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=home" + "&keyword=홈페이지";
+									});
+								});
+							$(function(){
+								$('#etcBtn').click(function() {
+										self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=etc" + "&keyword=기타";
+									});
+								});
+					</script>						
+				</div>
 						<script>
 							 $(function(){
 								 $('#searchBtn').click(function() {
@@ -274,7 +327,7 @@ table tr {
 							<tr>
 								<td><c:out value="${list.question_category}" /></td>
 								<td>
-									<a href="/pugis2/qna/readView?reg_id=${list.reg_id}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${list.question_title}" /></a>
+									<a href="/pugis/qna/readView?reg_id=${list.reg_id}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${list.question_title}" /></a>
 								</td>
 								<td><c:out value="${list.customer_id}" /></td>
 								<td><fmt:formatDate value="${list.reg_date}" pattern="yyyy-MM-dd"/></td>
@@ -284,21 +337,17 @@ table tr {
 			</form>
 			</div>
 					<div class="col-md-offset-3" id = "pagenum">
-						<ul class="pagination">
 							<c:if test="${pageMaker.prev}">
-								<li ><a class="page123" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-							</c:if> 
-							
+								<a class="page123" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a>
+							</c:if> 							
 							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-								<li<c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
-								<a class="page123" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
-							</c:forEach>
-							
+								<c:out value="${pageMaker.cri.page == idx ? '' : ''}" />
+								<a class="page123" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+							</c:forEach>							
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a class="page123" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-							</c:if> 
-						</ul>
-					</div>	
+								<a class="page123" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a>
+							</c:if> 				
+					</div>
 	      <script>
          $('.btn').click(function(){
            $(this).toggleClass("click");
