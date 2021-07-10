@@ -78,7 +78,8 @@ public class EmpScheduleServiceImpl
     	hm.put("sDate", schedule_date);
     	hm.put("fDate", lastDayOfMonth);
     	hm.put("schedule_dept", s.getSchedule_dept());
-    	esd.deptSchedule(hm);
+    	
+    	return esd.deptSchedule(hm);
     }
 
    

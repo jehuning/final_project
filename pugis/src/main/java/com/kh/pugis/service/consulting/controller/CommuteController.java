@@ -50,7 +50,7 @@ public class CommuteController
      	List<Commute> chl = new ArrayList<Commute>();
      	chl = cs.commuteHistory(c);
      	 model.addAttribute("commuteList", chl);
-     	 //새로 띄울 팝업창으로 리턴문 선언
+     	 //새로 띄울 팝업창으로 리턴
     }
 
    
