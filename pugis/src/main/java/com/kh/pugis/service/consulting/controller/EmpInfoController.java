@@ -26,7 +26,7 @@ public class EmpInfoController
     
 	
     @RequestMapping(value = "/main")
-    public String empMain(Model model,@RequestParam("emp_id") String emp_id)
+    public String empMain(Model model, @RequestParam("id") String emp_id)
     {	//직원 로그인시 호출되는 컨트롤러.로그인한 emp_id전달받음.
     	// 화면에 출력될 직원정보, 직원스케줄, 부서스케줄 데이터를 직원 메인페이지로 리턴
 		Employee e = new Employee();
