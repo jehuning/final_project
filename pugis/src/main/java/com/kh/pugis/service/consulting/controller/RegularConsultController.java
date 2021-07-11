@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -31,13 +32,12 @@ public class RegularConsultController
     	
         return "service/consulting/rconsult";
     }
-	@RequestMapping(value = "/selectcustomer")
-    public String selectCustomer(HttpServletRequest req, Model model)
+	@RequestMapping(value = "/customer")
+    public String selectCustomer(Model model, @RequestParam(value="p", defaultValue="1")int currentPage)
     {	//고객조회버튼 클릭시 ajax통해 호출. 고객조회 조건 넘겨받아서 db조회
 		
-        int currentPage = Integer.parseInt(req.getParameter("currentPage"));
        
-		int pageListSize = 2; //페이지당 출력 개수
+		int pageListSize = 5; //페이지당 출력 개수
         String address = "1"; //고객주소
         String grade = "1"; //고객등급
         
