@@ -7,6 +7,7 @@
 	<title>Test</title>
 </head>
 <body>
+<div id="totalsales">
 <table border="1">
 <tr>
 <th>일자</th>
@@ -37,25 +38,12 @@
 		<td>${totalSalesSum.fsum}</td>
 		<td>${totalSalesSum.customer_salesSum}</td>
 	</tr>
+	
 </table>
-
-<!-- 
-<script type="text/javascript">
-
-    function doExcelDownloadProcess(){
-        var f = document.form1;
-        f.action = "downloadExcelFile";
-        f.submit();
-    }
-</script>
-
-<form id="form1" name="form1" method="post" enctype="multipart/form-data">
-    <button type="button" onclick="doExcelDownloadProcess()">엑셀다운로드 작업</button>
-</form>
-
-<div id="result">
 </div>
--->
+<form action="/pugis2/sales/exceldown" method="post">
+	<input type="submit" value='엑셀 다운로드'>
+</form>
 
 </body>
 </html>

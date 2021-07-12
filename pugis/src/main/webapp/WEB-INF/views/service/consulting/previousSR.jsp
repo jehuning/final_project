@@ -12,10 +12,8 @@
 <!--브라우저 스타일 초기화-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
 
-<!-- DATEPICKER -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- AJAX -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- jQuery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -37,63 +35,68 @@
 		location.href="previousSR.jsp";
 	}
 	
-// datepicker
+// 일정 선택 >> DB 정보 주고받기
 	$(function() {
-		$("#datepicker").datepicker({
-			changeMonth: true, 
-		    changeYear: true,
-		    nextText: '다음 달',
-		    prevText: '이전 달',
-		    dateFormat: "yymmdd"
-		    
-			var datepicker = document.getElementById('datepicker');
-			
-			
-			$.ajax({
-				url: "/pickedDate",
-				type: "post",
-				dataType: "text",
-				data: datepicker, 
-				contentType: "false",
-				success: function(retVal) {
-					if(retVal != null) {
-						
-					} else {
-						
-					}
-				}
-			});
+		var pickedDate = document.getElementById("pickdate").value;
+		var search_date = pickedDate.split('-');
+		request = {
+			type: "post",
+			dataType: "json",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data: search_date,
+			error: function(error) {
+				console.log("전송 실패");
+			}		
+		}
+		
+		$("#totalsales").on('click', function() {			
+			request.url = "/totallist";
+			request.success = function(result) {
+				var html = jQuery('<div>').html(result);
+				var contents = html.find("div#totalsales").html();
+				$("#srresult").html(contents);
+			}
+			$.ajax(request);
 		});
-	});
-
-// 테이블 연결
-	$(function() {
-		$("#totalsales").click(function() {
-			$("#srresult").load("totalsales_back.jsp");
+		
+		$("#gendersales").on('click', function() {			
+			request.url = "/genderlist";
+			request.success = function(result) {
+				var html = jQuery('<div>').html(result);
+				var contents = html.find("div#gendersales").html();
+				$("#srresult").html(contents);
+			}
+			$.ajax(request);
 		});
-	});
-	
-	$(function() {
-		$("#gendersales").click(function() {
-			$("#srresult").load("gendersales_back.jsp");
+		
+		$("#agesales").on('click', function() {			
+			request.url = "/agelist";
+			request.success = function(result) {
+				var html = jQuery('<div>').html(result);
+				var contents = html.find("div#agesales").html();
+				$("#srresult").html(contents);
+			}
+			$.ajax(request);
 		});
-	});
-	
-	$(function() {
-		$("#agesales").click(function() {
-			$("#srresult").load("agesales_back.jsp");
+		
+		$("#ticketsales").on('click', function() {			
+			request.url = "/ticketlist";
+			request.success = function(result) {
+				var html = jQuery('<div>').html(result);
+				var contents = html.find("div#ticketsales").html();
+				$("#srresult").html(contents);
+			}
+			$.ajax(request);
 		});
-	});
-	
-	$(function() {
-		$("#ticketsales").click(function() {
-			$("#srresult").load("ticketsales_back.jsp");
-		});
-	});
-	
-	$(function() {
-		$("#facilitysales").click(function() {
-			$("#srresult").load("facilitysales_back.jsp");
+		
+		$("#facilitysales").on('click', function() {			
+			request.url = "/facilitylist";
+			request.success = function(result) {
+				var html = jQuery('<div>').html(result);
+				var contents = html.find("div#facilitysales").html();
+				$("#srresult").html(contents);
+			}
+			$.ajax(request);
 		});
 	});
 	  	
@@ -175,8 +178,7 @@
       <p class="show">전일 매출조회</p>
       <p class="select">일자 선택</p>
       <form name="selectForm" action="select" method="post">
-        <input type="text" id="datepicker" placeholder="날짜 선택" onclick="$('#datepicker').datepicker();$('#datepicker').datepicker('show');"/>
-        <input type="submit" id="dateSubmit" value="적용" />
+        <input type="date" id="pickdate" placeholder="날짜 선택" />
       </form>
 
       <div class="sidemenu">
@@ -193,11 +195,11 @@
     <!-- LIST TABLE -->
     <div class="srresult">
       <div class="inner">
-     	<table id="srresult" border="1">
+     	<div id="srresult">
 			
-		</table>
+		</div>
       </div>
-      <form action="update" method="post">
+      <form name="updateForm" action="update" method="post">
         <input type="button" value="전일 매출 보고서 등록" class="upload" />
         <input type="button" value="일일 매출 보고서 엑셀 저장" class="save" />
       </form>
