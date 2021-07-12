@@ -59,19 +59,21 @@ public class RegularConsultController
         return "service/consulting/customerList_back";
     }
 	@RequestMapping(value = "/schedule")
-    public String saveSchedule(HttpServletRequest req, Model model, CustomerInfoListDto cil)
+    public String saveSchedule(Model model,@RequestParam("start") String start_date,@RequestParam("finish") String finish_date , CustomerInfoListDto cil)
     {	//스케줄 생성버튼 클릭 시 ajax를 통해 호출
 		
-		String start_date = (String)req.getParameter("start_date");
-		String finish_date = (String)req.getParameter("finish_date");
+//		String start_date = (String)req.getParameter("start_date");
+//		String finish_date = (String)req.getParameter("finish_date");
+		start_date ="2021-02-08";
+		finish_date ="2021-03-05";
 		
-        RegularConsultSelectDate rcsd = new RegularConsultSelectDate();
-        rcsd.setStart_date("2021-02-08");
-        rcsd.setFinish_date("2021-03-05");
+        ConsultScheduleDate rcsd = new ConsultScheduleDate();
+        rcsd.setStart_date(start_date);
+        rcsd.setFinish_date(finish_date);
         System.out.println((new StringBuilder("\uACE0\uAC1D\uC544\uC774\uB514")).append(((CustomerInfo)cil.getSelecetedId().get(0)).getCustomer_id()).toString());
         System.out.println(cil.getSelecetedId().size());
         
-        String result = rcs.saveSchedule(rcsd, cil);
+        String result = rcs.saveSchedule(rcsd, cil);//스케줄날짜와 화면에서 선택되어 넘어온 고객 아이디 리스트를 메소드에 전달. 스케줄 생성 여부를 문자열로 반환
         System.out.println(result);
         //ajax로 스케줄 생성 여부를 문자열로 리턴
         return "service/consulting/customerList_back";

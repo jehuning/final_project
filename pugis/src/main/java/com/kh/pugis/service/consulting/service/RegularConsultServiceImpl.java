@@ -90,9 +90,9 @@ public class RegularConsultServiceImpl
         return pmi;
     }
 
-    public String saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil)
+    public String saveSchedule(ConsultScheduleDate rcsd, CustomerInfoListDto cil)
     {
-    	RegularConsult rc = new RegularConsult();
+    	Consult rc = new Consult();
     	Random rd = new Random();
     	List<String> workDayList = new ArrayList<String>();
     	

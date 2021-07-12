@@ -35,7 +35,6 @@ public class MarketingConsultDaoImpl
     {
         MarketingEventDate mei = new MarketingEventDate();
         CustomerInfo ui = new CustomerInfo();
-        MarketingConsult mc = new MarketingConsult();
     }
     
 }

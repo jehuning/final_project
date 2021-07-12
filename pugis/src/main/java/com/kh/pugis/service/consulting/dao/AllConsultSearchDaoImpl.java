@@ -2,6 +2,8 @@ package com.kh.pugis.service.consulting.dao;
 
 import com.kh.pugis.service.consulting.domain.*;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,13 +18,20 @@ public class AllConsultSearchDaoImpl
 	 @Autowired
     private SqlSession sqlSession;
 
-    public void allConsultSearch()
+    public List<Consult> allConsultSearch(ConsultScheduleDate csd)
     {
-        RegularConsultSelectDate rcsd = new RegularConsultSelectDate();
-        MarketingEventDate mei = new MarketingEventDate();
-        CustomerInfo ui = new CustomerInfo();
-        MarketingConsult mc = new MarketingConsult();
-        RegularConsult rc = new RegularConsult();
+       
+        return sqlSession.selectList("Consult.allSearch", csd);
+    }
+    public List<Consult> regularConsultSearch(ConsultScheduleDate csd)
+    {
+       
+        return sqlSession.selectList("Consult.regularSearch", csd);
+    }
+    public List<Consult> marketingConsultSearch(ConsultScheduleDate csd)
+    {
+       
+        return sqlSession.selectList("Consult.marketingSearch", csd);
     }
 
     public void executeConsult()
