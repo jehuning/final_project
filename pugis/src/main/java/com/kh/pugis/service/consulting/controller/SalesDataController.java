@@ -1,6 +1,7 @@
 package com.kh.pugis.service.consulting.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,5 +80,63 @@ public class SalesDataController {
 		model.addAttribute("facilitySales", sds.facilitylist(date));
 		model.addAttribute("facilitySalesSum", sds.facilitySum(date));
 		return "service/consulting/facilitysales_back";
+	}
+	
+	
+	// 엑셀 다운 컨트롤러
+	
+	@RequestMapping(value = "/totalexceldown")
+	public void totalExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.totalExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/facilityexceldown")
+	public void facilityExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.facilityExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/ticketexceldown")
+	public void ticketExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.ticketExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/genderexceldown")
+	public void genderExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.genderExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/ageexceldown")
+	public void ageExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.ageExcelDown(date, resp);
 	}
 }
