@@ -48,4 +48,35 @@ public class SalesDataDaoImpl implements SalesDataDao {
 		return sqlSession.selectList("FacilitySales.getFacilitySales", date);
 	}
 	
+	// 엑셀 출력
+	
+		@Override
+		public List<TotalSales> totalsalelist(String date) {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList("TotalSales.getTotalSales", date);
+		}
+		
+		@Override
+		public List<ByFacilitySales> facilitysalelist(String date) {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList("FacilitySales.getFacilitySales", date);
+		}
+		
+		@Override
+		public List<ByTicketSales> ticketsalelist(String date) {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList("TicketSales.getTicketSales", date);
+		}
+		
+		@Override
+		public List<ByGenderSales> gendersalelist(String date) {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList("GenderSales.getGenderSales", date);
+		}
+		
+		@Override
+		public List<ByAgeSales> agesalelist(String date) {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList("AgeSales.getAgeSales", date);
+		}
 }

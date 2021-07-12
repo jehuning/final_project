@@ -37,25 +37,12 @@
 		<td>${totalSalesSum.fsum}</td>
 		<td>${totalSalesSum.customer_salesSum}</td>
 	</tr>
+	
 </table>
 
-<!-- 
-<script type="text/javascript">
-
-    function doExcelDownloadProcess(){
-        var f = document.form1;
-        f.action = "downloadExcelFile";
-        f.submit();
-    }
-</script>
-
-<form id="form1" name="form1" method="post" enctype="multipart/form-data">
-    <button type="button" onclick="doExcelDownloadProcess()">엑셀다운로드 작업</button>
+<form action="/pugis/sales/totalexceldown" method="post">
+	<input type="submit" value='엑셀 다운로드'>
 </form>
-
-<div id="result">
-</div>
--->
 
 </body>
 </html>
