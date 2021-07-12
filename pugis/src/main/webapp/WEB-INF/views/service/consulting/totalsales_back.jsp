@@ -7,6 +7,7 @@
 	<title>Test</title>
 </head>
 <body>
+<div id="totalsales">
 <table border="1">
 <tr>
 <th>일자</th>
@@ -40,9 +41,11 @@
 	
 </table>
 
-<form action="/pugis/sales/totalexceldown" method="post">
-	<input type="submit" value='엑셀 다운로드'>
-</form>
 
+<form action="/pugis/sales/totalexceldown" method="post">
+<input type="submit" value='엑셀 다운로드'>
+</form>
+  
+</div>
 </body>
 </html>

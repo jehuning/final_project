@@ -24,6 +24,11 @@
   top: 30px;
   left: 100px;
 }
+.previousSR form[name=selectForm] > #pickdate {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+}
 .previousSR form[name=selectForm] > #dateSubmit {
   position: absolute;
   top: 6px;
@@ -40,49 +45,37 @@
 }
 .previousSR form[name=sortForm] > input[type=button] {
   position: absolute;
+  top: 15px;
   border: 1px solid #b6b5b5;
   background-color: #fff;
   color: #525252;
+  padding: 3px 13px;
+  margin: 20px;
 }
 .previousSR form[name=sortForm] > input[type=button]:hover {
   color: #fff;
   background-color: #b6b5b5;
   transition: .1s;
 }
-.previousSR form[name=sortForm] > input[type=button].totalsales {
+.previousSR form[name=sortForm] > input[type=button]#totalsales {
   position: absolute;
-  top: 15px;
-  right: 800px;
-  margin: 20px;
-  padding: 3px 13px;
-}
-.previousSR form[name=sortForm] > input[type=button].gendersales {
-  position: absolute;
-  top: 15px;
-  right: 600px;
-  margin: 20px;
-  padding: 3px 13px;
-}
-.previousSR form[name=sortForm] > input[type=button].agesales {
-  position: absolute;
-  top: 15px;
   right: 400px;
-  margin: 20px;
-  padding: 3px 13px;
 }
-.previousSR form[name=sortForm] > input[type=button].ticketsales {
+.previousSR form[name=sortForm] > input[type=button]#gendersales {
   position: absolute;
-  top: 15px;
-  right: 200px;
-  margin: 20px;
-  padding: 3px 13px;
+  right: 258px;
 }
-.previousSR form[name=sortForm] > input[type=button].facilitysales {
+.previousSR form[name=sortForm] > input[type=button]#agesales {
   position: absolute;
-  top: 15px;
+  right: 191px;
+}
+.previousSR form[name=sortForm] > input[type=button]#ticketsales {
+  position: absolute;
+  right: 94px;
+}
+.previousSR form[name=sortForm] > input[type=button]#facilitysales {
+  position: absolute;
   right: 0px;
-  margin: 20px;
-  padding: 3px 13px;
 }
 .previousSR .srresult .inner {
   position: absolute;
@@ -90,20 +83,28 @@
   left: 350px;
   border: 1px solid #b6b5b5;
 }
-.previousSR form[name=sortForm] > input[type=button] {
+.previousSR form[name=updateForm] > input[type=button] {
   position: absolute;
   top: 580px;
-  right: 20px;
   border: 1px solid #b6b5b5;
   background-color: #fff;
   padding: 4px 14px;
   color: #525252;
+  padding: 7px 17px;
 }
-.previousSR form[name=update] > input[type=button]::after {
+.previousSR form[name=updateForm] > input[type=button].save {
+	position: absolute;
+	right: 250px;
+}
+.previousSR form[name=updateForm] > input[type=button].upload {
+	position: absolute;
+	right: 50px;
+}
+.previousSR form[name=updateForm] > input[type=button]::after {
   content: ">";
   margin-left: 5px;
 }
-.previousSR form[name=update] > input[type=button]:hover {
+.previousSR form[name=updateForm] > input[type=button]:hover {
   color: #fff;
   background-color: #b6b5b5;
   transition: .1s;
