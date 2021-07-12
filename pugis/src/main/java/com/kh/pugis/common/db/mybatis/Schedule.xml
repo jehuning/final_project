@@ -39,7 +39,7 @@
 		
 	</select>
 	<select id="regularCon" parameterType="hashmap" 
-			resultType="com.kh.pugis.service.consulting.domain.RegularConsult"><!-- sql수정필요 -->
+			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		SELECT
 		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
 		FROM
@@ -51,7 +51,7 @@
 		
 	</select>
 	<select id="marketingCon" parameterType="hashmap" 
-			resultType="com.kh.pugis.service.consulting.domain.MarketingConsult"><!-- sql수정필요 -->
+			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		SELECT
 		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
 		FROM

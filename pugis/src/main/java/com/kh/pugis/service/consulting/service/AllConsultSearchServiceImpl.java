@@ -8,6 +8,10 @@ package com.kh.pugis.service.consulting.service;
 
 
 import com.kh.pugis.service.consulting.dao.AllConsultSearchDao;
+import com.kh.pugis.service.consulting.domain.Consult;
+import com.kh.pugis.service.consulting.domain.ConsultScheduleDate;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +28,12 @@ public class AllConsultSearchServiceImpl
     {
     }
 
-    public void allConsultSearch()
-    {
-        acsd.allConsultSearch();
+    public List<Consult> consultSearch(String condition,ConsultScheduleDate csd)
+    {	switch (condition){
+		case "전체" :	return acsd.allConsultSearch(csd);
+		case "우수" :return acsd.regularConsultSearch(csd);
+		default :return acsd.marketingConsultSearch(csd);
+    	}
     }
 
     public void executeConsult()

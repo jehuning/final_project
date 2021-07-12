@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.kh.pugis.service.consulting.domain.Employee;
-import com.kh.pugis.service.consulting.domain.MarketingConsult;
-import com.kh.pugis.service.consulting.domain.RegularConsult;
+import com.kh.pugis.service.consulting.domain.Consult;
 import com.kh.pugis.service.consulting.domain.Schedule;
 
 public interface EmpScheduleDao
@@ -17,6 +16,6 @@ public interface EmpScheduleDao
 
      String getDept(Schedule s);
      List<Schedule> deptSchedule(HashMap<String,String> hm);
-     List<RegularConsult> regularConSchedule(String s);
-     List<MarketingConsult>  marketingConSchedule(String s);
+     List<Consult> regularConSchedule(String s);
+     List<Consult>  marketingConSchedule(String s);
 }
