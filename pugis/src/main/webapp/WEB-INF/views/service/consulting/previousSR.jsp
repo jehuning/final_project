@@ -51,6 +51,7 @@
 		search_date = pickedDate.replaceAll('-','').substring(2,8);
 		
 		request = {
+
 			type: "get",
 			dataType: "text",
 			processData: false, 
@@ -71,13 +72,19 @@
 			request.data = 				
 				"search_date="+search_date;
 			request.success = function(result) {
+
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#totalsales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
+
 		$("#gendersales").on('click', function() {		
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
@@ -89,10 +96,15 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#gendersales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
+
 		$("#agesales").on('click', function() {		
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
@@ -104,10 +116,15 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#agesales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
+
 		$("#ticketsales").on('click', function() {	
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
@@ -119,10 +136,15 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#ticketsales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
+
 		$("#facilitysales").on('click', function() {	
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
@@ -134,8 +156,12 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#facilitysales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 	});
 	  	
@@ -240,7 +266,9 @@
       </div>
       <form name="updateForm" action="update" method="post">
         <input type="button" value="전일 매출 보고서 등록" class="upload" />
-        <input type="button" value="일일 매출 보고서 엑셀 저장" class="save" />
+      </form>
+      <form name="saveForm" action="/pugis2/sales/exceldown" method="post">
+        <input type="submit" value="일일 매출 보고서 엑셀 저장" class="save" />
       </form>
     </div>
 
