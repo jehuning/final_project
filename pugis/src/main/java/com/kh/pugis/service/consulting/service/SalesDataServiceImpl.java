@@ -119,7 +119,8 @@ public class SalesDataServiceImpl implements SalesDataService{
 	// 티켓 매출 리스트 출력
 	@Override
 	public List<ByTicketSales> ticketlist(String date)
-	{
+	{	
+		System.out.println("티켓매출서비스");
 		return sdd.ticketlist(date);
 	}
 	
