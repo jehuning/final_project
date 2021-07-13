@@ -19,15 +19,16 @@ import com.kh.pugis.service.consulting.service.SalesDataService;
 public class SalesDataController {
 	@Autowired
 	SalesDataService sds;
-	
+
 	@Autowired
 	SalesDataExcelService sdes;
 	
+
 	@RequestMapping(value = "/totallist")
 	public String totallist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
-
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+		System.out.println(date);
 		// date = "210707"; // 테스트용 날짜 지정
 		
 		model.addAttribute("totalSales", sds.totallist(date));
@@ -39,7 +40,7 @@ public class SalesDataController {
 	@RequestMapping(value = "/ticketlist")
 	public String ticketlist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		// date = "210622"; // 테스트용 날짜 지정
 		
@@ -52,8 +53,8 @@ public class SalesDataController {
 	@RequestMapping(value = "/agelist")
 	public String agelist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
-		
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+		System.out.println(date);
 		//date = "210622"; // 테스트용 날짜 지정
 		
 		model.addAttribute("ageSales", sds.agelist(date));
@@ -65,7 +66,7 @@ public class SalesDataController {
 	@RequestMapping(value = "/genderlist")
 	public String genderlist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		// date = "210622"; // 테스트용 날짜 지정
 		
@@ -78,7 +79,7 @@ public class SalesDataController {
 	@RequestMapping(value = "/facilitylist")
 	public String facilitylist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		// date = "210622"; // 테스트용 날짜 지정
 		
@@ -95,7 +96,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
 		sdes.totalExcelDown(date, resp);
@@ -106,7 +107,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
 		sdes.facilityExcelDown(date, resp);
@@ -117,7 +118,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
 		sdes.ticketExcelDown(date, resp);
@@ -128,7 +129,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
 		sdes.genderExcelDown(date, resp);
@@ -139,7 +140,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
 		sdes.ageExcelDown(date, resp);
