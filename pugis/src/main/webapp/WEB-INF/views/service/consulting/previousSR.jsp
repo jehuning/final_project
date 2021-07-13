@@ -25,7 +25,6 @@
 <body>
 
 <script type="text/javascript">
-
 // 페이지 이동
 	function Main() {
 		location.href="index.jsp";
@@ -36,19 +35,44 @@
 	}
 	
 // 일정 선택 >> DB 정보 주고받기
+	var pickedDate ;
+	var search_date;
+	
+	function dateChange(date){
+			pickedDate = date.value;
+			search_date = pickedDate.replaceAll('-','');
+		}
+	
+	
+	
 	$(function() {
-		var pickedDate = document.getElementById("pickdate").value;
-		var search_date = pickedDate.split('-');
+		document.getElementById('pickdate').valueAsDate = new Date();
+		pickedDate = document.getElementById('pickdate').value;
+		search_date = pickedDate.replaceAll('-','').substring(2,8);
+		
 		request = {
-			type: "post",
-			dataType: "json",
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			data: search_date
+
+			type: "get",
+			dataType: "text",
+			processData: false, 
+			cache : false,
+			contentType: 'application/x-www-form-urlencoded',
+			error: function(error) {
+				console.log("전송 실패");
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+			}		
 		}
 		
-		$("#totalsales").on('click', function() {			
-			request.url = "sales/totallist";
-			$.ajax(request).done(function(result) {
+		$("#totalsales").on('click', function() {		
+			pickedDate = document.getElementById('pickdate').value;
+			search_date = pickedDate.replaceAll('-','').substring(2,8);			
+			console.log(search_date);
+			request.url = "totallist";
+			request.data = 				
+				"search_date="+search_date;
+			request.success = function(result) {
+
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#totalsales").html();
 				$("#srresult").html(contents);
@@ -60,9 +84,15 @@
 			});
 		});
 		
-		$("#gendersales").on('click', function() {			
-			request.url = "sales/genderlist";
-			$.ajax(request).done(function(result) {
+
+		$("#gendersales").on('click', function() {		
+			pickedDate = document.getElementById('pickdate').value;
+			search_date = pickedDate.replaceAll('-','').substring(2,8);
+			console.log(search_date);
+			request.url = "genderlist";
+			request.data = 				
+				"search_date="+search_date;
+			request.success = function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#gendersales").html();
 				$("#srresult").html(contents);
@@ -74,9 +104,15 @@
 			});
 		});
 		
-		$("#agesales").on('click', function() {			
-			request.url = "sales/agelist";
-			$.ajax(request).done(function(result) {
+
+		$("#agesales").on('click', function() {		
+			pickedDate = document.getElementById('pickdate').value;
+			search_date = pickedDate.replaceAll('-','').substring(2,8);
+			console.log(search_date);
+			request.url = "agelist";
+			request.data = 				
+				"search_date="+search_date;
+			request.success = function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#agesales").html();
 				$("#srresult").html(contents);
@@ -88,9 +124,15 @@
 			});
 		});
 		
-		$("#ticketsales").on('click', function() {			
-			request.url = "sales/ticketlist";
-			$.ajax(request).done(function(result) {
+
+		$("#ticketsales").on('click', function() {	
+			pickedDate = document.getElementById('pickdate').value;
+			search_date = pickedDate.replaceAll('-','').substring(2,8);
+			console.log(search_date);
+			request.url = "ticketlist";
+			request.data = 				
+				"search_date="+search_date;
+			request.success = function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#ticketsales").html();
 				$("#srresult").html(contents);
@@ -102,9 +144,15 @@
 			});
 		});
 		
-		$("#facilitysales").on('click', function() {			
-			request.url = "sales/facilitylist";
-			$.ajax(request).done(function(result) {
+
+		$("#facilitysales").on('click', function() {	
+			pickedDate = document.getElementById('pickdate').value;
+			search_date = pickedDate.replaceAll('-','').substring(2,8);
+			console.log(search_date);
+			request.url = "facilitylist";
+			request.data = 				
+				"search_date="+search_date;
+			request.success = function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#facilitysales").html();
 				$("#srresult").html(contents);
@@ -194,8 +242,8 @@
     <div class="inner">
       <p class="show">전일 매출조회</p>
       <p class="select">일자 선택</p>
-      <form name="selectForm" action="select" method="post">
-        <input type="date" id="pickdate" placeholder="날짜 선택" />
+      <form name="selectForm" action="select" method="post" ">
+        <input type="date" id="pickdate" placeholder="날짜 선택" onchange="dateChange(this)"/>
       </form>
 
       <div class="sidemenu">

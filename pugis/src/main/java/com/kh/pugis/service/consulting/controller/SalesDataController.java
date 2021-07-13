@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.pugis.service.consulting.service.SalesDataExcelService;
 import com.kh.pugis.service.consulting.service.SalesDataService;
@@ -19,20 +21,26 @@ import com.kh.pugis.service.consulting.service.SalesDataService;
 public class SalesDataController {
 	@Autowired
 	SalesDataService sds;
-	
+
 	@Autowired
 	SalesDataExcelService sdes;
 	
+	@RequestMapping(value = "/lookup")
+	public String salesLookUp(HttpServletRequest req, Model model) {
+		
+		
+		return "service/consulting/previousSR";
+	}
+
 	@RequestMapping(value = "/totallist")
-	public String totallist(HttpServletRequest req, Model model) {
-		String date;
-		date = (String) req.getAttribute("search_date");
-		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+	public String totallist(Model model, @RequestParam String search_date) {
+			// 화면에서 받아온 날짜
+		System.out.println("토탈"+search_date);
 
 		// date = "210707"; // 테스트용 날짜 지정
 		
-		model.addAttribute("totalSales", sds.totallist(date));
-		model.addAttribute("totalSalesSum", sds.totalSum(date));
+		model.addAttribute("totalSales", sds.totallist(search_date));
+		model.addAttribute("totalSalesSum", sds.totalSum(search_date));
 		
 		return "service/consulting/totalsales_back";
 	}
@@ -40,9 +48,10 @@ public class SalesDataController {
 	@RequestMapping(value = "/ticketlist")
 	public String ticketlist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
-		
+		System.out.println("티켓"+date);
+
 		// date = "210622"; // 테스트용 날짜 지정
 		
 		model.addAttribute("ticketSales", sds.ticketlist(date));
@@ -54,9 +63,10 @@ public class SalesDataController {
 	@RequestMapping(value = "/agelist")
 	public String agelist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
-		
+		System.out.println(date);
+
 		//date = "210622"; // 테스트용 날짜 지정
 		
 		model.addAttribute("ageSales", sds.agelist(date));
@@ -68,9 +78,10 @@ public class SalesDataController {
 	@RequestMapping(value = "/genderlist")
 	public String genderlist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
-		
+		System.out.println(date);
+
 		// date = "210622"; // 테스트용 날짜 지정
 		
 		model.addAttribute("genderSales", sds.genderlist(date));
@@ -82,7 +93,7 @@ public class SalesDataController {
 	@RequestMapping(value = "/facilitylist")
 	public String facilitylist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		// date = "210622"; // 테스트용 날짜 지정
@@ -100,7 +111,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
@@ -112,7 +123,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
@@ -124,7 +135,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
@@ -136,7 +147,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		
@@ -148,7 +159,7 @@ public class SalesDataController {
 		// System.out.println("호출");
 		
 		String date;
-		date = (String) req.getAttribute("search_date");
+
 		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		// date = "210707";
 		

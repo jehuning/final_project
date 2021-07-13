@@ -81,4 +81,5 @@ public class SalesDataDaoImpl implements SalesDataDao {
 		return sqlSession.selectList("AgeSales.getAgeSales", date);
 	}
 	
+	
 }
