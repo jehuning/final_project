@@ -16,7 +16,7 @@ public interface SalesDataDao {
 	List<ByGenderSales> genderlist(String date);
 	List<ByFacilitySales> facilitylist(String date);
 
-	
+
 	// 엑셀 출력 Dao
 	List<TotalSales> totalsalelist(String date);
 	List<ByFacilitySales> facilitysalelist(String date);

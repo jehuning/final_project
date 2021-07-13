@@ -1,10 +1,10 @@
 package com.kh.pugis.service.consulting.domain;
 
 
-public class RegularConsultSelectDate
+public class ConsultScheduleDate
 {
 
-    public RegularConsultSelectDate()
+    public ConsultScheduleDate()
     {
     }
 

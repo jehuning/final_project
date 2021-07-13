@@ -15,5 +15,5 @@ public interface RegularConsultService
 
      PageMoveInfo CustomerPageMove(CustomerInfo customerinfo, PageInfo pageinfo);
 
-     String saveSchedule(RegularConsultSelectDate rcsd, CustomerInfoListDto cil);
+     String saveSchedule(ConsultScheduleDate rcsd, CustomerInfoListDto cil);
 }
