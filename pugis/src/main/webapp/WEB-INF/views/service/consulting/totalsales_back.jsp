@@ -42,6 +42,8 @@
 </table>
 
 
+
+
 <form action="/pugis/sales/totalexceldown" method="post">
 <input type="submit" value='엑셀 다운로드'>
 </form>
