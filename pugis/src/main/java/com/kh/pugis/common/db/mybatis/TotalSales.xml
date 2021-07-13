@@ -16,10 +16,9 @@
 		fsgroup.sum FSG, SUM(tsgroup.sum + fsgroup.sum) SUM
       	FROM CUSTOMER_INFO
         JOIN TSGROUP ON (customer_info.CUSTOMER_ID = TSGROUP.CUSTOMER_ID)
-        JOIN TICKET_PURCHASE ON (customer_info.customer_id = ticket_purchase.customer_id)
-        JOIN FSGROUP ON (ticket_purchase.ticket_pub_code = FSGROUP.ticket_pub_code)
-        WHERE TSGROUP.PURCHASE_DATE = '210707'
-        group by TSGROUP.purchase_date, customer_info.customer_id, Tsgroup.sum, fsgroup.sum 
+        JOIN FSGROUP ON (customer_info.customer_id = FSGROUP.ticket_pub_code)
+        WHERE TSGROUP.PURCHASE_DATE = #{PURCHASE_DATE}
+        group by TSGROUP.purchase_date, customer_info.customer_id, tsgroup.sum, fsgroup.sum
 	</select>
-	
+		
 </mapper>
