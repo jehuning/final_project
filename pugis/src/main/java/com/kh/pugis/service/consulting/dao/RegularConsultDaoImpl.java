@@ -21,9 +21,9 @@ public class RegularConsultDaoImpl
         return ((Integer)sqlSession.selectOne("Customer.countSelect", ci)).intValue();
     }
 
-    public List selectCustomer(HashMap hm)
+    public List<CustomerInfo> selectCustomer(HashMap hm)
     {
-        RegularConsultSelectDate rc = new RegularConsultSelectDate();
+        ConsultScheduleDate rc = new ConsultScheduleDate();
         System.out.println(hm.get("customer_address"));
         System.out.println(hm.get("customer_grade"));
         System.out.println(hm.get("page_begin"));

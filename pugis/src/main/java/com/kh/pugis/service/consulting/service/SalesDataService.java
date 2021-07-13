@@ -10,6 +10,7 @@ import com.kh.pugis.service.consulting.domain.ByTicketSales;
 import com.kh.pugis.service.consulting.domain.TotalSales;
 
 public interface SalesDataService {
+	// 각 항목 별 매출 리스트 출력
 	List<TotalSales> totallist(String date);
 	List<ByTicketSales> ticketlist(String date);
 	List<ByAgeSales> agelist(String date);

@@ -12,5 +12,39 @@
 			
 			
 	</insert>
+	<select id="allConsult" parameterType="hashmap" 
+			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
+		SELECT
+		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		FROM
+			CONSULT_SCHEDULE
+		WHERE
+		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
+		
+	</select>	
+	<select id="regularConsult" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
+			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
+		SELECT
+		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		FROM
+			CONSULT_SCHEDULE
+		WHERE
+			CONSULT_CODE = 'RG' 
+		AND
+		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
+		
+	</select>		
+	<select id="marketingConsult" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
+			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
+		SELECT
+		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		FROM
+			CONSULT_SCHEDULE
+		WHERE
+			CONSULT_CODE = 'MK' 
+		AND
+		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
+		
+	</select>	
 		
 </mapper>

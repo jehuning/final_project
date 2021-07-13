@@ -22,9 +22,10 @@ public class SalesDataDaoImpl implements SalesDataDao {
 		this.sqlSession = sqlSession;
 	}
 	
+	// 매출 조회
+	
 	@Override
 	public List<TotalSales> totallist(String date) {
-		
 		return sqlSession.selectList("TotalSales.getTotalSales", date);
 	}
 	
@@ -47,5 +48,38 @@ public class SalesDataDaoImpl implements SalesDataDao {
 	public List<ByFacilitySales> facilitylist(String date) {
 		return sqlSession.selectList("FacilitySales.getFacilitySales", date);
 	}
+
+	// 엑셀 출력
+	
+	@Override
+	public List<TotalSales> totalsalelist(String date) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("TotalSales.getTotalSales", date);
+	}
+	
+	@Override
+	public List<ByFacilitySales> facilitysalelist(String date) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("FacilitySales.getFacilitySales", date);
+	}
+	
+	@Override
+	public List<ByTicketSales> ticketsalelist(String date) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("TicketSales.getTicketSales", date);
+	}
+	
+	@Override
+	public List<ByGenderSales> gendersalelist(String date) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("GenderSales.getGenderSales", date);
+	}
+	
+	@Override
+	public List<ByAgeSales> agesalelist(String date) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("AgeSales.getAgeSales", date);
+	}
+	
 	
 }

@@ -7,6 +7,7 @@
 	<title>Test</title>
 </head>
 <body>
+<div id="ticketsales">
 <table border="1">
 <tr>
 <th>일자</th>
@@ -30,5 +31,11 @@
 		<td>${ticketSalesSum.ticket_salesSum}</td>
 	</tr>
 </table>
+
+
+
+
+</div>
+
 </body>
 </html>

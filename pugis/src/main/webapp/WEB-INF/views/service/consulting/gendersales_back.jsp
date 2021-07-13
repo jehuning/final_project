@@ -7,6 +7,7 @@
 	<title>Test</title>
 </head>
 <body>
+<div id="gendersales">
 <table border="1">
 <tr>
 <th>일자</th>
@@ -38,5 +39,11 @@
 		<td>${totalSalesSum.gender_salesSum}</td>
 	</tr>
 </table>
+
+
+
+
+</div>
+
 </body>
 </html>

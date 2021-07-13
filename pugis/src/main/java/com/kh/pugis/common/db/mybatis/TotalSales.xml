@@ -12,15 +12,13 @@
 	</resultMap>
 
 	<select id="getTotalSales" resultMap="result" parameterType="String">
-		SELECT ticket_purchase.purchase_date, CUSTOMER_INFO.customer_id, tsgroup.sum TSG,
+		SELECT TSGROUP.purchase_date, CUSTOMER_INFO.customer_id, tsgroup.sum TSG,
 		fsgroup.sum FSG, SUM(tsgroup.sum + fsgroup.sum) SUM
       	FROM CUSTOMER_INFO
-      JOIN TICKET_PURCHASE ON (customer_info.customer_id = ticket_purchase.customer_id)
-      JOIN TICKET_CLASS_INFO ON (ticket_purchase.ticket_class_code = ticket_class_info.ticket_class_code)
-        JOIN FSGROUP ON (ticket_purchase.ticket_pub_code = FSGROUP.ticket_pub_code)
         JOIN TSGROUP ON (customer_info.CUSTOMER_ID = TSGROUP.CUSTOMER_ID)
-        WHERE PURCHASE_DATE = '210707'
-        group by ticket_purchase.purchase_date, customer_info.customer_id, TSGROUP.customer_id, Tsgroup.sum, ticket_class_info.ticket_price, ticket_class_info.ticket_price, fsgroup.sum
+        JOIN FSGROUP ON (tsgroup.customer_id = fsgroup.customer_id)
+        WHERE TSGROUP.PURCHASE_DATE = #{PURCHASE_DATE}
+        group by TSGROUP.purchase_date, customer_info.customer_id, tsgroup.sum, fsgroup.sum
 	</select>
-	
+		
 </mapper>

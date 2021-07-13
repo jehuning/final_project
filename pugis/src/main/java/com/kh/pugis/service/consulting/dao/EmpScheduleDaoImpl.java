@@ -38,11 +38,11 @@ public class EmpScheduleDaoImpl
     {
         return sqlSession.selectList("Schedule.deptSchedule", hm);
     }
-    public List<RegularConsult> regularConSchedule(String s)
+    public List<Consult> regularConSchedule(String s)
     {
         return sqlSession.selectList("Schedule.regularCon", s);
     }
-    public List<MarketingConsult> marketingConSchedule(String s)
+    public List<Consult> marketingConSchedule(String s)
     {
         return sqlSession.selectList("Schedule.marketingCon", s);
     }
