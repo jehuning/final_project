@@ -43,60 +43,77 @@
 			type: "post",
 			dataType: "json",
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			data: search_date,
-			error: function(error) {
-				console.log("전송 실패");
-			}		
+			data: search_date
 		}
 		
 		$("#totalsales").on('click', function() {			
-			request.url = "/totallist";
-			request.success = function(result) {
+			request.url = "sales/totallist";
+			$.ajax(request).done(function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#totalsales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
 		$("#gendersales").on('click', function() {			
-			request.url = "/genderlist";
-			request.success = function(result) {
+			request.url = "sales/genderlist";
+			$.ajax(request).done(function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#gendersales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
 		$("#agesales").on('click', function() {			
-			request.url = "/agelist";
-			request.success = function(result) {
+			request.url = "sales/agelist";
+			$.ajax(request).done(function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#agesales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
 		$("#ticketsales").on('click', function() {			
-			request.url = "/ticketlist";
-			request.success = function(result) {
+			request.url = "sales/ticketlist";
+			$.ajax(request).done(function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#ticketsales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 		
 		$("#facilitysales").on('click', function() {			
-			request.url = "/facilitylist";
-			request.success = function(result) {
+			request.url = "sales/facilitylist";
+			$.ajax(request).done(function(result) {
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#facilitysales").html();
 				$("#srresult").html(contents);
-			}
-			$.ajax(request);
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("전송 실패");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
 		});
 	});
 	  	
@@ -201,7 +218,9 @@
       </div>
       <form name="updateForm" action="update" method="post">
         <input type="button" value="전일 매출 보고서 등록" class="upload" />
-        <input type="button" value="일일 매출 보고서 엑셀 저장" class="save" />
+      </form>
+      <form name="saveForm" action="/pugis2/sales/exceldown" method="post">
+        <input type="submit" value="일일 매출 보고서 엑셀 저장" class="save" />
       </form>
     </div>
 
