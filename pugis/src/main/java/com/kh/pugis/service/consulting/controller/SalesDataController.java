@@ -19,8 +19,11 @@ import com.kh.pugis.service.consulting.service.SalesDataService;
 public class SalesDataController {
 	@Autowired
 	SalesDataService sds;
+
 	@Autowired
 	SalesDataExcelService sdes;
+	
+
 	@RequestMapping(value = "/totallist")
 	public String totallist(HttpServletRequest req, Model model) {
 		String date;
