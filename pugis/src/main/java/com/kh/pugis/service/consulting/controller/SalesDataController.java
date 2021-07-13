@@ -1,11 +1,14 @@
 package com.kh.pugis.service.consulting.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.pugis.service.consulting.service.SalesDataExcelService;
 import com.kh.pugis.service.consulting.service.SalesDataService;
 
 /**
@@ -17,10 +20,14 @@ public class SalesDataController {
 	@Autowired
 	SalesDataService sds;
 	
+	@Autowired
+	SalesDataExcelService sdes;
+	
 	@RequestMapping(value = "/totallist")
 	public String totallist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 
 		// date = "210707"; // 테스트용 날짜 지정
 		
@@ -33,7 +40,8 @@ public class SalesDataController {
 	@RequestMapping(value = "/ticketlist")
 	public String ticketlist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		// date = "210622"; // 테스트용 날짜 지정
 		
@@ -46,7 +54,8 @@ public class SalesDataController {
 	@RequestMapping(value = "/agelist")
 	public String agelist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		//date = "210622"; // 테스트용 날짜 지정
 		
@@ -59,7 +68,8 @@ public class SalesDataController {
 	@RequestMapping(value = "/genderlist")
 	public String genderlist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		// date = "210622"; // 테스트용 날짜 지정
 		
@@ -72,12 +82,76 @@ public class SalesDataController {
 	@RequestMapping(value = "/facilitylist")
 	public String facilitylist(HttpServletRequest req, Model model) {
 		String date;
-		date = (String) req.getAttribute("search_date");	// 화면에서 받아온 날짜
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
 		
 		// date = "210622"; // 테스트용 날짜 지정
 		
 		model.addAttribute("facilitySales", sds.facilitylist(date));
 		model.addAttribute("facilitySalesSum", sds.facilitySum(date));
 		return "service/consulting/facilitysales_back";
+	}
+	
+	
+	// 엑셀 다운 컨트롤러
+	
+	@RequestMapping(value = "/totalexceldown")
+	public void totalExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.totalExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/facilityexceldown")
+	public void facilityExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.facilityExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/ticketexceldown")
+	public void ticketExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.ticketExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/genderexceldown")
+	public void genderExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.genderExcelDown(date, resp);
+	}
+	
+	@RequestMapping(value = "/ageexceldown")
+	public void ageExcelDown(HttpServletResponse resp, HttpServletRequest req) throws Exception {
+		// System.out.println("호출");
+		
+		String date;
+		date = (String) req.getAttribute("search_date");
+		date = (String) req.getParameter("search_date");	// 화면에서 받아온 날짜
+		// date = "210707";
+		
+		sdes.ageExcelDown(date, resp);
 	}
 }

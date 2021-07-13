@@ -59,7 +59,7 @@
 }
 .previousSR form[name=sortForm] > input[type=button]#totalsales {
   position: absolute;
-  right: 400px;
+  right: 311px;
 }
 .previousSR form[name=sortForm] > input[type=button]#gendersales {
   position: absolute;
@@ -78,7 +78,7 @@
   right: 0px;
 }
 .previousSR .srresult .inner {
-  position: absolute;
+  position: fixed;
   top: 200px;
   left: 350px;
   border: 1px solid #b6b5b5;
@@ -92,24 +92,33 @@
   color: #525252;
   padding: 7px 17px;
 }
-.previousSR form[name=updateForm] > input[type=button].save {
-	position: absolute;
-	right: 250px;
-}
 .previousSR form[name=updateForm] > input[type=button].upload {
-	position: absolute;
+	position: fixed;
 	right: 50px;
-}
-.previousSR form[name=updateForm] > input[type=button]::after {
-  content: ">";
-  margin-left: 5px;
 }
 .previousSR form[name=updateForm] > input[type=button]:hover {
   color: #fff;
   background-color: #b6b5b5;
   transition: .1s;
 }
-
+.previousSR form[name=saveForm] > input[type=submit] {
+  position: fixed;
+  top: 580px;
+  border: 1px solid #b6b5b5;
+  background-color: #fff;
+  padding: 4px 14px;
+  color: #525252;
+  padding: 7px 17px;
+}
+.previousSR form[name=saveForm] > input[type=submit].save {
+	position: fixed;
+	right: 250px;
+}
+.previousSR form[name=saveForm] > input[type=submit]:hover {
+  color: #fff;
+  background-color: #b6b5b5;
+  transition: .1s;
+}
 
 /* LIST TABLE */
 .srresult > table {
