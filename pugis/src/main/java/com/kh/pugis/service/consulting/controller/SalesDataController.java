@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.pugis.service.consulting.service.SalesDataExcelService;
 import com.kh.pugis.service.consulting.service.SalesDataService;
 
 /**
@@ -17,6 +19,9 @@ import com.kh.pugis.service.consulting.service.SalesDataService;
 public class SalesDataController {
 	@Autowired
 	SalesDataService sds;
+	
+	@Autowired
+	SalesDataExcelService sdes;
 	
 	@RequestMapping(value = "/totallist")
 	public String totallist(HttpServletRequest req, Model model) {
