@@ -40,7 +40,7 @@
 	
 	function dateChange(date){
 			pickedDate = date.value;
-			search_date = pickedDate.replaceAll('-','');
+			
 		}
 	
 	
@@ -76,12 +76,10 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#totalsales").html();
 				$("#srresult").html(contents);
-			}).fail(function(jqXHR, textStatus, errorThrown) {
-				console.log("전송 실패");
-				console.log(jqXHR);
-				console.log(textStatus);
-				console.log(errorThrown);
-			});
+				$("#excel").attr("action", "totalexceldown?search_date="+search_date);
+			}
+			$.ajax(request);
+		
 		});
 		
 
@@ -96,12 +94,10 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#gendersales").html();
 				$("#srresult").html(contents);
-			}).fail(function(jqXHR, textStatus, errorThrown) {
-				console.log("전송 실패");
-				console.log(jqXHR);
-				console.log(textStatus);
-				console.log(errorThrown);
-			});
+				$("#excel").attr("action", "genderexceldown?search_date="+search_date);
+			}
+			$.ajax(request);
+			
 		});
 		
 
@@ -116,12 +112,10 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#agesales").html();
 				$("#srresult").html(contents);
-			}).fail(function(jqXHR, textStatus, errorThrown) {
-				console.log("전송 실패");
-				console.log(jqXHR);
-				console.log(textStatus);
-				console.log(errorThrown);
-			});
+				$("#excel").attr("action", "ageexceldown?search_date="+search_date);
+			}
+			$.ajax(request);
+		
 		});
 		
 
@@ -136,12 +130,10 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#ticketsales").html();
 				$("#srresult").html(contents);
-			}).fail(function(jqXHR, textStatus, errorThrown) {
-				console.log("전송 실패");
-				console.log(jqXHR);
-				console.log(textStatus);
-				console.log(errorThrown);
-			});
+				$("#excel").attr("action", "ticketexceldown?search_date="+search_date);
+			}
+			$.ajax(request);
+			
 		});
 		
 
@@ -156,12 +148,10 @@
 				var html = jQuery('<div>').html(result);
 				var contents = html.find("div#facilitysales").html();
 				$("#srresult").html(contents);
-			}).fail(function(jqXHR, textStatus, errorThrown) {
-				console.log("전송 실패");
-				console.log(jqXHR);
-				console.log(textStatus);
-				console.log(errorThrown);
-			});
+				$("#excel").attr("action", "facilityexceldown?search_date="+search_date);
+			}
+			$.ajax(request);
+			
 		});
 	});
 	  	
@@ -242,7 +232,7 @@
     <div class="inner">
       <p class="show">전일 매출조회</p>
       <p class="select">일자 선택</p>
-      <form name="selectForm" action="select" method="post" ">
+      <form name="selectForm" action="select" method="post">
         <input type="date" id="pickdate" placeholder="날짜 선택" onchange="dateChange(this)"/>
       </form>
 
@@ -264,10 +254,8 @@
 			
 		</div>
       </div>
-      <form name="updateForm" action="update" method="post">
-        <input type="button" value="전일 매출 보고서 등록" class="upload" />
-      </form>
-      <form name="saveForm" action="/pugis2/sales/exceldown" method="post">
+     
+      <form id="excel" name="saveForm" action="/pugis/sales/exceldown" method="post">
         <input type="submit" value="일일 매출 보고서 엑셀 저장" class="save" />
       </form>
     </div>

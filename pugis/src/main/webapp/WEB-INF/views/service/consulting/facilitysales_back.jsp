@@ -35,9 +35,6 @@
 </table>
 
 
-<form action="/pugis/sales/facilityexceldown" method="post">
-	<input type="submit" value='엑셀 다운로드'>
-</form>
 
 </div>
 

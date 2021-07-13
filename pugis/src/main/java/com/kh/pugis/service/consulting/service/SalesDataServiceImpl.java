@@ -1,5 +1,6 @@
 package com.kh.pugis.service.consulting.service;
 
+import java.util.ArrayList;
 // import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +25,12 @@ public class SalesDataServiceImpl implements SalesDataService{
 	@Override
 	public List<TotalSales> totallist(String date)
 	{
-		/*	출력 확인용 테스트코드
-		List<TotalSales> l = new ArrayList<TotalSales>();
-		l = sdd.totallist(date);
-		System.out.println(l.get(0).getCustomer_id());
-		return l;
-		*/
+			//출력 확인용 테스트코드
+//		List<TotalSales> l = new ArrayList<TotalSales>();
+//		l = sdd.totallist(date);
+//		System.out.println(l.get(0).getCustomer_id());
+		
+		
 		return sdd.totallist(date);
 	}
 	
