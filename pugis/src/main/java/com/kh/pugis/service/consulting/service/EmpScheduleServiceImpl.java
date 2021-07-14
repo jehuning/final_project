@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.pugis.service.consulting.dao.EmpScheduleDao;
+import com.kh.pugis.service.consulting.domain.Consult;
 import com.kh.pugis.service.consulting.domain.Employee;
 import com.kh.pugis.service.consulting.domain.Schedule;
 
@@ -59,15 +60,14 @@ public class EmpScheduleServiceImpl
     	//현재날짜의 상담스케줄을 구해오고, 스케줄테이블에 추가
     	
     	String dept_id = esd.getDept(s);//직원의 부서아이디를 구해옴
-    	
+    	s.setSchedule_dept(dept_id);
     	
     	//부서아이디와 현재날짜 해당월의 말일로 스케줄을 검색함.
-    	s.setSchedule_dept(dept_id);
+    	
     	
     	LocalDate date = LocalDate.now();
     	String schedule_date = date.toString();
-    	s.setSchedule_date(schedule_date);
-    	//현재 날짜를 구함.
+    	//현재 날짜를 구함
     	int l = date.lengthOfMonth();
     	String last = String.valueOf(l);
     	
@@ -81,6 +81,14 @@ public class EmpScheduleServiceImpl
     	
     	return esd.deptSchedule(hm);
     }
-
-   
+    public List<Consult> rgConsultSchedule(Schedule s){
+    	LocalDate date = LocalDate.now();
+    	String schedule_date = date.toString();
+    	return esd.regularConSchedule(schedule_date);
+    }
+    public List<Consult> mkConsultSchedule(Schedule s){
+    	LocalDate date = LocalDate.now();
+    	String schedule_date = date.toString();
+    	return esd.marketingConSchedule(schedule_date);
+    }
 }

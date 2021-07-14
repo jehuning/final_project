@@ -36,8 +36,10 @@ public class AllConsultSearchServiceImpl
     	}
     }
 
-    public void executeConsult()
+    public void executeConsult(Consult c)
     {
+    	acsd.executeConsult(c);
+    	
     }
     
 }

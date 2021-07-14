@@ -34,8 +34,10 @@ public class AllConsultSearchDaoImpl
         return sqlSession.selectList("Consult.marketingSearch", csd);
     }
 
-    public void executeConsult()
+    public void executeConsult(Consult c)
     {
+    	
+    	sqlSession.update("Consult.updateContent", c);
     }
 
 }

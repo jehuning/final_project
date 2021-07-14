@@ -12,15 +12,13 @@
 	</resultMap>
 
 	<select id="getGenderSales" resultMap="result" parameterType="int">
-	SELECT ticket_purchase.purchase_date, customer_info.customer_gender, SUM(ticket_class_info.ticket_price) TICKETSUM,
-		SUM(facility_sales.customer_sales) FACILITYSUM, SUM(ticket_class_info.ticket_price + facility_sales.customer_sales) TOTALSUM 
+	 SELECT TSGROUP.purchase_date, customer_info.customer_gender, SUM(tsgroup.SUM) TICKETSUM,
+		SUM(fsgroup.SUM) FACILITYSUM, SUM(tsgroup.sum + fsgroup.sum) TOTALSUM 
       	FROM CUSTOMER_INFO
-      	JOIN TICKET_purchase ON (customer_info.customer_id = ticket_purchase.customer_id)
-        JOIN TICKET_CLASS_INFO ON (ticket_purchase.ticket_class_code = ticket_class_info.ticket_class_code)
-        JOIN facility_sales ON (ticket_purchase.ticket_pub_code = facility_sales.ticket_pub_code)
-        JOIN facility_info ON (facility_sales.facility_code = facility_info.faclility_code)
+      	JOIN TSGROUP ON (CUSTOMER_INFO.customer_id = TSGROUP.customer_id)
+        JOIN FSGROUP ON (tsgroup.customer_id = FSGROUP.CUSTOMER_ID)
         WHERE PURCHASE_DATE = #{PURCHASE_DATE}
-        GROUP BY customer_info.customer_gender, ticket_purchase.purchase_date
+        GROUP BY customer_info.customer_gender, TSGROUP.purchase_date
 	</select>
 		
 </mapper>

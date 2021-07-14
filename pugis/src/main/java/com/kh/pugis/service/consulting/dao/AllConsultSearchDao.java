@@ -11,5 +11,5 @@ public interface AllConsultSearchDao
 	List<Consult> allConsultSearch(ConsultScheduleDate csd);
 	List<Consult> regularConsultSearch(ConsultScheduleDate csd);
 	List<Consult> marketingConsultSearch(ConsultScheduleDate csd);
-    void executeConsult();
+    void executeConsult(Consult c);
 }

@@ -115,7 +115,7 @@ public class RegularConsultServiceImpl
     		extraRd=wn;
     	}
     	List<Integer> rdI = new ArrayList<Integer>();
-    	for(String cusmomer :cList){
+    	for(String customer :cList){
     			if(rdI.size()==0){
     				rdI.add(rd.nextInt(pn));
     			}else{
