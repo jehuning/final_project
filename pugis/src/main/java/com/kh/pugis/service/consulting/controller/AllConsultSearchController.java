@@ -48,12 +48,16 @@ public class AllConsultSearchController
     	//ajax로 스케줄 조회 결과 리턴
     }
     @RequestMapping(value = "/execute")
-    public void executeConsult()
-    {
+    public void executeConsult(Model model, @RequestParam("start") String consult_schedule_id, @RequestParam("content") String consult_content  )
+    {	
+    	
+    	Consult c = new Consult();
+    	c.setConsult_schedule_id(consult_schedule_id);
+    	c.setConsult_content(consult_content);
     	//해당 스케줄의 스케줄 아이디와 입력한 내용을 받아온다.
-    	
-    	//db에 해당 내용을 insert하는 메소드 호출
-    	
+    	acss.executeConsult(c);
+    	//db에 해당 내용을 update하는 메소드 호출
+    	//ajax로 update결과를 돌려줌
     }
 
     

@@ -38,28 +38,32 @@
 		 	SCHEDULE_DATE BETWEEN #{sDate} AND #{fDate}
 		
 	</select>
-	<select id="regularCon" parameterType="hashmap" 
+	<select id="regularCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		SELECT
-		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
 		FROM
 			CONSULT_SCHEDULE
+		JOIN 
+			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
 		WHERE
 			CONSULT_CODE = 'RG' 
 		AND
-		 	CONSULT_DATE BETWEEN #{sDate} AND #{fDate}
+		 	CONSULT_DATE  = #{date}
 		
 	</select>
-	<select id="marketingCon" parameterType="hashmap" 
+	<select id="marketingCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		SELECT
-		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
 		FROM
 			CONSULT_SCHEDULE
+		JOIN 
+			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
 		WHERE
-			CONSULT_CODE = 'MK' 
+			CONSULT_CODE LIKE 'MK%' 
 		AND
-		 	CONSULT_DATE BETWEEN #{sDate} AND #{fDate}
+		 	CONSULT_DATE = #{date}
 		
 	</select>
 		

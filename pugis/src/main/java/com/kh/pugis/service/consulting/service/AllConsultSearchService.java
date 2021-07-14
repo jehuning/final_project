@@ -9,7 +9,7 @@ public interface AllConsultSearchService
 {
 
 	List<Consult> consultSearch(String condition, ConsultScheduleDate csd);
-
+	
     
-    void executeConsult();
+    void executeConsult(Consult c);
 }
