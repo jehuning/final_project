@@ -20,6 +20,7 @@
 
 <link rel="stylesheet" href="${path}/resources/css/previousSR.css" />
 <link rel="stylesheet" href="${path}/resources/css/common.css" />
+<link rel="stylesheet" href="${path}/resources/css/tables.css" />
 
 </head>
 <body>
@@ -52,11 +53,11 @@
 		
 		request = {
 
-			type: "get",
+			type: "post",
 			dataType: "text",
 			processData: false, 
 			cache : false,
-			contentType: 'application/x-www-form-urlencoded',
+			contentType: 'application/json; charset=utf-8',
 			error: function(error) {
 				console.log("전송 실패");
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -70,7 +71,7 @@
 			console.log(search_date);
 			request.url = "totallist";
 			request.data = 				
-				"search_date="+search_date;
+				{"search_date":search_date};
 			request.success = function(result) {
 
 				var html = jQuery('<div>').html(result);
