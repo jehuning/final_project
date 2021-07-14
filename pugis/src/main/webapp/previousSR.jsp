@@ -20,7 +20,6 @@
 
 <link rel="stylesheet" href="${path}/resources/css/previousSR.css" />
 <link rel="stylesheet" href="${path}/resources/css/common.css" />
-<link rel="stylesheet" href="${path}/resources/css/tables.css" />
 
 </head>
 <body>
