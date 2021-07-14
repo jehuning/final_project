@@ -19,7 +19,7 @@
 			
 			
 	</insert>
-	<select id="allConsult" parameterType="hashmap" 
+	<select id="allSearch" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		SELECT
 		   CONSULT_SCHEDULE_ID, CONSULT_SCHEDULE.CUSTOMER_ID, customer_info.customer_name, CUSTOMER_INFO.CUSTOMER_GENDER, 
@@ -32,7 +32,7 @@
 		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
 		
 	</select>	
-	<select id="regularConsult" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
+	<select id="regularSearch" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		 SELECT
 		   CONSULT_SCHEDULE_ID, CONSULT_SCHEDULE.CUSTOMER_ID, customer_info.customer_name, CUSTOMER_INFO.CUSTOMER_GENDER, 
@@ -47,7 +47,7 @@
 		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
 		
 	</select>		
-	<select id="marketingConsult" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
+	<select id="marketingSearch" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql CONSULT_CODE 수정필요 -->
 		SELECT
 		   CONSULT_SCHEDULE_ID, CONSULT_SCHEDULE.CUSTOMER_ID, customer_info.customer_name, CUSTOMER_INFO.CUSTOMER_GENDER, 
@@ -60,6 +60,20 @@
 			CONSULT_CODE LIKE 'MK%' 
 		AND
 		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
+		
+	</select>	
+	<select id="specificMkSearch" parameterType="String" 
+			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql CONSULT_CODE 수정필요 -->
+		SELECT
+		   CONSULT_SCHEDULE_ID, CONSULT_SCHEDULE.CUSTOMER_ID, customer_info.customer_name, CUSTOMER_INFO.CUSTOMER_GENDER, 
+		   CUSTOMER_INFO.CUSTOMER_BIRTH, CUSTOMER_INFO.CUSTOMER_ADDRESS,CUSTOMER_INFO.CUSTOMER_PHONE, CONSULT_DATE, CONSULT_CONTENT
+		FROM
+			CONSULT_SCHEDULE
+		JOIN 
+			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
+		WHERE
+			CONSULT_CODE = #{condition} 
+		
 		
 	</select>	
 	<update id="updateContent" parameterType="com.kh.pugis.service.consulting.domain.Consult" >

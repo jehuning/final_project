@@ -33,11 +33,15 @@ public class AllConsultSearchDaoImpl
        
         return sqlSession.selectList("Consult.marketingSearch", csd);
     }
+    public List<Consult> specificMkConsultSearch(String condition){
+    	return sqlSession.selectList("Consult.specificMkSearch", condition);
+    }
 
     public void executeConsult(Consult c)
     {
     	
     	sqlSession.update("Consult.updateContent", c);
+    	//변경성공시 성공 메시지 전달
     }
 
 }

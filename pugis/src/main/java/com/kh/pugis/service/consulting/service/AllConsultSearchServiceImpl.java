@@ -30,9 +30,11 @@ public class AllConsultSearchServiceImpl
 
     public List<Consult> consultSearch(String condition,ConsultScheduleDate csd)
     {	switch (condition){
-		case "전체" :	return acsd.allConsultSearch(csd);
-		case "우수" :return acsd.regularConsultSearch(csd);
-		default :return acsd.marketingConsultSearch(csd);
+		case "ALL" :	return acsd.allConsultSearch(csd);
+		case "RG" :return acsd.regularConsultSearch(csd);
+		case "MK" :return acsd.marketingConsultSearch(csd);
+		default : return acsd.specificMkConsultSearch(condition);
+		//특정 마케팅 코드로 스케줄을 조회하는 기능 (화면단에서 특정 마케팅 스케줄 선택시 해당 마케팅상담코드를 condition으로 넘겨줌
     	}
     }
 
