@@ -4,7 +4,10 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Test</title>
+<title>전일 매출 보고서</title>
+
+<link rel="stylesheet" href="${path}/resources/css/table.css" />
+<link rel="stylesheet" href="${path}/resources/css/common.css" />
 </head>
 <body>
 <div id="ticketsales">

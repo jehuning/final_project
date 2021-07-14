@@ -83,24 +83,6 @@
   left: 350px;
   border: 1px solid #b6b5b5;
 }
-.previousSR form[name=updateForm] > input[type=button] {
-  position: absolute;
-  top: 580px;
-  border: 1px solid #b6b5b5;
-  background-color: #fff;
-  padding: 4px 14px;
-  color: #525252;
-  padding: 7px 17px;
-}
-.previousSR form[name=updateForm] > input[type=button].upload {
-	position: fixed;
-	right: 50px;
-}
-.previousSR form[name=updateForm] > input[type=button]:hover {
-  color: #fff;
-  background-color: #b6b5b5;
-  transition: .1s;
-}
 .previousSR form[name=saveForm] > input[type=submit] {
   position: fixed;
   top: 580px;
@@ -125,8 +107,3 @@
   border: 1px solid #b6b5b5
 }
 
-
-/* DATEPICKER */
-#datepicker {
-	z-index: 99;
-}
