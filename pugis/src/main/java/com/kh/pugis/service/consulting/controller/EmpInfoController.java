@@ -31,6 +31,7 @@ public class EmpInfoController
     	// 화면에 출력될 직원정보, 직원스케줄, 부서스케줄 데이터를 직원 메인페이지로 리턴
 		Employee e = new Employee();
 		e.setEmp_id(emp_id);
+		
 		Schedule s = new Schedule();
 		s.setEmp_id(emp_id);
 		
@@ -38,8 +39,9 @@ public class EmpInfoController
 		System.out.println("테스트");
 	
         model.addAttribute("empSummary", eis.empInfoSummary(e));
-//        model.addAttribute("scheduleList", ess.empSchedule(s)); //직원스케줄 가져오기
-
+//        model.addAttribute("scheduleList", ess.empSchedule(s)); //직원스케줄 가져와서 화면 호출시 출력하도록 보내줌
+//      model.addAttribute("scheduleList", ess.deptSchedule(s)); //부서스케줄 가져오기  화면 호출시 출력 보내줌
+//      model.addAttribute("scheduleList", ess.consultSchedule(s)); //상담스케줄 가져오기  화면 호출시 출력 보내줌
         return "service/consulting/index";
     }
     

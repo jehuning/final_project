@@ -8,27 +8,28 @@ public class Schedule
     {
     }
 
-    String schedule_date;
-    String Schedule_dept;
+    String start_date;
+    String end_date;
+    String schedule_dept;
     String emp_id;
-    String Schedule_name;
-	public String getSchedule_date() {
-		return schedule_date;
+    String schedule_name;
+	public String getStart_date() {
+		return start_date;
 	}
-	public void setSchedule_date(String schedule_date) {
-		this.schedule_date = schedule_date;
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+	public String getEnd_date() {
+		return end_date;
+	}
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
 	public String getSchedule_dept() {
-		return Schedule_dept;
+		return schedule_dept;
 	}
 	public void setSchedule_dept(String schedule_dept) {
-		Schedule_dept = schedule_dept;
-	}
-	public String getSchedule_name() {
-		return Schedule_name;
-	}
-	public void setSchedule_name(String schedule_name) {
-		Schedule_name = schedule_name;
+		this.schedule_dept = schedule_dept;
 	}
 	public String getEmp_id() {
 		return emp_id;
@@ -36,6 +37,13 @@ public class Schedule
 	public void setEmp_id(String emp_id) {
 		this.emp_id = emp_id;
 	}
+	public String getSchedule_name() {
+		return schedule_name;
+	}
+	public void setSchedule_name(String schedule_name) {
+		this.schedule_name = schedule_name;
+	}
+	
     
     
 }
