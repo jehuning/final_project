@@ -21,6 +21,7 @@ public class EmpScheduleController
 	
 	@RequestMapping(value = "/calendar")
 	public void scheduleCalendar(){
+		//달력의 월을 이동 했을 때 호출..
 		
 		ess.scheduleCalendar();
 	}
@@ -30,7 +31,7 @@ public class EmpScheduleController
 		
 	}
 	@RequestMapping(value = "/dep")
-	public void depSchedule(Model model,HttpServletRequest req){
+	public void deptSchedule(Model model,HttpServletRequest req){
 		
 		
 	}
