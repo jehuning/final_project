@@ -27,10 +27,10 @@ public class RegularConsultController
     {
     }
     @RequestMapping(value = "/main")
-    public String printMain(HttpServletRequest req, Model model)
+    public String printMain()
     {	//우수고객상담 스케줄 메뉴 선택시 호출됨. 메인페이지로 이동
     	
-        return "service/consulting/consultPage1";
+        return "service/consulting/consultingPage1";
     }
 	@RequestMapping(value = "/customer")
     public String selectCustomer(Model model, @RequestParam(value="p", defaultValue="1")int currentPage)
