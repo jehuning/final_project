@@ -24,7 +24,7 @@
 				var deleteYN = confirm("삭제하시겠습니까?");
 				if(deleteYN == true){
 					
-				formObj.attr("action", "/pugis2/qna/delete");
+				formObj.attr("action", "/pugis/qna/delete");
 				formObj.attr("method", "post");
 				formObj.submit();
 					
@@ -34,25 +34,25 @@
 			// 목록
 			$(".list_btn").on("click", function(){
 				
-				location.href = "http://localhost:8090/pugis2/qna/list";
+				location.href = "http://localhost:8090/pugis/qna/list";
 			})
 			
 			// 댓글 작성
 			$(".replyWriteBtn").on("click", function(){
 				var formObj = $("form[name='replyForm']");
-				formObj.attr("action", "/pugis2/qna/replyWrite");
+				formObj.attr("action", "/pugis/qna/replyWrite");
 				formObj.submit();
 			});
 			
 			//댓글 삭제
 			$(".replyDeleteBtn").on("click", function(){
 				if(confirm("삭제 하시겠습니까?")){
-					formObj.attr("action", "/pugis2/qna/replyDelete");
+					formObj.attr("action", "/pugis/qna/replyDelete");
 					formObj.attr("method", "post");
 					formObj.submit();
 				}
 				
-				location.href = "/pugis2/qna/replyDelete?reg_id=${read.reg_id}"
+				location.href = "/pugis/qna/replyDelete?reg_id=${read.reg_id}"
 				+ "&page=${scri.page}"
 				+ "&perPageNum=${scri.perPageNum}"
 				+ "&searchType=${scri.searchType}"
@@ -64,11 +64,14 @@
 		})
 	</script>
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 *{
   margin: 0;
   padding: 0;
   user-select: none;
   box-sizing: border-box;
+  color: #707070;
+  font-family: 'Jeju Gothic', sans-serif;
 }
 #all{
 width:100%
@@ -79,7 +82,7 @@ width:100%
   width: 20%;
   height: 100%;
   left: 0;
-  border-right: 3px solid;
+  border-right: 1px solid;
   float:left;
 }
 .sidebar .text{
@@ -91,6 +94,7 @@ width:100%
 }
 #main{
 	text-decoration: none;
+	 color: #707070;
 }
 nav ul{
   height: 100%;
@@ -99,7 +103,7 @@ nav ul{
 }
 nav ul li{
   line-height: 60px;
-  border-top: 3px solid;
+  border-top: 0px solid;
 }
 
 nav ul li a{
@@ -110,7 +114,9 @@ nav ul li a{
   display: block;
   width: 100%;
   padding-left: 40px;
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
+  font-weight: bold;
+  color: #707070;
 }
 nav ul ul li{
   line-height: 42px;
@@ -119,6 +125,8 @@ nav ul ul li{
 nav ul ul li a{
   font-size: 17px;
   padding-left: 80px;
+  font-weight: bold;
+  color: #707070;
 }
 nav ul ul{
   position: static;
@@ -139,27 +147,27 @@ nav ul .show-3.show3{
     float:right;   
 }
 #maintitle{
-	 margin-left:50px;
-	 margin-top:50px;
+	 margin-left: 50px;
+	 margin-top: 50px;
 	 
 }
 #box{
    width: 60%;
    height:50px;
    margin-top:50px;
-   border: 3px solid black;
+   border: 1px solid black;
    border-radius:5px;
 }
 #btn{
 	width:80px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:5px;
 }
 .btn2{
 	width:100px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:50px;
 	margin-left:100px;
 }
@@ -180,7 +188,7 @@ nav ul .show-3.show3{
 	margin-right: auto;
 	text-align: center;
 	border-collapse: collapse;  
-	border: 3px solid black;
+	border: 1px solid black;
 }
 #name{
 	background-color: #bbdefb;
@@ -249,9 +257,11 @@ table tr {
 }
 #headline label{
 	font-size: 18px;
+	font-weight:middle;
 }
 #midle label {
 	font-size: 18px;
+	font-weight:middle;
 }	
 #title{
 	width:30%;
@@ -271,23 +281,25 @@ table tr {
 }
 #anscontent{
 	width:100%;
-	height:100px;
-	overflow : hidden;
+	height:150px;
+	resize: none; 
 	font-size:18px;
-	border: 3px solid;
+	border: 1px solid;
 	padding:10px;
+	overflow-y: scroll;
 }
 #midlebtn button{
 	width:80px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:5px;
 	font-size: 18px;
+	font-weight:middle;
 }
 #answerbtn button{
 	width:80px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:5px;
 	font-size: 18px;
 }
@@ -301,11 +313,12 @@ table tr {
 }
 #answer_content{
 	width:100%;
-	height:100px;
-	overflow : hidden;
+	height:150px;
 	font-size: 18px;
-	border: 3px solid;
+	border: 1px solid;
 	padding:10px;
+	resize: none; 
+	overflow-y: scroll;
 }
 #reply{
 	margin-top:25px;
@@ -345,22 +358,24 @@ table tr {
 }
 #ansinabox{
 	width:100%;
-	height:100px;
+	height:150px;
 	padding:10px;
-	border:3px solid black;
-	overflow : hidden;
+	border:1px solid black;
+	resize: none; 
 	font-size: 18px;
+	overflow-y: scroll;
 }
 #replybutton button{
 	width:80px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:5px;
 	font-size: 18px;
 }
 #titlelink{
 	text-decoration: none;
 }
+
 </style>
 </head>
 <body>
@@ -388,7 +403,7 @@ table tr {
 				<li><a href="#">fff</a></li>			
 			</ul>
 			</li>	
-			<li><a href="/pugis/qna/list">고객의 소리(Q&A)</a></li>	
+			<li><a href="qna.jsp">고객의 소리(Q&A)</a></li>	
 			<li><a href="#" class="btn-3">고객 설문<span class="fas fa-caret-down third"></span></a>
 			<ul class="show-3">
 				<li><a href="#">ccc</a></li>
@@ -400,7 +415,7 @@ table tr {
 	</nav>
 
 	<div id="content">
-		<h1 id="maintitle" ><a id ="titlelink" href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></h1>
+		<h1 id="maintitle" ><a id ="titlelink" href="qna.jsp">고객의 소리(Q&A)</a></h1>
 				
 				<form id = "headline">
 					<label for="title" class="col-sm-2 control-label">제목</label>
