@@ -93,17 +93,18 @@
   padding: 7px 17px;
 }
 .previousSR form[name=saveForm] > input[type=submit].save {
-	position: fixed;
-	right: 250px;
+	position: absolute;
+	right: 0px;
 }
-.previousSR form[name=saveForm] > input[type=submit]:hover {
+.previousSR form[name=saveForm] > input[type=submit].save:hover {
   color: #fff;
   background-color: #b6b5b5;
   transition: .1s;
 }
 
 /* LIST TABLE */
-.srresult > table {
-  border: 1px solid #b6b5b5
+.srresult > #srresult {
+  	width: 100%;
+  	overflow: auto;
 }
 
