@@ -15,11 +15,14 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 *{
   margin: 0;
   padding: 0;
   user-select: none;
   box-sizing: border-box;
+  color: #707070;
+  font-family: 'Jeju Gothic', sans-serif;
 }
 #side{
 with:100%
@@ -30,7 +33,7 @@ with:100%
   width: 20%;
   height: 100%;
   left: 0;
-  border-right: 3px solid;
+  border-right: 1px solid;
   float:left;
 }
 .sidebar .text{
@@ -42,6 +45,7 @@ with:100%
 }
 #main{
 	text-decoration: none;
+	 color: #707070;
 }
 nav ul{
   height: 100%;
@@ -50,7 +54,7 @@ nav ul{
 }
 nav ul li{
   line-height: 60px;
-  border-top: 3px solid;
+  border-top: 0px solid;
 }
 
 nav ul li a{
@@ -61,7 +65,9 @@ nav ul li a{
   display: block;
   width: 100%;
   padding-left: 40px;
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
+  font-weight: bold;
+  color: #707070;
 }
 nav ul ul li{
   line-height: 42px;
@@ -70,6 +76,8 @@ nav ul ul li{
 nav ul ul li a{
   font-size: 17px;
   padding-left: 80px;
+  font-weight: bold;
+  color: #707070;
 }
 nav ul ul{
   position: static;
@@ -92,29 +100,35 @@ nav ul .show-3.show3{
 #title{
 	 margin-left:50px;
 	 margin-top:50px;
+	 font-weight: 800;
+}
+#title a{
+	 font-weight: 800;
+	 color: #707070;
 }
 #box{
    width: 60%;
    height:50px;
    margin-top:50px;
-   border: 3px solid black;
+   border: 1px solid black;
    border-radius:5px;
 }
 #btn{
 	width:80px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:5px;
 }
 .btn2{
 	width:100px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:50px;
 	margin-left:100px;
 }
 .searchbox{
 	text-align: center;
+	
 }
 .manybtn{
 	text-align: center;
@@ -131,7 +145,7 @@ nav ul .show-3.show3{
 	margin-right: auto;
 	text-align: center;
 	border-collapse: collapse;  
-	border: 3px solid black;
+	border: 1px solid black;
 }
 #name{
 	background-color: #bbdefb;
@@ -167,23 +181,25 @@ table tr {
 }
 #typelist{
 	height : 50px;
-	border: 3px solid black;
+	border: 1px solid black;
 	border-radius:5px;
 	font-size: 18px;
+	color: #707070;
 }
 #keywordInput{
 	width:50%;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:5px;
 	font-size: 18px;
 }
 #searchBtn{
 	width:80px;
 	height:50px;
-	border: 3px solid;
+	border: 1px solid;
 	border-radius:5px;
 	font-size: 18px;
+	 color: #707070;
 }
 #searchlist{
 	width:65%;
@@ -192,6 +208,7 @@ table tr {
 	margin-right: auto;
 	text-align: center;
 	font-size: 20px;
+	
 }
 #pagenum{
 	width:80%;
@@ -214,14 +231,19 @@ table tr {
     margin-top:50px;
 }
 .catebtn{
-	width:80px;
+	width:100px;
 	height:50px;
-	border: 3px solid;
-	border-radius:5px;
+	border: 1px solid;
+	border-radius:50px;
 	font-size: 18px;
 	margin-left: 40px;
 	margin-right: 40px;
+	color: #707070;
 }
+#tablebody tr{
+	border: 1px;
+}
+
 </style>
 </head>
 <body>
@@ -249,7 +271,7 @@ table tr {
 				<li><a href="#">fff</a></li>			
 			</ul>
 			</li>	
-			<li><a href="/pugis/qna/list">고객의 소리(Q&A)</a></li>	
+			<li><a href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></li>	
 			<li><a href="#" class="btn-3">고객 설문<span class="fas fa-caret-down third"></span></a>
 			<ul class="show-3">
 				<li><a href="#">ccc</a></li>
@@ -261,7 +283,7 @@ table tr {
 	</nav>
 	</div>
 	<div id="content">
-		<h1 id="title"><a id ="titlelink" href="/pugis/qna/list">고객의 소리(Q&A)</a></h1>
+		<h1 id="title"><a id ="titlelink" href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></h1>
 				<form id = "searchBox">
 							<select name="searchType" class="form-control" id ="typelist">
 								<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
@@ -269,14 +291,13 @@ table tr {
 								<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 								<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
 							</select>
-								<input type="text" name="keyword" id="keywordInput" value="<c:if test="${scri.searchType == 't' || scri.searchType == 'c' || scri.searchType == 'tc'}"><c:out value="${scri.keyword}" /></c:if>" class="form-control"/>
+								<input type="text" name="keyword" id="keywordInput" value="<c:if test="${scri.searchType == 't' or 'c' or 'tc'}"><c:out value="${scri.keyword}" /></c:if>" class="form-control"/>
 								<span class="input-group-btn">
 									<button id="searchBtn" type="button" class="btn btn-default">검색</button> 	
 								</span>
-								<br/>
-								<br/>
+					</form>			
 					 <%-- 카테고리 버튼 --%>	
-					<div class="category row">
+					<div class="category row" id ="category">
 						<div class="col-xs-2 col-sm-2">				
 								<button class="catebtn" id="facilityBtn" type="button" <c:out value="${scri.searchType eq 'facility' ? 'selected' : ''}"/>>시설</button>
 								<button class="catebtn" id="ticketBtn" type="button" <c:out value="${scri.searchType eq 'ticket' ? 'selected' : ''}"/>>티켓</button>
@@ -314,7 +335,7 @@ table tr {
 								 });
 							 });   
 						</script>
-					</form>
+		
 
 				<form role="form" method="get">
 		
@@ -322,8 +343,9 @@ table tr {
 						<thead>
 							<tr><th>카테고리</th><th>제목</th><th>작성자</th><th>등록일</th></tr>
 						</thead>
-						
+				
 						<c:forEach items="${list}" var = "list">
+						<tbody id ="tablebody">
 							<tr>
 								<td><c:out value="${list.question_category}" /></td>
 								<td>
@@ -332,6 +354,7 @@ table tr {
 								<td><c:out value="${list.customer_id}" /></td>
 								<td><fmt:formatDate value="${list.reg_date}" pattern="yyyy-MM-dd"/></td>
 							</tr>
+							</tbody>
 						</c:forEach>					
 					</table>
 			</form>
@@ -348,6 +371,24 @@ table tr {
 								<a class="page123" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a>
 							</c:if> 				
 					</div>
+					
+	<!--			<div class="col-md-offset-3" id = "pagenum">
+						<ul class="pagination">
+							<c:if test="${pageMaker.prev}">
+								<li ><a class="page123" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+							</c:if> 
+							
+							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+								<li<c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
+								<a class="page123" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+							</c:forEach>
+							
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li><a class="page123" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+							</c:if> 
+						</ul>
+					</div>
+					  -->		
 	      <script>
          $('.btn').click(function(){
            $(this).toggleClass("click");
