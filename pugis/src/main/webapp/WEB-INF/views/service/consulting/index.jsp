@@ -14,6 +14,10 @@
 
 <link rel="stylesheet" href="${path}/resources/css/main.css" type="text/css"/>
 <link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
+
+<!-- FULLCALENDAR -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css">
 </head>
 <body>
 
@@ -30,6 +34,15 @@
 		location.href="srList.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
 	  	
+	
+	document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+	
 </script>
 	
 	<!-- SIDEBAR -->
@@ -109,23 +122,27 @@
   <section class="schedule">
     <div class="inner">
       
-      <a href="javascript:void(0)" class="profile">
-				<img src="${path}/resources/images/main_temp.jpg" alt="profile"> <!-- db에서 얻은 프로필파일명으로 src주소 진입 -->
-			</a>
-      <div class="emp__info">
+      	<a href="javascript:void(0)" class="profile">
+			<img src="${path}/resources/images/main_temp.jpg" alt="profile"> <!-- db에서 얻은 프로필파일명으로 src주소 진입 -->
+		</a>
+      	<div class="emp__info">
         <div class="emp__dept">${empSummary.dept_name}</div>
         <div class="emp__position">
-          <span class="emp__name">${empSummary.emp_name}</span>
-          <span class="emp__grade">${empSummary.job_name}</span>
+          	<span class="emp__name">${empSummary.emp_name}</span>
+          	<span class="emp__grade">${empSummary.job_name}</span>
         </div>
         <div class="emp__attendBtn">
-          <a href="javascript:void(0)" class="btn">출근</a><!-- Ajax로 컨트롤러 호출(직원 세션아이디 넘김) -->
-          <a href="javascript:void(0)" class="btn">퇴근</a>
+          	<a href="javascript:void(0)" class="start">출근</a>   <!-- Ajax로 컨트롤러 호출(직원 세션아이디 넘김) -->
+          	<a href="javascript:void(0)" class="leave">퇴근</a>
         </div>
         <div class="emp__details">
-          <a href="javascript:void(0)" class="attend__more">상세 출결현황</a><br />
-          <a href="javascript:void(0)" class="emp__more">사원정보</a>
+         	 <a href="javascript:void(0)" class="attend__more">상세 출결현황</a><br />
+         	 <a href="javascript:void(0)" class="emp__more">사원정보</a>
         </div>
+      </div>
+      
+      <div id="calendar">
+      
       </div>
     </div>
   </section>
