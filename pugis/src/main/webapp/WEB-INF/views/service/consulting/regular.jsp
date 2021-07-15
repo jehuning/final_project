@@ -1,23 +1,29 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<c:set var="path" value="${pageContext.request.contextPath}" />
-
-
-
-
-<!DOCTYPE html>
+<c:set var="path" value="${pageContext.request.contextPath}" />    
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>웹 1366 – 8</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>우수고객 상담</title>
 	<style id="applicationStylesheet" type="text/css">
-
-
+		/* 페이지리스트 가로정렬 */ 
+		ul {
+		    list-style:none;
+		    margin:0;
+		    padding:0;
+			}
+			
+		li {
+		    margin: 0 0 0 0;
+		    padding: 0 0 0 0;
+		    border : 0;
+		    float: left;
+			}
 
 
 
@@ -43,7 +49,6 @@
 			position: absolute;
 			width: 1366px;
 			height: 768px;
-			background-color: rgba(255,255,255,1);
 			overflow: hidden;
 			--web-view-name: 웹 1366 – 8;
 			--web-view-id: _1366__8;
@@ -321,8 +326,12 @@
 
 		/*checkbox*/
 		.put_custom_wrap {
-			position: relative;
-			margin: 20px;
+			z-index: 1;
+			position: absolute;
+			width: 130px;
+			height: 31px;
+			left: 810px;
+			top: 285px;
 		}
 
 			.put_custom_wrap input[type=checkbox]::-ms-check {
@@ -331,7 +340,7 @@
 
 			.put_custom_wrap input[type=checkbox] {
 				-webkit-appearance: none;
-				position: absolute;
+				position: relative;
 				top: 2px;
 				left: -1px;
 				width: 22px;
@@ -392,8 +401,8 @@
 		}
 
 		#VipCustomerConsultingTitle {
-			left: 219px;
-			top: 89px;
+			left: 230px;
+			top: 120px;
 			position: absolute;
 			overflow: visible;
 			width: 131px;
@@ -408,7 +417,7 @@
 
 		/* 1차배경 */
 		#RectField {
-			fill: #EBEBEB;
+			fill: #f2f2f1;
 			border: solid 1px #707070;
 		}
 
@@ -496,7 +505,15 @@
 			color: rgba(112,112,112,1);
 		}
 
-
+		#searchedCustomer{
+			position: absolute;
+			overflow: scroll;
+			width: 473px;
+			height: 285px;
+			left: 811px;
+			top: 310px;
+			
+		}
 
 		#CustomerFindField {
 			fill: #FFFFFF;
@@ -510,7 +527,6 @@
 
 		.CustomerFindField {
 			position: absolute;
-			overflow: visible;
 			width: 473px;
 			height: 285px;
 			left: 811px;
@@ -519,7 +535,7 @@
 
 
 		#CustomerFindFieldCheckBox {
-			z-index: 2;
+			z-index: 1;
 			color: rgba(112,112,112,1);
 			stroke-width: 1px;
 			position: absolute;
@@ -530,14 +546,9 @@
 			top: 384px;
 		}
 
-		#CustomerFindFieldAllCheckBox {
-			position: absolute;
-			overflow: visible;
-			left: 827px;
-			top: 323px;
-		}
 
 		#CustomerFindFieldNumb {
+			z-index:1;
 			fill: #FFFFFF;
 			stroke: rgba(112,112,112,1);
 			stroke-width: 1px;
@@ -550,7 +561,8 @@
 			width: 135px;
 			height: 22px;
 			left: 968px;
-			top: 564px;
+			top: 595px;
+			border: solid 1px black;
 		}
 
 
@@ -682,19 +694,21 @@
 	</style>
 
 
-
-
-
-
-
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!--브라우저 스타일 초기화-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+	
+	<!-- AJAX -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+	<!-- jQuery -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 	<script>$('textarea:first').click(function () {
 			$t = $(this).val().replace(/<br\s*\/?>/img, "x");
 			$(this).html($t)
 		});</script>
+	
+	<!-- 스케줄날짜지정 js -->
 	<script>
 	var sDate;
 	var fDate;
@@ -713,49 +727,207 @@
 	}
 	
 	</script>
-	<script>
+	
+	<!--고객조회버튼 ajax-->
+	<script> 
 	$(function() {
 		
-		request = {
-			type: "get",
-			dataType: "text",
-			processData: false, 
-			cache : false,
-			contentType: 'application/x-www-form-urlencoded',
-			error: function(error) {
-				console.log("전송 실패");
-				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-			}		
-		}
-		
 		$("#SearchBtn").on('click', function() {		
-			var pagePrintNumber = $("#CustomerPrintCount").value();
-			var address = $("#RegionSelect").value();
-			var grade = $("#CustomerGrade").value();
+			var pageListSize = $("#CustomerPrintCount").val();
+			var address = $("#RegionSelect").val();
+			var grade = $("#CustomerGrade").val();
 			
-			request.url = "customer";
-			request.data = 				
-				{"pagePrintNumber":pagePrintNumber, "address":address, "p":"1", "grade":grade};
-			request.success = function(result) {
+			$.ajax({
+				type: "get",
+				url : "customer",
+				dataType: "text",
+				cache : false,
+				contentType: 'application/json; charset=utf-8',
+				data :				
+				{"plsize":pageListSize, "address":address, "p":"1", "grade":grade},
+				success : function(result) {
 
-				var html = jQuery('<div>').html(result);
-				var contents = html.find("div#totalsales").html();
-				$("#srresult").html(contents);
-				$("#excel").attr("action", "totalexceldown?search_date="+search_date);
-			}
-			$.ajax(request);
-		
+					var html = jQuery('<div>').html(result);
+					var contents = html.find("div#customerList").html();
+					$("#searchedCustomer").html(contents);
+					
+					var page = html.find("div#pageList").html();
+					$("#CustomerFindFieldNumb").html(page);
+				},
+				error: function(error) {
+					console.log("전송 실패");
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}		
+			});
 		});
+	});
+	</script>
 	
+	<!--페이지조회버튼 ajax-->
+	<script> 
+	function intoPage(){
+			var p = $(".page").text();
+			var pageListSize = $("#CustomerPrintCount").val();
+			var address = $("#RegionSelect").val();
+			var grade = $("#CustomerGrade").val();
+			
+			$.ajax({
+				type: "get",
+				url : "customer",
+				dataType: "text",
+				cache : false,
+				contentType: 'application/json; charset=utf-8',
+				data :				
+				{"plsize":pageListSize, "address":address, "p":p, "grade":grade},
+				success : function(result) {
+
+					var html = jQuery('<div>').html(result);
+					var contents = html.find("div#customerList").html();
+					$("#searchedCustomer").html(contents);
+					
+					var page = html.find("div#pageList").html();
+					$("#CustomerFindFieldNumb").html(page);
+				},
+				error: function(error) {
+					console.log("전송 실패");
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}		
+			});
+	};
+	</script>
 	
+	<!--이전페이지리스트버튼 ajax-->
+	<script> 
+	function prevPL(){
+			var p = $("#prevPL").val();
+			var pageListSize = $("#CustomerPrintCount").val();
+			var address = $("#RegionSelect").val();
+			var grade = $("#CustomerGrade").val();
+			
+			$.ajax({
+				type: "get",
+				url : "customer",
+				dataType: "text",
+				cache : false,
+				contentType: 'application/json; charset=utf-8',
+				data :				
+				{"plsize":pageListSize, "address":address, "p":p, "grade":grade},
+				success : function(result) {
+
+					var html = jQuery('<div>').html(result);
+					var contents = html.find("div#customerList").html();
+					$("#searchedCustomer").html(contents);
+					
+					var page = html.find("div#pageList").html();
+					$("#CustomerFindFieldNumb").html(page);
+				},
+				error: function(error) {
+					console.log("전송 실패");
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}		
+			});
+	};
+	</script>
+	
+	<!--이전페이지리스트버튼 ajax-->
+	<script> 
+	function prevPL(){
+			var p = $("#nextPL").val();
+			var pageListSize = $("#CustomerPrintCount").val();
+			var address = $("#RegionSelect").val();
+			var grade = $("#CustomerGrade").val();
+			
+			$.ajax({
+				type: "get",
+				url : "customer",
+				dataType: "text",
+				cache : false,
+				contentType: 'application/json; charset=utf-8',
+				data :				
+				{"plsize":pageListSize, "address":address, "p":p, "grade":grade},
+				success : function(result) {
+
+					var html = jQuery('<div>').html(result);
+					var contents = html.find("div#customerList").html();
+					$("#searchedCustomer").html(contents);
+					
+					var page = html.find("div#pageList").html();
+					$("#CustomerFindFieldNumb").html(page);
+				},
+				error: function(error) {
+					console.log("전송 실패");
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}		
+			});
+	};
+	</script>
+	
+	<!-- 스케줄에 등록할 고객 선택 전체선택/해제 기능 -->
+	<script>
+	$(function(){
+	    //체크박스 클릭
+	    $("#checkall").click(function(){
+	        //클릭되었으면
+	        alert("첵박");
+	        if($("#checkall").prop("checked")){
+	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+	            $("input[name=chk]").prop("checked",true);
+	            //클릭이 안되있으면
+	        }else{
+	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+	            $("input[name=chk]").prop("checked",false);
+	        }
+	    });
+	});
+
+
+
 	
 	</script>
 	
 	
 	
+	
+	<!--스케줄생성 버튼 ajax-->
+	<script>
+	$(function() {
+		
+		$("#SaveBtn").on('click', function() {		
+			sDate;
+			fDate;
+			alert(sDate);
+			alert(fDate);
 
-	<script language="javascript">var today = new Date(); //오늘 날짜
+		
+			$.ajax({
+				type: "get",
+				url : "customer",
+				dataType: "text",
+				processData: false, 
+				cache : false,
+				contentType: 'application/json; charset=utf-8',
+				data :				
+				{"plsize":pageListSize, "address":address, "p":"1", "grade":grade},
+				success : function(result) {
+					
+					$("#searchedCustomer").html(result);
+				},
+				error: function(error) {
+					console.log("전송 실패");
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+				}		
+			});
+		
+		});
+	});
+	
+	
+	</script>
+	
+	<!--달력 구현 자바스크립트 -->
+	<script language="javascript"> 
+		var today = new Date(); //오늘 날짜
 		var date = new Date();
 
 		//이전달
@@ -894,55 +1066,41 @@
 				}
 
 			}
-		}</script>
+		}
+		</script>
+
+
 
 </head>
 <body onload="autoReload();">
 
+	<!-- 배경 svg -->
 	<svg id="VIPcustomerBackground">
 		<g data-name="VIPcustomerBackground" transform="translate(1436 835)" fill="#ebebeb">
 			<path d="M -333.4998779296875 -192.5001373291016 L -1435.500244140625 -192.5001373291016 L -1435.500244140625 -365.4606628417969 L -1435.500244140625 -834.499755859375 L -1132.5 -834.499755859375 L -1132.5 -764.2201538085938 L -1132.5 -763.7201538085938 L -1132 -763.7201538085938 L -333.4998779296875 -763.7201538085938 L -333.4998779296875 -192.5001373291016 Z" stroke="none" />
 			<path d="M -333.9998474121094 -193.0001678466797 L -333.9998474121094 -763.2200317382812 L -1132 -763.2200317382812 L -1133 -763.2200317382812 L -1133 -764.2200317382812 L -1133 -833.999755859375 L -1435.000244140625 -833.999755859375 L -1435.000244140625 -365.4607238769531 L -1435.000244140625 -193.0001678466797 L -333.9998474121094 -193.0001678466797 M -332.9998474121094 -192.0001678466797 L -1436.000244140625 -192.0001678466797 L -1436.000244140625 -365.4607238769531 L -1436.000244140625 -834.999755859375 L -1132 -834.999755859375 L -1132 -764.2200317382812 L -332.9998474121094 -764.2200317382812 L -332.9998474121094 -192.0001678466797 Z" stroke="none" fill="#707070" />
 		</g>
 	</svg>
+	
+	<svg class="RectField">
+		<!--밑 1차 배경-->
+		<rect id="RectField" rx="0" ry="0" x="0" y="0" width="1075" height="428">
+		</rect>
+	</svg>
 
-
-
-
-	<!--Calendar-->
-
-	<table id="calendar">
-		<tr>
-			<td>
-				<a id="before" href="javascript:beforem()"></a>
-			</td>
-			<td colspan="4" align="center">
-				<div id="yearmonth"></div>
-			</td>
-			<td>
-				<a id="next" href="javascript:nextm()"></a>
-			</td>
-			<td>
-			</td>
-		</tr>
-		<tr>
-			<td width="14%"> 월 </td>
-			<td width="14%"> 화 </td>
-			<td width="14%"> 수 </td>
-			<td width="14%"> 목 </td>
-			<td width="14%"> 금 </td>
-			<td width="14%"><font color="#009de0">토</font></td>
-			<td width="14%"><font color="#ed5353">일</font></td>
-		</tr>
-	</table>
-
-
-	<script></script>
+	<svg class="CalendarField">
+		<rect id="CalendarField" rx="0" ry="0" x="0" y="0" width="467.48" height="285">
+		</rect>
+	</svg>
+	
+	<svg class="CustomerFindField">
+		<rect id="CustomerFindField" rx="0" ry="0" x="0" y="0" width="473" height="285">
+		</rect>
+	</svg>
 
 	<div id="_1366__8">
 
-
-		<!-- SIDEBAR -->
+	<!-- SIDEBAR -->
 		<section class="sidebar">
 			<div class="inner">
 
@@ -1006,24 +1164,84 @@
 				</div>
 			</div>
 		</section>
-		<!-- SIDEBAR -->
-		<!-- 스케줄일정생성파트-->
-		<!--Schedule Start -->
-		<input type="text" name="Year" />
-		<input type="date" id="ScheduleStartSelect" placeholder="시작일 선택" onchange="sdateChange(this)"/>
-
-		<!--Schedule End-->
-
-
-		<input type="date" id="ScheduleEndSelect" placeholder="종료일 선택" onchange="fdateChange(this)"/>
 	
-		<!-- 고객 필터 OPTgroup -->
+	
+	<!-- 상위메뉴명 -->
+	<div id="CustomerConsultingTitle">
+		<span>고객상담</span>
+	</div>
+	<!-- 하위메뉴명 -->
+	<div id="VipCustomerConsultingTitle">
+		<span>우수고객상담 스케줄 생성</span>
+	</div>
+	
+	
+	<!--스케쥴 일정-->
+	<div id="ScheduleSetting">
+		<h4>스케줄 일정</h4>
+	</div>
+
+
+	<!-- 스케줄일정생성파트-->
+	<!--Schedule Start -->
+	
+	<input type="date" id="ScheduleStartSelect" placeholder="시작일 선택" onchange="sdateChange(this)"/>
+
+	<!--Schedule End-->
+	<input type="date" id="ScheduleEndSelect" placeholder="종료일 선택" onchange="fdateChange(this)"/>
+
+
+
+
+	<!--Calendar-->
+
+	<table id="calendar">
+		<tr>
+			<td>
+				<a id="before" href="javascript:beforem()"></a>
+			</td>
+			<td colspan="4" align="center">
+				<div id="yearmonth"></div>
+			</td>
+			<td>
+				<a id="next" href="javascript:nextm()"></a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td width="14%"> 월 </td>
+			<td width="14%"> 화 </td>
+			<td width="14%"> 수 </td>
+			<td width="14%"> 목 </td>
+			<td width="14%"> 금 </td>
+			<td width="14%"><font color="#009de0">토</font></td>
+			<td width="14%"><font color="#ed5353">일</font></td>
+		</tr>
+	</table>
+
+	<!-- 선택된 스케줄 기간 출력칸 -->
+	<div id="SelectDate">
+		<span id="SelectedDate">선택하신 일자</span>
+
+	</div>
+
+
+		
+		
+		<!--고객조회-->
+
+		<div id="CustomerFind">
+			<h4>고객조회</h4>
+		</div>
+	
+		<!-- 고객 조회 필터 OPTgroup -->
 		<!--출력고객 수-->
-		<select id="CustomerPrintCount" name="CustomerPrintCount">
-			<option value=""> CustomerCount </option>
-			<option value="countFive">5명씩</option>
-			<option value="countTen">10명씩</option>
-			<option value="countFif">15명/option>
+		<select id="CustomerPrintCount" name="CustomerPrintCount" >
+			<option value=""selected disabled hidden>페이지당 출력 수 </option>
+			<option value="5">5명</option>
+			<option value="10">10명</option>
+			<option value="15">15명</option>
 		</select>
 
 
@@ -1056,13 +1274,39 @@
 			<option value="4">BRONZE</option>
 			<option value="5">NOMAL</option>
 		</select>
-
+		
+		<!-- 검색된 고객 리스트 출력칸 -->
+		<div id="searchedCustomer">
+		</div>		
+		
+		<!--AllcheckboxSelect-->
+		<div class="put_custom_wrap">
+			<input type="checkbox" id="checkall">
+			<label for="CustomerFindFieldAllCheckBox"> 전체선택 </label>
+		</div>
+		
+		
+		<!--Listcheckbox-->
+		<div id="CustomerFindFieldCheckBox">
+		</div>
+		
+		<!--customerFindSelect Number-->
+		<div id="CustomerFindFieldNumb">
+		</div>
+		
+		
+		
 		<!--Btn-->
 		<a class='btn SubmitBtn' id="SaveBtn">스케쥴생성</a>
-		<input type='button' class='btn SubmitBtn' id="SearchBtn" value='조회' onclick="searchCustomer()"/>
+		<input type='button' class='btn SubmitBtn' id="SearchBtn" value='조회' />
 		<input type='button' class='btn SubmitBtn' id="ScheduleBtn" value='적용'  onclick="printDate()" />
-
-		<form action="url" id="ResultPrint">
+	
+		
+		
+		
+		
+		
+		
 
 
 			<textarea>
@@ -1070,81 +1314,14 @@
 
 	2월 1일 ‘서울’지역 ’VIP’ 등급 ‘김철수’ 고객님 상담 스케쥴을 선택하셨습니다.
 			</textarea>
-		</form>
+	
+		
+		
 	</div>
 
 
-	<div id="CustomerConsultingTitle">
-		<span>고객상담</span>
-	</div>
-	<div id="VipCustomerConsultingTitle">
-		<span>우수고객상담</span>
-	</div>
-
-	<svg class="RectField">
-		<!--밑 1차 배경-->
-		<rect id="RectField" rx="0" ry="0" x="0" y="0" width="1075" height="428">
-		</rect>
-	</svg>
-
-	<svg class="CalendarField">
-		<rect id="CalendarField" rx="0" ry="0" x="0" y="0" width="467.48" height="285">
-		</rect>
-	</svg>
-
-	<!--고객조회-->
-
-	<div id="CustomerFind">
-		<h4>고객조회</h4>
-	</div>
-
-	<svg class="CustomerFindField">
-		<rect id="CustomerFindField" rx="0" ry="0" x="0" y="0" width="473" height="285">
-		</rect>
-	</svg>
-
-	<div id="CustomerFindFieldCheckBox">
-		<!--checkbox-->
-		<rect>
-		</rect>
-
-	</div>
-	<!--AllcheckboxSelect-->
-	<div class="put_custom_wrap">
-		<input type="checkbox" id="CustomerFindFieldAllCheckBox">
-		<label for="CustomerFindFieldAllCheckBox"> 전체선택 </label>
-	</div>
-
-
-	<div id="CustomerFindFieldNumb">
-		<!--customerFindSelect Number-->
-
-	</div>
-
-
-	<!--스케쥴 일정-->
-	<div id="ScheduleSetting">
-		<h4>스케줄 일정</h4>
-	</div>
-
-	<div id="SelectDate">
-		<span id="SelectedDate">선택하신 일자</span>
-
-	</div>
-
-	<div>
-
-		<form action="url" id="SelectDateResult">
-
-
-			<textarea>
-
-					2월 5일
-			</textarea>
-		</form>
-	</div>
-
-
-
+	
+	
+	
 </body>
 </html>

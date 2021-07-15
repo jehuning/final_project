@@ -29,12 +29,15 @@ public class RegularConsultServiceImpl
     {
         int selectedSize = 0;
         selectedSize = rcd.countSelect(ci);
+        
         int currentPage = pi.getCurrentPage();
         int pageListSize = pi.getPageListSize();
+        System.out.println("한페이지 출력수"+pageListSize);
         int totalPage = selectedSize / pageListSize + 1;
+        //전체 조회 개수에 따른 페이지수 산출
         HashMap<String,Object> hm = new HashMap<String,Object>();
         if(totalPage != currentPage)
-        {
+        { 
             int pageBegin = (currentPage - 1) * pageListSize + 1;
             int pageEnd = pageBegin + (pageListSize - 1);
             hm.put("customer_address", ci.getCustomer_address());
@@ -42,7 +45,7 @@ public class RegularConsultServiceImpl
             hm.put("page_begin", Integer.valueOf(pageBegin));
             hm.put("page_end", Integer.valueOf(pageEnd));
         } else
-        {
+        { //마지막 페이지일때
             int pageBegin = (currentPage - 1) * pageListSize + 1;
             int pageEnd = selectedSize;
             hm.put("customer_address", ci.getCustomer_address());
@@ -61,6 +64,7 @@ public class RegularConsultServiceImpl
         int pageListSize = 0;
         int selectedSize = 0;
         selectedSize = rcd.countSelect(ci);
+        System.out.println("전체조회개수"+selectedSize);
         pageListSize = pi.getPageListSize();
         if(selectedSize%pageListSize==0){
         	 totalPage = selectedSize / pageListSize;

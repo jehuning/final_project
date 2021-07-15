@@ -7,6 +7,7 @@
 	<title>Test</title>
 </head>
 <body>
+<div id="empList">
 <table border="1">
 <tr>
 <th>사번</th>
@@ -20,7 +21,7 @@
 
 </table>
 
-
+</div>
 
 
 </body>
