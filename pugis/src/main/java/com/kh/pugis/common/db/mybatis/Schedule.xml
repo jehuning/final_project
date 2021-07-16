@@ -21,12 +21,13 @@
 	</select>
 	
 	<select id="getDept" parameterType="String" resultType="String">
+		<![CDATA[
 		SELECT
 		    dept_code
 		FROM
 			emp_info
 		WHERE emp_id=#{emp_id}
-		
+		]]>
 	</select>
 	<select id="deptSchedule" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Schedule">
@@ -44,6 +45,7 @@
 	</select>
 	<select id="regularCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
+		<![CDATA[
 		SELECT
 		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
 		FROM
@@ -54,10 +56,11 @@
 			CONSULT_CODE = 'RG' 
 		AND
 		 	CONSULT_DATE  = #{date}
-		
+		]]>
 	</select>
 	<select id="marketingCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
+		<![CDATA[
 		SELECT
 		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
 		FROM
@@ -68,7 +71,7 @@
 			CONSULT_CODE LIKE 'MK%' 
 		AND
 		 	CONSULT_DATE = #{date}
-		
+		]]>
 	</select>
 		
 </mapper>
