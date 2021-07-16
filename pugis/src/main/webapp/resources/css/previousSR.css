@@ -94,7 +94,7 @@
 }
 .previousSR form[name=saveForm] > input[type=submit].save {
 	position: absolute;
-	right: 0px;
+	right: 10px;
 }
 .previousSR form[name=saveForm] > input[type=submit].save:hover {
   color: #fff;
