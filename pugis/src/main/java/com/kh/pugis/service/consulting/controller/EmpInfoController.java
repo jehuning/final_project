@@ -40,10 +40,12 @@ public class EmpInfoController
 		System.out.println("리턴값:"+eis.empInfoSummary(e).getEmp_name());
 		
         model.addAttribute("empSummary", eis.empInfoSummary(e));
-//        model.addAttribute("scheduleList", ess.empSchedule(s)); //직원스케줄 가져와서 화면 호출시 출력하도록 보내줌
-//      model.addAttribute("scheduleList", ess.deptSchedule(s)); //부서스케줄 가져오기  화면 호출시 출력 보내줌
-//      model.addAttribute("scheduleList", ess.consultSchedule(s)); //상담스케줄 가져오기  화면 호출시 출력 보내줌
-        return "service/consulting/index";
+        model.addAttribute("scheduleList", ess.empSchedule(s)); //직원스케줄 가져와서 화면 호출시 출력하도록 보내줌
+      model.addAttribute("scheduleList", ess.deptSchedule(s)); //부서스케줄 가져오기  화면 호출시 출력 보내줌
+      model.addAttribute("rgConsultList", ess.rgConsultSchedule(s)); //상담스케줄 가져오기  화면 호출시 출력 보내줌
+      model.addAttribute("mkConsultList", ess.mkConsultSchedule(s)); //상담스케줄 가져오기  화면 호출시 출력 보내줌
+  
+      return "service/consulting/index";
     }
     
 	@RequestMapping(value = "/specific")

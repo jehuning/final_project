@@ -38,7 +38,7 @@ public class AllConsultSearchController
     	rsd.setFinish_date(finish_date);
     	
     	//선택자를 통해 검색 조건을 구분한다.(전체 상담을 날짜 기준으로만 선택하거나/우수 고객상담만을 날짜기준으로 / 마케팅 상담만을 행사 기준으로 선택하거나) 
-    	
+    	// 마케팅 행사 종류를 선택해서 검색할 경우, 날짜가 필요한가? 주어지는 기간 내에서 선택 가능하게 하면 될듯.
 	    	
     	model.addAllAttributes(acss.consultSearch(condition, rsd));
 	   

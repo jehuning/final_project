@@ -21,25 +21,26 @@
 <input type="hidden" id="tatalPage" value="${pageList.totalPage}">
 <table border="1">
 <tr>
-<th>선택여부</th>
+
 <th>고객아이디</th>
 <th>고객명</th>
+<th>지역</th>
+<th>등급</th>
 <th>성별</th>
 <th>생년월일</th>
-<th>주소</th>
 <th>휴대폰번호</th>
-<th>등급</th>
 </tr>
 <c:forEach var="cl" items="${customerList}" varStatus="status">
 <tr><!-- 첫번째 줄 시작 -->
 	<td><input type="checkbox" name="chk"  value="${cl.customer_id}"/></td>
 	<td>${cl.customer_id}</td>
 	<td>${cl.customer_name}</td>
+	<td>${cl.customer_address}</td>
+	<td>${cl.customer_grade}</td>
 	<td>${cl.customer_gender}</td>
 	<td>${cl.customer_birth}</td>
-	<td>${cl.customer_address}</td>
 	<td>${cl.customer_phone}</td>
-	<td>${cl.customer_grade}</td>
+	
 </tr><!-- 첫번째 줄 끝 -->
 </c:forEach>
 </table>
