@@ -4,25 +4,32 @@
  <%@ page import="java.io.PrintWriter" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>고객의 소리 (QnA)</title>
-<link rel="stylesheet" href="style.css">
+<!--브라우저 스타일 초기화-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+
+<link rel="stylesheet" href="${path}/resources/css/main.css" type="text/css"/>
+<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
+
+<!-- link rel="stylesheet" href="style.css"-->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
-@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 *{
   margin: 0;
   padding: 0;
   user-select: none;
   box-sizing: border-box;
   color: #707070;
-  font-family: 'Jeju Gothic', sans-serif;
+  font-family: 'Apple SD Gothic Neo', sans-serif;
 }
 #side{
 with:100%
@@ -30,7 +37,7 @@ with:100%
 }
 .sidebar{
   position: fixed;
-  width: 20%;
+  width: 250px;
   height: 100%;
   left: 0;
   border-right: 1px solid;
@@ -97,10 +104,12 @@ nav ul .show-3.show3{
  	padding:0px;
     float:right;   
 }
-#title{
-	 margin-left:50px;
-	 margin-top:50px;
-	 font-weight: 800;
+#maintitle{
+	margin-bottom:50px;
+    font-weight: 700;
+    margin-top:50px;
+    top: 30px;
+    left: 350px;    	 
 }
 #title a{
 	 font-weight: 800;
@@ -187,7 +196,7 @@ table tr {
 	color: #707070;
 }
 #keywordInput{
-	width:50%;
+	width:70%;
 	height:50px;
 	border: 1px solid;
 	border-radius:5px;
@@ -236,14 +245,19 @@ table tr {
 	border: 1px solid;
 	border-radius:50px;
 	font-size: 18px;
-	margin-left: 40px;
-	margin-right: 40px;
+	margin-left: 60px;
+	margin-right: 60px;
 	color: #707070;
 }
-#tablebody tr{
-	border: 1px;
-}
 
+#human{
+	width :70px;
+	width :70px;
+	margin-top:40px;
+}
+#nonelinktitle{
+	text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -254,36 +268,69 @@ table tr {
 	}
 	
 %>
-<div id="side">
-	<nav class="sidebar">
-		<div class="text" ><a id="main" href="main.jsp">메인 페이지</a></div>
-		<ul>
-			<li><a href="#" class="btn-1">일일 매출 보고서<span class="fas fa-caret-down first"></span></a>
-			<ul class="show-1">
-				<li><a href="#">aaa</a></li>
-				<li><a href="#">bbb</a></li>			
-			</ul>
-			</li>
-			<li><a href="#"class="btn-2">고객 상담<span class="fas fa-caret-down second"></span></a>
-			<ul class="show-2">
-				<li><a href="#">ccc</a></li>
-				<li><a href="#">ddd</a></li>			
-				<li><a href="#">fff</a></li>			
-			</ul>
-			</li>	
-			<li><a href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></li>	
-			<li><a href="#" class="btn-3">고객 설문<span class="fas fa-caret-down third"></span></a>
-			<ul class="show-3">
-				<li><a href="#">ccc</a></li>
-				<li><a href="#">ddd</a></li>			
-				<li><a href="#">fff</a></li>			
-			</ul>
-			</li>			
-		</ul>
-	</nav>
-	</div>
+	<!-- SIDEBAR -->
+	<section class="sidebar">
+		<div class="inner">
+			
+			<a href="javascript:Main()" class="main">
+				<img src="${path}/resources/images/main_temp.jpg" alt="main">
+			</a>
+			
+			<div class="main-menu">
+        <div class="item">
+          <div class="item__name">
+            <h3>일일 매출 보고서</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list__contents">
+              <a href="javascript:previousSR()">전일매출보고서</a>
+            </li>
+          </ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객 상담</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list-contents">
+              <a href="javascript:void(0)">우수고객 상담</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">마케팅 상담</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">전체 상담 조회</a>
+            </li>
+          </ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객의 소리(Q&A)</h3>
+          </div>
+          <ul class="list__group"></ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객 설문</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 작성</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 배포</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 결과</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+		</div>
+	</section>
+
 	<div id="content">
-		<h1 id="title"><a id ="titlelink" href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></h1>
+		<div id="maintitle"><h1><a id ="titlelink" href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></h1></div>
 				<form id = "searchBox">
 							<select name="searchType" class="form-control" id ="typelist">
 								<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
@@ -343,19 +390,18 @@ table tr {
 						<thead>
 							<tr><th>카테고리</th><th>제목</th><th>작성자</th><th>등록일</th></tr>
 						</thead>
-				
 						<c:forEach items="${list}" var = "list">
 						<tbody id ="tablebody">
 							<tr>
 								<td><c:out value="${list.question_category}" /></td>
 								<td>
-									<a href="/pugis/qna/readView?reg_id=${list.reg_id}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${list.question_title}" /></a>
+									<a id="nonelinktitle" href="/pugis/qna/readView?reg_id=${list.reg_id}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${list.question_title}" /></a>
 								</td>
 								<td><c:out value="${list.customer_id}" /></td>
 								<td><fmt:formatDate value="${list.reg_date}" pattern="yyyy-MM-dd"/></td>
 							</tr>
 							</tbody>
-						</c:forEach>					
+						</c:forEach>	 	
 					</table>
 			</form>
 			</div>

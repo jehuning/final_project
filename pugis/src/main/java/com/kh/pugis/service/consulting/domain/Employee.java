@@ -5,6 +5,7 @@ public class Employee
 {
 	 	String emp_id;
 	    String emp_name;
+	    String emp_pwd;
 	    String dept_code;
 	    String dept_name;
 	    String job_code;
@@ -107,7 +108,21 @@ public class Employee
 		this.emp_entry = emp_entry;
 	}
 
-   
+	public String getEmp_pwd() {
+		return emp_pwd;
+	}
+
+	public void setEmp_pwd(String emp_pwd) {
+		this.emp_pwd = emp_pwd;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_pwd=" + emp_pwd + ", dept_code="
+				+ dept_code + ", dept_name=" + dept_name + ", job_code=" + job_code + ", job_name=" + job_name
+				+ ", emp_email=" + emp_email + ", emp_gender=" + emp_gender + ", emp_birth=" + emp_birth
+				+ ", emp_phone=" + emp_phone + ", emp_entry=" + emp_entry + "]";
+	}
 
    
 }

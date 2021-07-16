@@ -4,12 +4,21 @@
  <%@ page import="java.io.PrintWriter" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>고객의 소리 (QnA)</title>
-<link rel="stylesheet" href="style.css">
+
+<!--브라우저 스타일 초기화-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+
+<link rel="stylesheet" href="${path}/resources/css/main.css" type="text/css"/>
+<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
+
+<!-- link rel="stylesheet" href="style.css" -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -50,7 +59,9 @@
 					formObj.attr("action", "/pugis/qna/replyDelete");
 					formObj.attr("method", "post");
 					formObj.submit();
-				}
+		            
+		         alert("답글이 삭제되었습니다.");
+			}
 				
 				location.href = "/pugis/qna/replyDelete?reg_id=${read.reg_id}"
 				+ "&page=${scri.page}"
@@ -58,20 +69,17 @@
 				+ "&searchType=${scri.searchType}"
 				+ "&keyword=${scri.keyword}"
 				+ "&reply_id="+$(this).attr("data-reply_id");
-		            
-		         alert("답글이 삭제되었습니다.")
 			});
 		})
 	</script>
 <style>
-@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 *{
   margin: 0;
   padding: 0;
   user-select: none;
   box-sizing: border-box;
   color: #707070;
-  font-family: 'Jeju Gothic', sans-serif;
+  font-family: 'Apple SD Gothic Neo', sans-serif;
 }
 #all{
 width:100%
@@ -79,7 +87,7 @@ width:100%
 }
 .sidebar{
   position: fixed;
-  width: 20%;
+  width: 250px; 
   height: 100%;
   left: 0;
   border-right: 1px solid;
@@ -147,9 +155,11 @@ nav ul .show-3.show3{
     float:right;   
 }
 #maintitle{
-	 margin-left: 50px;
-	 margin-top: 50px;
-	 
+	margin-bottom:50px;
+    font-weight: 700;
+    margin-top:50px;
+    top: 30px;
+    left: 350px;    	 
 }
 #box{
    width: 60%;
@@ -216,7 +226,7 @@ table tr {
  	margin-right:25px;
 }
 #headline{
-	margin-top:25px;
+	margin-top:50px;
 	width:65%;
 	text-align: left;
 	margin-left: auto;
@@ -374,8 +384,13 @@ table tr {
 }
 #titlelink{
 	text-decoration: none;
-}
 
+}
+#human{
+	width :70px;
+	width :70px;
+	margin-top:40px;
+}
 </style>
 </head>
 <body>
@@ -387,35 +402,70 @@ table tr {
 	
 %>
 <div id="all">
-	<nav class="sidebar">
-		<div class="text" ><a id="main" href="main.jsp">메인 페이지</a></div>
-		<ul>
-			<li><a href="#" class="btn-1">일일 매출 보고서<span class="fas fa-caret-down first"></span></a>
-			<ul class="show-1">
-				<li><a href="#">aaa</a></li>
-				<li><a href="#">bbb</a></li>			
-			</ul>
-			</li>
-			<li><a href="#"class="btn-2">고객 상담<span class="fas fa-caret-down second"></span></a>
-			<ul class="show-2">
-				<li><a href="#">ccc</a></li>
-				<li><a href="#">ddd</a></li>			
-				<li><a href="#">fff</a></li>			
-			</ul>
-			</li>	
-			<li><a href="qna.jsp">고객의 소리(Q&A)</a></li>	
-			<li><a href="#" class="btn-3">고객 설문<span class="fas fa-caret-down third"></span></a>
-			<ul class="show-3">
-				<li><a href="#">ccc</a></li>
-				<li><a href="#">ddd</a></li>			
-				<li><a href="#">fff</a></li>			
-			</ul>
-			</li>			
-		</ul>
-	</nav>
+	<!-- SIDEBAR -->
+	<section class="sidebar">
+		<div class="inner">
+			
+			<a href="javascript:Main()" class="main">
+				<img src="${path}/resources/images/main_temp.jpg" alt="main">
+			</a>
+			
+			<div class="main-menu">
+        <div class="item">
+          <div class="item__name">
+            <h3>일일 매출 보고서</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list__contents">
+              <a href="javascript:previousSR()">전일매출보고서</a>
+            </li>
+          </ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객 상담</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list-contents">
+              <a href="javascript:void(0)">우수고객 상담</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">마케팅 상담</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">전체 상담 조회</a>
+            </li>
+          </ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객의 소리(Q&A)</h3>
+          </div>
+          <ul class="list__group"></ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객 설문</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 작성</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 배포</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 결과</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+		</div>
+	</section>
+
 
 	<div id="content">
-		<h1 id="maintitle" ><a id ="titlelink" href="qna.jsp">고객의 소리(Q&A)</a></h1>
+		<div id="maintitle"><h1><a id ="titlelink" href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></h1></div>
 				
 				<form id = "headline">
 					<label for="title" class="col-sm-2 control-label">제목</label>

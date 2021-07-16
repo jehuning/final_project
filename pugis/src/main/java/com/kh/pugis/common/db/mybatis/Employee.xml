@@ -3,16 +3,11 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Employee">
 
-	
-	<select id="getEmployeeList" resultType="com.kh.pugis.service.consulting.domain.Employee">
-		SELECT
-		    emp_id,
-		    emp_name,
-		    emp_email,
-		    emp_phone
-		FROM
-			TB_EMPLOYEE
-		ORDER BY emp_id
+	<select id="login" resultType="com.kh.pugis.service.consulting.domain.Employee">
+		SELECT emp_id, emp_pwd 
+		  FROM emp_info
+		 WHERE emp_id = #{emp_id, jdbcType=VARCHAR}
+		   AND emp_pwd = #{emp_pwd, jdbcType=VARCHAR}   
 	</select>
 
 	<select id="getSummary" parameterType="String" resultType="com.kh.pugis.service.consulting.domain.Employee">
@@ -29,6 +24,7 @@
         	emp_id = #{emp_id}
 		
 	</select>
+	
 	<select id="getSpecific" parameterType="String" resultType="com.kh.pugis.service.consulting.domain.Employee">
 		SELECT
 		    emp_id,
