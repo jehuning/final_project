@@ -36,13 +36,13 @@
 		location.href="srList.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
 	  	
-	$.ajax({
+	/*$.ajax({
 		url: '',
 		type: 'post',
 		success: function(res) {
 			
 		}
-	});	
+	});*/	
 	document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -176,13 +176,13 @@
   <section class="schedule-details">
     <div class="inner">
       <div class="personal__schedule">
-		<p>ㅇㅇ</p>
+		<h3>개인 스케줄</h3>
       </div>
       <div class="service__schedule">
-        <p>ㅇㅇ</p>
+        <h3>상담서비스팀 스케줄</h3>
       </div>
       <div class="consult__schedule">
-      	<p>ㅇㅇ</p>
+      	<h3>오늘의 상담 일정</h3>
       </div>
     </div>
   </section>
