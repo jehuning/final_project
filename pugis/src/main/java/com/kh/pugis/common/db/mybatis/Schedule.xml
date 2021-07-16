@@ -37,7 +37,7 @@
 			EMP_SCHEDULE
             join dept_info on(EMP_SCHEDULE.SCHEDULE_DEPT=dept_info.dept_code)
         WHERE
-			emp_schedule.schedule_dept = #{dept_code} 
+			emp_schedule.schedule_dept = #{schedule_dept} 
 		AND
 		 	START_DATE <= #{fDate} OR END_DATE >= #{sDate}
 		]]>

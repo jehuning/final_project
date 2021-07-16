@@ -137,7 +137,7 @@
 
 			/*Customer Print table css*/
 			
-		#customerTable{
+		#customerList{
 		    width: 100%;
 		    border-top: 1px solid #444444;
 		    border-collapse: collapse;
@@ -489,7 +489,16 @@
 		
 		}
 
-		
+		#searchedCustomer{
+			position: absolute;
+			overflow: scroll;
+			width: 473px;
+			height: 285px;
+			left: 811px;
+			top: 310px;
+			
+		}
+
 		#CustomerFindField {
 			fill: #FFFFFF;
 			stroke: rgba(112,112,112,1);
@@ -684,11 +693,11 @@
 	
 	<!-- 조회된 고객 출력 js -->
 	<script>
-	var fCusReg; /*고객 지역*/
-	var fCusGrd; /* 고객 등*/
+	var fCusReg;<!--고객 지역-->
+	var fCusGrd;<!--고객 등-->
 	
 		
-	function printSearchedCustomer(){
+	function printDate(){
 		var message = "조회된 고객 > " + <!-- N(데이터값) --> + "명 입니다."
 		console.log(message);
 		document.getElementById("SelectCustomerNumb").innerHTML = message;
@@ -719,7 +728,7 @@
 
 					var html = jQuery('<div>').html(result);
 					var contents = html.find("div#customerList").html();
-					$("#CustomerFindFieldArea").html(contents);
+					$("#searchedCustomer").html(contents);
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
@@ -753,7 +762,7 @@
 
 					var html = jQuery('<div>').html(result);
 					var contents = html.find("div#customerList").html();
-					$("#CustomerFindFieldArea").html(contents);
+					$("#searchedCustomer").html(contents);
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
@@ -786,7 +795,7 @@
 
 					var html = jQuery('<div>').html(result);
 					var contents = html.find("div#customerList").html();
-					$("#CustomerFindFieldArea").html(contents);
+					$("#searchedCustomer").html(contents);
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
@@ -819,7 +828,7 @@
 
 					var html = jQuery('<div>').html(result);
 					var contents = html.find("div#customerList").html();
-					$("#CustomerFindFieldArea").html(contents);
+					$("#searchedCustomer").html(contents);
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
@@ -1053,7 +1062,7 @@
 		</select>
 		
 		<!-- 검색된 고객 리스트 출력칸 -->
-		<div id="CustomerFindFieldArea">
+		<div id="searchedCustomer">
 		</div>		
 		
 

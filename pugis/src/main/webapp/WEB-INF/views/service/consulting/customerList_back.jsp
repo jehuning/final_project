@@ -19,7 +19,7 @@
 
 <div id="customerList">
 <input type="hidden" id="tatalPage" value="${pageList.totalPage}">
-<table border="1">
+<table id="customerTable" border="1">
 <tr>
 
 <th>고객아이디</th>
@@ -32,7 +32,7 @@
 </tr>
 <c:forEach var="cl" items="${customerList}" varStatus="status">
 <tr><!-- 첫번째 줄 시작 -->
-	<td><input type="checkbox" name="chk"  value="${cl.customer_id}"/></td>
+
 	<td>${cl.customer_id}</td>
 	<td>${cl.customer_name}</td>
 	<td>${cl.customer_address}</td>

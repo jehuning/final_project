@@ -26,7 +26,7 @@ public class EmpScheduleDaoImpl
     {
     	
     	
-    	return sqlSession.selectList("Schedule.selectList", hm);
+    	return sqlSession.selectList("Schedule.empSchedule", hm);
     	
     }
 

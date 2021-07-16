@@ -60,19 +60,21 @@ public class EmpScheduleServiceImpl
     	
     	String dept_id = esd.getDept(s);//직원의 부서아이디를 구해옴
     	s.setSchedule_dept(dept_id);
+    	System.out.println("부서:"+s.getSchedule_dept());
     	//(없앨수 있을 듯)
     	
     	
     	
     	LocalDate date = LocalDate.now();
-    	String today = date.toString();
+    	String today = date.toString().replace("-", "");
+    	System.out.println(today);
     	//현재 날짜를 구함
     	int l = date.lengthOfMonth();
     	String last = String.valueOf(l);
     	
     	String a = today.substring(0, today.length()-2);
     	String lastDayOfMonth = a + last;//해당월의 말일을 구함
-    	
+    	System.out.println("말일:"+lastDayOfMonth);
     	//부서아이디와 현재날짜 해당월의 말일로 스케줄을 검색함.
     	HashMap<String, String> hm = new HashMap<String,String>();
     	hm.put("sDate", today);
