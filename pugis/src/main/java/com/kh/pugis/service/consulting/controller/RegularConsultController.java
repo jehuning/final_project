@@ -1,6 +1,7 @@
 package com.kh.pugis.service.consulting.controller;
 
 import com.kh.pugis.service.consulting.domain.*;
+import com.kh.pugis.service.consulting.service.EmpScheduleService;
 import com.kh.pugis.service.consulting.service.RegularConsultService;
 
 
@@ -22,7 +23,9 @@ public class RegularConsultController
 {
 	@Autowired
     RegularConsultService rcs;
-
+	@Autowired
+	EmpScheduleService ess;
+	
     public RegularConsultController()
     {
     }

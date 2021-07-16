@@ -30,9 +30,9 @@ public class EmpInfoServiceImpl
     	return ed.empInfoSummary(e);
     }
 
-    public Employee empInfoSpecific()
+    public Employee empInfoSpecific(Employee e)
     {
-        return ed.empInfoSpecific();
+        return ed.empInfoSpecific(e);
     }
     
 }

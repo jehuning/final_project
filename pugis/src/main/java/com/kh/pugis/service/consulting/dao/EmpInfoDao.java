@@ -7,5 +7,5 @@ public interface EmpInfoDao
 
     Employee empInfoSummary(Employee e);
 
-    Employee empInfoSpecific();
+    Employee empInfoSpecific(Employee e);
 }
