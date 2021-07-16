@@ -799,9 +799,9 @@
 	};
 	</script>
 	
-	<!--이전페이지리스트버튼 ajax-->
+	<!--다음페이지리스트버튼 ajax-->
 	<script> 
-	function prevPL(){
+	function nextPL(){
 			var p = $("#nextPL").val();
 			var pageListSize = $("#CustomerPrintCount").val();
 			var address = $("#RegionSelect").val();
@@ -842,9 +842,7 @@
 		$("#SaveBtn").on('click', function() {		
 			sDate;
 			fDate;
-			alert(sDate);
-			alert(fDate);
-
+			
 		
 			$.ajax({
 				type: "get",
@@ -875,7 +873,7 @@
 
 
 </head>
-<body onload="autoReload();">
+<body>
 
 	<!-- 배경 svg -->
 	<svg id="VIPcustomerBackground">
@@ -902,7 +900,7 @@
 			<div class="inner">
 
 				<a href="javascript:Main()" class="main">
-					<img src="main_temp.png" alt="main">
+					<img src="${path}/resources/images/main_temp.jpg" alt="main">
 				</a>
 
 				<div class="main-menu">

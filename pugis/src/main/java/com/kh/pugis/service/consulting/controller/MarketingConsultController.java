@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.pugis.service.consulting.service.MarketingConsultService;
 
@@ -35,8 +36,9 @@ public class MarketingConsultController
 		
 	}
 	@RequestMapping(value = "/selectcustomer")
-	public void selectCustomer(){
-		//우수고객상담과 거의 유사하게 구현하면 됨
+	public void selectCustomer(@RequestParam(value="p", defaultValue="1") int currentPage,
+    		@RequestParam(value="plsize") int pageListSize, int selectSize){
+		//우수고객상담과 달리 랜덤으로 고객 선정하여 리스트 반환
 		mcs.selectCustomer();
 	}
 	@RequestMapping(value = "/save")

@@ -48,7 +48,7 @@ public class RegularConsultController
 		System.out.println("호출됨");
        
 		//pageListSize = 5; //페이지당 출력 개수
-        address = "1"; //고객주소
+//        address = "1"; //고객주소
         //grade = "1"; //고객등급
         
         CustomerInfo ci = new CustomerInfo();
