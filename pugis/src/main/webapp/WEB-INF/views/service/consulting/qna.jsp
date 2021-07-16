@@ -105,6 +105,7 @@ nav ul .show-3.show3{
     float:right;   
 }
 #maintitle{
+	font-size:32px;
 	margin-bottom:50px;
     font-weight: 700;
     margin-top:50px;
@@ -256,6 +257,9 @@ table tr {
 	margin-top:40px;
 }
 #nonelinktitle{
+	text-decoration: none;
+}
+.sidebar a{
 	text-decoration: none;
 }
 </style>
