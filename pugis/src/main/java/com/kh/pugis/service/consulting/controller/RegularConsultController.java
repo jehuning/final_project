@@ -1,6 +1,7 @@
 package com.kh.pugis.service.consulting.controller;
 
 import com.kh.pugis.service.consulting.domain.*;
+import com.kh.pugis.service.consulting.service.EmpScheduleService;
 import com.kh.pugis.service.consulting.service.RegularConsultService;
 
 
@@ -22,33 +23,45 @@ public class RegularConsultController
 {
 	@Autowired
     RegularConsultService rcs;
-
+	@Autowired
+	EmpScheduleService ess;
+	
     public RegularConsultController()
     {
     }
     @RequestMapping(value = "/main")
-    public String printMain(HttpServletRequest req, Model model)
+    public String printMain()
     {	//우수고객상담 스케줄 메뉴 선택시 호출됨. 메인페이지로 이동
     	
-        return "service/consulting/rconsult";
+    	
+    	//페이지 호출 시 전체 상담 스케줄 리스트 정보를 넘겨줌.
+    	
+        return "service/consulting/regular";
     }
 	@RequestMapping(value = "/customer")
-    public String selectCustomer(Model model, @RequestParam(value="p", defaultValue="1")int currentPage)
-    {	//고객조회버튼 클릭시 ajax통해 호출. 고객조회 조건 넘겨받아서 db조회
-		
+    public String selectCustomer(Model model, 
+    		@RequestParam(value="p", defaultValue="1") int currentPage,
+    		@RequestParam(value="plsize") int pageListSize,
+    		@RequestParam(value="address")  String address,
+    		@RequestParam(value="grade" )  String grade)
+		{//고객조회버튼 클릭시 ajax통해 호출. 고객조회 조건 넘겨받아서 db조회
+		System.out.println("호출됨");
        
-		int pageListSize = 5; //페이지당 출력 개수
-        String address = "1"; //고객주소
-        String grade = "1"; //고객등급
+		//pageListSize = 5; //페이지당 출력 개수
+        address = "1"; //고객주소
+        //grade = "1"; //고객등급
         
         CustomerInfo ci = new CustomerInfo();
         PageInfo pi = new PageInfo();
         ci.setCustomer_address(address);
         ci.setCustomer_grade(grade);
+        
         pi.setPageListSize(pageListSize);
         pi.setCurrentPage(currentPage);
-        ArrayList al = (ArrayList)rcs.selectCustomer(ci, pi);
-        System.out.println(((CustomerInfo)al.get(0)).getCustomer_id());
+        
+        ArrayList<CustomerInfo> al = (ArrayList<CustomerInfo>) rcs.selectCustomer(ci, pi);
+        
+        
         PageMoveInfo pmi = rcs.CustomerPageMove(ci, pi);
         pmi.setPi(pi);
         pmi.setCi(ci);

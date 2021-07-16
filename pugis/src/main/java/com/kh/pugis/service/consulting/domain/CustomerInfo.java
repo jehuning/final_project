@@ -5,10 +5,10 @@ public class CustomerInfo
 {
 	String customer_id;
     String customer_name;
-    String customer_age;
+    String customer_birth;
     String customer_address;
-    String customer_num;
-    String customer_ticket;
+    String customer_phone;
+    String customer_gender;
     String customer_grade;
     
     public CustomerInfo()
@@ -35,17 +35,16 @@ public class CustomerInfo
         this.customer_name = customer_name;
     }
 
-    public String getCustomer_age()
-    {
-        return customer_age;
-    }
+  
+    public String getCustomer_birth() {
+		return customer_birth;
+	}
 
-    public void setCustomer_age(String customer_age)
-    {
-        this.customer_age = customer_age;
-    }
+	public void setCustomer_birth(String customer_birth) {
+		this.customer_birth = customer_birth;
+	}
 
-    public String getCustomer_address()
+	public String getCustomer_address()
     {
         return customer_address;
     }
@@ -55,27 +54,25 @@ public class CustomerInfo
         this.customer_address = customer_address;
     }
 
-    public String getCustomer_num()
-    {
-        return customer_num;
-    }
 
-    public void setCustomer_num(String customer_num)
-    {
-        this.customer_num = customer_num;
-    }
+    public String getCustomer_phone() {
+		return customer_phone;
+	}
 
-    public String getCustomer_ticket()
-    {
-        return customer_ticket;
-    }
+	public void setCustomer_phone(String customer_phone) {
+		this.customer_phone = customer_phone;
+	}
 
-    public void setCustomer_ticket(String customer_ticket)
-    {
-        this.customer_ticket = customer_ticket;
-    }
 
-    public String getCustomer_grade()
+    public String getCustomer_gender() {
+		return customer_gender;
+	}
+
+	public void setCustomer_gender(String customer_gender) {
+		this.customer_gender = customer_gender;
+	}
+
+	public String getCustomer_grade()
     {
         return customer_grade;
     }

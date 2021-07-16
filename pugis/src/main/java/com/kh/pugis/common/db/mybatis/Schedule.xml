@@ -8,59 +8,70 @@
 		
 	<select id="empSchedule" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Schedule">
+		<![CDATA[
 		SELECT
-		   EMP_ID,SCHEDULE_DATE,SCHEDULE_NAME
+		   EMP_ID, SCHEDULE_NAME,START_DATE,END_DATE
 		FROM
 			EMP_SCHEDULE
 		WHERE
 			emp_id = #{emp_id} 
 		AND
-		 	SCHEDULE_DATE BETWEEN #{sDate} AND #{fDate}
-		
+		 	(START_DATE <= #{fDate} OR END_DATE >= #{sDate})
+		]]>
 	</select>
+	
 	<select id="getDept" parameterType="String" resultType="String">
+		<![CDATA[
 		SELECT
 		    dept_code
 		FROM
 			emp_info
 		WHERE emp_id=#{emp_id}
-		
+		]]>
 	</select>
 	<select id="deptSchedule" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Schedule">
+		<![CDATA[
 		SELECT
-		   SHEDULE_DATE,SCHEDULE_DEPT,SCHEDULE_NAME
+		  emp_schedule.schedule_name,dept_info.dept_name, START_DATE, END_DATE
 		FROM
 			EMP_SCHEDULE
-		WHERE
-			dept_id = #{dept_id} 
+            join dept_info on(EMP_SCHEDULE.SCHEDULE_DEPT=dept_info.dept_code)
+        WHERE
+			emp_schedule.schedule_dept = #{schedule_dept} 
 		AND
-		 	SCHEDULE_DATE BETWEEN #{sDate} AND #{fDate}
-		
+		 	START_DATE <= #{fDate} OR END_DATE >= #{sDate}
+		]]>
 	</select>
-	<select id="regularCon" parameterType="hashmap" 
+	<select id="regularCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
+		<![CDATA[
 		SELECT
-		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
 		FROM
 			CONSULT_SCHEDULE
+		JOIN 
+			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
 		WHERE
 			CONSULT_CODE = 'RG' 
 		AND
-		 	CONSULT_DATE BETWEEN #{sDate} AND #{fDate}
-		
+		 	CONSULT_DATE  = #{date}
+		]]>
 	</select>
-	<select id="marketingCon" parameterType="hashmap" 
+	<select id="marketingCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
+		<![CDATA[
 		SELECT
-		   CUSTOMER_ID,CONSULT_DATE,SCHEDULE_NAME
+		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
 		FROM
 			CONSULT_SCHEDULE
+		JOIN 
+			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
 		WHERE
-			CONSULT_CODE = 'MK' 
+			CONSULT_CODE LIKE 'MK%' 
 		AND
-		 	CONSULT_DATE BETWEEN #{sDate} AND #{fDate}
-		
+		 	CONSULT_DATE = #{date}
+		]]>
 	</select>
 		
 </mapper>

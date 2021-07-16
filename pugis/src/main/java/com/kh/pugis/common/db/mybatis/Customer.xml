@@ -4,11 +4,6 @@
 
 <mapper namespace="Customer">
 
-	<resultMap type="com.kh.pugis.service.consulting.domain.CustomerInfo" id="result">
-		<result property="customer_id" column="customer_id" />
-		<result property="customer_name" column="customer_name" />
-	
-	</resultMap>
 	
 	<select id="countSelect" parameterType="com.kh.pugis.service.consulting.domain.CustomerInfo" resultType="int">
 		SELECT
@@ -20,11 +15,13 @@
 			and customer_grade = #{customer_grade}		
 	</select>
 
-	<select id="selectList" parameterType="hashmap" resultMap="result">
+	<select id="selectList" parameterType="hashmap" resultType="com.kh.pugis.service.consulting.domain.CustomerInfo">
 		SELECT
-		   customer_id, customer_name
+		   customer_id, customer_name, CUSTOMER_BIRTH, CUSTOMER_GENDER, CUSTOMER_ADDRESS, 
+		   CUSTOMER_PHONE, CUSTOMER_GRADE
 		FROM
-			(SELECT ROWNUM NUM, A.customer_id,A.customer_name
+			(SELECT ROWNUM NUM, A.customer_id,A.customer_name,A.CUSTOMER_BIRTH,A.CUSTOMER_GENDER,
+			A.CUSTOMER_ADDRESS,A.CUSTOMER_PHONE, a.customer_grade
 			FROM customer_info A
 			WHERE 
 				customer_address= #{customer_address}

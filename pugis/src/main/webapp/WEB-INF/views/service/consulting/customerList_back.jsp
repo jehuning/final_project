@@ -10,46 +10,52 @@
     <script src='fullcalendar/main.js'></script>
     <script>
 
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
 
     </script>
   
     
 </head>
 <body>
-<div id='calendar'></div>
-<form action="/pugis/rconsult/schedule" method="post">
-<table border="1">
+
+<div id="customerList">
+<input type="hidden" id="tatalPage" value="${pageList.totalPage}">
+<table id="customerTable" border="1">
 <tr>
+
 <th>고객아이디</th>
 <th>고객명</th>
-
+<th>지역</th>
+<th>등급</th>
+<th>성별</th>
+<th>생년월일</th>
+<th>휴대폰번호</th>
 </tr>
 <c:forEach var="cl" items="${customerList}" varStatus="status">
 <tr><!-- 첫번째 줄 시작 -->
-	<td><input type="hidden" name="selecetedId[${status.index}].customer_id"  value="${cl.customer_id}"/>${cl.customer_id}</td>
+
+	<td>${cl.customer_id}</td>
 	<td>${cl.customer_name}</td>
+	<td>${cl.customer_address}</td>
+	<td>${cl.customer_grade}</td>
+	<td>${cl.customer_gender}</td>
+	<td>${cl.customer_birth}</td>
+	<td>${cl.customer_phone}</td>
+	
 </tr><!-- 첫번째 줄 끝 -->
 </c:forEach>
 </table>
 
-<input type="submit" value="아이디선택" />
-</form>
-	<c:set var="page" value="${(param.p == null) ? 1 : param.p}"/>
 
 
-	<div class="page-footer clearfix">
-           <ul class="pagination pagination-sm no-margin pull-right">
+</div>
+	
+	<div id="pageList">
+           <ul class="pagination">
           	
            <c:if test="${pageList.prevPage} == true">
             <li>
-           	<a th:href="@{/pugis/rconsult/selectcustomer?currentPage=${pageList.pageNumfirst-1}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}}">이전</a>
+            <a href="#" onclick="prevPL(this)" >이전</a>
+	          	 <input type="hidden" id="prevPL" value="${pageList.pageNumfirst-1}" />
           	 </li>
           	</c:if>
          
@@ -59,15 +65,15 @@
 				      <li>${startNum + i}</li> 
 				    </c:when>
 				    <c:otherwise>
-					<li><a href="/pugis/rconsult/selectcustomer?currentPage=${startNum + i}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}">${startNum + i}</a></li>  					
+					<li><a class="page" href="#" onclick="intoPage(this)">${startNum + i}</a></li>  					
 					</c:otherwise>
-					
 				</c:choose>
 			</c:forEach>
 			
-             <c:if test="${pageList.nextPage} == true"> <--다음페이지-->
+             <c:if test="${pageList.nextPage} == true"> <--! 다음페이지 -->
 	            <li>
-	           	<a th:href="/pugis/rconsult/selectcustomer?currentPage=${pageList.pageNumlast+1}&pageListSize=${pageList.pi.pageListSize}&address=${pageList.ci.customer_address}&grade=${pageList.ci.customer_grade}">이전</a>
+	           	<a href="#" onclick="nextPL(this)">다음</a>
+	          	 <input type="hidden" id="nextPL" value="${pageList.pageNumlast+1}"/>
 	          	 </li>
           	</c:if>
           

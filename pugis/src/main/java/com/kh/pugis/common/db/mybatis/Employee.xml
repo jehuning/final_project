@@ -3,30 +3,19 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Employee">
 
-	<resultMap type="com.kh.pugis.service.consulting.domain.Employee" id="result">
-		<result property="emp_id" column="emp_id" />
-		<result property="emp_name" column="emp_name" />
-		<result property="dept_name" column="dept_name" />
-		<result property="job_name" column="job_name" />
-	</resultMap>
-	
-	<select id="getEmployeeList" resultMap="result">
-		SELECT
-		    emp_id,
-		    emp_name,
-		    emp_email,
-		    emp_tel
-		FROM
-			TB_EMPLOYEE
-		ORDER BY emp_id
+	<select id="login" resultType="com.kh.pugis.service.consulting.domain.Employee">
+		SELECT emp_id, emp_pwd 
+		  FROM emp_info
+		 WHERE emp_id = #{emp_id, jdbcType=VARCHAR}
+		   AND emp_pwd = #{emp_pwd, jdbcType=VARCHAR}   
 	</select>
 
-	<select id="getEmployeeById" parameterType="String" resultMap="result">
+	<select id="getSummary" parameterType="String" resultType="com.kh.pugis.service.consulting.domain.Employee">
 		SELECT
 		    emp_id,
 		    emp_name,
             dept_info.dept_name,
-            job_info.job_name 
+            job_info.job_name
 		FROM
 			emp_info 
             join dept_info using(dept_code) 
@@ -35,5 +24,24 @@
         	emp_id = #{emp_id}
 		
 	</select>
+	
+	<select id="getSpecific" parameterType="String" resultType="com.kh.pugis.service.consulting.domain.Employee">
+		SELECT
+		    emp_id,
+		    emp_name,
+            dept_info.dept_name,
+            job_info.job_name,
+            EMP_GENDER,
+			EMP_BIRTH,
+			EMP_ENTRY,
+			EMP_PHONE
+           
+		FROM
+			emp_info 
+            join dept_info using(dept_code) 
+          	join JOB_INFO using(job_code)
+        WHERE 
+        	emp_id = #{emp_id}
 		
+	</select>	
 </mapper>

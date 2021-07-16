@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.pugis.service.consulting.dao.EmpScheduleDao;
+import com.kh.pugis.service.consulting.domain.Consult;
 import com.kh.pugis.service.consulting.domain.Employee;
 import com.kh.pugis.service.consulting.domain.Schedule;
 
@@ -36,51 +37,62 @@ public class EmpScheduleServiceImpl
     public List<Schedule> empSchedule(Schedule s)
     {
     	LocalDate date = LocalDate.now();
-    	String schedule_date = date.toString();
-    	s.setSchedule_date(schedule_date);
+    	String today = date.toString();
     	//현재 날짜를 구함.
+    	
     	int l = date.lengthOfMonth();
     	String last = String.valueOf(l);
-    	String a = schedule_date.substring(0, schedule_date.length()-2);
+    	String a = today.substring(0, today.length()-2);
     	String lastDayOfMonth = a + last;
+    	//현재날짜의 월 말일을 구함
     	
     	System.out.println(lastDayOfMonth);
     	HashMap<String, String> hm = new HashMap<String,String>();
-    	hm.put("sDate", schedule_date);
+    	hm.put("sDate", today);
     	hm.put("fDate", lastDayOfMonth);
     	hm.put("emp_id", s.getEmp_id());
-    	return esd.empSchedule(hm);
+    	return esd.empSchedule(hm);// 현재날짜보다 스케줄종료일이 늦거나, 스케줄 시작일이 월 말일 보다 빠른 경우의 직원 스케줄을 가져옴
     }
 
     public List<Schedule> deptSchedule(Schedule s){
-    	String today = "";
-    	esd.regularConSchedule(today);
-    	esd.marketingConSchedule(today);
-    	//현재날짜의 상담스케줄을 구해오고, 스케줄테이블에 추가
+    	
+    	
     	
     	String dept_id = esd.getDept(s);//직원의 부서아이디를 구해옴
-    	
-    	
-    	//부서아이디와 현재날짜 해당월의 말일로 스케줄을 검색함.
     	s.setSchedule_dept(dept_id);
+    	System.out.println("부서:"+s.getSchedule_dept());
+    	//(없앨수 있을 듯)
+    	
+    	
     	
     	LocalDate date = LocalDate.now();
-    	String schedule_date = date.toString();
-    	s.setSchedule_date(schedule_date);
-    	//현재 날짜를 구함.
+    	String today = date.toString().replace("-", "");
+    	System.out.println(today);
+    	//현재 날짜를 구함
     	int l = date.lengthOfMonth();
     	String last = String.valueOf(l);
     	
-    	String a = schedule_date.substring(0, schedule_date.length()-2);
+    	String a = today.substring(0, today.length()-2);
     	String lastDayOfMonth = a + last;//해당월의 말일을 구함
-    	
+    	System.out.println("말일:"+lastDayOfMonth);
+    	//부서아이디와 현재날짜 해당월의 말일로 스케줄을 검색함.
     	HashMap<String, String> hm = new HashMap<String,String>();
-    	hm.put("sDate", schedule_date);
+    	hm.put("sDate", today);
     	hm.put("fDate", lastDayOfMonth);
     	hm.put("schedule_dept", s.getSchedule_dept());
     	
-    	return esd.deptSchedule(hm);
+    	return esd.deptSchedule(hm); // 현재날짜보다 스케줄종료일이 늦거나, 스케줄 시작일이 월 말일 보다 빠른 경우의 부서스케줄을 가져옴
     }
-
-   
+    public List<Consult> rgConsultSchedule(Schedule s){
+    	//오늘의 우수고객상담 스케줄을 가져옴
+    	LocalDate date = LocalDate.now();
+    	String today = date.toString();
+    	return esd.regularConSchedule(today);
+    }
+    public List<Consult> mkConsultSchedule(Schedule s){
+    	//오늘의 마케팅고객상담 스케줄을 가져옴
+    	LocalDate date = LocalDate.now();
+    	String today = date.toString();
+    	return esd.marketingConSchedule(today);
+    }
 }
