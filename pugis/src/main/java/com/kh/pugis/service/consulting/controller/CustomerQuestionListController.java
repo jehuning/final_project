@@ -99,13 +99,13 @@ public class CustomerQuestionListController {
 	//	logger.info("reply Write");
 		
 		rs.deleteReply(reply_id);
-/*		
+		
 		rttr.addAttribute("reg_id", cqrVO.getReg_id());
 		rttr.addAttribute("page", scri.getPage());
 		rttr.addAttribute("perPageNum", scri.getPerPageNum());
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
-*/		
+		
 		return "redirect:/qna/readView";
 	}
 
