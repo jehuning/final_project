@@ -4,6 +4,7 @@
  <%@ page import="java.io.PrintWriter" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,14 +65,13 @@
 		})
 	</script>
 <style>
-@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 *{
   margin: 0;
   padding: 0;
   user-select: none;
   box-sizing: border-box;
   color: #707070;
-  font-family: 'Jeju Gothic', sans-serif;
+  font-family: 'Apple SD Gothic Neo', sans-serif;
 }
 #all{
 width:100%
@@ -79,7 +79,7 @@ width:100%
 }
 .sidebar{
   position: fixed;
-  width: 20%;
+  width: 250px; 
   height: 100%;
   left: 0;
   border-right: 1px solid;
@@ -147,9 +147,11 @@ nav ul .show-3.show3{
     float:right;   
 }
 #maintitle{
-	 margin-left: 50px;
-	 margin-top: 50px;
-	 
+	margin-bottom:50px;
+    font-weight: 700;
+    margin-top:50px;
+    top: 30px;
+    left: 350px;    	 
 }
 #box{
    width: 60%;
@@ -216,7 +218,7 @@ table tr {
  	margin-right:25px;
 }
 #headline{
-	margin-top:25px;
+	margin-top:50px;
 	width:65%;
 	text-align: left;
 	margin-left: auto;
@@ -374,8 +376,13 @@ table tr {
 }
 #titlelink{
 	text-decoration: none;
-}
 
+}
+#human{
+	width :70px;
+	width :70px;
+	margin-top:40px;
+}
 </style>
 </head>
 <body>
@@ -388,7 +395,8 @@ table tr {
 %>
 <div id="all">
 	<nav class="sidebar">
-		<div class="text" ><a id="main" href="main.jsp">메인 페이지</a></div>
+				<!--  <div class="text" ><a id="main" href="main.jsp">메인 페이지</a></div>-->
+		 <div class="text" ><img id ="human" src="${path}/resources/images/main_temp.jpg" alt="main"></div>
 		<ul>
 			<li><a href="#" class="btn-1">일일 매출 보고서<span class="fas fa-caret-down first"></span></a>
 			<ul class="show-1">
@@ -415,7 +423,7 @@ table tr {
 	</nav>
 
 	<div id="content">
-		<h1 id="maintitle" ><a id ="titlelink" href="qna.jsp">고객의 소리(Q&A)</a></h1>
+		<div id="maintitle"><h1><a id ="titlelink" href="http://localhost:8090/pugis/qna/list">고객의 소리(Q&A)</a></h1></div>
 				
 				<form id = "headline">
 					<label for="title" class="col-sm-2 control-label">제목</label>
