@@ -59,6 +59,19 @@
 }
 
 
+.fc-agendaWeek-view tr {
+    height: 40px;
+}
+.fc-agendaDay-view tr {
+    height: 40px;
+}
+.fc .fc-daygrid-day-frame {
+	height: 40px;
+}
+.fc-scroller {
+	overflow-y: hidden !important;
+}
+
 /* SCHEDULE DETAILS */
 .schedule-details .inner {
   width: 800px;
