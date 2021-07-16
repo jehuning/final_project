@@ -24,7 +24,7 @@ public class SalesDataController {
 	@Autowired
 	SalesDataExcelService sdes;
 	
-	@RequestMapping(value = "/lookup")
+	@RequestMapping(value = "/main")
 	public String salesLookUp(HttpServletRequest req, Model model) {
 		
 		

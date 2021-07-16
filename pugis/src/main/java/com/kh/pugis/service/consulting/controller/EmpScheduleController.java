@@ -22,7 +22,8 @@ public class EmpScheduleController
 	@RequestMapping(value = "/calendar")
 	public void scheduleCalendar(){
 		//달력의 월을 이동 했을 때 호출..
-		
+		//이동된 달의 첫날을 받아옴
+		//이동된 달이 이번달일 경우 기존의
 		ess.scheduleCalendar();
 	}
 	@RequestMapping(value = "/emp")

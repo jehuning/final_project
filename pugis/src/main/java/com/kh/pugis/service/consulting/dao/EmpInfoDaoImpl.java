@@ -21,14 +21,13 @@ public class EmpInfoDaoImpl
 
     public Employee empInfoSummary(Employee e)
     {
-        System.out.println((new StringBuilder("SqlSession ===> ")).append(sqlSession).toString());
         System.out.println(e.getEmp_id());
-        return sqlSession.selectOne("Employee.getEmployeeById", e.getEmp_id());
+        return sqlSession.selectOne("Employee.getSummary", e.getEmp_id());
     }
 
-    public Employee empInfoSpecific()
+    public Employee empInfoSpecific(Employee e)
     {
-        return null;
+        return  sqlSession.selectOne("Employee.getSpecific", e.getEmp_id());
     }
    
 }

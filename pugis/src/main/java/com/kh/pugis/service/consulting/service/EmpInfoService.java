@@ -12,5 +12,5 @@ public interface EmpInfoService
 
     public abstract Employee empInfoSummary(Employee e);
 
-    public abstract Employee empInfoSpecific();
+    public abstract Employee empInfoSpecific(Employee e);
 }
