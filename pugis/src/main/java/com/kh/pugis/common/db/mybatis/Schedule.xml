@@ -8,6 +8,7 @@
 		
 	<select id="empSchedule" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Schedule">
+		<![CDATA[
 		SELECT
 		   EMP_ID, SCHEDULE_NAME,START_DATE,END_DATE
 		FROM
@@ -16,7 +17,7 @@
 			emp_id = #{emp_id} 
 		AND
 		 	(START_DATE <= #{fDate} OR END_DATE >= #{sDate})
-		
+		]]>
 	</select>
 	
 	<select id="getDept" parameterType="String" resultType="String">
@@ -29,6 +30,7 @@
 	</select>
 	<select id="deptSchedule" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Schedule">
+		<![CDATA[
 		SELECT
 		  emp_schedule.schedule_name,dept_info.dept_name, START_DATE, END_DATE
 		FROM
@@ -38,7 +40,7 @@
 			emp_schedule.schedule_dept = #{dept_code} 
 		AND
 		 	START_DATE <= #{fDate} OR END_DATE >= #{sDate}
-		
+		]]>
 	</select>
 	<select id="regularCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
