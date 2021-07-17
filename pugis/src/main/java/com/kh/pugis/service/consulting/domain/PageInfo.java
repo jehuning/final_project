@@ -5,12 +5,21 @@ public class PageInfo
 {
 	int currentPage;
     int pageListSize;
+    int selectedSize;
     
     public PageInfo()
     {
     }
+    
+    public int getSelectedSize() {
+		return selectedSize;
+	}
 
-    public int getCurrentPage()
+	public void setSelectedSize(int selectedSize) {
+		this.selectedSize = selectedSize;
+	}
+
+	public int getCurrentPage()
     {
         return currentPage;
     }

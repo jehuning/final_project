@@ -37,7 +37,7 @@ public class EmpScheduleServiceImpl
     public List<Schedule> empSchedule(Schedule s)
     {
     	LocalDate date = LocalDate.now();
-    	String today = date.toString();
+    	String today = date.toString().replace("-", "");
     	//현재 날짜를 구함.
     	
     	int l = date.lengthOfMonth();
@@ -86,13 +86,13 @@ public class EmpScheduleServiceImpl
     public List<Consult> rgConsultSchedule(Schedule s){
     	//오늘의 우수고객상담 스케줄을 가져옴
     	LocalDate date = LocalDate.now();
-    	String today = date.toString();
+    	String today = date.toString().replace("-", "");
     	return esd.regularConSchedule(today);
     }
     public List<Consult> mkConsultSchedule(Schedule s){
     	//오늘의 마케팅고객상담 스케줄을 가져옴
     	LocalDate date = LocalDate.now();
-    	String today = date.toString();
+    	String today = date.toString().replace("-", "");
     	return esd.marketingConSchedule(today);
     }
 }

@@ -362,8 +362,8 @@ table tr {
 	<div id="content">
 		<div id="maintitle"><h1><a id ="titlelink">서비스팀 로그인 페이지</a></h1></div>
 		<div class="inner">
-		<form name='homeForm' method="post" action="http://localhost:8090/pugis/emp/main">
-			<c:if test="${member == null}">
+		<form name='homeForm' method="post" action="http://localhost:8090/pugis/emp/dologin">
+			<c:if test="${emp_id == null}">
 				<div></br></br></br></br>
 					<label for="emp_id"></label>
 					<input type="text" id="emp_id" name="emp_id" placeholder="아이디">

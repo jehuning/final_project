@@ -20,6 +20,7 @@ public class EmpLoginServiceImpl implements EmpLoginService
 	
 	@Override
 	public Employee login(Employee emp) throws Exception {
+		System.out.println("로그인 시도:"+emp.getEmp_id());
 		return eld.login(emp);
 	}
     

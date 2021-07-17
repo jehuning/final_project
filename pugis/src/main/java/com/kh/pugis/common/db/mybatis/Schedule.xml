@@ -3,9 +3,17 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Schedule">
-
 	
-		
+	
+	<select id="getDept" parameterType="String" resultType="String">
+		<![CDATA[
+		SELECT
+		    dept_code
+		FROM
+			emp_info
+		WHERE emp_id=#{emp_id}
+		]]>
+	</select>
 	<select id="empSchedule" parameterType="hashmap" 
 			resultType="com.kh.pugis.service.consulting.domain.Schedule">
 		<![CDATA[
@@ -16,17 +24,7 @@
 		WHERE
 			emp_id = #{emp_id} 
 		AND
-		 	(START_DATE <= #{fDate} OR END_DATE >= #{sDate})
-		]]>
-	</select>
-	
-	<select id="getDept" parameterType="String" resultType="String">
-		<![CDATA[
-		SELECT
-		    dept_code
-		FROM
-			emp_info
-		WHERE emp_id=#{emp_id}
+		 	(START_DATE <= #{fDate} and END_DATE >= #{sDate})
 		]]>
 	</select>
 	<select id="deptSchedule" parameterType="hashmap" 
@@ -40,14 +38,14 @@
         WHERE
 			emp_schedule.schedule_dept = #{schedule_dept} 
 		AND
-		 	START_DATE <= #{fDate} OR END_DATE >= #{sDate}
+		 	START_DATE <= #{fDate} and END_DATE >= #{sDate}
 		]]>
 	</select>
 	<select id="regularCon" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		<![CDATA[
 		SELECT
-		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
+		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_CONTENT
 		FROM
 			CONSULT_SCHEDULE
 		JOIN 
@@ -62,15 +60,18 @@
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
 		<![CDATA[
 		SELECT
-		   CONSULT_SCHEDULE.CUSTOMER_ID, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CONSULT_DATE
+		   consult_info.consult_name, CUSTOMER_INFO.CUSTOMER_NAME, CONSULT_SCHEDULE.CUSTOMER_ID, CONSULT_SCHEDULE.CONSULT_CONTENT
 		FROM
 			CONSULT_SCHEDULE
 		JOIN 
 			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
-		WHERE
-			CONSULT_CODE LIKE 'MK%' 
+		join 
+            consult_info on (consult_info.consult_code = consult_schedule.consult_code)
+        WHERE
+			CONSULT_SCHEDULE.CONSULT_CODE LIKE 'MK%' 
 		AND
 		 	CONSULT_DATE = #{date}
+	 	order by consult_info.consult_name    
 		]]>
 	</select>
 		

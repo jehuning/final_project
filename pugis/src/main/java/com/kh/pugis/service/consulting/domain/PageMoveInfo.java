@@ -2,7 +2,8 @@ package com.kh.pugis.service.consulting.domain;
 
 
 public class PageMoveInfo
-{
+{	
+	int selectedSize;
 	int totalList;
     int totalPage;
     int pageNumfirst;
@@ -35,8 +36,16 @@ public class PageMoveInfo
     {
         this.pi = pi;
     }
+    
+    public int getSelectedSize() {
+		return selectedSize;
+	}
 
-    public int getTotalList()
+	public void setSelectedSize(int selectedSize) {
+		this.selectedSize = selectedSize;
+	}
+
+	public int getTotalList()
     {
         return totalList;
     }

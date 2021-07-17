@@ -20,29 +20,53 @@ import com.kh.pugis.service.consulting.domain.Employee;
 import com.kh.pugis.service.consulting.service.EmpLoginService;
 
 @Controller
-@RequestMapping(value = "/emplogin")
+@RequestMapping(value = "/emp")
 public class EmpLoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
 	EmpLoginService els;
-
+	
 	@RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
 	public String login(Employee emp, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		// logger.info("post login");
-		
 		HttpSession session = req.getSession();
-		Employee login = els.login(emp);
-		
-		if(login == null) {
-			session.setAttribute("member", null);
-			rttr.addFlashAttribute("msg", false);
-		}else {
-			session.setAttribute("member", login);
+		String red;
+		if(session.getAttribute("emp_id") == null){
+			red = "service/consulting/login_back";
+		}else{
+			red = "redirect:/emp/main";
 		}
 		
-		return "service/consulting/login_back";
+		
+		return red;
+	}
+	
+	
+	
+	@RequestMapping(value = "/dologin", method = {RequestMethod.POST, RequestMethod.GET})
+	public String doLogin(String emp_id, String emp_pwd, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+		// logger.info("post login");
+		Employee emp = new Employee();
+		emp.setEmp_id(emp_id);
+		emp.setEmp_pwd(emp_pwd);
+		
+		
+		HttpSession session = req.getSession();
+		
+		Employee login = els.login(emp);
+		String redirect;
+		if(login == null) {
+			session.setAttribute("emp_id", null);
+			rttr.addFlashAttribute("msg", false);
+			redirect = "redirect:/emp/login";
+		}else {
+			session.setAttribute("emp_id", emp_id);
+			redirect = "redirect:/emp/main";
+		}
+		
+		return redirect;
 	}
 	
 	@RequestMapping(value = "/logout", method = {RequestMethod.POST, RequestMethod.GET})

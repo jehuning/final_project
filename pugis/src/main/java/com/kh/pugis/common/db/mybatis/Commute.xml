@@ -36,6 +36,8 @@
 			emp_id = #{emp_id} 
 		AND
 		 	COMMUTE_DATE BETWEEN #{sDate} AND #{fDate}
+	 	ORDER BY
+	 		COMMUTE_DATE
 		
 	</select>
 		

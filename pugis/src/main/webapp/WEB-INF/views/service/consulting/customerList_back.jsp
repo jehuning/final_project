@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" >
 <head>
 	<title>Test</title>
 	<meta charset='utf-8' />
-    <link href='fullcalendar/main.css' rel='stylesheet' />
-    <script src='fullcalendar/main.js'></script>
+   
     <script>
 
 
@@ -19,9 +18,10 @@
 
 <div id="customerList">
 <input type="hidden" id="tatalPage" value="${pageList.totalPage}">
+<input type="hidden" id="selectedSize" value="${pageList.selectedSize}">
 <table id="customerTable" border="1">
 <tr>
-
+<th><input type="checkbox" id="checkAll" onclick="checkAll()"/>all</th>
 <th>고객아이디</th>
 <th>고객명</th>
 <th>지역</th>
@@ -32,7 +32,7 @@
 </tr>
 <c:forEach var="cl" items="${customerList}" varStatus="status">
 <tr><!-- 첫번째 줄 시작 -->
-
+	<td><input type="checkbox" name="check" value="${cl.customer_id}" onchange="changeCheck()"/>
 	<td>${cl.customer_id}</td>
 	<td>${cl.customer_name}</td>
 	<td>${cl.customer_address}</td>
@@ -52,25 +52,25 @@
 	<div id="pageList">
            <ul class="pagination">
           	
-           <c:if test="${pageList.prevPage} == true">
+           <c:if test="${pageList.prevPage == true}">
             <li>
             <a href="#" onclick="prevPL(this)" >이전</a>
 	          	 <input type="hidden" id="prevPL" value="${pageList.pageNumfirst-1}" />
           	 </li>
           	</c:if>
          
-           <c:forEach var="i" begin="${pageList.pageNumfirst}" end="${pageList.pageNumlast}">
+           <c:forEach var="i" begin="${pageList.pageNumfirst}" end="${pageList.pageNumlast}" varStatus = "status" >
         		<c:choose>
-				    <c:when test="${pageList.pi.currentPage eq pageList.pageNumfirst-1+i}">
-				      <li>${startNum + i}</li> 
+				    <c:when test="${pageList.pi.currentPage eq i}">
+				      <li>${i}</li> 
 				    </c:when>
 				    <c:otherwise>
-					<li><a class="page" href="#" onclick="intoPage(this)">${startNum + i}</a></li>  					
+					<li><a class="page" href="#" onclick="intoPage(this)"><input type="hidden" id="cPage" value="${status.current}" />${i}</a></li>  					
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			
-             <c:if test="${pageList.nextPage} == true"> <--! 다음페이지 -->
+             <c:if test="${pageList.nextPage  == true}">
 	            <li>
 	           	<a href="#" onclick="nextPL(this)">다음</a>
 	          	 <input type="hidden" id="nextPL" value="${pageList.pageNumlast+1}"/>
