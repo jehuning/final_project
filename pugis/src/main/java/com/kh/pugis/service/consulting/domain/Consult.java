@@ -14,11 +14,24 @@ public class Consult
     String consult_code;
     String consult_date;
     String consult_content;
+    String consult_name;
     
     public Consult()
     {
     }
-    public String getConsult_schedule_id() {
+    
+    
+    public String getConsult_name() {
+		return consult_name;
+	}
+
+
+	public void setConsult_name(String consult_name) {
+		this.consult_name = consult_name;
+	}
+
+
+	public String getConsult_schedule_id() {
 		return consult_schedule_id;
 	}
 	public void setConsult_schedule_id(String consult_schedule_id) {

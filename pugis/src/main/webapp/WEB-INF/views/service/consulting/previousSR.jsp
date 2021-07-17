@@ -27,11 +27,11 @@
 <script type="text/javascript">
 // 페이지 이동
 	function Main() {
-		location.href="index.jsp";
+		location.href="../emp/main";
 	}
 	
 	function previousSR() {
-		location.href="previousSR.jsp";
+		location.href=location.href;
 	}
 	
 // 일정 선택 >> DB 정보 주고받기

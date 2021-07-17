@@ -10,6 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>우수고객 상담</title>
+
+
 	<style id="applicationStylesheet" type="text/css">
 		/* 페이지리스트 가로정렬 */ 
 		ul {
@@ -46,7 +48,7 @@
 		}
 
 		#_1366__8 {
-			position: absolute;
+			position: fixed;
 			width: 1366px;
 			height: 768px;
 			overflow: hidden;
@@ -62,7 +64,7 @@
 		#-__p {
 			left: 33px;
 			top: 277px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 101px;
 			white-space: nowrap;
@@ -77,7 +79,7 @@
 		#__ {
 			left: 14px;
 			top: 132px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 133px;
 			white-space: nowrap;
@@ -92,7 +94,7 @@
 		#_ {
 			left: 14px;
 			top: 380px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 93px;
 			white-space: nowrap;
@@ -107,7 +109,7 @@
 		#__s {
 			left: 14px;
 			top: 449px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 75px;
 			white-space: nowrap;
@@ -122,7 +124,7 @@
 		#-__ {
 			left: 33px;
 			top: 310px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 123px;
 			white-space: nowrap;
@@ -153,9 +155,9 @@
 
 		#SelectDate {
 			z-index : 1;
-			left: 275px;
-			top: 291px;
-			position: absolute;
+			left: 325px;
+			top: 281px;
+			position: fixed;
 			overflow: visible;
 			white-space: nowrap;
 			font-family: Apple SD Gothic Neo;
@@ -166,7 +168,7 @@
 		}
 
 		#SelectDateResult {
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 135px;
 			height: 22px;
@@ -221,9 +223,9 @@
 
 		#SearchBtn { /*ㅈㅗㅎㅗㅣ*/
 			z-index: 1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
-			left: 1193px;
+			left: 1253px;
 			top: 244px;
 			width: 91px;
 			height: 31px;
@@ -231,9 +233,9 @@
 
 		#SaveBtn { /*ㅅㅡㅋㅔㅈㅠㄹㅅㅐㅇㅅㅓㅇ*/
 			z-index: 1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
-			left: 1121px;
+			left: 1171px;
 			top: 657px;
 			width: 192px;
 			height: 45px;
@@ -241,9 +243,9 @@
 
 		#ScheduleBtn { /*적용*/
 			z-index: 1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
-			left: 626px;
+			left: 686px;
 			top: 245px;
 			width: 91px;
 			height: 31px;
@@ -255,32 +257,32 @@
 
 		#ScheduleStartSelect {
 			z-index: 3;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 168px;
 			height: 31px;
-			left: 269px;
+			left: 319px;
 			top: 244px;
 		}
 
 		#ScheduleEndSelect {
 			z-index: 1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 155px;
 			height: 31px;
-			left: 454px;
+			left: 504px;
 			top: 244px;
 		}
 
 
 		#ScheduleSelect {
 			z-index: 2;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 150px;
 			height: 31px;
-			left: 251px;
+			left: 301px;
 			top: 172px;
 		}
 
@@ -295,7 +297,7 @@
 		}
 
 		.RecFill {
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 1075px;
 			height: 428px;
@@ -306,7 +308,7 @@
 		#ConsultingInput {
 			stroke: rgba(112,112,112,1);
 			stroke-width: 1px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 865px;
 			height: 74px;
@@ -315,7 +317,7 @@
 		}
 
 		#EventSelect {
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 152px;
 			height: 31px;
@@ -327,11 +329,11 @@
 		}
 
 		textarea {
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 865px;
 			height: 91px;
-			left: 238px;
+			left: 288px;
 			top: 633px;
 			border: solid 1px #707070;
 			/*border-radius: 5px;*/
@@ -341,9 +343,9 @@
 
 
 		#CustomerConsultingTitle {
-			left: 219px;
+			left: 310px;
 			top: 39px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 101px;
 			white-space: nowrap;
@@ -356,9 +358,9 @@
 		}
 
 		#VipCustomerConsultingTitle {
-			left: 230px;
+			left: 285px;
 			top: 120px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 131px;
 			white-space: nowrap;
@@ -377,20 +379,20 @@
 		}
 
 		.RectField {
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 1075px;
 			height: 428px;
-			left: 238px;
+			left: 288px;
 			top: 188px;
 		}
 
 		/*customer Find field setting*/
 
 		#CustomerFind {
-			left: 998px;
+			left: 1048px;
 			top: 208px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 152px;
 			white-space: nowrap;
@@ -402,22 +404,22 @@
 		}
 		
 		#CustomerFindFieldArea{
-		position: absolute;
-		overflow: visible;
+		position: fixed;
+		overflow: scroll;
 		z-index: 1;
-		width: 964px;
-		height: 168px;
-		left: 279px;
-		top: 384px;
+		width: 1025px;
+		height: 262px;
+		left: 308px;
+		top: 334px;
 		border: solid 1px #707070; 
 		
 		}
 		
 
 		#ScheduleSetting {
-			left: 452px;
-			top: 214px;
-			position: absolute;
+			left: 502px;
+			top: 194px;
+			position: fixed;
 			overflow: visible;
 			width: 152px;
 			white-space: nowrap;
@@ -430,39 +432,39 @@
 
 		#CustomerPrintCount {
 			z-index: 1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 130px;
 			height: 31px;
-			left: 810px;
+			left: 860px;
 			top: 244px;
 		}
 
 		#RegionSelect {
 			z-index: 1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 109px;
 			height: 31px;
-			left: 952px;
+			left: 1002px;
 			top: 244px;
 		}
 
 		#CustomerGrade {
 			z-index: 1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 112px;
 			height: 31px;
-			left: 1071px;
+			left: 1121px;
 			top: 244px;
 		}
 
 
 		#CustomerFind {
-			left: 994px;
-			top: 214px;
-			position: absolute;
+			left: 1044px;
+			top: 194px;
+			position: fixed;
 			overflow: visible;
 			width: 152px;
 			white-space: nowrap;
@@ -474,11 +476,10 @@
 		}
 		
 		#SelectCustomerNumb{
-		
-		z-index : 1;
-			left: 817px;
-			top: 291px;
-			position: absolute;
+			z-index : 1;
+			left: 867px;
+			top: 281px;
+			position: fixed;
 			overflow: visible;
 			white-space: nowrap;
 			font-family: Apple SD Gothic Neo;
@@ -501,10 +502,10 @@
 		}
 
 		.CustomerFindField {
-			position: absolute;
+			position: fixed;
 			width: 1027px;
 			height: 263px;
-			left: 267px;
+			left: 307px;
 			top: 334px;
 		}
 
@@ -513,11 +514,11 @@
 			z-index: 1;
 			color: rgba(112,112,112,1);
 			stroke-width: 1px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 31px;
 			height: 179px;
-			left: 826px;
+			left: 926px;
 			top: 384px;
 		}
 
@@ -531,116 +532,101 @@
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 132px;
 			height: 20px;
-			left: 714.5px;
-			top: 560.61px;
-			border: solid 1px black;
+			left: 764.5px;
+			top: 592px;
 		}
 		
 		#CustomerFindHeader{
 			z-index: 1;
 			color: rgba(112,112,112,1);
 			stroke-width: 1px;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
 			width: 936px;
 			height: 24px;
-			left: 291px;
+			left: 341px;
 			top: 349px;
 		}
 
 
 
 
-
-
-
-		/* SIDEBAR */
-
-		#sidebar .inner {
-			width: 188.5px;
-			height: 100%;
-			position: fixed;
-			border-right: 1px solid #EAEAEA;
-		}
-
-		#sidebar .main {
-			font-size: 20px;
-			display: block;
-			height: 100px;
-			position: relative;
-		}
-
-			#sidebar .main > img {
-				height: 59px;
-				bottom: 59px;
-				position: absolute;
-				top: 40px;
-				left: 27px;
-				margin: auto;
-			}
-
-		#sidebar .main-menu {
-		}
-
-			#sidebar .main-menu .item:hover {
-				background-color: #EAEAEA;
-				color: #fff;
-				transition: .2s;
-			}
-
-			#sidebar .main-menu .item .item__name h3 {
-				display: block;
-				color: black; /*사이드바 글자 컬러*/
-				cursor: pointer;
-				font-weight: 500;
-				text-align: left;
-			}
-
-			#sidebar .main-menu ul.list__group {
-			}
-
-				#sidebar .main-menu ul.list__group li {
-				}
-
-					#sidebar .main-menu ul.list__group li a {
-						color: black; /*소메뉴 컬러*/
-						display: block;
-						padding: 20px;
-						font-weight: 400;
-						text-align: left;
-						display: none;
-					}
-
-			#sidebar .main-menu .item:hover ul.list__group li a {
-				display: block;
-				transition: .2s;
-			}
-
-			#sidebar .main-menu ul.list__group li a::before {
-				content: "-";
-				width: 12px;
-				height: 1px;
-				padding-left: 4px;
-			}
-
-			#sidebar .main-menu .item .item__name h3:hover,
-			#sidebar .main-menu ul.list__group li a:hover {
-				color: #fff;
-				transition: .2s;
-			}
+		  /* SIDEBAR */
+	  .sidebar .inner {
+	    width: 250px;
+	    height: 100%;
+	    position: fixed;
+	    border-right: 1px solid #b6b5b5;
+	  }
+	  .sidebar .main {
+	    display: block;
+	    height: 100px;
+	    position: relative;
+	  }
+	  .sidebar .main > img {
+	    height: 75px;
+	    position: fixed;
+	    top: 10px;
+	    left: 10px;
+	    bottom: 10px;
+	    margin: auto;
+	  }
+	  .sidebar .main-menu {
+	  
+	  }
+	  .sidebar .main-menu .item:hover {
+	    background-color: #696969;
+	    color: #fff;
+	    transition: .2s;
+	  }
+	  .sidebar .main-menu .item .item__name h3 {
+	    display: block;
+	    padding: 11px 16px;
+	    color: #000;
+	    cursor: pointer;
+	    text-align: center;
+	  }
+	  .sidebar .main-menu ul.list__group {
+	    
+	  }
+	  .sidebar .main-menu ul.list__group li {
+	    
+	  }
+	  .sidebar .main-menu ul.list__group li a {
+	    color: #000;
+	    display: block;
+	    padding: -5px;
+	    text-align: center;
+	    display: none;
+	  }
+	  .sidebar .main-menu .item:hover ul.list__group li a {
+	    display: block;
+	    transition: .2s;
+	  }
+	  .sidebar .main-menu ul.list__group li a::before {
+	    content: "-";
+	    width: 12px;
+	    height: 1px;
+	    padding-left: 4px;
+	  }
+	  .sidebar .main-menu .item .item__name h3:hover,
+	  .sidebar .main-menu ul.list__group li a:hover {
+	    color: #fff;
+	    transition: .2s;
+	  }
 
 		/* 우수고객조회 백그라운두
 		*/
 
 		#VIPcustomerBackground {
 			z-index: -1;
-			position: absolute;
+			position: fixed;
 			overflow: visible;
-			left: 225px;
+			left: 275px;
 			top: 100px;
 			width: 1103px;
 			height: 643px;
@@ -650,7 +636,8 @@
 
 	<!--브라우저 스타일 초기화-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
-	
+	<!--공통 css 불러오기-->
+	<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
 	<!-- AJAX -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	
@@ -661,6 +648,26 @@
 			$t = $(this).val().replace(/<br\s*\/?>/img, "x");
 			$(this).html($t)
 		});</script>
+	
+	<!-- 사이드바 js -->
+	<script>
+	function Main() {
+		location.href= "../emp/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함 (로그인 세션야이디 전달필요)
+	}
+	
+	function previousSR() {
+		location.href="../rconsult/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+	}
+	
+	function srList() {
+		location.href="srList.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+	}
+	
+	
+	
+	</script>
+	
+	
 	
 	<!-- 스케줄날짜지정 js -->
 	<script>
@@ -723,6 +730,11 @@
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
+					
+					var message = $('#selectedSize').val()+"명이 조회되었습니다.";
+					$('#SelectCustomerNumb').html(message);
+					
+					
 				},
 				error: function(error) {
 					console.log("전송 실패");
@@ -735,8 +747,8 @@
 	
 	<!--페이지조회버튼 ajax-->
 	<script> 
-	function intoPage(){
-			var p = $(".page").text();
+	function intoPage(current){
+			var p = $(current).text();
 			var pageListSize = $("#CustomerPrintCount").val();
 			var address = $("#RegionSelect").val();
 			var grade = $("#CustomerGrade").val();
@@ -757,6 +769,14 @@
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
+					
+					var chk = sessionStorage.checkAll
+					alert(chk);
+					if(chk == 't'){
+						 $("#checkAll").prop('checked',true);
+					}
+					checkAll();
+					
 				},
 				error: function(error) {
 					console.log("전송 실패");
@@ -790,6 +810,14 @@
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
+					
+					var chk = sessionStorage.checkAll
+					alert(chk);
+					if(chk == 't'){
+						 $("#checkAll").prop('checked',true);
+					}
+					checkAll();
+					
 				},
 				error: function(error) {
 					console.log("전송 실패");
@@ -823,6 +851,15 @@
 					
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
+					
+					var chk = sessionStorage.checkAll
+					alert(chk);
+					if(chk == 't'){
+						 $("#checkAll").prop('checked',true);
+					}
+					checkAll();
+					
+					
 				},
 				error: function(error) {
 					console.log("전송 실패");
@@ -832,30 +869,45 @@
 	};
 	</script>
 	
+	<!-- 전체선택 -->
+	<script>
 	
-	
+		function checkAll(){
+		 if( $("#checkAll").is(':checked') ){
+		        $("input[name=check]").prop("checked", true);
+		     	sessionStorage.setItem("checkAll","t")
+		 }else{
+		        $("input[name=check]").prop("checked", false);
+		        	sessionStorage.removeItem("checkAll")
+		      }
+		};
+	     
+	</script>
 	
 	<!--스케줄생성 버튼 ajax-->
 	<script>
 	$(function() {
 		
 		$("#SaveBtn").on('click', function() {		
-			sDate;
-			fDate;
-			
 		
+			 var customerIdList = [];
+             
+             $('input[name="check"]:checked').each(function(i){//체크된 리스트 인덱스로 차례로 돌며 배열에 저장
+            	 customerIdList.push($(this).val());
+             });
+             alert(sDate);
+			alert(customerIdList[0]);
 			$.ajax({
 				type: "get",
-				url : "customer",
+				url : "schedule",
 				dataType: "text",
-				processData: false, 
 				cache : false,
 				contentType: 'application/json; charset=utf-8',
 				data :				
-				{"plsize":pageListSize, "address":address, "p":"1", "grade":grade},
+				{"start":sDate, "finish":fDate, "p":"1", "cList":customerIdList},
 				success : function(result) {
 					
-					$("#searchedCustomer").html(result);
+					$("#scheduleSaveResult").val(decodeURIComponent(result));
 				},
 				error: function(error) {
 					console.log("전송 실패");
@@ -875,7 +927,7 @@
 </head>
 <body>
 
-	<!-- 배경 svg -->
+<!-- 배경 svg -->
 	<svg id="VIPcustomerBackground">
 		<g data-name="VIPcustomerBackground" transform="translate(1436 835)" fill="#ebebeb">
 			<path d="M -333.4998779296875 -192.5001373291016 L -1435.500244140625 -192.5001373291016 L -1435.500244140625 -365.4606628417969 L -1435.500244140625 -834.499755859375 L -1132.5 -834.499755859375 L -1132.5 -764.2201538085938 L -1132.5 -763.7201538085938 L -1132 -763.7201538085938 L -333.4998779296875 -763.7201538085938 L -333.4998779296875 -192.5001373291016 Z" stroke="none" />
@@ -884,7 +936,7 @@
 	</svg>
 	
 	<svg class="RectField">
-		<!--밑 1차 배경-->
+		
 		<rect id="RectField" rx="0" ry="0" x="0" y="0" width="1075" height="428">
 		</rect>
 	</svg>
@@ -893,72 +945,70 @@
 		</rect>
 	</svg>
 
-	<div id="_1366__8">
-
 	<!-- SIDEBAR -->
-		<section id="sidebar">
-			<div class="inner">
+	<section class="sidebar">
+		<div class="inner">
+			
+			<a href="javascript:Main()" class="main">
+				<img src="${path}/resources/images/main_temp.jpg" alt="main">
+			</a>
+			
+			<div class="main-menu">
+        <div class="item">
+          <div class="item__name">
+            <h3>일일 매출 보고서</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list__contents">
+              <a href="javascript:previousSR()">전일매출보고서</a>
+            </li>
+          </ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객 상담</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list-contents">
+              <a href="javascript:void(0)">우수고객 상담</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">마케팅 상담</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">전체 상담 조회</a>
+            </li>
+          </ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객의 소리(Q&A)</h3>
+          </div>
+          <ul class="list__group"></ul>
+        </div>
+        <div class="item">
+          <div class="item__name">
+            <h3>고객 설문</h3>
+          </div>
+          <ul class="list__group">
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 작성</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 배포</a>
+            </li>
+            <li class="list__contents">
+              <a href="javascript:void(0)">고객 설문 결과</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+		</div>
+	</section>
+	
+	
+	
 
-				<a href="javascript:Main()" class="main">
-					<img src="${path}/resources/images/main_temp.jpg" alt="main">
-				</a>
-
-				<div class="main-menu">
-					<div class="item">
-						<div class="item__name">
-							<h3>일일 매출 보고서</h3>
-						</div>
-						<ul class="list__group">
-							<li class="list__contents">
-								<a href="javascript:previousSR()">전일매출보고서</a>
-							</li>
-							<li class="list__contents">
-								<a href="javascript:srList()">매출보고서목록</a>
-							</li>
-
-						</ul>
-					</div>
-					<div class="item">
-						<div class="item__name">
-							<h3>고객 상담</h3>
-						</div>
-						<ul class="list__group">
-							<li class="list-contents">
-								<a href="javascript:void(0)">우수고객 상담</a>
-							</li>
-							<li class="list__contents">
-								<a href="javascript:void(0)">마케팅 상담</a>
-							</li>
-							<li class="list__contents">
-								<a href="javascript:void(0)">전체 상담 조회</a>
-							</li>
-						</ul>
-					</div>
-					<div class="item">
-						<div class="item__name">
-							<h3>고객의 소리(Q&A)</h3>
-						</div>
-						<ul class="list__group"></ul>
-					</div>
-					<div class="item">
-						<div class="item__name">
-							<h3>고객 설문</h3>
-						</div>
-						<ul class="list__group">
-							<li class="list__contents">
-								<a href="javascript:void(0)">고객 설문 작성</a>
-							</li>
-							<li class="list__contents">
-								<a href="javascript:void(0)">고객 설문 배포</a>
-							</li>
-							<li class="list__contents">
-								<a href="javascript:void(0)">고객 설문 결과</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
 	
 	
 	<!-- 상위메뉴명 -->
@@ -998,7 +1048,7 @@
 	<!-- 선택된 고객 숫자 출력칸 -->
 	<div id="SelectCustomerNumb">
 		<span id="SelectCustomerNumb">조회된 고객</span>
-
+		
 	</div>
 
 
@@ -1055,8 +1105,7 @@
 		</div>		
 		
 
-		<div id="CustomerFindFieldArea">
-		</div>
+	
 		<!--customerFindSelect Number-->
 		<div id="CustomerFindFieldNumb">
 		</div>
@@ -1070,7 +1119,7 @@
 	
 		<div id = "CustomerFindHeader">
 		
-			<textarea> </textarea>
+		
 		</div>
 		
 		
@@ -1079,15 +1128,14 @@
 		
 
 
-			<textarea>
+			<textarea id="scheduleSaveResult">
 
 
-	2월 1일 ‘서울’지역 ’VIP’ 등급 ‘김철수’ 고객님 상담 스케쥴을 선택하셨습니다.
 			</textarea>
 	
 		
 		
-	</div>
+	
 
 
 	

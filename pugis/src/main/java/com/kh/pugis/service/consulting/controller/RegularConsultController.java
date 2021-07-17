@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -65,31 +66,32 @@ public class RegularConsultController
         PageMoveInfo pmi = rcs.CustomerPageMove(ci, pi);
         pmi.setPi(pi);
         pmi.setCi(ci);
+        System.out.println(pmi.getSelectedSize());
         model.addAttribute("customerList", al);
         model.addAttribute("pageList", pmi);
         
         //db에서 조회된 고객리스트 ajax로 리턴
         return "service/consulting/customerList_back";
     }
-	@RequestMapping(value = "/schedule")
-    public String saveSchedule(Model model,@RequestParam("start") String start_date,@RequestParam("finish") String finish_date , CustomerInfoListDto cil)
+	@RequestMapping(value = "/schedule", produces = "application/text; charset=utf8")
+	@ResponseBody
+    public String saveSchedule(Model model,@RequestParam("start") String start_date,
+    		@RequestParam("finish") String finish_date , 
+    		@RequestParam(value="cList[]") List<String> cList)
     {	//스케줄 생성버튼 클릭 시 ajax를 통해 호출
 		
-//		String start_date = (String)req.getParameter("start_date");
-//		String finish_date = (String)req.getParameter("finish_date");
-		start_date ="2021-02-08";
-		finish_date ="2021-03-05";
+		//start_date ="2021-02-08";
+		//finish_date ="2021-03-05";
 		
         ConsultScheduleDate rcsd = new ConsultScheduleDate();
         rcsd.setStart_date(start_date);
         rcsd.setFinish_date(finish_date);
-        System.out.println((new StringBuilder("\uACE0\uAC1D\uC544\uC774\uB514")).append(((CustomerInfo)cil.getSelecetedId().get(0)).getCustomer_id()).toString());
-        System.out.println(cil.getSelecetedId().size());
+        System.out.println(cList.size());
         
-        String result = rcs.saveSchedule(rcsd, cil);//스케줄날짜와 화면에서 선택되어 넘어온 고객 아이디 리스트를 메소드에 전달. 스케줄 생성 여부를 문자열로 반환
+        String result = rcs.saveSchedule(rcsd, cList);//스케줄날짜와 화면에서 선택되어 넘어온 고객 아이디 리스트를 메소드에 전달. 스케줄 생성 여부를 문자열로 반환
         System.out.println(result);
         //ajax로 스케줄 생성 여부를 문자열로 리턴
-        return "service/consulting/customerList_back";
+        return result;
     }
 
 }
