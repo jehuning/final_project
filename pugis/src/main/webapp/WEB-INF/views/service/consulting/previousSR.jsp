@@ -33,6 +33,12 @@
 	function previousSR() {
 		location.href=location.href;
 	}
+	function rconsult() {
+		location.href="../rconsult/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+	}
+	function qna() {
+		location.href="../qna/list";
+	}
 	
 // 일정 선택 >> DB 정보 주고받기
 	var pickedDate ;
@@ -194,7 +200,7 @@
         </div>
         <div class="item">
           <div class="item__name">
-            <h3>고객의 소리(Q&A)</h3>
+            <a href="javascript:qna()"><h3>고객의 소리(Q&A)</h3></a>
           </div>
           <ul class="list__group"></ul>
         </div>

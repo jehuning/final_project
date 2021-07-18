@@ -54,13 +54,18 @@
 	}
 	
 	function previousSR() {
+		location.href="../sales/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+	}
+	function rconsult() {
 		location.href="../rconsult/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
-	
 	function srList() {
 		location.href="srList.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
-	  	
+	function qna() {
+		location.href="../qna/list";
+	}
+	 	
 	/*$.ajax({
 		url: '',
 		type: 'post',
@@ -188,7 +193,7 @@
           </div>
           <ul class="list__group">
             <li class="list-contents">
-              <a href="javascript:void(0)">우수고객 상담</a>
+              <a href="javascript:rconsult()">우수고객 상담</a>
             </li>
             <li class="list__contents">
               <a href="javascript:void(0)">마케팅 상담</a>
@@ -200,7 +205,7 @@
         </div>
         <div class="item">
           <div class="item__name">
-            <h3>고객의 소리(Q&A)</h3>
+             <a href="javascript:qna()"><h3>고객의 소리(Q&A)</h3></a>
           </div>
           <ul class="list__group"></ul>
         </div>
