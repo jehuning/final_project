@@ -91,7 +91,7 @@ public class RegularConsultServiceImpl
         System.out.println((new StringBuilder("\uAD6C\uAC04\uB05D\uBC88\uD638:")).append(pageNumlast).toString());
        
         Boolean prev = Boolean.valueOf(pageNumfirst != 1);
-        Boolean next = Boolean.valueOf((currentPage-1) / pageListInterval != totalPage / pageListInterval);
+        Boolean next = Boolean.valueOf((currentPage-1) / pageListInterval != (totalPage-1) / pageListInterval);
        
         pmi.setPageNumfirst(pageNumfirst);
         pmi.setPageNumlast(pageNumlast);

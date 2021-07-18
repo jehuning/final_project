@@ -3,7 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Consult">
-
+	<select id="mkInfo" resultType="com.kh.pugis.service.consulting.domain.MarketingEventDate">
+		SELECT
+  			  *
+		FROM
+   			 marketing_consult_info
+	
+	</select>
 	
 	<insert id="insertRcSche" parameterType="hashmap">
 		insert into 
@@ -14,8 +20,8 @@
 	</insert>
 	<insert id="insertMcSche" parameterType="hashmap">
 		insert into 
-			   consult_schedule(CONSULT_SCHDULE_ID,CONSULT_CODE,CUSTOMER_ID,CONSULT_DATE)
-		values(CON_SCHE_SEQ.NEXTVAL,'MK',#{customerId},#{scheduleDay})
+			   consult_schedule(CONSULT_SCHEDULE_ID,CONSULT_CODE,CUSTOMER_ID,CONSULT_DATE)
+		values(CON_SCHE_SEQ.NEXTVAL,#{consult_code},#{customerId},#{scheduleDay})
 			
 			
 	</insert>
@@ -30,7 +36,7 @@
 			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
 		WHERE
 		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
-		
+		ORDER BY CONSULT_DATE
 	</select>	
 	<select id="regularSearch" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql수정필요 -->
@@ -45,7 +51,7 @@
 			CONSULT_CODE = 'RG' 
 		AND
 		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
-		
+		ORDER BY CONSULT_DATE
 	</select>		
 	<select id="marketingSearch" parameterType="com.kh.pugis.service.consulting.domain.ConsultScheduleDate" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql CONSULT_CODE 수정필요 -->
@@ -60,7 +66,7 @@
 			CONSULT_CODE LIKE 'MK%' 
 		AND
 		 	CONSULT_DATE BETWEEN #{start_date} AND #{finish_date}
-		
+		ORDER BY CONSULT_DATE
 	</select>	
 	<select id="specificMkSearch" parameterType="String" 
 			resultType="com.kh.pugis.service.consulting.domain.Consult"><!-- sql CONSULT_CODE 수정필요 -->
@@ -73,6 +79,7 @@
 			CUSTOMER_INFO ON(CONSULT_SCHEDULE.CUSTOMER_ID = CUSTOMER_INFO.CUSTOMER_ID)
 		WHERE
 			CONSULT_CODE = #{condition} 
+		ORDER BY CONSULT_DATE
 		
 		
 	</select>	
@@ -80,9 +87,9 @@
 		UPDATE
 			CONSULT_SCHEDULE
 		SET
-			CONSULT_CONTENT = #{CONSULT_CONTENT}
+			CONSULT_CONTENT = #{consult_content}
 		WHERE
-			CONSULT_SCHEDULE_ID = #{CONSULT_SCHEDULE_ID}
+			CONSULT_SCHEDULE_ID = #{consult_schedule_id}
 	
 	</update>
 		

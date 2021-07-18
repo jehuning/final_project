@@ -3,664 +3,49 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />    
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+ <!DOCTYPE html>   
+<html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>우수고객 상담</title>
 
-
-	<style id="applicationStylesheet" type="text/css">
-		/* 페이지리스트 가로정렬 */ 
-		ul {
-		    list-style:none;
-		    margin:0;
-		    padding:0;
-			}
-			
-		li {
-		    margin: 0 0 0 0;
-		    padding: 0 0 0 0;
-		    border : 0;
-		    float: left;
-			}
-
-
-
-		.mediaViewInfo {
-			--web-view-name: 웹 1366 – 8;
-			--web-view-id: _1366__8;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
-		}
-
-		:root {
-			--web-view-ids: _1366__8;
-		}
-
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			border: none;
-		}
-
-		#_1366__8 {
-			position: fixed;
-			width: 1366px;
-			height: 768px;
-			overflow: hidden;
-			--web-view-name: 웹 1366 – 8;
-			--web-view-id: _1366__8;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
-		}
-
-
-
-
-		#-__p {
-			left: 33px;
-			top: 277px;
-			position: fixed;
-			overflow: visible;
-			width: 101px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: lighter;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#__ {
-			left: 14px;
-			top: 132px;
-			position: fixed;
-			overflow: visible;
-			width: 133px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#_ {
-			left: 14px;
-			top: 380px;
-			position: fixed;
-			overflow: visible;
-			width: 93px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#__s {
-			left: 14px;
-			top: 449px;
-			position: fixed;
-			overflow: visible;
-			width: 75px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#-__ {
-			left: 33px;
-			top: 310px;
-			position: fixed;
-			overflow: visible;
-			width: 123px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-
-			/*Customer Print table css*/
-			
-		#customerTable{
-		    width: 100%;
-		    border-top: 1px solid #444444;
-		    border-collapse: collapse;
-		  }
-		  th, td {
-		    border-bottom: 1px solid #444444;
-		    padding: 10px;
-		  }
-
-			
-			
-			
-
-		#SelectDate {
-			z-index : 1;
-			left: 325px;
-			top: 281px;
-			position: fixed;
-			overflow: visible;
-			white-space: nowrap;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 17px;
-			color: rgba(112,112,112,1);
-		}
-
-		#SelectDateResult {
-			position: fixed;
-			overflow: visible;
-			width: 135px;
-			height: 22px;
-			left: 392px;
-			top: 561px;
-			color: black;
-		}
-
-
-		/*ㅂㅓ튼 css*/
-		.btn {
-			/* 필수적으로 입력해 주어야 하는 속성 */
-			vertical-align: middle; /* Input 과 타 요소들의 텍스트 높이를 동일하게 세로 정렬한다 */
-			display: inline-block; /* a나 span 태그의 경우 inline-block 요소처리 */
-			line-height: 1;
-			cursor: pointer; /* input type에 따라 커서의 모양이 다르다. */
-			/* 패딩은 Input과 다른 태그들이 달라야 한다 */
-			padding: 15px 60px;
-			/* 디자인 요소들 */
-			transition: all 0.3s;
-			/*box-shadow: inset 0 1px 0 rgba(255,255,255,.2);*/
-			/*text-shadow: 0 -1px 0 rgba(0,0,0,.4);*/
-			/*border-radius: 6px;*/
-			font-family: Apple SD Gothic Neo;
-			font-size: 15px;
-			text-transform: uppercase;
-			/* 요소마다 border 의 색상을 다르게 주기 위해서 속성들을 따로 기입한다 */
-			border-style: solid;
-			border-width: 1px;
-		}
-
-		input.btn {
-			/* Input은 다른 태그들과 패딩값이 다르게 입력된다. top + 1, bottom -1 을 해준다. */
-			padding: 9px 12px;
-		}
-
-		.SubmitBtn {
-			border-color: #707070;
-			background: #FFFFFF;
-			color: #707070;
-		}
-
-			.SubmitBtn:hover {
-				background: #E0E0E0;
-			}
-
-
-
-
-
-
-
-		#SearchBtn { /*ㅈㅗㅎㅗㅣ*/
-			z-index: 1;
-			position: fixed;
-			overflow: visible;
-			left: 1253px;
-			top: 244px;
-			width: 91px;
-			height: 31px;
-		}
-
-		#SaveBtn { /*ㅅㅡㅋㅔㅈㅠㄹㅅㅐㅇㅅㅓㅇ*/
-			z-index: 1;
-			position: fixed;
-			overflow: visible;
-			left: 1171px;
-			top: 657px;
-			width: 192px;
-			height: 45px;
-		}
-
-		#ScheduleBtn { /*적용*/
-			z-index: 1;
-			position: fixed;
-			overflow: visible;
-			left: 686px;
-			top: 245px;
-			width: 91px;
-			height: 31px;
-		}
-
-
-		/*Schedule Select part*/
-
-
-		#ScheduleStartSelect {
-			z-index: 3;
-			position: fixed;
-			overflow: visible;
-			width: 168px;
-			height: 31px;
-			left: 319px;
-			top: 244px;
-		}
-
-		#ScheduleEndSelect {
-			z-index: 1;
-			position: fixed;
-			overflow: visible;
-			width: 155px;
-			height: 31px;
-			left: 504px;
-			top: 244px;
-		}
-
-
-		#ScheduleSelect {
-			z-index: 2;
-			position: fixed;
-			overflow: visible;
-			width: 150px;
-			height: 31px;
-			left: 301px;
-			top: 172px;
-		}
-
-		#RecFill {
-			fill: #EBEBEB;
-			stroke: rgba(112,112,112,1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.RecFill {
-			position: fixed;
-			overflow: visible;
-			width: 1075px;
-			height: 428px;
-			left: 219px;
-			top: 156px;
-		}
-
-		#ConsultingInput {
-			stroke: rgba(112,112,112,1);
-			stroke-width: 1px;
-			position: fixed;
-			overflow: visible;
-			width: 865px;
-			height: 74px;
-			left: 219px;
-			top: 662px;
-		}
-
-		#EventSelect {
-			position: fixed;
-			overflow: visible;
-			width: 152px;
-			height: 31px;
-			left: 251px;
-			top: 172px;
-		}
-
-		#ResultPrint {
-		}
-
-		textarea {
-			position: fixed;
-			overflow: visible;
-			width: 865px;
-			height: 91px;
-			left: 288px;
-			top: 633px;
-			border: solid 1px #707070;
-			/*border-radius: 5px;*/
-			font-size: 16px;
-			resize: both;
-		}
-
-
-		#CustomerConsultingTitle {
-			left: 310px;
-			top: 39px;
-			position: fixed;
-			overflow: visible;
-			width: 101px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 29px;
-			color: rgba(112,112,112,1);
-		}
-
-		#VipCustomerConsultingTitle {
-			left: 285px;
-			top: 120px;
-			position: fixed;
-			overflow: visible;
-			width: 131px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 25px;
-			color: rgba(112,112,112,1);
-		}
-
-		/* 1차배경 */
-		#RectField {
-			fill: #FFFFFF;
-			border: solid 1px #707070;
-		}
-
-		.RectField {
-			position: fixed;
-			overflow: visible;
-			width: 1075px;
-			height: 428px;
-			left: 288px;
-			top: 188px;
-		}
-
-		/*customer Find field setting*/
-
-		#CustomerFind {
-			left: 1048px;
-			top: 208px;
-			position: fixed;
-			overflow: visible;
-			width: 152px;
-			white-space: nowrap;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-		
-		#CustomerFindFieldArea{
-		position: fixed;
-		overflow: scroll;
-		z-index: 1;
-		width: 1025px;
-		height: 262px;
-		left: 308px;
-		top: 334px;
-		border: solid 1px #707070; 
-		
-		}
-		
-
-		#ScheduleSetting {
-			left: 502px;
-			top: 194px;
-			position: fixed;
-			overflow: visible;
-			width: 152px;
-			white-space: nowrap;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#CustomerPrintCount {
-			z-index: 1;
-			position: fixed;
-			overflow: visible;
-			width: 130px;
-			height: 31px;
-			left: 860px;
-			top: 244px;
-		}
-
-		#RegionSelect {
-			z-index: 1;
-			position: fixed;
-			overflow: visible;
-			width: 109px;
-			height: 31px;
-			left: 1002px;
-			top: 244px;
-		}
-
-		#CustomerGrade {
-			z-index: 1;
-			position: fixed;
-			overflow: visible;
-			width: 112px;
-			height: 31px;
-			left: 1121px;
-			top: 244px;
-		}
-
-
-		#CustomerFind {
-			left: 1044px;
-			top: 194px;
-			position: fixed;
-			overflow: visible;
-			width: 152px;
-			white-space: nowrap;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-		
-		#SelectCustomerNumb{
-			z-index : 1;
-			left: 867px;
-			top: 281px;
-			position: fixed;
-			overflow: visible;
-			white-space: nowrap;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 17px;
-			color: rgba(112,112,112,1);
-		
-		}
-
-		
-		#CustomerFindField {
-			fill: #FFFFFF;
-			stroke: rgba(112,112,112,1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.CustomerFindField {
-			position: fixed;
-			width: 1027px;
-			height: 263px;
-			left: 307px;
-			top: 334px;
-		}
-
-
-		#CustomerFindFieldCheckBox {
-			z-index: 1;
-			color: rgba(112,112,112,1);
-			stroke-width: 1px;
-			position: fixed;
-			overflow: visible;
-			width: 31px;
-			height: 179px;
-			left: 926px;
-			top: 384px;
-		}
-
-
-		#CustomerFindFieldNumb {
-			z-index:1;
-			fill: #FFFFFF;
-			stroke: rgba(112,112,112,1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-			position: fixed;
-			overflow: visible;
-			width: 132px;
-			height: 20px;
-			left: 764.5px;
-			top: 592px;
-		}
-		
-		#CustomerFindHeader{
-			z-index: 1;
-			color: rgba(112,112,112,1);
-			stroke-width: 1px;
-			position: fixed;
-			overflow: visible;
-			width: 936px;
-			height: 24px;
-			left: 341px;
-			top: 349px;
-		}
-
-
-
-
-		  /* SIDEBAR */
-	  .sidebar .inner {
-	    width: 250px;
-	    height: 100%;
-	    position: fixed;
-	    border-right: 1px solid #b6b5b5;
-	  }
-	  .sidebar .main {
-	    display: block;
-	    height: 100px;
-	    position: relative;
-	  }
-	  .sidebar .main > img {
-	    height: 75px;
-	    position: fixed;
-	    top: 10px;
-	    left: 10px;
-	    bottom: 10px;
-	    margin: auto;
-	  }
-	  .sidebar .main-menu {
-	  
-	  }
-	  .sidebar .main-menu .item:hover {
-	    background-color: #696969;
-	    color: #fff;
-	    transition: .2s;
-	  }
-	  .sidebar .main-menu .item .item__name h3 {
-	    display: block;
-	    padding: 11px 16px;
-	    color: #000;
-	    cursor: pointer;
-	    text-align: center;
-	  }
-	  .sidebar .main-menu ul.list__group {
-	    
-	  }
-	  .sidebar .main-menu ul.list__group li {
-	    
-	  }
-	  .sidebar .main-menu ul.list__group li a {
-	    color: #000;
-	    display: block;
-	    padding: -5px;
-	    text-align: center;
-	    display: none;
-	  }
-	  .sidebar .main-menu .item:hover ul.list__group li a {
-	    display: block;
-	    transition: .2s;
-	  }
-	  .sidebar .main-menu ul.list__group li a::before {
-	    content: "-";
-	    width: 12px;
-	    height: 1px;
-	    padding-left: 4px;
-	  }
-	  .sidebar .main-menu .item .item__name h3:hover,
-	  .sidebar .main-menu ul.list__group li a:hover {
-	    color: #fff;
-	    transition: .2s;
-	  }
-
-		/* 우수고객조회 백그라운두
-		*/
-
-		#VIPcustomerBackground {
-			z-index: -1;
-			position: fixed;
-			overflow: visible;
-			left: 275px;
-			top: 100px;
-			width: 1103px;
-			height: 643px;
-		}
-	</style>
+	
 
 
 	<!--브라우저 스타일 초기화-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
 	<!--공통 css 불러오기-->
 	<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
+	<link rel="stylesheet" href="${path}/resources/css/regular.css?after" type="text/css"/>
 	<!-- AJAX -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
 	<!-- jQuery -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-	<script>$('textarea:first').click(function () {
-			$t = $(this).val().replace(/<br\s*\/?>/img, "x");
-			$(this).html($t)
-		});</script>
+	
 	
 	<!-- 사이드바 js -->
 	<script>
 	function Main() {
-		location.href= "../emp/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함 (로그인 세션야이디 전달필요)
+		location.href= "../emp/login"; //컨트롤러를 호출하여 jsp로 이동하여야 함 (로그인 세션야이디 전달필요)
 	}
 	
 	function previousSR() {
+		location.href="../sales/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+	}
+	function rconsult() {
 		location.href="../rconsult/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
 	
-	function srList() {
-		location.href="srList.jsp"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+	function qna() {
+		location.href="../qna/list";
+	}
+	function mconsult() {
+		location.href="../mconsult/main";
+	}
+	function searchCon() {
+		location.href="../consultsearch/main";
 	}
 	
 	
@@ -689,20 +74,6 @@
 	
 	</script>
 	
-	<!-- 조회된 고객 출력 js -->
-	<script>
-	var fCusReg; /*고객 지역*/
-	var fCusGrd; /* 고객 등*/
-	
-		
-	function printSearchedCustomer(){
-		var message = "조회된 고객 > " + <!-- N(데이터값) --> + "명 입니다."
-		console.log(message);
-		document.getElementById("SelectCustomerNumb").innerHTML = message;
-		
-	}
-	
-	</script>
 	
 	
 	<!--고객조회버튼 ajax-->
@@ -770,12 +141,7 @@
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
 					
-					var chk = sessionStorage.checkAll
-					alert(chk);
-					if(chk == 't'){
-						 $("#checkAll").prop('checked',true);
-					}
-					checkAll();
+					
 					
 				},
 				error: function(error) {
@@ -811,12 +177,7 @@
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
 					
-					var chk = sessionStorage.checkAll
-					alert(chk);
-					if(chk == 't'){
-						 $("#checkAll").prop('checked',true);
-					}
-					checkAll();
+				
 					
 				},
 				error: function(error) {
@@ -852,12 +213,7 @@
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
 					
-					var chk = sessionStorage.checkAll
-					alert(chk);
-					if(chk == 't'){
-						 $("#checkAll").prop('checked',true);
-					}
-					checkAll();
+				
 					
 					
 				},
@@ -875,10 +231,10 @@
 		function checkAll(){
 		 if( $("#checkAll").is(':checked') ){
 		        $("input[name=check]").prop("checked", true);
-		     	sessionStorage.setItem("checkAll","t")
+		     	
 		 }else{
 		        $("input[name=check]").prop("checked", false);
-		        	sessionStorage.removeItem("checkAll")
+		        	
 		      }
 		};
 	     
@@ -895,8 +251,8 @@
              $('input[name="check"]:checked').each(function(i){//체크된 리스트 인덱스로 차례로 돌며 배열에 저장
             	 customerIdList.push($(this).val());
              });
-             alert(sDate);
-			alert(customerIdList[0]);
+            
+			
 			$.ajax({
 				type: "get",
 				url : "schedule",
@@ -904,7 +260,7 @@
 				cache : false,
 				contentType: 'application/json; charset=utf-8',
 				data :				
-				{"start":sDate, "finish":fDate, "p":"1", "cList":customerIdList},
+				{"start":sDate, "finish":fDate, "cList":customerIdList},
 				success : function(result) {
 					
 					$("#scheduleSaveResult").val(decodeURIComponent(result));
@@ -928,6 +284,21 @@
 <body>
 
 <!-- 배경 svg -->
+		<svg id="MaketingcustomerBackground">
+		  <g data-name="MaketingcustomerBackground" transform="translate(3018 2588)" fill="#fff">
+		    <path d="M -1915.499389648438 -1945.5 L -3017.499755859375 -1945.5 L -3017.499755859375 -2041.999267578125 L -3017.499755859375 -2517.000244140625 L -3017.499755859375 -2517.499267578125 L -2713.99951171875 -2517.499267578125 L -2713.49951171875 -2517.499267578125 L -2713.49951171875 -2517.999267578125 L -2713.49951171875 -2587.49951171875 L -2410.499267578125 -2587.49951171875 L -2410.499267578125 -2517.999267578125 L -2410.499267578125 -2517.499267578125 L -2409.999267578125 -2517.499267578125 L -1915.499389648438 -2517.499267578125 L -1915.499389648438 -1945.5 Z" stroke="none"/>
+		    <path d="M -1915.999389648438 -1946 L -1915.999389648438 -2516.999267578125 L -2409.999267578125 -2516.999267578125 L -2410.999267578125 -2516.999267578125 L -2410.999267578125 -2517.999267578125 L -2410.999267578125 -2586.99951171875 L -2712.99951171875 -2586.99951171875 L -2712.99951171875 -2517.999267578125 L -2712.99951171875 -2516.999267578125 L -2713.99951171875 -2516.999267578125 L -3016.999755859375 -2517.000244140625 L -3016.999755859375 -2041.999267578125 L -3016.999755859375 -1946 L -1915.999389648438 -1946 M -1914.999389648438 -1945 L -3017.999755859375 -1945 L -3017.999755859375 -2041.999267578125 L -3017.999755859375 -2517.000244140625 L -3017.999755859375 -2517.999267578125 L -2713.99951171875 -2517.999267578125 L -2713.99951171875 -2587.99951171875 L -2409.999267578125 -2587.99951171875 L -2409.999267578125 -2517.999267578125 L -1914.999389648438 -2517.999267578125 L -1914.999389648438 -1945 Z" stroke="none" fill="#707070"/>
+		  </g>
+		</svg>
+			
+			<svg id="AllConsultSearch">
+		  <g data-name="AllConsultSearchWhite" transform="translate(4454 2588)" fill="#fff">
+		    <path d="M -3351.5 -1945.500366210938 L -4453.4990234375 -1945.500366210938 L -4453.4990234375 -2042.000366210938 L -4453.4990234375 -2042.500366210938 L -4453.5 -2042.500366210938 L -4453.5 -2516.5009765625 L -4453.4990234375 -2517.0009765625 L -4453.4990234375 -2517.50048828125 L -3845.99951171875 -2517.50048828125 L -3845.49951171875 -2517.50048828125 L -3845.49951171875 -2518.00048828125 L -3845.49951171875 -2587.499755859375 L -3542.500732421875 -2587.499755859375 L -3542.500732421875 -2518.00048828125 L -3542.500732421875 -2517.50048828125 L -3542.000732421875 -2517.50048828125 L -3351.5 -2517.50048828125 L -3351.5 -1945.500366210938 Z" stroke="none"/>
+		    <path d="M -3352 -1946.000244140625 L -3352 -2517.00048828125 L -3542.000732421875 -2517.00048828125 L -3543.000732421875 -2517.00048828125 L -3543.000732421875 -2518.00048828125 L -3543.000732421875 -2586.999755859375 L -3844.99951171875 -2586.999755859375 L -3844.99951171875 -2518.00048828125 L -3844.99951171875 -2517.00048828125 L -3845.99951171875 -2517.00048828125 L -4452.9990234375 -2517.00048828125 L -4453 -2516.0009765625 L -4453 -2043.00048828125 L -4452.9990234375 -2043.00048828125 L -4452.9990234375 -2042.00048828125 L -4452.9990234375 -1946.000244140625 L -3352 -1946.000244140625 M -3351 -1945.000244140625 L -4453.9990234375 -1945.000244140625 L -4453.9990234375 -2042.00048828125 L -4454 -2042.00048828125 L -4454 -2517.0009765625 L -4453.9990234375 -2517.0009765625 L -4453.9990234375 -2518.00048828125 L -3845.99951171875 -2518.00048828125 L -3845.99951171875 -2587.999755859375 L -3542.000732421875 -2587.999755859375 L -3542.000732421875 -2518.00048828125 L -3351 -2518.00048828125 L -3351 -1945.000244140625 Z" stroke="none" fill="#707070"/>
+		  </g>
+		</svg>
+
+
 	<svg id="VIPcustomerBackground">
 		<g data-name="VIPcustomerBackground" transform="translate(1436 835)" fill="#ebebeb">
 			<path d="M -333.4998779296875 -192.5001373291016 L -1435.500244140625 -192.5001373291016 L -1435.500244140625 -365.4606628417969 L -1435.500244140625 -834.499755859375 L -1132.5 -834.499755859375 L -1132.5 -764.2201538085938 L -1132.5 -763.7201538085938 L -1132 -763.7201538085938 L -333.4998779296875 -763.7201538085938 L -333.4998779296875 -192.5001373291016 Z" stroke="none" />
@@ -943,9 +314,9 @@
 	<svg class="CustomerFindField">
 		<rect id="CustomerFindField" rx="0" ry="0" x="0" y="0" width="1027" height="263">
 		</rect>
-	</svg>
+	</svg> 
 
-	<!-- SIDEBAR -->
+<!-- SIDEBAR -->
 	<section class="sidebar">
 		<div class="inner">
 			
@@ -970,19 +341,19 @@
           </div>
           <ul class="list__group">
             <li class="list-contents">
-              <a href="javascript:void(0)">우수고객 상담</a>
+              <a href="javascript:rconsult()">우수고객 상담</a>
             </li>
             <li class="list__contents">
-              <a href="javascript:void(0)">마케팅 상담</a>
+              <a href="javascript:mconsult()">마케팅 상담</a>
             </li>
             <li class="list__contents">
-              <a href="javascript:void(0)">전체 상담 조회</a>
+              <a href="javascript:searchCon()">전체 상담 조회</a>
             </li>
           </ul>
         </div>
         <div class="item">
           <div class="item__name">
-            <h3>고객의 소리(Q&A)</h3>
+             <h3><a href="javascript:qna()">고객의 소리(Q&A)</a></h3>
           </div>
           <ul class="list__group"></ul>
         </div>
@@ -1017,7 +388,13 @@
 	</div>
 	<!-- 하위메뉴명 -->
 	<div id="VipCustomerConsultingTitle">
-		<span>우수고객상담 스케줄 생성</span>
+		<span>우수고객상담 ></span>
+	</div>
+	<div id="MaketingcustomerTitle">
+		<span>마케팅상담 ></span>
+	</div>
+	<div id="AllConsultSearchTitle">
+		<span>전체상담조회 ></span>
 	</div>
 	
 	
@@ -1066,7 +443,8 @@
 			<option value=""selected disabled hidden>페이지당 출력 수 </option>
 			<option value="5">5명</option>
 			<option value="10">10명</option>
-			<option value="15">15명</option>
+			<option value="20">20명</option>
+			<option value="50">50명</option>
 		</select>
 
 

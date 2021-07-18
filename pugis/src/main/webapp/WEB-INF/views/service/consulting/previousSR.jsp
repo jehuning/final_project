@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,18 +27,25 @@
 
 <script type="text/javascript">
 // 페이지 이동
-	function Main() {
-		location.href="../emp/main";
+function Main() {
+		location.href= "../emp/login"; //컨트롤러를 호출하여 jsp로 이동하여야 함 (로그인 세션야이디 전달필요)
 	}
 	
 	function previousSR() {
-		location.href=location.href;
+		location.href="location.href"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
 	function rconsult() {
 		location.href="../rconsult/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
+	
 	function qna() {
 		location.href="../qna/list";
+	}
+	function mconsult() {
+		location.href="../mconsult/main";
+	}
+	function searchCon() {
+		location.href="../consultsearch/main";
 	}
 	
 // 일정 선택 >> DB 정보 주고받기
@@ -188,13 +196,13 @@
           </div>
           <ul class="list__group">
             <li class="list-contents">
-              <a href="javascript:void(0)">우수고객 상담</a>
+              <a href="javascript:rconsult()">우수고객 상담</a>
             </li>
             <li class="list__contents">
-              <a href="javascript:void(0)">마케팅 상담</a>
+              <a href="javascript:mconsult()">마케팅 상담</a>
             </li>
             <li class="list__contents">
-              <a href="javascript:void(0)">전체 상담 조회</a>
+              <a href="javascript:searchCon()">전체 상담 조회</a>
             </li>
           </ul>
         </div>

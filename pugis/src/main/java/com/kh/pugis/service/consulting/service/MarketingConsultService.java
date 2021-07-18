@@ -5,17 +5,18 @@
 
 package com.kh.pugis.service.consulting.service;
 
+import java.util.List;
+
+import com.kh.pugis.service.consulting.domain.ConsultScheduleDate;
+import com.kh.pugis.service.consulting.domain.CustomerInfo;
+import com.kh.pugis.service.consulting.domain.PageInfo;
+import com.kh.pugis.service.consulting.domain.PageMoveInfo;
 
 public interface MarketingConsultService
 {
 
-    public abstract void printEvent();
 
-    public abstract void selectEvent();
-
-    public abstract void CustomerPageMove();
-
-    public abstract void selectCustomer();
-
-    public abstract void saveSchedule();
+	List<CustomerInfo> selectCustomer(PageInfo pageinfo, int selectSize);
+	 PageMoveInfo CustomerPageMove(PageInfo pageinfo, int selectSize);
+    String saveSchedule(ConsultScheduleDate rcsd, List<String> cList);
 }

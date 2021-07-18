@@ -21,6 +21,36 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	
+function Main() {
+	location.href= "../emp/login"; //컨트롤러를 호출하여 jsp로 이동하여야 함 (로그인 세션야이디 전달필요)
+}
+
+function previousSR() {
+	location.href="../sales/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+}
+function rconsult() {
+	location.href="../rconsult/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+}
+
+function qna() {
+	location.href=location.href;
+}
+function mconsult() {
+	location.href="../mconsult/main";
+}
+function searchCon() {
+	location.href="../consultsearch/main";
+}
+
+
+
+</script>
+
+
+
+
 
 <style>
 *{
@@ -297,13 +327,13 @@ table tr {
           </div>
           <ul class="list__group">
             <li class="list-contents">
-              <a href="javascript:void(0)">우수고객 상담</a>
+              <a href="javascript:rconsult()">우수고객 상담</a>
             </li>
             <li class="list__contents">
-              <a href="javascript:void(0)">마케팅 상담</a>
+              <a href="javascript:mconsult()">마케팅 상담</a>
             </li>
             <li class="list__contents">
-              <a href="javascript:void(0)">전체 상담 조회</a>
+              <a href="javascript:searchCon()">전체 상담 조회</a>
             </li>
           </ul>
         </div>

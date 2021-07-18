@@ -138,7 +138,7 @@
 			/*Customer Print table css*/
 			
 		#customerList{
-		    width: 100%;
+		    width: 499px;
 		    border-top: 1px solid #444444;
 		    border-collapse: collapse;
 		  }
@@ -151,18 +151,18 @@
 			
 			
 
-		#SelectDate {
+		#SelectDate { /*선택하신 일자 출력*/
 			z-index : 1;
-			left: 275px;
-			top: 291px;
+			left: 660px;
+			top: 294px;
 			position: absolute;
 			overflow: visible;
 			white-space: nowrap;
 			font-family: Apple SD Gothic Neo;
 			font-style: normal;
 			font-weight: normal;
-			font-size: 17px;
-			color: rgba(112,112,112,1);
+			font-size: 15px;
+			color: #000000;
 		}
 
 		#SelectDateResult {
@@ -229,22 +229,22 @@
 			height: 31px;
 		}
 
-		#SaveBtn { /*ㅅㅡㅋㅔㅈㅠㄹㅅㅐㅇㅅㅓㅇ*/
+		#SaveConsultBtn { /*ㅅㅡㅋㅔㅈㅠㄹㅅㅐㅇㅅㅓㅇ*/
 			z-index: 1;
 			position: absolute;
 			overflow: visible;
-			left: 1121px;
-			top: 657px;
-			width: 192px;
-			height: 45px;
+			left: 776px;
+			top: 674px;
+			width: 517px;
+			height: 34px;
 		}
 
 		#ScheduleBtn { /*적용*/
 			z-index: 1;
 			position: absolute;
 			overflow: visible;
-			left: 626px;
-			top: 245px;
+			left: 641px;
+			top: 224px;
 			width: 91px;
 			height: 31px;
 		}
@@ -253,24 +253,54 @@
 		/*Schedule Select part*/
 
 
-		#ScheduleStartSelect {
+		#ConsultDatePrint { /*일자별 조회종류 리스트*/
 			z-index: 3;
 			position: absolute;
 			overflow: visible;
-			width: 168px;
+			width: 346px;
 			height: 31px;
 			left: 269px;
-			top: 244px;
+			top: 204px;
+		}
+		#EventDatePrint {/*카메팅 상담 일자별 조회*/
+		   	z-index: 3;
+			position: absolute;
+			overflow: visible;
+			width: 373px;
+			height: 31px;
+			left: 810px;
+			top: 223px;
+		}
+
+
+		#Line{ /*그냥 중간 나눠주는 라인벡터이미지*/
+			z-index: 3;
+			position: absolute;
+			overflow: visible;
+			
+			left: 771.16px;
+			top: 208px;
+		}
+
+
+		#ScheduleStartSelect {
+			z-index: 1;
+			position: absolute;
+			overflow: visible;
+			width: 165px;
+			height: 31px;
+			left: 269px;
+			top: 245px;
 		}
 
 		#ScheduleEndSelect {
 			z-index: 1;
 			position: absolute;
 			overflow: visible;
-			width: 155px;
+			width: 174px;
 			height: 31px;
-			left: 454px;
-			top: 244px;
+			left: 443px;
+			top: 245px;
 		}
 
 
@@ -314,31 +344,7 @@
 			top: 662px;
 		}
 
-		#EventSelect {
-			position: absolute;
-			overflow: visible;
-			width: 152px;
-			height: 31px;
-			left: 251px;
-			top: 172px;
-		}
-
-		#ResultPrint {
-		}
-
-		textarea {
-			position: absolute;
-			overflow: visible;
-			width: 865px;
-			height: 91px;
-			left: 238px;
-			top: 633px;
-			border: solid 1px #707070;
-			/*border-radius: 5px;*/
-			font-size: 16px;
-			resize: both;
-		}
-
+	
 
 		#CustomerConsultingTitle {
 			left: 219px;
@@ -377,44 +383,31 @@
 		}
 
 		.RectField {
+			z-index: 1;
 			position: absolute;
 			overflow: visible;
 			width: 1075px;
-			height: 428px;
+			height: 537.55px;
 			left: 238px;
 			top: 188px;
 		}
 
 		/*customer Find field setting*/
 
-		#CustomerFind {
-			left: 998px;
-			top: 208px;
-			position: absolute;
-			overflow: visible;
-			width: 152px;
-			white-space: nowrap;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-		
 		#CustomerFindFieldArea{
 		position: absolute;
 		overflow: visible;
 		z-index: 1;
-		width: 964px;
-		height: 168px;
-		left: 279px;
-		top: 384px;
+		width: 499px;
+		height: 374px;
+		left: 267px;
+		top: 334px;
 		border: solid 1px #707070; 
 		
 		}
 		
 
-		#ScheduleSetting {
+		#EventSelect {
 			left: 452px;
 			top: 214px;
 			position: absolute;
@@ -518,18 +511,16 @@
 		}
 
 
-		#CustomerFindFieldCheckBox {
-			z-index: 1;
-			color: rgba(112,112,112,1);
-			stroke-width: 1px;
+		#ConsultInputTextarea{/*상담내용 적는 칸*/
+			z-index: 5;
+			border: 1px solid #707070;
 			position: absolute;
-			overflow: visible;
-			width: 31px;
-			height: 179px;
-			left: 826px;
-			top: 384px;
+			width: 517px;
+			height: 255px;
+			left: 776px;
+			top: 407px;
+		
 		}
-
 
 		#CustomerFindFieldNumb {
 			z-index:1;
@@ -544,9 +535,9 @@
 			overflow: visible;
 			width: 132px;
 			height: 20px;
-			left: 714.5px;
-			top: 560.61px;
-			border: solid 1px black;
+			left: 445.53px;
+			top: 678.61px;
+			
 		}
 		
 		#CustomerFindHeader{
@@ -555,7 +546,7 @@
 			stroke-width: 1px;
 			position: absolute;
 			overflow: visible;
-			width: 936px;
+			width: 465px;
 			height: 24px;
 			left: 291px;
 			top: 349px;
@@ -589,6 +580,7 @@
 			
 			}
 			#AllConsultSearchTitle{
+			z-index:1;
 			font-family: Apple SD Gothic Neo;
 			font-style: normal;
 			font-weight: normal;
@@ -683,7 +675,7 @@
 		/* 우수고객조회 백그라운두
 		*/
 		#AllConsultSearch {
-			z-index: -1;
+			z-index: 1;
 			position: absolute;
 			overflow: visible;
 			left: 225px;
@@ -710,6 +702,22 @@
 			width: 1103px;
 			height: 643px;
 		}
+		
+		#ConsultCusSelecResult {/*상담고객 알림 칸 / 상담할 고객 알려주는 곳 */
+		
+			position: absolute;
+			overflow: visible;
+			width: 517px;
+			height: 64px;
+			left: 776px;
+			top: 333px;
+			border: solid 1px #707070;
+			/*border-radius: 5px;*/
+			font-size: 16px;
+			resize: both;
+			z-index: 3;
+		}
+		
 	</style>
 
 
@@ -904,7 +912,7 @@
 	<script>
 	$(function() {
 		
-		$("#SaveBtn").on('click', function() {		
+		$("#SaveConsultBtn").on('click', function() {		
 			sDate;
 			fDate;
 			alert(sDate);
@@ -943,8 +951,14 @@
 <body onload="autoReload();">
 
 	<!-- 배경 svg -->
+	
+	<svg id ="Line">
+  <line data-name="Line" y2="58" transform="translate(0.5)" fill="none" stroke="#707070" stroke-width="1"/>
+</svg>
+	
+	
 	<svg id="AllConsultSearch">
-  <g data-name="AllConsultSearchWhite" transform="translate(4454 2588)" fill="#fff">
+  <g data-name="AllConsultSearchWhite" transform="translate(4454 2588)" fill="#ebebeb">
     <path d="M -3351.5 -1945.500366210938 L -4453.4990234375 -1945.500366210938 L -4453.4990234375 -2042.000366210938 L -4453.4990234375 -2042.500366210938 L -4453.5 -2042.500366210938 L -4453.5 -2516.5009765625 L -4453.4990234375 -2517.0009765625 L -4453.4990234375 -2517.50048828125 L -3845.99951171875 -2517.50048828125 L -3845.49951171875 -2517.50048828125 L -3845.49951171875 -2518.00048828125 L -3845.49951171875 -2587.499755859375 L -3542.500732421875 -2587.499755859375 L -3542.500732421875 -2518.00048828125 L -3542.500732421875 -2517.50048828125 L -3542.000732421875 -2517.50048828125 L -3351.5 -2517.50048828125 L -3351.5 -1945.500366210938 Z" stroke="none"/>
     <path d="M -3352 -1946.000244140625 L -3352 -2517.00048828125 L -3542.000732421875 -2517.00048828125 L -3543.000732421875 -2517.00048828125 L -3543.000732421875 -2518.00048828125 L -3543.000732421875 -2586.999755859375 L -3844.99951171875 -2586.999755859375 L -3844.99951171875 -2518.00048828125 L -3844.99951171875 -2517.00048828125 L -3845.99951171875 -2517.00048828125 L -4452.9990234375 -2517.00048828125 L -4453 -2516.0009765625 L -4453 -2043.00048828125 L -4452.9990234375 -2043.00048828125 L -4452.9990234375 -2042.00048828125 L -4452.9990234375 -1946.000244140625 L -3352 -1946.000244140625 M -3351 -1945.000244140625 L -4453.9990234375 -1945.000244140625 L -4453.9990234375 -2042.00048828125 L -4454 -2042.00048828125 L -4454 -2517.0009765625 L -4453.9990234375 -2517.0009765625 L -4453.9990234375 -2518.00048828125 L -3845.99951171875 -2518.00048828125 L -3845.99951171875 -2587.999755859375 L -3542.000732421875 -2587.999755859375 L -3542.000732421875 -2518.00048828125 L -3351 -2518.00048828125 L -3351 -1945.000244140625 Z" stroke="none" fill="#707070"/>
   </g>
@@ -961,7 +975,7 @@
 	
 	
 	<svg id="VIPcustomerBackground">
-		<g data-name="VIPcustomerBackground" transform="translate(1436 835)" fill="#ebebeb">
+		<g data-name="VIPcustomerBackground" transform="translate(1436 835)" fill="#fff">
 			<path d="M -333.4998779296875 -192.5001373291016 L -1435.500244140625 -192.5001373291016 L -1435.500244140625 -365.4606628417969 L -1435.500244140625 -834.499755859375 L -1132.5 -834.499755859375 L -1132.5 -764.2201538085938 L -1132.5 -763.7201538085938 L -1132 -763.7201538085938 L -333.4998779296875 -763.7201538085938 L -333.4998779296875 -192.5001373291016 Z" stroke="none" />
 			<path d="M -333.9998474121094 -193.0001678466797 L -333.9998474121094 -763.2200317382812 L -1132 -763.2200317382812 L -1133 -763.2200317382812 L -1133 -764.2200317382812 L -1133 -833.999755859375 L -1435.000244140625 -833.999755859375 L -1435.000244140625 -365.4607238769531 L -1435.000244140625 -193.0001678466797 L -333.9998474121094 -193.0001678466797 M -332.9998474121094 -192.0001678466797 L -1436.000244140625 -192.0001678466797 L -1436.000244140625 -365.4607238769531 L -1436.000244140625 -834.999755859375 L -1132 -834.999755859375 L -1132 -764.2200317382812 L -332.9998474121094 -764.2200317382812 L -332.9998474121094 -192.0001678466797 Z" stroke="none" fill="#707070" />
 		</g>
@@ -969,7 +983,7 @@
 	
 	<svg class="RectField">
 		<!--밑 1차 배경-->
-		<rect id="RectField" rx="0" ry="0" x="0" y="0" width="1075" height="428">
+		<rect id="RectField" rx="0" ry="0" x="0" y="0" width="1075" height="537.55">
 		</rect>
 	</svg>
 	<svg class="CustomerFindField">
@@ -1061,13 +1075,32 @@
 	</div>
 	
 	
-	<!--스케쥴 일정-->
-	<div id="ScheduleSetting">
-		<h4>스케줄 일정</h4>
-	</div>
+	<!--행사선택-->
+
+	<!-- 일자별 조회 종류 선택-->
+	
+	
+	<select id="ConsultDatePrint" name="ConsultDatePrint" >
+	<option value=""selected disabled hidden>일자별 조회 종류 선택</option>
+			<option value="전체상담">전체상담 일자별 조회</option>
+			<option value="우수고객상담">우수고객 일자별 조회</option>
+			<option value="마케팅고객상담">마케팅 일자별 조회</option>
+		</select>
+		
 
 
-	<!-- 스케줄일정생성파트-->
+		<!--고객조회-->
+
+		<!--마케팅상담 행사별 조회 -->
+
+		<select id="EventDatePrint" name="EventDatePrint" >
+			<option value=""selected disabled hidden>마케팅 행사별 조회</option>
+			<option value="7월행사 마케팅 상담">7월행사 마케팅 상담(7월1일~7월5일)</option>
+			<option value="8월행상 마케팅 상담">8월행사 마케팅 상담(8월1일~8월5일)</option>
+			<option value="9월행사 마케팅상담">9월행사 마케팅 상담(9월1일~9월5일)</option>
+		</select>
+		
+		<!-- 스케줄일정생성파트-->
 	<!--Schedule Start -->
 	
 	<input type="date" id="ScheduleStartSelect" placeholder="시작일 선택" onchange="sdateChange(this)"/>
@@ -1077,68 +1110,15 @@
 
 
 
+		
 
-
-
-	<!-- 선택된 스케줄 기간 출력칸 -->
-	<div id="SelectDate">
-		<span id="SelectedDate">선택하신 일자</span>
-
-	</div>
-	<!-- 선택된 고객 숫자 출력칸 -->
-	<div id="SelectCustomerNumb">
-		<span id="SelectCustomerNumb">조회된 고객</span>
-
-	</div>
-
+			<!-- 선택된 스케줄 기간 출력칸 -->
+			<div id="SelectDate">
+				<span id="SelectedDate">선택하신 일자</span>
+		
+			</div>
 
 		
-		
-		<!--고객조회-->
-
-		<div id="CustomerFind">
-			<h4>우수고객조회</h4>
-		</div>
-	
-		<!-- 고객 조회 필터 OPTgroup -->
-		<!--출력고객 수-->
-		<select id="CustomerPrintCount" name="CustomerPrintCount" >
-			<option value=""selected disabled hidden>페이지당 출력 수 </option>
-			<option value="5">5명</option>
-			<option value="10">10명</option>
-			<option value="15">15명</option>
-		</select>
-
-
-		<!--ㅈㅣ역-->
-		<select id="RegionSelect" name="RegionSelect">
-			<option value=""> 지역 </option>
-			<optgroup label="서울특별시">
-				<option value="서울특별시 강남구">강남구</option>
-				<option value="gwangjin">광진구</option>
-			</optgroup>
-			<optgroup label="경기도">
-				<option value="boondang">분당</option>
-				<option value="incheon">인천</option>
-				<option value="boocheon">부천</option>
-			</optgroup>
-			<optgroup label="강원도">
-				<option value="gangreung">강릉</option>
-				<option value="chuncheon">춘천</option>
-			</optgroup>
-			<optgroup label="경상도">
-				<option value="busan">부산</option>
-			</optgroup>
-		</select>
-		<!--고객등급-->
-		<select id="CustomerGrade" name="CustomerGrade">
-			<option value=""> 고객등급 </option>
-			<option value="1"> VIP</option>
-			<option value="2">GOLD</option>
-			<option value="3">SILVER</option>
-			<option value="4">BRONZE</option>
-			<option value="5">NOMAL</option>
-		</select>
 		
 		<!-- 검색된 고객 리스트 출력칸 -->
 		<div id="searchedCustomer">
@@ -1149,34 +1129,34 @@
 		</div>
 		<!--customerFindSelect Number-->
 		<div id="CustomerFindFieldNumb">
+		       1	|   2    |  	3	 |    4	    |   5
 		</div>
 		
-		
+			<!-- 상담내용 적는 칸  -->
+		<div id="ConsultInputTextarea">
+		상담 내용 적는 칸<input type="text" name="ConsultInputTextarea" >
+	</div>
+	
+			<!-- 상담고객 선정결과 / 상담할 사람 알려주는 곳-->
+		<div>
+			<textarea id ="ConsultCusSelecResult">
+	김철수 (서울/010-0000-0000) 고객을 상담합니다.
+			</textarea>
+	
+	</div>
+	
 		
 		<!--Btn-->
-		<a class='btn SubmitBtn' id="SaveBtn">스케쥴생성</a>
+		<a class='btn SubmitBtn' id="SaveConsultBtn">상담내용작성</a>
 		<input type='button' class='btn SubmitBtn' id="SearchBtn" value='조회' />
 		<input type='button' class='btn SubmitBtn' id="ScheduleBtn" value='적용'  onclick="printDate()" />
 	
-		<div id = "CustomerFindHeader">
-		
-			<textarea> </textarea>
+		<div>
+			<textarea id = "CustomerFindHeader"> 고객아이디 고객명 지역 등급 성별 생년월일 휴대폰번호 상담여부</textarea>
+	
 		</div>
 		
-		
-		
-		
-		
-
-
-			<textarea>
-
-
-	2월 1일 ‘서울’지역 ’VIP’ 등급 ‘김철수’ 고객님 상담 스케쥴을 선택하셨습니다.
-			</textarea>
 	
-		
-		
 	</div>
 
 

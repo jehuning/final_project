@@ -1,0 +1,491 @@
+@CHARSET "UTF-8";
+/* 페이지리스트 가로정렬 */ 
+		.pagination ul {
+		    list-style:none;
+		    margin:0;
+		    padding:0;
+			}
+			
+		.pagination li {
+		    margin: 0 0 0 0;
+		    padding: 0 0 0 0;
+		    border : 0;
+		    float: left;
+			}
+
+
+
+
+			/*Customer Print table css*/
+			
+		#customerTable{
+		    width: 100%;
+		    border-top: 1px solid #444444;
+		    border-collapse: collapse;
+		  }
+		  th, td {
+		    border-bottom: 1px solid #444444;
+		    padding: 10px;
+		  }
+
+			
+			
+			
+
+		#SelectDate {
+			z-index : 1;
+			left: 325px;
+			top: 281px;
+			position: fixed;
+			overflow: visible;
+			white-space: nowrap;
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(112,112,112,1);
+		}
+
+		#SelectDateResult {
+			position: fixed;
+			overflow: visible;
+			width: 135px;
+			height: 22px;
+			left: 392px;
+			top: 561px;
+			color: black;
+		}
+
+
+		/*ㅂㅓ튼 css*/
+		.btn {
+			/* 필수적으로 입력해 주어야 하는 속성 */
+			vertical-align: middle; /* Input 과 타 요소들의 텍스트 높이를 동일하게 세로 정렬한다 */
+			display: inline-block; /* a나 span 태그의 경우 inline-block 요소처리 */
+			line-height: 1;
+			cursor: pointer; /* input type에 따라 커서의 모양이 다르다. */
+			/* 패딩은 Input과 다른 태그들이 달라야 한다 */
+			padding: 15px 52px;
+			/* 디자인 요소들 */
+			transition: all 0.3s;
+			/*box-shadow: inset 0 1px 0 rgba(255,255,255,.2);*/
+			/*text-shadow: 0 -1px 0 rgba(0,0,0,.4);*/
+			/*border-radius: 6px;*/
+			font-family: Apple SD Gothic Neo;
+			font-size: 15px;
+			text-transform: uppercase;
+			/* 요소마다 border 의 색상을 다르게 주기 위해서 속성들을 따로 기입한다 */
+			border-style: solid;
+			border-width: 1px;
+		}
+
+		input.btn {
+			/* Input은 다른 태그들과 패딩값이 다르게 입력된다. top + 1, bottom -1 을 해준다. */
+			padding: 9px 12px;
+		}
+
+		.SubmitBtn {
+			border-color: #707070;
+			background: #FFFFFF;
+			color: #707070;
+		}
+
+			.SubmitBtn:hover {
+				background: #E0E0E0;
+			}
+
+
+
+
+
+
+
+		#SearchBtn { /*ㅈㅗㅎㅗㅣ*/
+			z-index: 1;
+			position: fixed;
+			overflow: visible;
+			left: 1253px;
+			top: 244px;
+			width: 91px;
+			height: 31px;
+		}
+
+		#SaveBtn { /*ㅅㅡㅋㅔㅈㅠㄹㅅㅐㅇㅅㅓㅇ*/
+			z-index: 1;
+			position: fixed;
+			overflow: visible;
+			left: 1171px;
+			top: 657px;
+			width: 90px;
+			height: 30px;
+		}
+
+		#ScheduleBtn { /*적용*/
+			z-index: 1;
+			position: fixed;
+			overflow: visible;
+			left: 686px;
+			top: 245px;
+			width: 91px;
+			height: 31px;
+		}
+
+
+		/*Schedule Select part*/
+
+
+		#ScheduleStartSelect {
+			z-index: 3;
+			position: fixed;
+			overflow: visible;
+			width: 168px;
+			height: 31px;
+			left: 319px;
+			top: 244px;
+		}
+
+		#ScheduleEndSelect {
+			z-index: 1;
+			position: fixed;
+			overflow: visible;
+			width: 155px;
+			height: 31px;
+			left: 504px;
+			top: 244px;
+		}
+
+
+		#ScheduleSelect {
+			z-index: 2;
+			position: fixed;
+			overflow: visible;
+			width: 150px;
+			height: 31px;
+			left: 301px;
+			top: 172px;
+		}
+
+		#RecFill {
+			fill: #EBEBEB;
+			stroke: rgba(112,112,112,1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.RecFill {
+			position: fixed;
+			overflow: visible;
+			width: 1075px;
+			height: 428px;
+			left: 219px;
+			top: 156px;
+		}
+
+		#ConsultingInput {
+			stroke: rgba(112,112,112,1);
+			stroke-width: 1px;
+			position: fixed;
+			overflow: visible;
+			width: 865px;
+			height: 74px;
+			left: 219px;
+			top: 662px;
+		}
+
+		#EventSelect {
+			position: fixed;
+			overflow: visible;
+			width: 152px;
+			height: 31px;
+			left: 251px;
+			top: 172px;
+		}
+
+		#ResultPrint {
+		}
+
+		textarea {
+			position: fixed;
+			overflow: visible;
+			width: 865px;
+			height: 91px;
+			left: 288px;
+			top: 633px;
+			border: solid 1px #707070;
+			/*border-radius: 5px;*/
+			font-size: 16px;
+			resize: both;
+		}
+
+
+		#CustomerConsultingTitle {
+			left: 310px;
+			top: 39px;
+			position: fixed;
+			overflow: visible;
+			width: 101px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 29px;
+			color: rgba(112,112,112,1);
+		}
+
+
+		/* 1차배경 */
+		#RectField {
+			fill: #FFFFFF;
+			border: solid 1px #707070;
+		}
+
+		.RectField {
+			position: fixed;
+			overflow: visible;
+			width: 1075px;
+			height: 428px;
+			left: 288px;
+			top: 188px;
+		}
+
+		/*customer Find field setting*/
+
+		#CustomerFind {
+			left: 1048px;
+			top: 208px;
+			position: fixed;
+			overflow: visible;
+			width: 152px;
+			white-space: nowrap;
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(112,112,112,1);
+		}
+		
+		#CustomerFindFieldArea{
+		position: fixed;
+		overflow: auto;
+		z-index: 1;
+		width: 1025px;
+		height: 262px;
+		left: 308px;
+		top: 334px;
+		border: solid 1px #707070; 
+		
+		}
+		
+
+		#ScheduleSetting {
+			left: 502px;
+			top: 194px;
+			position: fixed;
+			overflow: visible;
+			width: 152px;
+			white-space: nowrap;
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(112,112,112,1);
+		}
+
+		#CustomerPrintCount {
+			z-index: 1;
+			position: fixed;
+			overflow: visible;
+			width: 130px;
+			height: 31px;
+			left: 860px;
+			top: 244px;
+		}
+
+		#RegionSelect {
+			z-index: 1;
+			position: fixed;
+			overflow: visible;
+			width: 109px;
+			height: 31px;
+			left: 1002px;
+			top: 244px;
+		}
+
+		#CustomerGrade {
+			z-index: 1;
+			position: fixed;
+			overflow: visible;
+			width: 112px;
+			height: 31px;
+			left: 1121px;
+			top: 244px;
+		}
+
+
+		#CustomerFind {
+			left: 1044px;
+			top: 194px;
+			position: fixed;
+			overflow: visible;
+			width: 152px;
+			white-space: nowrap;
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(112,112,112,1);
+		}
+		
+		#SelectCustomerNumb{
+			z-index : 1;
+			left: 867px;
+			top: 281px;
+			position: fixed;
+			overflow: visible;
+			white-space: nowrap;
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(112,112,112,1);
+		
+		}
+
+		
+		#CustomerFindField {
+			fill: #FFFFFF;
+			stroke: rgba(112,112,112,1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.CustomerFindField {
+			position: fixed;
+			width: 1027px;
+			height: 263px;
+			left: 307px;
+			top: 334px;
+		}
+
+
+		#CustomerFindFieldCheckBox {
+			z-index: 1;
+			color: rgba(112,112,112,1);
+			stroke-width: 1px;
+			position: fixed;
+			overflow: visible;
+			width: 31px;
+			height: 179px;
+			left: 926px;
+			top: 384px;
+		}
+
+
+		#CustomerFindFieldNumb {
+			z-index:1;
+			fill: #FFFFFF;
+			stroke: rgba(112,112,112,1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			position: fixed;
+			overflow: visible;
+			width: 132px;
+			height: 20px;
+			left: 764.5px;
+			top: 592px;
+		}
+		
+		#CustomerFindHeader{
+			z-index: 1;
+			color: rgba(112,112,112,1);
+			stroke-width: 1px;
+			position: fixed;
+			overflow: visible;
+			width: 936px;
+			height: 24px;
+			left: 341px;
+			top: 349px;
+		}
+
+
+
+
+		/* 우수고객조회 백그라운두
+		*/
+
+		#AllConsultSearch {
+		
+			position: fixed;
+			overflow: visible;
+			left: 275px;
+			top: 100px;
+			width: 1103px;
+			height: 643px;
+		}
+		
+		#MaketingcustomerBackground {
+			
+			position: fixed;
+			overflow: visible;
+			left: 275px;
+			top: 100px;
+			width: 1103px;
+			height: 643px;
+		}
+		#VIPcustomerBackground {
+			
+			position: fixed;
+			overflow: visible;
+			left: 275px;
+			top: 100px;
+			width: 1103px;
+			height: 643px;
+		}
+		
+			#VipCustomerConsultingTitle{
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 23px;
+			color: rgba(112,112,112,1);
+			position: absolute;
+			overflow: visible;
+			left: 308px;
+			top: 121px;
+			
+			}
+			#MaketingcustomerTitle{
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 23px;
+			color: rgba(112,112,112,1);
+			position: absolute;
+			overflow: visible;
+			left: 626px;
+			top: 121px;
+			
+			}
+			#AllConsultSearchTitle{
+			z-index:1;
+			font-family: Apple SD Gothic Neo;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 23px;
+			color: rgba(112,112,112,1);
+			position: absolute;
+			overflow: visible;
+			left: 916px;
+			top: 121px;
+			
+			}

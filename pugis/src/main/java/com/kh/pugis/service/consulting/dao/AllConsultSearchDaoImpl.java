@@ -17,7 +17,10 @@ public class AllConsultSearchDaoImpl
 
 	 @Autowired
     private SqlSession sqlSession;
-
+	public List<MarketingEventDate> getMKConsult(){
+		
+		return sqlSession.selectList("Consult.mkInfo");
+	}
     public List<Consult> allConsultSearch(ConsultScheduleDate csd)
     {
        

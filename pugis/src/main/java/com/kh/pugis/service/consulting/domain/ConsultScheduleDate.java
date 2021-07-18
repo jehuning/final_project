@@ -27,7 +27,16 @@ public class ConsultScheduleDate
     {
         this.finish_date = finish_date;
     }
+    
+    public String getConsult_code() {
+		return consult_code;
+	}
 
+	public void setConsult_code(String consult_code) {
+		this.consult_code = consult_code;
+	}
+
+	String consult_code;
     String start_date;
     String finish_date;
 }

@@ -30,5 +30,18 @@
 		WHERE NUM BETWEEN #{page_begin} AND #{page_end}
 		
 	</select>
+	<select id="randomList" parameterType="int" resultType="com.kh.pugis.service.consulting.domain.CustomerInfo">
+		<![CDATA[
+		SELECT
+		   customer_id, customer_name, CUSTOMER_BIRTH, CUSTOMER_GENDER, CUSTOMER_ADDRESS, 
+		   CUSTOMER_PHONE, CUSTOMER_GRADE
+		FROM
+			(SELECT *
+			FROM customer_info
+			ORDER BY DBMS_RANDOM.VALUE
+			)
+		WHERE ROWNUM <= #{select_size}
+		]]>
+	</select>
 		
 </mapper>

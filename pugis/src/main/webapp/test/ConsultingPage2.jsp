@@ -314,19 +314,18 @@
 			top: 662px;
 		}
 
-		#EventSelect {
+		#EventSelect { /*행사 선택 부분*/
+			z-index: 3;
 			position: absolute;
 			overflow: visible;
-			width: 152px;
+			width: 348px;
 			height: 31px;
-			left: 251px;
-			top: 172px;
+			left: 269px;
+			top: 244px;
 		}
 
 		#ResultPrint {
-		}
-
-		textarea {
+		
 			position: absolute;
 			overflow: visible;
 			width: 865px;
@@ -336,7 +335,9 @@
 			border: solid 1px #707070;
 			/*border-radius: 5px;*/
 			font-size: 16px;
-			resize: both;
+			z-index: 5;
+		
+			
 		}
 
 
@@ -377,6 +378,7 @@
 		}
 
 		.RectField {
+			z-index: 1;
 			position: absolute;
 			overflow: visible;
 			width: 1075px;
@@ -388,6 +390,7 @@
 		/*customer Find field setting*/
 
 		#CustomerFind {
+			z-index: 2;
 			left: 998px;
 			top: 208px;
 			position: absolute;
@@ -414,7 +417,8 @@
 		}
 		
 
-		#ScheduleSetting {
+		#EventSelectTitle {
+			z-index: 3;
 			left: 452px;
 			top: 214px;
 			position: absolute;
@@ -432,31 +436,12 @@
 			z-index: 1;
 			position: absolute;
 			overflow: visible;
-			width: 130px;
+			width: 373px;
 			height: 31px;
 			left: 810px;
 			top: 244px;
 		}
 
-		#RegionSelect {
-			z-index: 1;
-			position: absolute;
-			overflow: visible;
-			width: 109px;
-			height: 31px;
-			left: 952px;
-			top: 244px;
-		}
-
-		#CustomerGrade {
-			z-index: 1;
-			position: absolute;
-			overflow: visible;
-			width: 112px;
-			height: 31px;
-			left: 1071px;
-			top: 244px;
-		}
 
 
 		#CustomerFind {
@@ -473,18 +458,17 @@
 			color: rgba(112,112,112,1);
 		}
 		
-		#SelectCustomerNumb{
-		
-		z-index : 1;
-			left: 817px;
-			top: 291px;
+		#SelectCustomerNumb{/*조회된 고객 > N명*/
+			z-index : 4;
+			left: 818px;
+			top: 290px;
 			position: absolute;
 			overflow: visible;
 			white-space: nowrap;
 			font-family: Apple SD Gothic Neo;
 			font-style: normal;
 			font-weight: normal;
-			font-size: 17px;
+			font-size: 15px;
 			color: rgba(112,112,112,1);
 		
 		}
@@ -546,19 +530,20 @@
 			height: 20px;
 			left: 714.5px;
 			top: 560.61px;
-			border: solid 1px black;
+			
 		}
 		
-		#CustomerFindHeader{
-			z-index: 1;
+		#ScheduleDateResult{
+			z-index: 3;
 			color: rgba(112,112,112,1);
 			stroke-width: 1px;
 			position: absolute;
 			overflow: visible;
-			width: 936px;
-			height: 24px;
-			left: 291px;
-			top: 349px;
+			width: 865px;
+			height: 91px;
+			left: 238px;
+			top: 633px;
+		
 		}
 
 
@@ -577,6 +562,7 @@
 			
 			}
 			#MaketingcustomerTitle{
+			z-index: 3;
 			font-family: Apple SD Gothic Neo;
 			font-style: normal;
 			font-weight: normal;
@@ -693,7 +679,7 @@
 		}
 		
 		#MaketingcustomerBackground {
-			z-index: -1;
+			z-index: 1;
 			position: absolute;
 			overflow: visible;
 			left: 225px;
@@ -952,7 +938,7 @@
 	
 	
 	<svg id="MaketingcustomerBackground">
-  <g data-name="MaketingcustomerBackground" transform="translate(3018 2588)" fill="#fff">
+  <g data-name="MaketingcustomerBackground" transform="translate(3018 2588)" fill="#ebebeb">
     <path d="M -1915.499389648438 -1945.5 L -3017.499755859375 -1945.5 L -3017.499755859375 -2041.999267578125 L -3017.499755859375 -2517.000244140625 L -3017.499755859375 -2517.499267578125 L -2713.99951171875 -2517.499267578125 L -2713.49951171875 -2517.499267578125 L -2713.49951171875 -2517.999267578125 L -2713.49951171875 -2587.49951171875 L -2410.499267578125 -2587.49951171875 L -2410.499267578125 -2517.999267578125 L -2410.499267578125 -2517.499267578125 L -2409.999267578125 -2517.499267578125 L -1915.499389648438 -2517.499267578125 L -1915.499389648438 -1945.5 Z" stroke="none"/>
     <path d="M -1915.999389648438 -1946 L -1915.999389648438 -2516.999267578125 L -2409.999267578125 -2516.999267578125 L -2410.999267578125 -2516.999267578125 L -2410.999267578125 -2517.999267578125 L -2410.999267578125 -2586.99951171875 L -2712.99951171875 -2586.99951171875 L -2712.99951171875 -2517.999267578125 L -2712.99951171875 -2516.999267578125 L -2713.99951171875 -2516.999267578125 L -3016.999755859375 -2517.000244140625 L -3016.999755859375 -2041.999267578125 L -3016.999755859375 -1946 L -1915.999389648438 -1946 M -1914.999389648438 -1945 L -3017.999755859375 -1945 L -3017.999755859375 -2041.999267578125 L -3017.999755859375 -2517.000244140625 L -3017.999755859375 -2517.999267578125 L -2713.99951171875 -2517.999267578125 L -2713.99951171875 -2587.99951171875 L -2409.999267578125 -2587.99951171875 L -2409.999267578125 -2517.999267578125 L -1914.999389648438 -2517.999267578125 L -1914.999389648438 -1945 Z" stroke="none" fill="#707070"/>
   </g>
@@ -961,7 +947,7 @@
 	
 	
 	<svg id="VIPcustomerBackground">
-		<g data-name="VIPcustomerBackground" transform="translate(1436 835)" fill="#ebebeb">
+		<g data-name="VIPcustomerBackground" transform="translate(1436 835)" fill="#fff">
 			<path d="M -333.4998779296875 -192.5001373291016 L -1435.500244140625 -192.5001373291016 L -1435.500244140625 -365.4606628417969 L -1435.500244140625 -834.499755859375 L -1132.5 -834.499755859375 L -1132.5 -764.2201538085938 L -1132.5 -763.7201538085938 L -1132 -763.7201538085938 L -333.4998779296875 -763.7201538085938 L -333.4998779296875 -192.5001373291016 Z" stroke="none" />
 			<path d="M -333.9998474121094 -193.0001678466797 L -333.9998474121094 -763.2200317382812 L -1132 -763.2200317382812 L -1133 -763.2200317382812 L -1133 -764.2200317382812 L -1133 -833.999755859375 L -1435.000244140625 -833.999755859375 L -1435.000244140625 -365.4607238769531 L -1435.000244140625 -193.0001678466797 L -333.9998474121094 -193.0001678466797 M -332.9998474121094 -192.0001678466797 L -1436.000244140625 -192.0001678466797 L -1436.000244140625 -365.4607238769531 L -1436.000244140625 -834.999755859375 L -1132 -834.999755859375 L -1132 -764.2200317382812 L -332.9998474121094 -764.2200317382812 L -332.9998474121094 -192.0001678466797 Z" stroke="none" fill="#707070" />
 		</g>
@@ -1061,23 +1047,21 @@
 	</div>
 	
 	
-	<!--스케쥴 일정-->
-	<div id="ScheduleSetting">
-		<h4>스케줄 일정</h4>
+	<!--소제목-->
+	<div id="EventSelectTitle">
+		<h4>상담할 행사 선택</h4>
 	</div>
+<!-- 고객 조회 필터 OPTgroup -->
+		<!--출력고객 수-->
+		<select id="EventSelect" name="EventSelect" >
+			<option value=""selected disabled hidden> 행사선택</option>
+			<option value="5">5명</option>
+			<option value="10">10명</option>
+			<option value="15">15명</option>
+		</select>
 
 
-	<!-- 스케줄일정생성파트-->
-	<!--Schedule Start -->
 	
-	<input type="date" id="ScheduleStartSelect" placeholder="시작일 선택" onchange="sdateChange(this)"/>
-
-	<!--Schedule End-->
-	<input type="date" id="ScheduleEndSelect" placeholder="종료일 선택" onchange="fdateChange(this)"/>
-
-
-
-
 
 
 	<!-- 선택된 스케줄 기간 출력칸 -->
@@ -1097,48 +1081,20 @@
 		<!--고객조회-->
 
 		<div id="CustomerFind">
-			<h4>우수고객조회</h4>
+			<h4>랜덤고객조회</h4>
 		</div>
 	
-		<!-- 고객 조회 필터 OPTgroup -->
+	<!-- 고객 조회 필터 OPTgroup -->
 		<!--출력고객 수-->
 		<select id="CustomerPrintCount" name="CustomerPrintCount" >
-			<option value=""selected disabled hidden>페이지당 출력 수 </option>
+			<option value=""selected disabled hidden> 출력고객 수 </option>
 			<option value="5">5명</option>
 			<option value="10">10명</option>
 			<option value="15">15명</option>
 		</select>
 
 
-		<!--ㅈㅣ역-->
-		<select id="RegionSelect" name="RegionSelect">
-			<option value=""> 지역 </option>
-			<optgroup label="서울특별시">
-				<option value="서울특별시 강남구">강남구</option>
-				<option value="gwangjin">광진구</option>
-			</optgroup>
-			<optgroup label="경기도">
-				<option value="boondang">분당</option>
-				<option value="incheon">인천</option>
-				<option value="boocheon">부천</option>
-			</optgroup>
-			<optgroup label="강원도">
-				<option value="gangreung">강릉</option>
-				<option value="chuncheon">춘천</option>
-			</optgroup>
-			<optgroup label="경상도">
-				<option value="busan">부산</option>
-			</optgroup>
-		</select>
-		<!--고객등급-->
-		<select id="CustomerGrade" name="CustomerGrade">
-			<option value=""> 고객등급 </option>
-			<option value="1"> VIP</option>
-			<option value="2">GOLD</option>
-			<option value="3">SILVER</option>
-			<option value="4">BRONZE</option>
-			<option value="5">NOMAL</option>
-		</select>
+		
 		
 		<!-- 검색된 고객 리스트 출력칸 -->
 		<div id="searchedCustomer">
@@ -1148,7 +1104,8 @@
 		<div id="CustomerFindFieldArea">
 		</div>
 		<!--customerFindSelect Number-->
-		<div id="CustomerFindFieldNumb">
+			<div id="CustomerFindFieldNumb">
+		            1	|   2    |  	3	 |    4	    |   5
 		</div>
 		
 		
@@ -1158,25 +1115,18 @@
 		<input type='button' class='btn SubmitBtn' id="SearchBtn" value='조회' />
 		<input type='button' class='btn SubmitBtn' id="ScheduleBtn" value='적용'  onclick="printDate()" />
 	
-		<div id = "CustomerFindHeader">
-		
-			<textarea> </textarea>
-		</div>
-		
-		
-		
-		
-		
-
-
-			<textarea>
-
-
-	2월 1일 ‘서울’지역 ’VIP’ 등급 ‘김철수’ 고객님 상담 스케쥴을 선택하셨습니다.
+		<div>
+			<textarea id = "ResultPrint">
+				
+				
+				N명 YYYY/MM/DD ~ YY/MM/DD기간에 스케줄 배치 완료
 			</textarea>
+		</div> 
+		
+		<div >
+		
+			
 	
-		
-		
 	</div>
 
 
