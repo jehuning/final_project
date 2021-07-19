@@ -36,7 +36,7 @@
 	  // 페이지 로딩시 실행할 함수
 	  	var s = '<%=(String)session.getAttribute("start_time")%>';
 	  	if( s != 'null'){
-	  		alert(s)
+	  		/*alert(s)*/
 	  		$('.start').css({"background-color":"yellow"});
 			$('#sTime').text(s);
 	  	}

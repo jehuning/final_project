@@ -32,7 +32,7 @@ function Main() {
 	}
 	
 	function previousSR() {
-		location.href="location.href"; //컨트롤러를 호출하여 jsp로 이동하여야 함
+		location.href="../sales/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함
 	}
 	function rconsult() {
 		location.href="../rconsult/main"; //컨트롤러를 호출하여 jsp로 이동하여야 함

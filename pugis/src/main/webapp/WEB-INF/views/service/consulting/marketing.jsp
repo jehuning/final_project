@@ -670,7 +670,7 @@
 	function searchCondition(con){
 		$("#ScheduleStartSelect").attr("disabled",false);
 		condition= $(con).val();
-		alert(condition)
+		/*alert(condition)*/
 		if(condition == "ALL" || condition =="RG"||condition=="MK"){
 			
 			$("#CustomerGrade").attr("disabled",true);
@@ -696,10 +696,11 @@
 		finish = list2[index];
 				
 		
-		
+		/*
 		alert(mk_code);
 		alert(start);
 		alert(finish);
+		*/
 	}
 	</script>
 	
