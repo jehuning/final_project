@@ -42,7 +42,7 @@ body {
   
   }
   .sidebar .main-menu .item:hover {
-    background-color: #696969;
+    background-color: #d2d2d2;
     color: #fff;
     transition: .2s;
   }

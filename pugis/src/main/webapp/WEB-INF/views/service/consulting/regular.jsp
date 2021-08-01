@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
 	<!--공통 css 불러오기-->
 	<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
-	<link rel="stylesheet" href="${path}/resources/css/regular.css?after" type="text/css"/>
+	<link rel="stylesheet" href="${path}/resources/css/regular.css?after6" type="text/css"/>
 	<!-- AJAX -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- jQuery -->
@@ -66,7 +66,7 @@
 			fDate = date.value;
 		}
 	function printDate(){
-		var message = "선택하신 일자는" + sDate + "~" +fDate+ "입니다."
+		var message = "선택하신 일자는 " + sDate + "~" +fDate+ "입니다."
 		console.log(message);
 		document.getElementById("SelectedDate").innerHTML = message;
 		
@@ -102,7 +102,7 @@
 					var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);
 					
-					var message = $('#selectedSize').val()+"명이 조회되었습니다.";
+					var message = "조회된 고객 수 : " + $('#selectedSize').val() + "명";
 					$('#SelectCustomerNumb').html(message);
 					
 					
@@ -388,19 +388,19 @@
 	</div>
 	<!-- 하위메뉴명 -->
 	<div id="VipCustomerConsultingTitle">
-		<span>우수고객상담 ></span>
+		<span>우수고객상담 스케줄 생성</span>
 	</div>
 	<div id="MaketingcustomerTitle">
-		<span>마케팅상담 ></span>
+		<span>마케팅상담 스케줄 생성</span>
 	</div>
 	<div id="AllConsultSearchTitle">
-		<span>전체상담조회 ></span>
+		<span>전체 상담 조회</span>
 	</div>
 	
 	
 	<!--스케쥴 일정-->
 	<div id="ScheduleSetting">
-		<h4>스케줄 일정</h4>
+		<h4>스케줄 기간 선택</h4>
 	</div>
 
 
@@ -419,12 +419,12 @@
 
 	<!-- 선택된 스케줄 기간 출력칸 -->
 	<div id="SelectDate">
-		<span id="SelectedDate">선택하신 일자</span>
+		<span id="SelectedDate"></span>
 
 	</div>
 	<!-- 선택된 고객 숫자 출력칸 -->
 	<div id="SelectCustomerNumb">
-		<span id="SelectCustomerNumb">조회된 고객</span>
+		<span id="SelectCustomerNumb"></span>
 		
 	</div>
 
@@ -434,7 +434,7 @@
 		<!--고객조회-->
 
 		<div id="CustomerFind">
-			<h4>우수고객조회</h4>
+			<h4>우수 고객 조회 조건 선택</h4>
 		</div>
 	
 		<!-- 고객 조회 필터 OPTgroup -->
@@ -491,7 +491,7 @@
 		
 		
 		<!--Btn-->
-		<a class='btn SubmitBtn' id="SaveBtn">스케쥴생성</a>
+		<a class='btn SubmitBtn' id="SaveBtn">스케쥴 생성</a>
 		<input type='button' class='btn SubmitBtn' id="SearchBtn" value='조회' />
 		<input type='button' class='btn SubmitBtn' id="ScheduleBtn" value='적용'  onclick="printDate()" />
 	

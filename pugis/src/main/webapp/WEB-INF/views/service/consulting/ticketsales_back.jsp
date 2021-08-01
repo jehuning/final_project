@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="ticketsales">
-<table border="1">
+<table id="totalTable" border="1">
 <tr>
 <th>일자</th>
 <th>티켓 종류</th>

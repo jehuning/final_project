@@ -258,11 +258,11 @@
           		<span class="emp__grade">${empSummary.job_name}</span>
         	</div>
         	<div class="emp__attendBtn">
-          		<a href="javascript:start()" class="start">출근 <font size="1"><span id="sTime"></span></font></a>   <!-- Ajax로 컨트롤러 호출(직원 세션아이디 넘김) -->
+          		<a href="javascript:start()" class="start">출근<font size="1"><span id="sTime"></span></font></a>   <!-- Ajax로 컨트롤러 호출(직원 세션아이디 넘김) -->
           		<a href="javascript:leave()" class="leave">퇴근 <font size="1"><span id="lTime"></span></font></a>
         	</div>
         	<div class="emp__details">
-         	 	<a href="javascript:A_popup()" class="attend__more">상세 출결현황</a><br />
+         	 	<a href="javascript:A_popup()" class="attend__more">상세 출퇴현황</a><br />
          	 	<a href="javascript:E_popup()" class="emp__more">사원정보</a>
         	</div>
       	</div>

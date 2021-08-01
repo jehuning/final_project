@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>우수고객 상담</title>
+	<!--브라우저 스타일 초기화-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
 	<style type="text/css">
 		@CHARSET "UTF-8";
 /* 페이지리스트 가로정렬 */ 
@@ -33,8 +35,8 @@
 			color: rgba(112,112,112,1);
 			position: absolute;
 			overflow: visible;
-			left: 308px;
-			top: 121px;
+			left: 286px;
+			top: 114px;
 			
 			}
 			#MaketingcustomerTitle{
@@ -45,8 +47,8 @@
 			color: rgba(112,112,112,1);
 			position: absolute;
 			overflow: visible;
-			left: 626px;
-			top: 121px;
+			left: 600px;
+			top: 114px;
 			
 			}
 			#AllConsultSearchTitle{
@@ -58,123 +60,15 @@
 			color: rgba(112,112,112,1);
 			position: absolute;
 			overflow: visible;
-			left: 916px;
-			top: 121px;
+			left: 942px;
+			top: 114px;
 			
 			}
 
 
 
-
-		.mediaViewInfo {
-			--web-view-name: 웹 1366 – 8;
-			--web-view-id: _1366__8;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
-		}
-
-		:root {
-			--web-view-ids: _1366__8;
-		}
-
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			border: none;
-		}
-
-		#_1366__8 {
-			position: fixed;
-			width: 1366px;
-			height: 768px;
-			overflow: hidden;
-			--web-view-name: 웹 1366 – 8;
-			--web-view-id: _1366__8;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
-		}
-
-
-
-
-		#-__p {
-			left: 33px;
-			top: 277px;
-			position: fixed;
-			overflow: visible;
-			width: 101px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: lighter;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#__ {
-			left: 14px;
-			top: 132px;
-			position: fixed;
-			overflow: visible;
-			width: 133px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#_ {
-			left: 14px;
-			top: 380px;
-			position: fixed;
-			overflow: visible;
-			width: 93px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#__s {
-			left: 14px;
-			top: 449px;
-			position: fixed;
-			overflow: visible;
-			width: 75px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#-__ {
-			left: 33px;
-			top: 310px;
-			position: fixed;
-			overflow: visible;
-			width: 123px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-
-			/*Customer Print table css*/
+			
+		/*Customer Print table css*/
 			
 		#customerTable{
 		    width: 100%;
@@ -184,10 +78,7 @@
 		  th, td {
 		    border-bottom: 1px solid #444444;
 		    padding: 10px;
-		  }
-
-			
-			
+		  }	
 			
 
 		#SelectDate {
@@ -268,21 +159,21 @@
 			height: 31px;
 		}
 
-		#SaveBtn { /*ㅅㅡㅋㅔㅈㅠㄹㅅㅐㅇㅅㅓㅇ*/
+	#SaveBtn { /*ㅅㅡㅋㅔㅈㅠㄹㅅㅐㅇㅅㅓㅇ*/
 			z-index: 1;
 			position: fixed;
 			overflow: visible;
 			left: 1171px;
 			top: 657px;
-			width: 192px;
-			height: 45px;
+			width: 90px;
+			height: 30px;
 		}
 
 		#ScheduleBtn { /*적용*/
 			z-index: 1;
 			position: fixed;
 			overflow: visible;
-			left: 686px;
+			left: 666px;
 			top: 245px;
 			width: 91px;
 			height: 31px;
@@ -298,7 +189,7 @@
 			overflow: visible;
 			width: 168px;
 			height: 31px;
-			left: 479px;
+			left: 412px;
 			top: 284px;
 		}
 
@@ -308,7 +199,7 @@
 			overflow: visible;
 			width: 155px;
 			height: 31px;
-			left: 664px;
+			left: 597px;
 			top: 284px;
 		}
 
@@ -414,7 +305,7 @@
 		/*customer Find field setting*/
 
 		#CustomerFind {
-			left: 1048px;
+			left: 1044px;
 			top: 208px;
 			position: fixed;
 			overflow: visible;
@@ -441,7 +332,7 @@
 		
 
 		#ScheduleSetting {
-			left: 1052px;
+			left: 978px;
 			top: 194px;
 			position: fixed;
 			overflow: visible;
@@ -624,8 +515,7 @@
 	
 
 
-	<!--브라우저 스타일 초기화-->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+	
 	<!--공통 css 불러오기-->
 	<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
 	<!-- AJAX -->
@@ -1090,26 +980,26 @@
 	</div>
 	<!-- 하위메뉴명 -->
 	<div id="VipCustomerConsultingTitle">
-		<span>우수고객상담 ></span>
+		<span>우수고객상담 스케줄 생성</span>
 	</div>
 	<div id="MaketingcustomerTitle">
-		<span>마케팅상담 ></span>
+		<span>마케팅상담 스케줄 생성</span>
 	</div>
 	<div id="AllConsultSearchTitle">
-		<span>전체상담조회 ></span>
+		<span>전체 상담 조회 </span>
 	</div>
 	
 	
 	<!--스케쥴 일정-->
 	<div id="ScheduleSetting">
-		<h4>조회 조건 선택</h4>
+		<h4>랜덤 고객 조회 조건 선택</h4>
 	</div>
 
 
 	<!-- 스케줄일정생성파트-->
 	<!--Schedule Start -->
 	
-	<input type="date" id="ScheduleStartSelect" placeholder="시작일 선택" onchange="sdateChange(this)" disabled/>
+	<input type="date" id="ScheduleStartSelect" placeholder="시작일 선택" onchange="sdateChange(this)" disabled/> 
 
 	<!--Schedule End-->
 	<input type="date" id="ScheduleEndSelect" placeholder="종료일 선택" onchange="fdateChange(this)" disabled/>
@@ -1121,7 +1011,7 @@
 
 	<!-- 선택된 스케줄 기간 출력칸 -->
 	<div id="SelectDate">
-		<span id="SelectedDate">선택된 스케쥴 기간은</span>
+		<span id="SelectedDate"></span>
 
 	</div>
 	<!-- 선택된 고객 숫자 출력칸 -->
@@ -1136,7 +1026,7 @@
 		<!--고객조회-->
 
 		<div id="CustomerFind">
-			<h4>조회 방식 선택</h4>
+			<h4>스케줄 기간 선택</h4>
 		</div>
 	
 		<!-- 조회 종류 선택 -->

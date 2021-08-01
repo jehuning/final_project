@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>우수고객 상담</title>
+<!--브라우저 스타일 초기화-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
 	<style type="text/css">
 		@CHARSET "UTF-8";
 /* 페이지리스트 가로정렬 */ 
@@ -33,8 +35,8 @@
 			color: rgba(112,112,112,1);
 			position: absolute;
 			overflow: visible;
-			left: 308px;
-			top: 121px;
+			left: 286px;
+			top: 114px;
 			
 			}
 			#MaketingcustomerTitle{
@@ -45,8 +47,8 @@
 			color: rgba(112,112,112,1);
 			position: absolute;
 			overflow: visible;
-			left: 626px;
-			top: 121px;
+			left: 600px;
+			top: 114px;
 			
 			}
 			#AllConsultSearchTitle{
@@ -58,120 +60,11 @@
 			color: rgba(112,112,112,1);
 			position: absolute;
 			overflow: visible;
-			left: 916px;
-			top: 121px;
+			left: 942px;
+			top: 114px;
 			
 			}
 
-
-
-
-		.mediaViewInfo {
-			--web-view-name: 웹 1366 – 8;
-			--web-view-id: _1366__8;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
-		}
-
-		:root {
-			--web-view-ids: _1366__8;
-		}
-
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			border: none;
-		}
-
-		#_1366__8 {
-			position: fixed;
-			width: 1366px;
-			height: 768px;
-			overflow: hidden;
-			--web-view-name: 웹 1366 – 8;
-			--web-view-id: _1366__8;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
-		}
-
-
-
-
-		#-__p {
-			left: 33px;
-			top: 277px;
-			position: fixed;
-			overflow: visible;
-			width: 101px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: lighter;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#__ {
-			left: 14px;
-			top: 132px;
-			position: fixed;
-			overflow: visible;
-			width: 133px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#_ {
-			left: 14px;
-			top: 380px;
-			position: fixed;
-			overflow: visible;
-			width: 93px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#__s {
-			left: 14px;
-			top: 449px;
-			position: fixed;
-			overflow: visible;
-			width: 75px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
-
-		#-__ {
-			left: 33px;
-			top: 310px;
-			position: fixed;
-			overflow: visible;
-			width: 123px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Apple SD Gothic Neo;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 20px;
-			color: rgba(112,112,112,1);
-		}
 
 
 			/*Customer Print table css*/
@@ -192,7 +85,7 @@
 
 		#SelectDate {
 			z-index : 1;
-			left: 325px;
+			left: 309px;
 			top: 281px;
 			position: fixed;
 			overflow: visible;
@@ -223,7 +116,7 @@
 			line-height: 1;
 			cursor: pointer; /* input type에 따라 커서의 모양이 다르다. */
 			/* 패딩은 Input과 다른 태그들이 달라야 한다 */
-			padding: 15px 40px;
+			padding: 15px 43px;
 			/* 디자인 요소들 */
 			transition: all 0.3s;
 			/*box-shadow: inset 0 1px 0 rgba(255,255,255,.2);*/
@@ -274,8 +167,8 @@
 			overflow: visible;
 			left: 1171px;
 			top: 657px;
-			width: 192px;
-			height: 45px;
+			width: 108px;
+			height: 30px;
 		}
 
 		#ScheduleBtn { /*적용*/
@@ -616,8 +509,7 @@
 	
 
 
-	<!--브라우저 스타일 초기화-->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+	
 	<!--공통 css 불러오기-->
 	<link rel="stylesheet" href="${path}/resources/css/common.css" type="text/css"/>
 	<!-- AJAX -->
@@ -746,7 +638,7 @@
 		}
 		
 		
-		var message = "선택하신 조회 방법은" + cName + "입니다."
+		var message = "선택된 조회 방식은 " + cName + "입니다."
 		document.getElementById("SelectedDate").innerHTML = message;
 		
 		
@@ -784,7 +676,7 @@
 					/*var page = html.find("div#pageList").html();
 					$("#CustomerFindFieldNumb").html(page);*/
 					
-					var message = $('#selectedSize').val()+"명이 조회되었습니다.";
+					var message = $('#selectedSize').val()+"명의 스케줄이 조회되었습니다.";
 					$('#SelectCustomerNumb').html(message);
 					
 					
@@ -1110,13 +1002,13 @@
 	</div>
 	<!-- 하위메뉴명 -->
 	<div id="VipCustomerConsultingTitle">
-		<span>우수고객상담 ></span>
+		<span>우수고객상담 스케줄 생성</span>
 	</div>
 	<div id="MaketingcustomerTitle">
-		<span>마케팅상담 ></span>
+		<span>마케팅상담 스케줄 생성</span>
 	</div>
 	<div id="AllConsultSearchTitle">
-		<span>전체상담조회 ></span>
+		<span>전체 상담 조회 </span>
 	</div>
 	
 	
@@ -1141,7 +1033,7 @@
 
 	<!-- 선택된 스케줄 기간 출력칸 -->
 	<div id="SelectDate">
-		<span id="SelectedDate">선택한 조회 방법 </span>
+		<span id="SelectedDate"></span>
 
 	</div>
 	<!-- 선택된 고객 숫자 출력칸 -->

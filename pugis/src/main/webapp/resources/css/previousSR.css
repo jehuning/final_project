@@ -82,6 +82,7 @@
   top: 200px;
   left: 350px;
   border: 1px solid #b6b5b5;
+  overflow : auto;
 }
 .previousSR form[name=saveForm] > input[type=submit] {
   position: fixed;
@@ -103,8 +104,20 @@
 }
 
 /* LIST TABLE */
-.srresult > #srresult {
+#srresult {
   	width: 100%;
   	overflow: auto;
 }
 
+
+/*Customer Print table css*/
+			
+		table {
+		    width: 100%;
+		    border-top: 1px solid #444444;
+		    border-collapse: collapse;
+		  }
+		  th, td {
+		    border-bottom: 1px solid #444444;
+		    padding: 10px;
+		  }	

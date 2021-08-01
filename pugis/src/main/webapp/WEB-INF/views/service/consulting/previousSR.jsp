@@ -19,7 +19,7 @@
 <!-- jQuery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<link rel="stylesheet" href="${path}/resources/css/previousSR.css" />
+<link rel="stylesheet" href="${path}/resources/css/previousSR.css?t3" />
 <link rel="stylesheet" href="${path}/resources/css/common.css" />
 
 </head>
@@ -78,7 +78,13 @@ function Main() {
 			}		
 		}
 		
-		$("#totalsales").on('click', function() {		
+		$("#totalsales").on('click', function() {
+			$("#totalsales").css("background-color","#e0fcfa");
+			$("#gendersales").css("background-color","white");
+			$("#agesales").css("background-color","white");
+			$("#ticketsales").css("background-color","white");
+			$("#facilitysales").css("background-color","white");
+			
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);			
 			console.log(search_date);
@@ -98,6 +104,12 @@ function Main() {
 		
 
 		$("#gendersales").on('click', function() {		
+			$("#totalsales").css("background-color","white");
+			$("#gendersales").css("background-color","#e0fcfa");
+			$("#agesales").css("background-color","white");
+			$("#ticketsales").css("background-color","white");
+			$("#facilitysales").css("background-color","white");
+			
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
 			console.log(search_date);
@@ -116,6 +128,12 @@ function Main() {
 		
 
 		$("#agesales").on('click', function() {		
+			$("#totalsales").css("background-color","white");
+			$("#gendersales").css("background-color","white");
+			$("#agesales").css("background-color","#e0fcfa");
+			$("#ticketsales").css("background-color","white");
+			$("#facilitysales").css("background-color","white");
+			
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
 			console.log(search_date);
@@ -134,6 +152,12 @@ function Main() {
 		
 
 		$("#ticketsales").on('click', function() {	
+			$("#totalsales").css("background-color","white");
+			$("#gendersales").css("background-color","white");
+			$("#agesales").css("background-color","white");
+			$("#ticketsales").css("background-color","#e0fcfa");
+			$("#facilitysales").css("background-color","white");
+			
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
 			console.log(search_date);
@@ -152,6 +176,12 @@ function Main() {
 		
 
 		$("#facilitysales").on('click', function() {	
+			$("#totalsales").css("background-color","white");
+			$("#gendersales").css("background-color","white");
+			$("#agesales").css("background-color","white");
+			$("#ticketsales").css("background-color","white");
+			$("#facilitysales").css("background-color","#e0fcfa");
+			
 			pickedDate = document.getElementById('pickdate').value;
 			search_date = pickedDate.replaceAll('-','').substring(2,8);
 			console.log(search_date);
@@ -252,7 +282,7 @@ function Main() {
 
       <div class="sidemenu">
         <form name="sortForm" action="sort" method="post">
-          <input type="button" value="전일 총 매출" id="totalsales" />
+          <input type="button" value="총 매출" id="totalsales" />
           <input type="button" value="성별" id="gendersales" />
           <input type="button" value="연령별" id="agesales" />
           <input type="button" value="티켓 종류별" id="ticketsales" />

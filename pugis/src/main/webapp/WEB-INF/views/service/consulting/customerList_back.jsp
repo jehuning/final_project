@@ -32,7 +32,7 @@
 </tr>
 <c:forEach var="cl" items="${customerList}" varStatus="status">
 <tr><!-- 첫번째 줄 시작 -->
-	<td> <input type="checkbox" name="check" value="${cl.customer_id}" /></td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" name="check" value="${cl.customer_id}" /></td>
 	<td>${cl.customer_id}</td>
 	<td>${cl.customer_name}</td>
 	<td>${cl.customer_address}</td>
