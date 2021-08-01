@@ -32,11 +32,19 @@ public class RegularConsultServiceImpl
         
         int currentPage = pi.getCurrentPage();
         int pageListSize = pi.getPageListSize();
-        System.out.println("한페이지 출력수"+pageListSize);
-        int totalPage = selectedSize / pageListSize + 1;
+        System.out.println("한페이지 출력수 :"+pageListSize);
+        int totalPage = 0;
+        
+        if(selectedSize%pageListSize==0){
+       	 totalPage = selectedSize / pageListSize;
+       }else{
+       	 totalPage = selectedSize / pageListSize + 1;
+       }
+        
+        
         //전체 조회 개수에 따른 페이지수 산출
         HashMap<String,Object> hm = new HashMap<String,Object>();
-        if(totalPage != currentPage)
+        if(currentPage != totalPage)
         { 
             int pageBegin = (currentPage - 1) * pageListSize + 1;
             int pageEnd = pageBegin + (pageListSize - 1);
@@ -44,8 +52,7 @@ public class RegularConsultServiceImpl
             hm.put("customer_grade", ci.getCustomer_grade());
             hm.put("page_begin", Integer.valueOf(pageBegin));
             hm.put("page_end", Integer.valueOf(pageEnd));
-        } else
-        { //마지막 페이지일때
+        } else{ //마지막 페이지일때
             int pageBegin = (currentPage - 1) * pageListSize + 1;
             int pageEnd = selectedSize;
             hm.put("customer_address", ci.getCustomer_address());
@@ -64,9 +71,11 @@ public class RegularConsultServiceImpl
         int pageListSize = 0;
         int selectedSize = 0;
         
+        //총조회개수
         selectedSize = rcd.countSelect(ci);
         pmi.setSelectedSize(selectedSize);
         System.out.println("전체조회개수"+selectedSize);
+        
         
         pageListSize = pi.getPageListSize();
         if(selectedSize%pageListSize==0){
@@ -76,27 +85,32 @@ public class RegularConsultServiceImpl
         }
         
         pmi.setTotalPage(totalPage);
-        System.out.println((new StringBuilder("\uCD1D\uD398\uC774\uC9C0:")).append(totalPage).toString());
+        System.out.println((new StringBuilder("총페이지:")).append(totalPage).toString());
+        
         int pageListInterval = 5;
         currentPage = pi.getCurrentPage();
-        System.out.println((new StringBuilder("\uD604\uC7AC\uD398\uC774\uC9C0:")).append(currentPage).toString());
-        int pageNumfirst = ((currentPage - 1) / pageListInterval) * pageListInterval + 1;
-        System.out.println((new StringBuilder("\uAD6C\uAC04\uCCAB\uBC88\uD638:")).append(pageNumfirst).toString());
-        int pageNumlast = 0;
-        if((currentPage-1) / pageListInterval != totalPage / pageListInterval)
-            pageNumlast = (pageNumfirst - 1) + pageListInterval;
-        else
-            pageNumlast = (pageNumfirst - 1) + totalPage % pageListInterval;
+        System.out.println((new StringBuilder("현재페이지:")).append(currentPage).toString());
         
-        System.out.println((new StringBuilder("\uAD6C\uAC04\uB05D\uBC88\uD638:")).append(pageNumlast).toString());
+        int pageNumfirst = ((currentPage - 1) / pageListInterval) * pageListInterval + 1;
+        System.out.println((new StringBuilder("페이지리스트첫번호:")).append(pageNumfirst).toString());
+        
+        
+        int pageNumlast = 0;
+        if((currentPage-1) / pageListInterval != (totalPage-1) / pageListInterval){
+            pageNumlast = (pageNumfirst - 1) + pageListInterval;
+        }else{
+            pageNumlast = pageNumfirst + (totalPage-1) % pageListInterval;
+        }
+        System.out.println((new StringBuilder("페이지리스트끝번호")).append(pageNumlast).toString());
        
-        Boolean prev = Boolean.valueOf(pageNumfirst != 1);
-        Boolean next = Boolean.valueOf((currentPage-1) / pageListInterval != (totalPage-1) / pageListInterval);
+        Boolean prev = (pageNumfirst != 1);
+        Boolean next = ((currentPage-1) / pageListInterval != (totalPage-1) / pageListInterval);
        
         pmi.setPageNumfirst(pageNumfirst);
         pmi.setPageNumlast(pageNumlast);
         
-       System.out.println(next);
+        
+        System.out.println(next);
         
         pmi.setPrevPage(prev);
         pmi.setNextPage(next);
@@ -105,26 +119,29 @@ public class RegularConsultServiceImpl
 
     public String saveSchedule(ConsultScheduleDate rcsd, List<String> cList)
     {
-    	Consult rc = new Consult();
     	Random rd = new Random();
     	List<String> workDayList = new ArrayList<String>();
     	
     	String start = rcsd.getStart_date().replace("-", "");
     	String finish = rcsd.getFinish_date().replace("-", "");
     	
+    	System.out.println(start);
+    	System.out.println(finish);
+    	
+    	
     	CalcWorkDay cwd = new CalcWorkDay();
     	workDayList = cwd.calcWorkDay(start,finish);
-    	int wn = workDayList.size();//선택된 날짜 중 근무일수
-    	System.out.println("근무일수"+wn);
+    	int wd = workDayList.size();//선택된 날짜 중 근무일수
+    	System.out.println("근무일수"+wd);
     	
     	
     	int pn = cList.size(); //선택된 사람 수
     	System.out.println("사람수"+pn);
     	
-    	int rdPerDay = pn/wn; //하루당 스케줄 배치 기본 인원수
+    	int rdPerDay = pn/wd; //하루당 스케줄 배치 기본 인원수
     	System.out.println("하루당 스케줄 배치 기본 인원수:"+rdPerDay);
     	
-    	int extraRd = pn%wn; //하루에 1명씩 더 배치되는 날의 수
+    	int extraRd = pn%wd; //하루에 1명씩 더 배치되는 날의 수
     	
     	List<Integer> rdI = new ArrayList<Integer>();
     	for(String customer :cList){
@@ -138,10 +155,10 @@ public class RegularConsultServiceImpl
     				rdI.add(n);
 				}
 		}//배치인원 수 만큼의 숫자리스트를 랜덤으로 중복없이 추출
-    		List<HashMap<String,String>> scheduleList = new ArrayList<HashMap<String,String>>();
-    		
-		for(int i = 0; i < wn; i++){//근무일 하루씩 i 증가
-			
+    	
+    	
+		List<HashMap<String,String>> scheduleList = new ArrayList<HashMap<String,String>>();
+		for(int i = 0; i < wd; i++){//근무일 하루씩 i 증가
 		
 			if(0 <= i && i <extraRd){//하루에 기본인원수+1 씩 배치되는 날 구간
 				for(int j = i*(rdPerDay+1);j<(i+1)*(rdPerDay+1);j++){
